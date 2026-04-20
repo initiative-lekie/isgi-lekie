@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ISGI-Lékié — Plateforme territoriale de la Lékié</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fefcf8; color: #3a3a35; line-height: 1.5; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Bandeau statut */
+    .status-banner {
+      background: #1b3a2d; color: rgba(255,255,255,0.85);
+      padding: 0.55rem 1.5rem; text-align: center;
+      font-size: 0.75rem; letter-spacing: 0.03em;
+      border-bottom: 2px solid #c4922a;
+    }
+    .status-banner em { color: #e0a83e; font-style: normal; font-weight: 600; }
+
+    .navbar { background: #1b3a2d; padding: 0.8rem 1.5rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #c4922a; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .logo a { color: #e0a83e; text-decoration: none; font-size: 1.5rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
+    .logo span { font-size: 0.7rem; display: block; color: rgba(255,255,255,0.7); }
+    .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.8rem; font-weight: 500; }
+    .nav-links a:hover { color: #e0a83e; }
+
+    section { padding: 3rem 0; border-bottom: 1px solid #e8dfd0; }
+    .section-title { font-size: 1.8rem; color: #1b3a2d; margin-bottom: 1.5rem; border-left: 4px solid #c4922a; padding-left: 1rem; }
+    .section-note { font-size: 0.8rem; color: #8a8a80; font-style: italic; margin-bottom: 1.2rem; }
+
+    .grid-cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .carte { background: #f4efe6; border-radius: 16px; padding: 1.2rem; border-top: 3px solid #c4922a; }
+    .carte h3 { font-size: 1.2rem; color: #1b3a2d; margin-bottom: 0.25rem; }
+    .carte .titre { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #c4922a; font-weight: 600; margin-bottom: 0.5rem; }
+    .carte p { font-size: 0.85rem; color: #5a5a50; margin-top: 0.5rem; }
+
+    /* Carte */
+    .map-wrapper { margin: 1rem 0 2rem; border-radius: 20px; overflow: hidden; border: 1px solid #e8dfd0; position: relative; }
+    #map { height: 400px; width: 100%; }
+    .map-fallback { display: none; background: #f4efe6; height: 400px; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: #8a8a80; font-size: 0.9rem; text-align: center; padding: 2rem; }
+
+    .filtres-bar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin: 1.5rem 0 1rem; }
+    .search-input { flex: 1; padding: 0.7rem 1rem; border: 1px solid #e8dfd0; border-radius: 40px; font-family: 'Inter', sans-serif; }
+    .compteur { font-size: 0.8rem; background: #f4efe6; padding: 0.3rem 1rem; border-radius: 30px; }
+    .communes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .fiche-commune { background: white; border: 1px solid #e8dfd0; border-radius: 20px; overflow: hidden; }
+    .fiche-entete { background: #f4efe6; padding: 1rem; border-bottom: 1px solid #e8dfd0; }
+    .fiche-entete h3 { font-size: 1.3rem; color: #1b3a2d; font-family: 'Cormorant Garamond', serif; }
+    .badge-cheflieu { display: inline-block; background: #c4922a; color: white; font-size: 0.6rem; padding: 0.2rem 0.6rem; border-radius: 20px; margin-top: 0.3rem; }
+    .fiche-body { padding: 1rem; }
+    .stat-row { display: flex; justify-content: space-between; background: #f4efe6; padding: 0.5rem 0.8rem; border-radius: 12px; margin-bottom: 0.8rem; font-size: 0.85rem; }
+    .village-tag { display: inline-block; background: #e8dfd0; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; margin: 0.2rem; }
+    .btn-fiche { background: #1b3a2d; color: #e0a83e; border: none; width: 100%; padding: 0.8rem; font-weight: 600; cursor: pointer; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+
+    /* Badges de statut données */
+    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; margin-left: 0.4rem; vertical-align: middle; }
+    .badge-valide { background: #e8f5e9; color: #2e7d32; }
+    .badge-encours { background: #fff8e1; color: #856404; }
+    .badge-contributif { background: #e8dfd0; color: #5a5a50; }
+
+    /* Alertes */
+    .alertes-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .alerte-item { background: white; border: 1px solid #e8dfd0; border-radius: 16px; padding: 1rem; border-left: 4px solid #e67e22; }
+    .alerte-item.verifie { border-left-color: #2ecc71; }
+    .badge-alerte { display: inline-block; font-size: 0.65rem; padding: 0.2rem 0.5rem; border-radius: 20px; margin-top: 0.5rem; }
+    .badge-nonverifie { background: #e67e22; color: white; }
+    .badge-verifie { background: #2ecc71; color: white; }
+
+    /* Formulaire */
+    .form-contrib { background: #f4efe6; border-radius: 24px; padding: 2rem; margin: 2rem 0; }
+    .form-demo-note { font-size: 0.75rem; color: #8a8a80; font-style: italic; margin-bottom: 1rem; padding: 0.5rem 0.8rem; background: #e8dfd0; border-radius: 8px; }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.3rem; }
+    .form-field label { font-size: 0.75rem; font-weight: 600; color: #1b3a2d; text-transform: uppercase; }
+    .form-field input, .form-field select, .form-field textarea { padding: 0.7rem; border: 1px solid #ccc; border-radius: 12px; font-family: 'Inter', sans-serif; }
+    .btn-soumettre { background: #c4922a; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 40px; font-weight: bold; cursor: pointer; margin-top: 1rem; font-family: 'Inter', sans-serif; }
+    .success-message { display: none; background: #1b3a2d; color: white; padding: 1rem; border-radius: 16px; margin-top: 1rem; }
+
+    footer { background: #0f2c21; color: rgba(255,255,255,0.6); text-align: center; padding: 2rem 1rem; font-size: 0.8rem; margin-top: 2rem; }
+    footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
+    @media (max-width: 700px) { .navbar { flex-direction: column; text-align: center; } .section-title { font-size: 1.5rem; } }
+  </style>
+</head>
+<body>
+
+<div class="status-banner">
+  Plateforme en déploiement progressif — <em>certaines données sont en cours de consolidation.</em>
+  Les informations publiées ne se substituent pas aux sources officielles.
+</div>
+
+<div class="navbar">
+  <div class="logo"><a href="isgi_index_final.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <div class="nav-links">
+    <a href="isgi_index_final.html">Accueil</a>
+    <a href="#communes">Communes</a>
+    <a href="#sante">Santé</a>
+    <a href="#sport">Sport</a>
+    <a href="#autorites">Autorités</a>
+    <a href="#education">Éducation</a>
+    <a href="#histoire">Histoire</a>
+    <a href="#alertes">Alertes</a>
+    <a href="#contribuer">Contribuer</a>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- Carte -->
+  <section id="carte">
+    <h2 class="section-title">Carte interactive du territoire</h2>
+    <div class="map-wrapper">
+      <div id="map"></div>
+      <div class="map-fallback" id="mapFallback">
+        <span>🗺️</span>
+        <span>Carte temporairement indisponible</span>
+        <span style="font-size:0.75rem;">Les fiches communes restent accessibles ci-dessous.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Communes -->
+  <section id="communes">
+    <h2 class="section-title">Les 9 communes de la Lékié</h2>
+    <p class="section-note">Données issues de la collecte terrain ISGI-Lékié — en enrichissement continu. <span class="badge-statut badge-valide">Validé</span> <span class="badge-statut badge-encours">En cours</span> <span class="badge-statut badge-contributif">Contributif</span></p>
+    <div class="filtres-bar">
+      <input type="text" id="searchCommune" class="search-input" placeholder="🔍 Rechercher une commune...">
+      <span class="compteur" id="compteur">9 communes</span>
+    </div>
+    <div id="communesGrid" class="communes-grid"></div>
+  </section>
+
+  <!-- Santé -->
+  <section id="sante">
+    <h2 class="section-title">Établissements de santé</h2>
+    <p class="section-note">Amorce — données en cours d'enrichissement avec les services de santé de district.</p>
+    <div class="grid-cartes">
+      <div class="carte"><div class="titre">Hôpital de district</div><h3>Monatélé</h3></div>
+      <div class="carte"><div class="titre">CMA Obala</div><h3>Obala</h3></div>
+      <div class="carte"><div class="titre">Hôpital catholique</div><h3>Okola</h3></div>
+      <div class="carte"><div class="titre">Centre médical</div><h3>Batchenga</h3></div>
+    </div>
+  </section>
+
+  <!-- Sport / Certification -->
+  <section id="sport">
+    <h2 class="section-title">Certification ISGI-Lékié</h2>
+    <p class="section-note">L'ISGI-Lékié certifie les événements et organisations qui font vivre le territoire. Chaque promoteur — privé, associatif, communautaire — peut soumettre une demande de certification.</p>
+    <div class="grid-cartes">
+      <div class="carte">
+        <div class="titre">🏆 Championnats de vacances</div>
+        <h3>Certification ouverte</h3>
+        <p>Nombreux championnats organisés chaque année dans les communes de la Lékié. L'ISGI-Lékié certifie, archive les résultats et donne de la visibilité aux organisateurs et aux lauréats.</p>
+      </div>
+      <div class="carte">
+        <div class="titre">🎭 Événements culturels & éducatifs</div>
+        <h3>Certification ouverte</h3>
+        <p>Concours, festivals, compétitions scolaires — toute initiative valorisant le territoire peut solliciter la certification ISGI-Lékié.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Autorités locales -->
+  <section id="autorites">
+    <h2 class="section-title">Autorités locales</h2>
+    <p class="section-note">Données en cours de vérification. <span class="badge-statut badge-encours">En cours</span></p>
+    <div class="grid-cartes">
+      <div class="carte">
+        <div class="titre">Préfet du département</div>
+        <h3>Patrick Simou Kamsu</h3>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+      <div class="carte">
+        <div class="titre">Sous-préfets des arrondissements</div>
+        <h3>Monatélé · Obala · Sa'a · Evodoula · Ebebda · Okola · Batchenga · Elig-Mfomo · Lobo</h3>
+        <p style="margin-top:0.6rem; font-size:0.8rem; color:#8a8a80; font-style:italic;">Nominations en cours de vérification — données à compléter.</p>
+        <span class="badge-statut badge-encours">En cours</span>
+      </div>
+      <div class="carte">
+        <div class="titre">Maires</div>
+        <h3>Liste dans les fiches communes</h3>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Éducation -->
+  <section id="education">
+    <h2 class="section-title">La Lékié et l'éducation</h2>
+    <p class="section-note">Amorce — données en cours d'enrichissement. La Lékié contribue à l'éducation sur son territoire et au-delà, à travers ses enfants du terroir.</p>
+
+    <div style="margin-bottom:1.2rem;">
+      <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:#1b3a2d; font-weight:600; margin-bottom:0.8rem; padding-bottom:0.4rem; border-bottom:2px solid #c4922a; display:inline-block;">Sur le territoire</div>
+      <div class="grid-cartes">
+        <div class="carte">
+          <div class="titre">École primaire publique</div>
+          <h3>Eyen-Meyong</h3>
+          <span class="badge-statut badge-encours">En cours</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:#c4922a; font-weight:600; margin-bottom:0.8rem; padding-bottom:0.4rem; border-bottom:2px solid #e8dfd0; display:inline-block;">Rayonnement — initiatives portées par des enfants du terroir</div>
+      <div class="grid-cartes">
+        <div class="carte">
+          <div class="titre">Groupe scolaire privé · Douala</div>
+          <h3>La Trinité</h3>
+          <p style="margin-top:0.4rem; font-size:0.82rem; color:#5a5a50;">Fondé par un enfant du terroir de la Lékié.</p>
+          <span class="badge-statut badge-contributif">Diaspora</span>
+        </div>
+        <div class="carte">
+          <div class="titre">École de formation · Douala</div>
+          <h3>Groupe La PERLE</h3>
+          <p style="margin-top:0.4rem; font-size:0.82rem; color:#5a5a50;">Initiative portée par un enfant du terroir de la Lékié.</p>
+          <span class="badge-statut badge-contributif">Diaspora</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Histoire / Chronique préfectorale -->
+  <section id="histoire">
+    <h2 class="section-title">Chronique préfectorale — Lékié (1964–2026)</h2>
+    <p class="section-note">23 préfets depuis la création du département. <span class="badge-statut badge-encours">En cours de vérification</span> — Les données contradictoires sont arbitrées par un Comité (chefferies, ISGI-Lékié, experts).</p>
+    <div style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; font-size:0.75rem;">
+        <thead>
+          <tr>
+            <th style="padding:0.5rem; background:#f4efe6; text-align:left;">N°</th>
+            <th style="padding:0.5rem; background:#f4efe6; text-align:left;">Nom</th>
+            <th style="padding:0.5rem; background:#f4efe6; text-align:left;">Début</th>
+            <th style="padding:0.5rem; background:#f4efe6; text-align:left;">Fin</th>
+            <th style="padding:0.5rem; background:#f4efe6; text-align:left;">Durée</th>
+            <th style="padding:0.5rem; background:#f4efe6; text-align:left;">Régime</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:0.4rem;">1</td><td>NJOH Samuel</td><td>1964</td><td>1964</td><td>3 mois</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">2</td><td>ENOGUENE Justin</td><td>1964</td><td>1965</td><td>5 mois 18 j</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">3</td><td>MENGUE MEKA Jean Robert</td><td>1965</td><td>1966</td><td>9 mois 27 j</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">4</td><td>KOUNGOU EDIMA Ferdinand</td><td>1966</td><td>1968</td><td>1 an 10 mois</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">5</td><td>ENAM MBA'A Samuel</td><td>1968</td><td>1969</td><td>1 an 4 mois 17 j</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">6</td><td>BASSILEKIN Louis Paul</td><td>1969</td><td>1970</td><td>1 an 1 mois</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">7</td><td>ABATE ABATE Lazare</td><td>1970</td><td>1972</td><td>1 an 8 mois 6 j</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">8</td><td>MVONDO Justin</td><td>1972</td><td>1973</td><td>1 an 5 mois</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">9</td><td>MVONGO Grégoire</td><td>1973</td><td>1975</td><td>1 an 11 mois 20 j</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">10</td><td>MOUT EMGBANG Pierre Jill</td><td>1975</td><td>1976</td><td>1 an 4 mois 4 j</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">11</td><td>NKENDJUO Luc</td><td>1976</td><td>1977</td><td>1 an 3 mois 6 j</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">12</td><td>NOUBISSI Augustin</td><td>1977</td><td>1980</td><td>3 ans 3 mois 6 j</td><td>AHIDJO</td></tr>
+          <tr><td style="padding:0.4rem;">13</td><td>ALHADJI Mamat</td><td>1980</td><td>1991</td><td>11 ans</td><td>AHIDJO / BIYA</td></tr>
+          <tr><td style="padding:0.4rem;">14</td><td>MINTYA Samuel</td><td>1991</td><td>1995</td><td>4 ans 6 mois 1 j</td><td>BIYA</td></tr>
+          <tr><td style="padding:0.4rem;">15</td><td>MENYE Samuel</td><td>1995</td><td>1997</td><td>2 ans 4 mois 22 j</td><td>BIYA</td></tr>
+          <tr><td style="padding:0.4rem;">16</td><td>MOTA Richard</td><td>1997</td><td>1999</td><td>2 ans 1 mois</td><td>BIYA</td></tr>
+          <tr><td style="padding:0.4rem;">17</td><td>ABENA Hubert Claude</td><td>1999</td><td>2001</td><td>2 ans 3 mois 6 j</td><td>BIYA</td></tr>
+          <tr><td style="padding:0.4rem;">18</td><td>SIMO NJONOU Jacques</td><td>2001</td><td>2004</td><td>3 ans 3 mois 29 j</td><td>BIYA</td></tr>
+          <tr><td style="padding:0.4rem;">19</td><td>OLAMA OMGBWA François</td><td>2004</td><td>2007</td><td>3 ans 5 mois 22 j</td><td>BIYA</td></tr>
+          <tr><td style="padding:0.4rem;">20</td><td>HAMAN KAIGAMA Gilbert</td><td>2007</td><td>2009</td><td>2 ans 3 mois 12 j</td><td>BIYA</td></tr>
+          <tr><td style="padding:0.4rem;">21</td><td>BEKONO MAMA Claude</td><td>2009</td><td>2010</td><td>1 an 4 mois</td><td>BIYA</td></tr>
+          <tr><td style="padding:0.4rem;">22</td><td>MBA Bernard Marie</td><td>2010</td><td>2012</td><td>2 ans 4 mois 7 j</td><td>BIYA</td></tr>
+          <tr><td style="padding:0.4rem;">23</td><td>SIMOU KAMSU Patrick</td><td>2012</td><td>aujourd'hui</td><td>13 ans 4 mois</td><td>BIYA</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:1rem; font-size:0.75rem; color:#8a8a80;">Analyse détaillée (durées, régimes, transitions) — Phase 2.</p>
+  </section>
+
+  <!-- Alertes -->
+  <section id="alertes">
+    <h2 class="section-title">Alertes citoyennes</h2>
+    <p class="section-note">⚠️ Zone de test — signalements non vérifiés sauf mention explicite. ISGI-Lékié ne se substitue pas aux autorités compétentes.</p>
+    <div class="alertes-list">
+      <div class="alerte-item">
+        <div class="alerte-titre">🚨 Coupe de route signalée</div>
+        <div class="alerte-lieu">Axe Batchenga — Obala</div>
+        <span class="badge-alerte badge-nonverifie">⚠️ Non vérifié</span>
+      </div>
+      <div class="alerte-item">
+        <div class="alerte-titre">🏚️ Pont en ruine — Nkolbisson</div>
+        <div class="alerte-lieu">Monatélé</div>
+        <span class="badge-alerte badge-nonverifie">⚠️ Non vérifié</span>
+      </div>
+      <div class="alerte-item verifie">
+        <div class="alerte-titre">🏫 École publique d'Evodoula : toiture effondrée</div>
+        <div class="alerte-lieu">Evodoula</div>
+        <span class="badge-alerte badge-verifie">✅ Vérifié ISGI-Lékié</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contribuer -->
+  <section id="contribuer">
+    <h2 class="section-title">Signaler un incident ou contribuer</h2>
+    <div class="form-contrib">
+      <p class="form-demo-note">📋 Version démo — les données saisies ne sont pas encore stockées. Cette interface illustre le fonctionnement du module de signalement.</p>
+      <form id="contributionForm" class="form-grid">
+        <div class="form-field">
+          <label>Type</label>
+          <select id="typeAlerte">
+            <option>Sécurité</option>
+            <option>Infrastructure dégradée</option>
+            <option>Patrimoine menacé</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Commune</label>
+          <select id="communeAlerte">
+            <option>Monatélé</option><option>Obala</option><option>Sa'a</option>
+            <option>Evodoula</option><option>Ebebda</option><option>Okola</option>
+            <option>Batchenga</option><option>Elig-Mfomo</option><option>Lobo</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Lieu précis</label>
+          <input type="text" id="lieuAlerte" placeholder="Village / quartier">
+        </div>
+        <div class="form-field" style="grid-column:1/-1">
+          <label>Description</label>
+          <textarea rows="2" id="descAlerte" placeholder="Décrivez l'incident..."></textarea>
+        </div>
+        <div style="grid-column:1/-1">
+          <button type="submit" class="btn-soumettre">📢 Envoyer le signalement</button>
+        </div>
+      </form>
+      <div id="formSuccess" class="success-message">✅ Merci — signalement enregistré (démo). L'équipe ISGI-Lékié vérifiera sous 48h lors du déploiement réel.</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<script>
+  // Fallback carte
+  try {
+    const map = L.map('map').setView([4.15, 11.4], 9.2);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd' }).addTo(map);
+    const communesData = [
+      { nom: "Monatélé", chefLieu: true, lat: 4.1875, lng: 11.2525, maire: "Prosper Parfait Mbassi Bessala" },
+      { nom: "Obala", chefLieu: false, lat: 4.1589, lng: 11.5339, maire: "Francis Gaël Touna" },
+      { nom: "Sa'a", chefLieu: false, lat: 4.117, lng: 11.417, maire: "M. Jean Blaise Messina Noah" },
+      { nom: "Evodoula", chefLieu: false, lat: 4.083, lng: 11.2, maire: "M. Armand Joachim Ongolo Eloundou" },
+      { nom: "Ebebda", chefLieu: false, lat: 4.35, lng: 11.2, maire: "M. Manga Bessala" },
+      { nom: "Okola", chefLieu: false, lat: 4.0167, lng: 11.3833, maire: "M. Vincent De Paul Noa" },
+      { nom: "Batchenga", chefLieu: false, lat: 4.2333, lng: 11.6833, maire: "M. Anatole Souga" },
+      { nom: "Elig-Mfomo", chefLieu: false, lat: 4.1, lng: 11.1, maire: "M. Stanislas Ayissi" },
+      { nom: "Lobo", chefLieu: false, lat: 3.9833, lng: 11.4, maire: "M. Serge Bertin Obono Onguene" }
+    ];
+    communesData.forEach(c => {
+      L.circleMarker([c.lat, c.lng], { radius: 8, fillColor: c.chefLieu ? '#c4922a' : '#1b3a2d', color: '#fff', weight: 2, fillOpacity: 0.9 })
+        .addTo(map).bindPopup(`<b>${c.nom}</b>${c.chefLieu ? ' — Chef-lieu' : ''}<br>Maire : ${c.maire}`);
+    });
+  } catch(e) {
+    document.getElementById('map').style.display = 'none';
+    document.getElementById('mapFallback').style.display = 'flex';
+  }
+
+  // Fiches communes
+  const communesData = [
+    { nom: "Monatélé", chefLieu: true, superficie: "375 km²", population: "~75 000", groupements: ["Ekot", "Eyen-Meyong", "Kougouda", "Mvog-Onan-menye", "Nkolkosse"], maire: "Prosper Parfait Mbassi Bessala", statut: "valide" },
+    { nom: "Obala", chefLieu: false, superficie: "n.c.", population: "78 929", groupements: ["Endinding"], maire: "Francis Gaël Touna", statut: "valide" },
+    { nom: "Sa'a", chefLieu: false, superficie: "n.c.", population: "n.c.", groupements: ["Lebamzip"], maire: "M. Jean Blaise Messina Noah", statut: "encours" },
+    { nom: "Evodoula", chefLieu: false, superficie: "250 km²", population: "n.c.", groupements: ["À documenter"], maire: "M. Armand Joachim Ongolo Eloundou", statut: "encours" },
+    { nom: "Ebebda", chefLieu: false, superficie: "n.c.", population: "n.c.", groupements: ["À documenter"], maire: "M. Manga Bessala", statut: "contributif" },
+    { nom: "Okola", chefLieu: false, superficie: "605 km²", population: "~65 000", groupements: ["Mvog Nama II", "Mvog Onamyié III"], maire: "M. Vincent De Paul Noa", statut: "valide" },
+    { nom: "Batchenga", chefLieu: false, superficie: "n.c.", population: "n.c.", groupements: ["Batchenga"], maire: "M. Anatole Souga", statut: "encours" },
+    { nom: "Elig-Mfomo", chefLieu: false, superficie: "n.c.", population: "n.c.", groupements: ["À documenter"], maire: "M. Stanislas Ayissi", statut: "contributif" },
+    { nom: "Lobo", chefLieu: false, superficie: "n.c.", population: "n.c.", groupements: ["À documenter"], maire: "M. Serge Bertin Obono Onguene", statut: "contributif" }
+  ];
+
+  const statutLabels = { valide: "Validé", encours: "En cours", contributif: "Contributif" };
+
+  function renderCommunes(filter = "") {
+    const grid = document.getElementById("communesGrid");
+    const filtered = communesData.filter(c => c.nom.toLowerCase().includes(filter.toLowerCase()));
+    document.getElementById("compteur").innerText = `${filtered.length} / 9 communes`;
+    grid.innerHTML = "";
+    filtered.forEach(c => {
+      const card = document.createElement("div");
+      card.className = "fiche-commune";
+      card.innerHTML = `
+        <div class="fiche-entete">
+          <h3>${c.nom} ${c.chefLieu ? '<span class="badge-cheflieu">Chef-lieu</span>' : ''}
+          <span class="badge-statut badge-${c.statut}">${statutLabels[c.statut]}</span></h3>
+        </div>
+        <div class="fiche-body">
+          <div class="stat-row"><strong>Superficie</strong> ${c.superficie}</div>
+          <div class="stat-row"><strong>Population</strong> ${c.population}</div>
+          <div style="margin-bottom:0.8rem"><strong>Groupements</strong><br>${c.groupements.map(g => `<span class="village-tag">${g}</span>`).join('')}</div>
+          <div><strong>Maire</strong><br><span style="font-size:0.85rem">${c.maire}</span></div>
+        </div>
+        <button class="btn-fiche" onclick="alert('Fiche détaillée bientôt disponible — contribution en cours.')">📌 Voir fiche détaillée</button>
+      `;
+      grid.appendChild(card);
+    });
+  }
+  document.getElementById("searchCommune").addEventListener("input", e => renderCommunes(e.target.value));
+  renderCommunes();
+
+  // Formulaire démo
+  document.getElementById("contributionForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const s = document.getElementById("formSuccess");
+    s.style.display = "block";
+    e.target.reset();
+    setTimeout(() => s.style.display = "none", 6000);
+  });
+</script>
+</body>
+</html>
