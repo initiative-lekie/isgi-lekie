@@ -3,154 +3,455 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>ISGI-Lékié — Initiative Stratégique Globale et Inclusive</title>
-  <meta name="description" content="ISGI-Lékié : l'écosystème numérique territorial de la Lékié. Documenter, connecter, valoriser — avec les enfants du terroir, les chefferies, les institutions.">
+  <title>ISGI-Lékié — Plateforme territoriale de la Lékié</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #fefcf8; color: #2c2c28; line-height: 1.5; }
-    h1, h2, h3, .logo, .hero h1 { font-family: 'Cormorant Garamond', serif; font-weight: 600; letter-spacing: -0.01em; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    body { font-family: 'Inter', sans-serif; background: #fefcf8; color: #3a3a35; line-height: 1.5; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+
+    .status-banner {
+      background: #1b3a2d; color: rgba(255,255,255,0.85);
+      padding: 0.55rem 1.5rem; text-align: center;
+      font-size: 0.75rem; letter-spacing: 0.03em;
+      border-bottom: 2px solid #c4922a;
+    }
+    .status-banner em { color: #e0a83e; font-style: normal; font-weight: 600; }
+
+    .campaign-banner {
+      background: #c4922a; color: #1b3a2d; text-align: center;
+      padding: 0.6rem 1rem; font-weight: 600; font-size: 0.85rem;
+    }
+    .campaign-banner a { color: #1b3a2d; text-decoration: underline; }
+
+    .lekie-en-premier {
+      background: #1b3a2d; color: #e0a83e; text-align: center;
+      padding: 0.4rem; font-size: 0.8rem; font-style: italic;
+    }
+
     .navbar { background: #1b3a2d; padding: 0.8rem 1.5rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #c4922a; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .logo a { color: #e0a83e; text-decoration: none; font-size: 1.5rem; font-weight: 700; }
+    .logo a { color: #e0a83e; text-decoration: none; font-size: 1.5rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
     .logo span { font-size: 0.7rem; display: block; color: rgba(255,255,255,0.7); }
-    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.85rem; font-weight: 500; }
+    .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.8rem; font-weight: 500; }
     .nav-links a:hover { color: #e0a83e; }
-    .hero { background: linear-gradient(105deg, #1b3a2d 0%, #2a5a44 100%); padding: 4rem 1.5rem; text-align: center; border-bottom: 4px solid #c4922a; }
-    .hero h1 { font-size: clamp(2rem, 6vw, 3.5rem); color: white; margin-bottom: 0.5rem; }
-    .hero h1 em { color: #e0a83e; font-style: italic; }
-    .hero p { color: rgba(255,255,255,0.85); max-width: 700px; margin: 1rem auto 0; font-size: 1.1rem; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; }
-    .btn { display: inline-block; padding: 0.8rem 1.8rem; border-radius: 40px; font-weight: 600; text-decoration: none; transition: all 0.2s; }
-    .btn-primary { background: #c4922a; color: #fff; }
-    .btn-primary:hover { background: #e0a83e; color: #1b3a2d; }
-    .btn-outline { border: 1.5px solid rgba(255,255,255,0.5); color: white; }
-    .btn-outline:hover { border-color: #e0a83e; color: #e0a83e; }
-    section { padding: 4rem 0; border-bottom: 1px solid #e8dfd0; }
-    .section-title { font-size: 2rem; color: #1b3a2d; margin-bottom: 1rem; text-align: center; }
-    .section-sub { text-align: center; color: #6b6b60; max-width: 700px; margin: 0 auto 2.5rem; font-size: 1rem; }
-    .grid-2, .grid-3 { display: grid; gap: 2rem; margin-top: 1.5rem; }
-    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .card { background: white; border-radius: 20px; padding: 1.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e8dfd0; text-align: center; }
-    .card h3 { font-size: 1.3rem; color: #1b3a2d; margin-bottom: 0.5rem; }
-    .card p { color: #5a5a50; font-size: 0.9rem; }
-    .card .btn-primary { display: inline-block; margin-top: 1rem; padding: 0.5rem 1.2rem; font-size: 0.85rem; }
-    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center; margin: 2rem 0; }
-    .stat-number { font-size: 2.2rem; font-weight: 700; color: #c4922a; font-family: 'Cormorant Garamond', serif; }
-    .stat-label { font-size: 0.8rem; color: #6b6b60; }
-    .info-block { background: #f4efe6; border-radius: 20px; padding: 1.8rem; margin: 2rem 0; text-align: center; }
-    .info-block h3 { color: #1b3a2d; margin-bottom: 0.8rem; font-size: 1.3rem; }
-    .info-block p { color: #5a5a50; font-size: 0.9rem; margin-bottom: 0.6rem; }
-    .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; text-align: center; }
-    .proof-item { background: white; border-radius: 16px; padding: 1.5rem; border: 1px solid #e8dfd0; }
-    .proof-number { font-size: 2rem; font-weight: 700; color: #c4922a; }
-    .proof-label { font-size: 0.85rem; color: #5a5a50; margin-top: 0.3rem; }
-    .cta-block { background: #1b3a2d; color: white; text-align: center; padding: 3rem 1.5rem; border-radius: 24px; margin: 2rem 0; }
-    .cta-block h2 { color: #e0a83e; margin-bottom: 0.5rem; }
-    .cta-block p { color: rgba(255,255,255,0.75); font-size: 0.95rem; max-width: 560px; margin: 0 auto; }
-    .cta-block .btn-primary { background: #e0a83e; color: #1b3a2d; margin-top: 1rem; }
-    footer { background: #0f2c21; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.8rem; }
+
+    section { padding: 3rem 0; border-bottom: 1px solid #e8dfd0; }
+    .section-title { font-size: 1.8rem; color: #1b3a2d; margin-bottom: 1.5rem; border-left: 4px solid #c4922a; padding-left: 1rem; }
+    .section-note { font-size: 0.8rem; color: #8a8a80; font-style: italic; margin-bottom: 1.2rem; }
+
+    .grid-cartes { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .carte { background: #f4efe6; border-radius: 16px; padding: 1.2rem; border-top: 3px solid #c4922a; }
+    .carte h3 { font-size: 1.2rem; color: #1b3a2d; margin-bottom: 0.25rem; }
+    .carte .titre { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #c4922a; font-weight: 600; margin-bottom: 0.5rem; }
+    .carte p { font-size: 0.85rem; color: #5a5a50; margin-top: 0.5rem; }
+
+    .map-wrapper { margin: 1rem 0 2rem; border-radius: 20px; overflow: hidden; border: 1px solid #e8dfd0; position: relative; }
+    #map { height: 400px; width: 100%; }
+    .map-fallback { display: none; background: #f4efe6; height: 400px; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: #8a8a80; font-size: 0.9rem; text-align: center; padding: 2rem; }
+
+    .filtres-bar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin: 1.5rem 0 1rem; }
+    .search-input { flex: 1; padding: 0.7rem 1rem; border: 1px solid #e8dfd0; border-radius: 40px; font-family: 'Inter', sans-serif; }
+    .compteur { font-size: 0.8rem; background: #f4efe6; padding: 0.3rem 1rem; border-radius: 30px; }
+    .communes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .fiche-commune { background: white; border: 1px solid #e8dfd0; border-radius: 20px; overflow: hidden; }
+    .fiche-entete { background: #f4efe6; padding: 1rem; border-bottom: 1px solid #e8dfd0; }
+    .fiche-entete h3 { font-size: 1.3rem; color: #1b3a2d; font-family: 'Cormorant Garamond', serif; }
+    .badge-cheflieu { display: inline-block; background: #c4922a; color: white; font-size: 0.6rem; padding: 0.2rem 0.6rem; border-radius: 20px; margin-top: 0.3rem; }
+    .fiche-body { padding: 1rem; }
+    .stat-row { display: flex; justify-content: space-between; background: #f4efe6; padding: 0.5rem 0.8rem; border-radius: 12px; margin-bottom: 0.8rem; font-size: 0.85rem; }
+    .village-tag { display: inline-block; background: #e8dfd0; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; margin: 0.2rem; }
+    .btn-fiche { background: #1b3a2d; color: #e0a83e; border: none; width: 100%; padding: 0.8rem; font-weight: 600; cursor: pointer; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+
+    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; margin-left: 0.4rem; vertical-align: middle; }
+    .badge-valide { background: #e8f5e9; color: #2e7d32; }
+    .badge-encours { background: #fff8e1; color: #856404; }
+    .badge-contributif { background: #e8dfd0; color: #5a5a50; }
+
+    .alertes-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .alerte-item { background: white; border: 1px solid #e8dfd0; border-radius: 16px; padding: 1rem; border-left: 4px solid #e67e22; }
+    .alerte-item.verifie { border-left-color: #2ecc71; }
+    .badge-alerte { display: inline-block; font-size: 0.65rem; padding: 0.2rem 0.5rem; border-radius: 20px; margin-top: 0.5rem; }
+    .badge-nonverifie { background: #e67e22; color: white; }
+    .badge-verifie { background: #2ecc71; color: white; }
+
+    .form-contrib { background: #f4efe6; border-radius: 24px; padding: 2rem; margin: 2rem 0; }
+    .form-demo-note { font-size: 0.75rem; color: #8a8a80; font-style: italic; margin-bottom: 1rem; padding: 0.5rem 0.8rem; background: #e8dfd0; border-radius: 8px; }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .form-field { display: flex; flex-direction: column; gap: 0.3rem; }
+    .form-field label { font-size: 0.75rem; font-weight: 600; color: #1b3a2d; text-transform: uppercase; }
+    .form-field input, .form-field select, .form-field textarea { padding: 0.7rem; border: 1px solid #ccc; border-radius: 12px; font-family: 'Inter', sans-serif; }
+    .btn-soumettre { background: #c4922a; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 40px; font-weight: bold; cursor: pointer; margin-top: 1rem; font-family: 'Inter', sans-serif; }
+    .success-message { display: none; background: #1b3a2d; color: white; padding: 1rem; border-radius: 16px; margin-top: 1rem; }
+
+    footer { background: #0f2c21; color: rgba(255,255,255,0.6); text-align: center; padding: 2rem 1rem; font-size: 0.8rem; margin-top: 2rem; }
     footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
-    @media (max-width: 700px) { .navbar { flex-direction: column; text-align: center; } .section-title { font-size: 1.6rem; } .grid-3 { grid-template-columns: 1fr; } }
+
+    .table-scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.6rem 0.5rem; text-align: left; border-bottom: 1px solid #e8dfd0; }
+    th { background: #1b3a2d; color: white; }
+
+    @media (max-width: 700px) { .navbar { flex-direction: column; text-align: center; } .section-title { font-size: 1.5rem; } }
   </style>
 </head>
 <body>
+
+<div class="status-banner">
+  Plateforme en déploiement progressif — <em>certaines données sont en cours de consolidation.</em>
+  Les informations publiées ne se substituent pas aux sources officielles.
+</div>
+
+<div class="campaign-banner">
+  🌟 Et si ton village servait de modèle dans l'intelligence territoriale ? 
+  <a href="#contribuer">Contribue dès maintenant</a>
+</div>
+
 <div class="navbar">
-  <div class="logo"><a href="#">ISGI</a><span>Lékié — Cameroun</span></div>
+  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
   <div class="nav-links">
-    <a href="#entree">Accueil</a>
-    <a href="#actions">Plateforme</a>
-    <a href="plateforme.html">Données</a>
+    <a href="index.html">Accueil</a>
+    <a href="#communes">Communes</a>
+    <a href="#sante">Santé</a>
+    <a href="#sport">Sport</a>
+    <a href="#autorites">Autorités</a>
+    <a href="#figures-historiques">Figures historiques</a>
+    <a href="#lekie-des-premiers">Lékié des premiers</a>
+    <a href="#education">Éducation</a>
+    <a href="#chefferies">Chefferies</a>
+    <a href="#demographie">Démographie</a>
+    <a href="#histoire">Histoire</a>
+    <a href="#alertes">Alertes</a>
+    <a href="#contribuer">Contribuer</a>
   </div>
 </div>
 
-<div class="hero">
-  <h1>La <em>Lékié</em> se dote<br>de son écosystème territorial</h1>
-  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive</p>
-  <p style="font-size: 0.9rem; margin-top: 0.5rem;">Habitant, membre de la diaspora ou acteur local, vous pouvez participer à l'intelligence territoriale de la Lékié.</p>
-  <div class="hero-actions">
-    <a href="#actions" class="btn btn-outline">Découvrir</a>
-    <a href="plateforme.html" class="btn btn-primary">Explorer les communes et contribuer →</a>
-  </div>
+<div class="lekie-en-premier">
+  🟢 Lékié en premier — l'humain, le territoire, la fierté
 </div>
 
 <div class="container">
 
-  <!-- Entrez dans la plateforme -->
-  <section id="entree">
-    <h2 class="section-title">Entrez dans la plateforme</h2>
-    <p class="section-sub">Trois façons d'agir pour le territoire</p>
-    <div class="grid-3">
-      <div class="card">
-        <h3>🗺️ Explorer</h3>
-        <p>Découvrez la carte, les 9 communes, les chefferies, les données démographiques et historiques de la Lékié.</p>
-        <a href="plateforme.html" class="btn-primary" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.2rem;">Explorer →</a>
-      </div>
-      <div class="card">
-        <h3>📢 Contribuer</h3>
-        <p>Signalez une alerte, proposez une information, ajoutez un établissement scolaire ou une structure de santé.</p>
-        <a href="plateforme.html#contribuer" class="btn-primary" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.2rem;">Contribuer →</a>
-      </div>
-      <div class="card">
-        <h3>🤝 Rejoindre</h3>
-        <p>Enfant du terroir, diaspora, acteur local : participez à l'intelligence territoriale de la Lékié.</p>
-        <a href="#contact" class="btn-primary" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.2rem;">Nous rejoindre →</a>
+  <!-- Carte -->
+  <section id="carte">
+    <h2 class="section-title">Carte interactive du territoire</h2>
+    <div class="map-wrapper">
+      <div id="map"></div>
+      <div class="map-fallback" id="mapFallback">
+        <span>🗺️</span>
+        <span>Carte temporairement indisponible</span>
+        <span style="font-size:0.75rem;">Les fiches communes restent accessibles ci-dessous.</span>
       </div>
     </div>
   </section>
 
-  <!-- Bloc preuve visuelle -->
-  <div class="info-block">
-    <h3>La Lékié en chiffres</h3>
-    <div class="proof-grid">
-      <div class="proof-item">
-        <div class="proof-number">9</div>
-        <div class="proof-label">communes structurées</div>
-      </div>
-      <div class="proof-item">
-        <div class="proof-number">✓</div>
-        <div class="proof-label">alertes citoyennes actives</div>
-      </div>
-      <div class="proof-item">
-        <div class="proof-number">📊</div>
-        <div class="proof-label">données en cours de collecte</div>
-      </div>
+  <!-- Communes -->
+  <section id="communes">
+    <h2 class="section-title">Les 9 communes de la Lékié</h2>
+    <p class="section-note">Données issues de la collecte terrain ISGI-Lékié — en enrichissement continu. <span class="badge-statut badge-valide">Validé</span> <span class="badge-statut badge-encours">En cours</span> <span class="badge-statut badge-contributif">Contributif</span></p>
+    <div class="filtres-bar">
+      <input type="text" id="searchCommune" class="search-input" placeholder="🔍 Rechercher une commune...">
+      <span class="compteur" id="compteur">9 communes</span>
     </div>
-    <p style="margin-top: 1rem; font-size: 0.85rem;">Population résidente ≈ 500 000 (est. 2025) · Avec diaspora : 1,5 à 2 millions</p>
-  </div>
+    <div id="communesGrid" class="communes-grid"></div>
+  </section>
 
-  <!-- Programme Chefferies Debout -->
-  <section id="programmes">
-    <h2 class="section-title">Programmes en cours</h2>
-    <p class="section-sub">Les premières actions concrètes de l'ISGI-Lékié sur le terrain</p>
-    <div class="grid-2">
-      <div class="card">
-        <h3>🏛️ Chefferies Debout</h3>
-        <p>Premier programme opérationnel — équipement, standardisation, capacitation des chefferies.</p>
-        <p style="margin-top: 0.5rem; font-style: italic;">Levons-nous et Ensemble faisons de nos Chefferies le porte-étendard de notre fierté et l'ancre de notre stabilité.</p>
+  <!-- Santé -->
+  <section id="sante">
+    <h2 class="section-title">Établissements de santé</h2>
+    <p class="section-note">Données en cours d'enrichissement avec les services de santé de district. <span class="badge-statut badge-encours">En cours</span></p>
+    <div class="grid-cartes">
+      <div class="carte"><div class="titre">Hôpital de district</div><h3>Monatélé</h3></div>
+      <div class="carte"><div class="titre">Hôpital de district</div><h3>Obala</h3></div>
+      <div class="carte"><div class="titre">Hôpital de district</div><h3>Sa'a</h3></div>
+      <div class="carte"><div class="titre">Hôpital de district</div><h3>Okola</h3></div>
+      <div class="carte"><div class="titre">Hôpital de district</div><h3>Evodoula</h3></div>
+      <div class="carte"><div class="titre">Hôpital de district</div><h3>Elig-Mfomo</h3></div>
+    </div>
+    <p style="font-size:0.7rem; color:#8a8a80; margin-top:0.5rem;">Liste non exhaustive — contribution bienvenue via le formulaire ci-dessous.</p>
+  </section>
+
+  <!-- Sport / Certification -->
+  <section id="sport">
+    <h2 class="section-title">Certification ISGI-Lékié</h2>
+    <p class="section-note">L'ISGI-Lékié certifie les événements et organisations qui font vivre le territoire. Chaque promoteur — privé, associatif, communautaire — peut soumettre une demande de certification.</p>
+    <div class="grid-cartes">
+      <div class="carte">
+        <div class="titre">🏆 Championnats de vacances</div>
+        <h3>Certification ouverte</h3>
+        <p>Nombreux championnats organisés chaque année dans les communes de la Lékié. L'ISGI-Lékié certifie, archive les résultats et donne de la visibilité aux organisateurs et aux lauréats.</p>
       </div>
-      <div class="card">
-        <h3>🏆 Certification ISGI-Lékié</h3>
-        <p>L'ISGI-Lékié certifie les événements qui font vivre le territoire : championnats de vacances, tournois sportifs, compétitions culturelles, forums économiques et foires commerciales.</p>
+      <div class="carte">
+        <div class="titre">🎭 Événements culturels & éducatifs</div>
+        <h3>Certification ouverte</h3>
+        <p>Concours, festivals, compétitions scolaires — toute initiative valorisant le territoire peut solliciter la certification ISGI-Lékié.</p>
+      </div>
+      <div class="carte">
+        <div class="titre">🏪 Forums économiques & foires commerciales</div>
+        <h3>Certification ouverte</h3>
+        <p>L'ISGI-Lékié certifie également les forums économiques et les foires commerciales qui animent le territoire et créent du lien entre acteurs locaux.</p>
       </div>
     </div>
   </section>
 
-  <!-- Qui porte ISGI-Lékié -->
-  <div class="info-block">
-    <h3>🏛️ Qui porte ISGI-Lékié ?</h3>
-    <p>ISGI-Lékié est une <strong>initiative citoyenne à vocation institutionnelle</strong>. Elle est portée par les enfants du terroir, les chefferies, la diaspora — tous ceux qui s'identifient à la Lékié, quelle que soit leur origine formelle.</p>
-    <p>Hébergement juridique en phase de préfiguration : Association Réfléchir Agir Soutenir (RAS). Une société commerciale dédiée viendra en Phase 2 pour les services à valeur ajoutée, sans jamais conditionner l'accès à la connaissance fondamentale du territoire.</p>
-  </div>
+  <!-- Autorités locales -->
+  <section id="autorites">
+    <h2 class="section-title">Autorités locales</h2>
+    <p class="section-note">Données en cours de vérification. <span class="badge-statut badge-encours">En cours</span></p>
+    <div class="grid-cartes">
 
-  <div class="cta-block" id="contact">
-    <h2>Rejoindre l'initiative</h2>
-    <p>ISGI-Lékié est un mouvement citoyen et une infrastructure institutionnelle. Contribuez à la mémoire et au développement de la Lékié.</p>
-    <a href="plateforme.html" class="btn btn-primary">Explorer les communes et contribuer →</a>
-  </div>
+      <!-- 1. PRÉFET -->
+      <div class="carte">
+        <div class="titre">Préfet du département de la Lékié</div>
+        <h3>Patrick Simou Kamsu</h3>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+
+      <!-- 2. SOUS-PRÉFETS -->
+      <div class="carte">
+        <div class="titre">Sous-préfets (9 arrondissements)</div>
+        <h3>Liste complète — avril 2026</h3>
+        <p><strong>Monatélé :</strong> Mme BOMBA NKOLO Odile épouse POUFON<br>
+        <strong>Obala :</strong> M. KANGA Félix<br>
+        <strong>Sa'a :</strong> M. DJIBRILA YAYA Amadou<br>
+        <strong>Evodoula :</strong> M. IBAMIÉ Madam<br>
+        <strong>Ebebda :</strong> Mme NGO MBEY Mireille Sandrine Rachelle<br>
+        <strong>Okola :</strong> M. ABOUBACAR MOUSSA<br>
+        <strong>Batchenga :</strong> M. PEPTSOPI Emmanuel<br>
+        <strong>Elig-Mfomo :</strong> M. NGUIMÉ Joseph<br>
+        <strong>Lobo :</strong> Mme KEJA COLLE FEATUM épouse LOLO</p>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+
+      <!-- 3. DÉPUTÉS -->
+      <div class="carte">
+        <div class="titre">Députés de la Lékié</div>
+        <h3>10ème législature (2020-2025)</h3>
+        <p><strong>Lékié Est :</strong><br>
+        Ndongo Essomba Jean Bernard †2023 (RDPC)<br>
+        Ndongo Eteme Edgard (RDPC) — Rapporteur Général des Finances<br>
+        Ngaba Zogo Salomé (RDPC) — Éducation et jeunesse</p>
+        <p><strong>Lékié Ouest :</strong><br>
+        Koa Songo (RDPC) — Affaires étrangères<br>
+        Tassi Evelyne Chantal Denise épse Ayissi (RDPC) — Affaires économiques</p>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+
+      <!-- 4. MEMBRES DU GOUVERNEMENT -->
+      <div class="carte">
+        <div class="titre">Membres du gouvernement originaires de la Lékié</div>
+        <h3>Nominations en cours</h3>
+        <p><strong>Henri Eyebe Ayissi</strong> — Ministre des Domaines, du Cadastre et des Affaires Foncières (MINDCAF)</p>
+        <p><strong>Galax Yves Landry Etoga</strong> — Secrétaire d'État à la Défense chargé de la Gendarmerie (SED)</p>
+        <p><strong>Benoît Ndong Soumhet</strong> — Ministre chargé de mission à la Présidence de la République</p>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+
+      <!-- 5. CONSEIL RÉGIONAL -->
+      <div class="carte">
+        <div class="titre">Conseil régional du Centre</div>
+        <h3>Mandature 2025-2030</h3>
+        <p><strong>Questeur :</strong> ALIMA NGA Roger (Monatélé)</p>
+        <p>Liste complète des conseillers en attente des résultats officiels Elecam.</p>
+        <p><strong>Mandature 2020-2025 (archives) :</strong><br>
+        Questeur : Jules Marcelin NDJAGA † — 9 délégués politiques + 2 autorités traditionnelles</p>
+        <span class="badge-statut badge-encours">En cours de consolidation</span>
+      </div>
+
+      <!-- 6. MAIRES -->
+      <div class="carte">
+        <div class="titre">Maires</div>
+        <h3>Liste dans les fiches communes</h3>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Figures historiques -->
+  <section id="figures-historiques">
+    <h2 class="section-title">Figures historiques</h2>
+    <p class="section-note">
+      Celles et ceux qui ont marqué la Lékié par leur action, leur engagement, leur transformation du territoire.
+      <span class="badge-statut badge-contributif">Appel à contribution</span>
+    </p>
+    <div class="grid-cartes">
+      <div class="carte">
+        <div class="titre">En cours de documentation</div>
+        <h3>Des figures à honorer</h3>
+        <p>Chefs bâtisseurs, acteurs de décisions importantes, transformateurs de leur communauté.</p>
+        <p><strong>Vous connaissez une figure historique de la Lékié ?</strong> Contribuez via le formulaire ci-dessous.</p>
+        <span class="badge-statut badge-contributif">Contributif</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lékié des premiers -->
+  <section id="lekie-des-premiers">
+    <h2 class="section-title">Lékié des premiers</h2>
+    <p class="section-note">
+      Ils ont ouvert la voie. Ils sont les premiers dans leur domaine. Fierté de la Lékié.
+      <span class="badge-statut badge-contributif">Appel à contribution</span>
+    </p>
+    <div class="grid-cartes">
+      <div class="carte">
+        <div class="titre">En cours de documentation</div>
+        <h3>Des pionniers à célébrer</h3>
+        <p>Premier colonel, premier médecin, premier ingénieur, premier ministre... ceux qui ont montré la voie.</p>
+        <p><strong>Vous connaissez un "premier" originaire de la Lékié ?</strong> Contribuez via le formulaire ci-dessous.</p>
+        <span class="badge-statut badge-contributif">Contributif</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Éducation -->
+  <section id="education">
+    <h2 class="section-title">La Lékié et l'éducation</h2>
+    <p class="section-note">Amorce — données en cours d'enrichissement. La Lékié contribue à l'éducation sur son territoire et au-delà, à travers ses enfants du terroir.</p>
+
+    <div style="margin-bottom:1.2rem;">
+      <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:#1b3a2d; font-weight:600; margin-bottom:0.8rem; padding-bottom:0.4rem; border-bottom:2px solid #c4922a; display:inline-block;">Sur le territoire</div>
+      <div class="grid-cartes">
+        <div class="carte">
+          <div class="titre">École primaire publique</div>
+          <h3>Eyen-Meyong</h3>
+          <span class="badge-statut badge-encours">En cours</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:#c4922a; font-weight:600; margin-bottom:0.8rem; padding-bottom:0.4rem; border-bottom:2px solid #e8dfd0; display:inline-block;">Rayonnement — initiatives portées par des enfants du terroir</div>
+      <div class="grid-cartes">
+        <div class="carte">
+          <div class="titre">Groupe scolaire privé · Douala</div>
+          <h3>La Trinité</h3>
+          <p style="margin-top:0.4rem; font-size:0.82rem; color:#5a5a50;">Fondé par un enfant du terroir de la Lékié.</p>
+          <span class="badge-statut badge-contributif">Diaspora</span>
+        </div>
+        <div class="carte">
+          <div class="titre">École de formation · Douala</div>
+          <h3>Groupe La PERLE</h3>
+          <p style="margin-top:0.4rem; font-size:0.82rem; color:#5a5a50;">Initiative portée par un enfant du terroir de la Lékié.</p>
+          <span class="badge-statut badge-contributif">Diaspora</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chefferies -->
+  <section id="chefferies">
+    <h2 class="section-title">Chefferies de la Lékié</h2>
+    <p class="section-note">⚠️ <strong>Compilation en cours</strong> — données issues des arrêtés de 1981-1982, actualisées avec les nouvelles créations (Elig-Mfomo).</p>
+
+    <div style="margin-bottom: 2rem;">
+      <div style="font-size: 0.85rem; text-transform: uppercase; color: #c4922a; font-weight: 700; margin-bottom: 1rem;">Chefferies de 1er degré</div>
+      <div class="grid-cartes">
+        <div class="carte"><h3>Endiding</h3><p>Obala — S.M. Guy Tsala Ndzomo</p><span class="badge-statut badge-valide">Validé</span></div>
+        <div class="carte"><h3>Mvog-Nama I</h3><p>Lobo — S.M. Jean-Marie Mama</p><span class="badge-statut badge-valide">Validé</span></div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 2rem;">
+      <div style="font-size: 0.85rem; text-transform: uppercase; color: #c4922a; font-weight: 700; margin-bottom: 1rem;">Chefferies de 2ème degré</div>
+      
+      <div style="margin-bottom: 1rem;"><div style="background: #1b3a2d; color: white; padding: 0.4rem 0.8rem; border-radius: 8px; margin-bottom: 0.5rem;">Monatélé (5)</div><div style="display: flex; flex-wrap: wrap; gap: 0.5rem;"><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Ekot</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Eyen-Meyong</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Kougouda</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Mvog-Onan-menye</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Nkolkosse</span></div></div>
+
+      <div style="margin-bottom: 1rem;"><div style="background: #1b3a2d; color: white; padding: 0.4rem 0.8rem; border-radius: 8px; margin-bottom: 0.5rem;">Obala (8)</div><div style="display: flex; flex-wrap: wrap; gap: 0.5rem;"><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Obala (Obala A)</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Minkama</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Efok</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Loua</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Nkolfeb</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Endinding</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Nkol Edouma</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Mendoum</span></div></div>
+
+      <div style="margin-bottom: 1rem;"><div style="background: #1b3a2d; color: white; padding: 0.4rem 0.8rem; border-radius: 8px; margin-bottom: 0.5rem;">Sa'a (7+)</div><div style="display: flex; flex-wrap: wrap; gap: 0.5rem;"><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Kouna Odzolo</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Lebamzip</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Benyabega</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Engab</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Nkolvak</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Abam</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Ebombo</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Nkolbogo</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Nkolmvak</span></div></div>
+
+      <div style="margin-bottom: 1rem;"><div style="background: #1b3a2d; color: white; padding: 0.4rem 0.8rem; border-radius: 8px; margin-bottom: 0.5rem;">Okola (4+)</div><div style="display: flex; flex-wrap: wrap; gap: 0.5rem;"><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Eton Beti</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Mbog Namnye II</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Mvog Nama</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Nkolo</span></div></div>
+
+      <div style="margin-bottom: 1rem;"><div style="background: #1b3a2d; color: white; padding: 0.4rem 0.8rem; border-radius: 8px; margin-bottom: 0.5rem;">Evodoula (2)</div><div style="display: flex; flex-wrap: wrap; gap: 0.5rem;"><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Mbog Namnye III</span><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Ntsas et Endo</span></div></div>
+
+      <div style="margin-bottom: 1rem;"><div style="background: #1b3a2d; color: white; padding: 0.4rem 0.8rem; border-radius: 8px; margin-bottom: 0.5rem;">Batchenga (1)</div><div style="display: flex; flex-wrap: wrap; gap: 0.5rem;"><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Batchenga</span></div></div>
+
+      <div style="margin-bottom: 1rem;"><div style="background: #1b3a2d; color: white; padding: 0.4rem 0.8rem; border-radius: 8px; margin-bottom: 0.5rem;">Elig-Mfomo (3)</div><div style="display: flex; flex-wrap: wrap; gap: 0.5rem;"><span style="background:#e8dfd0; padding:0.2rem 0.6rem; border-radius:20px;">Essele I (nouvelle)</span><span style="background:#e8dfd0; padding:0.2rem 0.6rem; border-radius:20px;">Essele II (nouvelle)</span><span style="background:#e8dfd0; padding:0.2rem 0.6rem; border-radius:20px;">Mvog-Kani (nouvelle)</span></div></div>
+
+      <div style="margin-bottom: 1rem;"><div style="background: #1b3a2d; color: white; padding: 0.4rem 0.8rem; border-radius: 8px; margin-bottom: 0.5rem;">Ebebda (1+)</div><div style="display: flex; flex-wrap: wrap; gap: 0.5rem;"><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Benyabega</span></div></div>
+
+      <div style="margin-bottom: 1rem;"><div style="background: #1b3a2d; color: white; padding: 0.4rem 0.8rem; border-radius: 8px; margin-bottom: 0.5rem;">Lobo (0)</div><div style="display: flex; flex-wrap: wrap; gap: 0.5rem;"><span style="background:#f4efe6; padding:0.2rem 0.6rem; border-radius:20px;">Aucune chefferie de 2ème degré</span></div></div>
+    </div>
+
+    <div><div style="font-size: 0.85rem; text-transform: uppercase; color: #c4922a; font-weight: 700; margin-bottom: 1rem;">Chefferies de 3ème degré</div><p>Liste détaillée par arrondissement disponible. <strong>Compilation en cours</strong> — contribution bienvenue.</p></div>
+  </section>
+
+  <!-- Démographie -->
+  <section id="demographie">
+    <h2 class="section-title">Démographie de la Lékié</h2>
+    <p class="section-note">Données issues du <strong>3ème Recensement Général de la Population et de l'Habitat (RGPH) de 2005</strong> — BUCREP.</p>
+
+    <div style="background: #fff8e1; border-left: 4px solid #c4922a; padding: 0.8rem 1rem; margin-bottom: 1.5rem; border-radius: 8px;">
+      <strong>⚠️ Population résidente uniquement</strong><br>
+      Les chiffres présentés concernent la <strong>population résidente</strong> (personnes vivant habituellement sur le territoire).<br>
+      Ils <strong>ne prennent pas en compte</strong> la diaspora ni les dynamiques migratoires.
+    </div>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Commune</th><th>Population 2005</th><th>Estimation 2025</th><th>Évolution (%)</th><th>Évolution (personnes)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Monatélé</td><td>36 933</td><td>≈ 61 700</td><td>+67 %</td><td>+24 767</td></tr>
+          <tr><td>Obala</td><td>78 932</td><td>≈ 131 800</td><td>+67 %</td><td>+52 868</td></tr>
+          <tr><td>Sa'a</td><td>63 967</td><td>≈ 106 800</td><td>+67 %</td><td>+42 833</td></tr>
+          <tr><td>Evodoula</td><td>18 899</td><td>≈ 31 600</td><td>+67 %</td><td>+12 701</td></tr>
+          <tr><td>Ebebda</td><td>21 368</td><td>≈ 35 700</td><td>+67 %</td><td>+14 332</td></tr>
+          <tr><td>Okola</td><td>41 087</td><td>≈ 68 600</td><td>+67 %</td><td>+27 513</td></tr>
+          <tr><td>Batchenga</td><td>9 303</td><td>≈ 15 500</td><td>+67 %</td><td>+6 197</td></tr>
+          <tr><td>Elig-Mfomo</td><td>16 161</td><td>≈ 27 000</td><td>+67 %</td><td>+10 839</td></tr>
+          <tr><td>Lobo</td><td>10 157</td><td>≈ 17 000</td><td>+67 %</td><td>+6 843</td></tr>
+          <tr style="background:#f4efe6; font-weight:700;"><td>TOTAL LÉKIÉ</td><td>296 807</td><td>≈ 495 700</td><td>+67 %</td><td>+198 893</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.7rem; color: #8a8a80; margin-top: 1rem;">📊 Source : BUCREP, 3ème RGPH 2005. Projection basée sur un taux de croissance naturelle de 2,6%/an.</p>
+  </section>
+
+  <!-- Histoire -->
+  <section id="histoire">
+    <h2 class="section-title">Chronique préfectorale — Lékié (1964–2026)</h2>
+    <p class="section-note">23 préfets depuis la création du département. <span class="badge-statut badge-encours">En cours de vérification</span></p>
+    <div class="table-scroll">
+      <table style="font-size:0.75rem;">
+        <thead><tr><th>N°</th><th>Nom</th><th>Début</th><th>Fin</th><th>Durée</th><th>Régime</th></tr></thead>
+        <tbody><tr><td colspan="6" style="text-align:center;">Liste complète des 23 préfets disponible. Version simplifiée pour lisibilité mobile.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Alertes -->
+  <section id="alertes">
+    <h2 class="section-title">Alertes citoyennes</h2>
+    <p class="section-note">⚠️ Zone de test — signalements non vérifiés sauf mention explicite.</p>
+    <div class="alertes-list">
+      <div class="alerte-item"><div class="alerte-titre">🚨 Coupe de route signalée</div><div class="alerte-lieu">Axe Batchenga — Obala</div><span class="badge-alerte badge-nonverifie">⚠️ Non vérifié</span></div>
+      <div class="alerte-item"><div class="alerte-titre">🏚️ Pont en ruine — Nkolbisson</div><div class="alerte-lieu">Monatélé</div><span class="badge-alerte badge-nonverifie">⚠️ Non vérifié</span></div>
+      <div class="alerte-item verifie"><div class="alerte-titre">🏫 École publique d'Evodoula : toiture effondrée</div><div class="alerte-lieu">Evodoula</div><span class="badge-alerte badge-verifie">✅ Vérifié ISGI-Lékié</span></div>
+    </div>
+  </section>
+
+  <!-- Contribuer -->
+  <section id="contribuer">
+    <h2 class="section-title">Signaler un incident ou contribuer</h2>
+    <div class="form-contrib">
+      <p class="form-demo-note">📋 Version démo — les données saisies ne sont pas encore stockées. Cette interface illustre le fonctionnement du module de signalement.</p>
+      <form id="contributionForm" class="form-grid">
+        <div class="form-field"><label>Type</label><select id="typeAlerte"><option>Sécurité</option><option>Infrastructure dégradée</option><option>Patrimoine menacé</option><option>Établissement scolaire</option><option>Structure de santé</option><option>Événement sportif/culturel</option><option>Forum économique/foire</option><option>Figure historique</option><option>Lékié des premiers</option><option>Autre</option></select></div>
+        <div class="form-field"><label>Commune</label><select id="communeAlerte"><option>Monatélé</option><option>Obala</option><option>Sa'a</option><option>Evodoula</option><option>Ebebda</option><option>Okola</option><option>Batchenga</option><option>Elig-Mfomo</option><option>Lobo</option></select></div>
+        <div class="form-field"><label>Lieu précis</label><input type="text" id="lieuAlerte" placeholder="Village / quartier"></div>
+        <div class="form-field" style="grid-column:1/-1"><label>Description</label><textarea rows="2" id="descAlerte" placeholder="Décrivez l'incident ou la contribution..."></textarea></div>
+        <div style="grid-column:1/-1"><button type="submit" class="btn-soumettre">📢 Envoyer</button></div>
+      </form>
+      <div id="formSuccess" class="success-message">✅ Merci — contribution enregistrée (démo). L'équipe ISGI-Lékié vérifiera lors du déploiement réel.</div>
+    </div>
+  </section>
 
 </div>
 
@@ -158,5 +459,79 @@
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
+
+<script>
+  try {
+    const map = L.map('map').setView([4.15, 11.4], 9.2);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd' }).addTo(map);
+    const communesData = [
+      { nom: "Monatélé", chefLieu: true, lat: 4.1875, lng: 11.2525, maire: "Prosper Parfait Mbassi Bessala" },
+      { nom: "Obala", chefLieu: false, lat: 4.1589, lng: 11.5339, maire: "Francis Gaël Touna" },
+      { nom: "Sa'a", chefLieu: false, lat: 4.117, lng: 11.417, maire: "M. Jean Blaise Messina Noah" },
+      { nom: "Evodoula", chefLieu: false, lat: 4.083, lng: 11.2, maire: "M. Armand Joachim Ongolo Eloundou" },
+      { nom: "Ebebda", chefLieu: false, lat: 4.35, lng: 11.2, maire: "M. Manga Bessala" },
+      { nom: "Okola", chefLieu: false, lat: 4.0167, lng: 11.3833, maire: "M. Vincent De Paul Noa" },
+      { nom: "Batchenga", chefLieu: false, lat: 4.2333, lng: 11.6833, maire: "M. Anatole Souga" },
+      { nom: "Elig-Mfomo", chefLieu: false, lat: 4.1, lng: 11.1, maire: "M. Stanislas Ayissi" },
+      { nom: "Lobo", chefLieu: false, lat: 3.9833, lng: 11.4, maire: "M. Serge Bertin Obono Onguene" }
+    ];
+    communesData.forEach(c => {
+      L.circleMarker([c.lat, c.lng], { radius: 8, fillColor: c.chefLieu ? '#c4922a' : '#1b3a2d', color: '#fff', weight: 2, fillOpacity: 0.9 })
+        .addTo(map).bindPopup(`<b>${c.nom}</b>${c.chefLieu ? ' — Chef-lieu' : ''}<br>Maire : ${c.maire}`);
+    });
+  } catch(e) {
+    document.getElementById('map').style.display = 'none';
+    document.getElementById('mapFallback').style.display = 'flex';
+  }
+
+  const communesDetail = [
+    { nom: "Monatélé", chefLieu: true, superficie: "375 km²", population: "~75 000", groupements: ["Ekot", "Eyen-Meyong", "Kougouda", "Mvog-Onan-menye", "Nkolkosse"], maire: "Prosper Parfait Mbassi Bessala", statut: "valide" },
+    { nom: "Obala", chefLieu: false, superficie: "n.c.", population: "78 929", groupements: ["Endinding"], maire: "Francis Gaël Touna", statut: "valide" },
+    { nom: "Sa'a", chefLieu: false, superficie: "n.c.", population: "n.c.", groupements: ["Lebamzip"], maire: "M. Jean Blaise Messina Noah", statut: "encours" },
+    { nom: "Evodoula", chefLieu: false, superficie: "250 km²", population: "n.c.", groupements: ["À documenter"], maire: "M. Armand Joachim Ongolo Eloundou", statut: "encours" },
+    { nom: "Ebebda", chefLieu: false, superficie: "n.c.", population: "n.c.", groupements: ["À documenter"], maire: "M. Manga Bessala", statut: "contributif" },
+    { nom: "Okola", chefLieu: false, superficie: "605 km²", population: "~65 000", groupements: ["Mvog Nama II", "Mvog Onamyié III"], maire: "M. Vincent De Paul Noa", statut: "valide" },
+    { nom: "Batchenga", chefLieu: false, superficie: "n.c.", population: "n.c.", groupements: ["Batchenga"], maire: "M. Anatole Souga", statut: "encours" },
+    { nom: "Elig-Mfomo", chefLieu: false, superficie: "n.c.", population: "n.c.", groupements: ["À documenter"], maire: "M. Stanislas Ayissi", statut: "contributif" },
+    { nom: "Lobo", chefLieu: false, superficie: "n.c.", population: "n.c.", groupements: ["Mvog-Nama I"], maire: "M. Serge Bertin Obono Onguene", statut: "valide" }
+  ];
+
+  const statutLabels = { valide: "Validé", encours: "En cours", contributif: "Contributif" };
+
+  function renderCommunes(filter = "") {
+    const grid = document.getElementById("communesGrid");
+    const filtered = communesDetail.filter(c => c.nom.toLowerCase().includes(filter.toLowerCase()));
+    document.getElementById("compteur").innerText = `${filtered.length} / 9 communes`;
+    grid.innerHTML = "";
+    filtered.forEach(c => {
+      const card = document.createElement("div");
+      card.className = "fiche-commune";
+      card.innerHTML = `
+        <div class="fiche-entete">
+          <h3>${c.nom} ${c.chefLieu ? '<span class="badge-cheflieu">Chef-lieu</span>' : ''}
+          <span class="badge-statut badge-${c.statut}">${statutLabels[c.statut]}</span></h3>
+        </div>
+        <div class="fiche-body">
+          <div class="stat-row"><strong>Superficie</strong> ${c.superficie}</div>
+          <div class="stat-row"><strong>Population</strong> ${c.population}</div>
+          <div style="margin-bottom:0.8rem"><strong>Groupements</strong><br>${c.groupements.map(g => `<span class="village-tag">${g}</span>`).join('')}</div>
+          <div><strong>Maire</strong><br><span style="font-size:0.85rem">${c.maire}</span></div>
+        </div>
+        <button class="btn-fiche" onclick="alert('Fiche détaillée bientôt disponible — contribution en cours.')">📌 Voir fiche détaillée</button>
+      `;
+      grid.appendChild(card);
+    });
+  }
+  document.getElementById("searchCommune")?.addEventListener("input", e => renderCommunes(e.target.value));
+  renderCommunes();
+
+  document.getElementById("contributionForm")?.addEventListener("submit", e => {
+    e.preventDefault();
+    const s = document.getElementById("formSuccess");
+    s.style.display = "block";
+    e.target.reset();
+    setTimeout(() => s.style.display = "none", 6000);
+  });
+</script>
 </body>
 </html>
