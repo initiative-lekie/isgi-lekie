@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>ISGI-Lékié — Initiative Stratégique Globale et Inclusive</title>
-  <meta name="description" content="ISGI-Lékié : la plateforme numérique territoriale de la Lékié. Documenter, connecter, valoriser — avec les enfants du terroir, les chefferies, les institutions.">
+  <meta name="description" content="ISGI-Lékié : l'écosystème numérique territorial de la Lékié. Documenter, connecter, valoriser — avec les enfants du terroir, les chefferies, les institutions.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
   <style>
@@ -34,17 +34,21 @@
     .grid-2, .grid-3 { display: grid; gap: 2rem; margin-top: 1.5rem; }
     .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
     .grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .card { background: white; border-radius: 20px; padding: 1.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e8dfd0; }
+    .card { background: white; border-radius: 20px; padding: 1.8rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e8dfd0; text-align: center; }
     .card h3 { font-size: 1.3rem; color: #1b3a2d; margin-bottom: 0.5rem; }
     .card p { color: #5a5a50; font-size: 0.9rem; }
+    .card .btn-primary { display: inline-block; margin-top: 1rem; padding: 0.5rem 1.2rem; font-size: 0.85rem; }
     .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; text-align: center; margin: 2rem 0; }
     .stat-number { font-size: 2.2rem; font-weight: 700; color: #c4922a; font-family: 'Cormorant Garamond', serif; }
     .stat-label { font-size: 0.8rem; color: #6b6b60; }
-    .info-block { background: #f4efe6; border-radius: 20px; padding: 1.8rem; margin: 2rem 0; }
+    .info-block { background: #f4efe6; border-radius: 20px; padding: 1.8rem; margin: 2rem 0; text-align: center; }
     .info-block h3 { color: #1b3a2d; margin-bottom: 0.8rem; font-size: 1.3rem; }
     .info-block p { color: #5a5a50; font-size: 0.9rem; margin-bottom: 0.6rem; }
-    .info-block p:last-child { margin-bottom: 0; }
-    .doctrine-liste { list-style: none; margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; }
+    .proof-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; text-align: center; }
+    .proof-item { background: white; border-radius: 16px; padding: 1.5rem; border: 1px solid #e8dfd0; }
+    .proof-number { font-size: 2rem; font-weight: 700; color: #c4922a; }
+    .proof-label { font-size: 0.85rem; color: #5a5a50; margin-top: 0.3rem; }
+    .doctrine-liste { list-style: none; margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0.4rem; text-align: left; }
     .doctrine-liste li { font-size: 0.88rem; color: #5a5a50; padding-left: 1.2rem; position: relative; }
     .doctrine-liste li::before { content: '—'; position: absolute; left: 0; color: #c4922a; }
     .cta-block { background: #1b3a2d; color: white; text-align: center; padding: 3rem 1.5rem; border-radius: 24px; margin: 2rem 0; }
@@ -53,70 +57,92 @@
     .cta-block .btn-primary { background: #e0a83e; color: #1b3a2d; margin-top: 1rem; }
     footer { background: #0f2c21; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.8rem; }
     footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
-    @media (max-width: 700px) { .navbar { flex-direction: column; text-align: center; } .section-title { font-size: 1.6rem; } }
+    @media (max-width: 700px) { .navbar { flex-direction: column; text-align: center; } .section-title { font-size: 1.6rem; } .grid-3 { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
 <div class="navbar">
   <div class="logo"><a href="#">ISGI</a><span>Lékié — Cameroun</span></div>
   <div class="nav-links">
-    <a href="#mission">Mission</a>
-    <a href="#fonctions">Fonctions</a>
-    <a href="#programmes">Programmes</a>
-    <a href="plateforme.html">Plateforme</a>
+    <a href="#entree">Accueil</a>
+    <a href="plateforme.html">Explorer</a>
+    <a href="plateforme.html#contribuer">Contribuer</a>
   </div>
 </div>
 
 <div class="hero">
-  <h1>La <em>Lékié</em> se dote<br>de son infrastructure territoriale</h1>
+  <h1>La <em>Lékié</em> se dote<br>de son écosystème territorial</h1>
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive</p>
+  <p style="font-size: 0.9rem; margin-top: 0.5rem;">Habitant, membre de la diaspora ou acteur local, vous pouvez participer à l'intelligence territoriale de la Lékié.</p>
   <div class="hero-actions">
-    <a href="#mission" class="btn btn-outline">Découvrir</a>
-    <a href="plateforme.html" class="btn btn-primary">Accéder à la plateforme →</a>
+    <a href="#entree" class="btn btn-outline">Découvrir</a>
+    <a href="plateforme.html" class="btn btn-primary">Explorer les communes et contribuer →</a>
   </div>
 </div>
 
 <div class="container">
 
-  <section id="mission">
-    <h2 class="section-title">Documenter, connecter, valoriser</h2>
-    <p class="section-sub">ISGI-Lékié est la première infrastructure numérique territoriale d'un département camerounais. Elle permet à la Lékié de se connaître, de se compter et de se projeter.</p>
-    <div class="stat-grid">
-      <div><div class="stat-number">9</div><div class="stat-label">Communes</div></div>
-      <div><div class="stat-number">500+</div><div class="stat-label">Villages</div></div>
-      <div><div class="stat-number">700K+</div><div class="stat-label">Habitants</div></div>
-    </div>
-  </section>
-
-  <section id="fonctions">
-    <h2 class="section-title">Ce que fait ISGI-Lékié</h2>
-    <p class="section-sub">Un système vivant au service du territoire</p>
+  <!-- Entrez dans la plateforme -->
+  <section id="entree">
+    <h2 class="section-title">Entrez dans la plateforme</h2>
+    <p class="section-sub">Trois façons d'agir pour le territoire</p>
     <div class="grid-3">
-      <div class="card"><h3>📄 Documenter</h3><p>Mémoire des chefferies, données des villages, histoire orale — accessible et crédible.</p></div>
-      <div class="card"><h3>🌟 Promouvoir</h3><p>Annuaires certifiés, événements sportifs et culturels, talents du terroir.</p></div>
-      <div class="card"><h3>🔗 Connecter</h3><p>Mettre en relation les enfants du terroir, la diaspora, les institutions.</p></div>
-      <div class="card"><h3>📊 Analyser</h3><p>Observatoire territorial, alertes citoyennes, données publiques.</p></div>
-      <div class="card"><h3>🎓 Former</h3><p>Webinaires, certification, montée en compétences des acteurs locaux.</p></div>
+      <div class="card">
+        <h3>🗺️ Explorer</h3>
+        <p>Découvrez la carte, les 9 communes, les chefferies, les données démographiques et historiques de la Lékié.</p>
+        <a href="plateforme.html" class="btn-primary" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.2rem;">Explorer →</a>
+      </div>
+      <div class="card">
+        <h3>📢 Contribuer</h3>
+        <p>Signalez une alerte, proposez une information, ajoutez un établissement scolaire ou une structure de santé.</p>
+        <a href="plateforme.html#contribuer" class="btn-primary" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.2rem;">Contribuer →</a>
+      </div>
+      <div class="card">
+        <h3>🤝 Rejoindre</h3>
+        <p>Enfant du terroir, diaspora, acteur local : participez à l'intelligence territoriale de la Lékié.</p>
+        <a href="#contact" class="btn-primary" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.2rem;">Nous rejoindre →</a>
+      </div>
     </div>
   </section>
 
+  <!-- Bloc preuve visuelle -->
+  <div class="info-block">
+    <h3>La Lékié en chiffres</h3>
+    <div class="proof-grid">
+      <div class="proof-item">
+        <div class="proof-number">9</div>
+        <div class="proof-label">communes structurées</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-number">✓</div>
+        <div class="proof-label">alertes citoyennes actives</div>
+      </div>
+      <div class="proof-item">
+        <div class="proof-number">📊</div>
+        <div class="proof-label">données en cours de collecte</div>
+      </div>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.85rem;">Population résidente ≈ 500 000 (est. 2025) · Avec diaspora : 1,5 à 2 millions</p>
+  </div>
+
+  <!-- Programme Chefferies Debout -->
   <section id="programmes">
     <h2 class="section-title">Programmes en cours</h2>
     <p class="section-sub">Les premières actions concrètes de l'ISGI-Lékié sur le terrain</p>
     <div class="grid-2">
       <div class="card">
         <h3>🏛️ Chefferies Debout</h3>
-        <p>Premier programme opérationnel — équipement, standardisation, formation des chefferies.<br><br>
-        <em> Engage ta chefferie :</em><br>
-        Levons-nous et Ensemble faisons de nos Chefferies le porte-étendard de notre fierté et l'ancre de notre stabilité</p>
+        <p>Premier programme opérationnel — équipement, standardisation, capacitation des chefferies.</p>
+        <p style="margin-top: 0.5rem; font-style: italic;">Levons-nous et Ensemble faisons de nos Chefferies le porte-étendard de notre fierté et l'ancre de notre stabilité.</p>
       </div>
       <div class="card">
         <h3>🏆 Certification ISGI-Lékié</h3>
-        <p>L'ISGI-Lékié certifie les événements qui font vivre le territoire : championnats de vacances, tournois sportifs, forums économiques, foires commerciales, compétitions culturelles et éducatives. Chaque promoteur — privé, associatif, communautaire — peut solliciter la certification et bénéficier d'une visibilité accrue et d'un archivage officiel des résultats.</p>
+        <p>L'ISGI-Lékié certifie les événements qui font vivre le territoire : championnats de vacances, tournois sportifs, compétitions culturelles, forums économiques et foires commerciales.</p>
       </div>
     </div>
   </section>
 
+  <!-- Qui porte ISGI-Lékié -->
   <div class="info-block">
     <h3>🏛️ Qui porte ISGI-Lékié ?</h3>
     <p>ISGI-Lékié est une <strong>initiative citoyenne à vocation institutionnelle</strong>. Elle est portée par les enfants du terroir, les chefferies, la diaspora — tous ceux qui s'identifient à la Lékié, quelle que soit leur origine formelle.</p>
@@ -128,10 +154,10 @@
     </ul>
   </div>
 
-  <div class="cta-block">
+  <div class="cta-block" id="contact">
     <h2>Rejoindre l'initiative</h2>
     <p>ISGI-Lékié est un mouvement citoyen et une infrastructure institutionnelle. Contribuez à la mémoire et au développement de la Lékié.</p>
-    <a href="plateforme.html" class="btn btn-primary">Accéder à la plateforme →</a>
+    <a href="plateforme.html" class="btn btn-primary">Explorer les communes et contribuer →</a>
   </div>
 
 </div>
