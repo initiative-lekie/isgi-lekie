@@ -12,8 +12,14 @@
     .navbar{background:#1B4332;padding:1rem;border-bottom:2px solid #C8922A;text-align:center;}
     .navbar a{color:#FEFCF8;margin:0 1rem;text-decoration:none;}
     h1{font-family:'Cormorant Garamond',serif;color:#1B4332;}
-    .card{background:#F5F0E8;padding:1rem;margin:1rem 0;border-radius:12px;}
-    footer{text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid #ddd;font-size:0.8rem;}
+    .commune-block{margin-bottom:2rem;}
+    .commune-title{background:#1B4332;color:#FEFCF8;padding:0.5rem 1rem;border-radius:12px;margin-bottom:1rem;cursor:pointer;}
+    .groupement{background:#F5F0E8;margin:0.5rem 0;border-radius:12px;}
+    .groupement summary{font-weight:700;padding:0.8rem;cursor:pointer;color:#1B4332;background:#F5F0E8;border-radius:12px;}
+    .groupement ul{margin:0.5rem 1rem 1rem 2rem;padding:0;}
+    .groupement li{margin:0.2rem 0;font-size:0.9rem;}
+    footer{text-align:center;margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;font-size:0.8rem;}
+    .note{background:#F4F0E0;padding:1rem;border-left:4px solid #C8922A;margin:1rem 0;}
   </style>
 </head>
 <body>
@@ -24,12 +30,89 @@
 </div>
 <div class="container">
   <h1>🏘️ Mon village</h1>
-  <p>Retrouvez ici les villages pilotes documentés dans la Lékié.</p>
-  <div class="card"><strong>Eyen-Meyong</strong><br>Commune de Monatélé – Groupement : Eyen-Meyong<br>École primaire publique | Activités : agriculture, commerce local</div>
-  <div class="card"><strong>Endinding</strong><br>Commune d’Obala – Chefferie traditionnelle de 1er degré</div>
-  <div class="card"><strong>Ndzéla-Meyo</strong><br>Commune de Sa’a – Village natal d’André Marie Mbida</div>
-  <p>📢 <a href="plateforme.html#contribuer">Ajouter ou compléter un village</a></p>
+  <p class="note">📌 Base : données officielles MINAT (443 villages) + actualisation terrain ISGI-Lékié (Monatélé +6 villages). <strong>Total : 449 villages</strong>. Appel à contribution pour les mises à jour.</p>
+
+  <!-- MONATÉLÉ (78 villages : 73 MINAT + 5 ajouts terrain + NKONGMESSA) -->
+  <div class="commune-block">
+    <div class="commune-title">📌 MONATÉLÉ (78 villages)</div>
+    <details class="groupement"><summary>MVOG-NAMNYE 1 (22)</summary><ul><li>EBONDÉGUÉ</li><li>EKEKOM</li><li>LEKOUN</li><li>LÉLA</li><li>MENGONO</li><li>MGBABA 1</li><li>MGBABA 2</li><li>MONABO 1</li><li>MONABO 2</li><li>MPONG</li><li>MVOMEKAK 1</li><li>NKOLMEBEL</li><li>NKOLMELONG</li><li>NKOLNDOUP</li><li>NKOMBIBAM 1</li><li>NKOMBIBAM 2</li><li>NLONGBON 1</li><li>NLONGBON 2</li><li>NLONGBON 3</li><li>NLONGBON 4</li><li>OVANG</li><li>ZOBSILA</li></ul></details>
+    <details class="groupement"><summary>KOUGOUDA (16)</summary><ul><li>EBANGA</li><li>EBOLMONGO</li><li>ELON</li><li>EMANA</li><li>EZEZANG</li><li>KOUGOUDA 1</li><li>KOUGOUDA 2</li><li>MVOMEKAK 2</li><li>NGOMO</li><li>NGOMO-CENTRE</li><li>NKOG-BONG</li><li>NKOG-EKOGO</li><li>NKOLTOMO 1</li><li>NKOLTOMO 3</li><li>NKOLVE</li><li>POUPOUMA</li></ul></details>
+    <details class="groupement"><summary>NKOLKOSSE (6)</summary><ul><li>BIKOGO</li><li>NKANG</li><li>NKOLKOSSE</li><li>NKOLMETOLO</li><li>NKOLOSSANANGA</li><li>OKOKODO</li></ul></details>
+    <details class="groupement"><summary>EYEN-MEYONG (9)</summary><ul><li>EKOUDA</li><li>ELIG-BIKOUN</li><li>EYEN-MEYONG</li><li>NGAMA</li><li>NKOLFEB</li><li>NKOLNGOBO</li><li>NKOLONANA</li><li>TALA 1</li><li>TALA 2</li></ul></details>
+    <details class="groupement"><summary>EKOT (20 MINAT + 6 terrain)</summary><ul><li>ALLOGENES 1</li><li>ALLOGENES 2</li><li>ALLOGENES 3</li><li>AVOH</li><li>ETOM</li><li>LENOUCK</li><li>LEVEM</li><li>MONATELE 1</li><li>MONATELE 2</li><li>MONG</li><li>NDOUP</li><li>NKOLEVIDA</li><li>NKOLMELEN</li><li>NKOLNGAL</li><li>NKOLOWONO</li><li>NKONGMESSE 1</li><li>NKONGMESSE 2</li><li>NKONGMESSA</li><li>NTOL</li><li>OSSEBE</li><li><strong>+ NKONGMEDOG (terrain)</strong></li><li><strong>+ Sous-bois (terrain)</strong></li><li><strong>+ Obeng (terrain)</strong></li><li><strong>+ Ndoup quartier (terrain)</strong></li><li><strong>+ Nyatmang (terrain)</strong></li></ul></details>
+  </div>
+
+  <!-- BATCHENGA (15 MINAT) -->
+  <div class="commune-block">
+    <div class="commune-title">📌 BATCHENGA (15 villages)</div>
+    <details class="groupement"><summary>BATCHENGA (15)</summary><ul><li>BALLONG 1</li><li>BALLONG 2</li><li>BIYAGA</li><li>EBANG-MINALA</li><li>ELON</li><li>EMANA</li><li>EMANA BATCHENGA</li><li>FAMENASSI</li><li>MEBASSA</li><li>NACHTIGAL</li><li>NALASSI</li><li>NDJI</li><li>NKOPKALI</li><li>OLEMBE</li><li>OTIBILI</li></ul></details>
+  </div>
+
+  <!-- OBALA (76 MINAT) -->
+  <div class="commune-block">
+    <div class="commune-title">📌 OBALA (76 villages)</div>
+    <details class="groupement"><summary>ENDINDING (14)</summary><ul><li>ABONO</li><li>EFOUMELESSI</li><li>EKABITA-ESSELE</li><li>ELIG-BODO</li><li>ELIG-MGOMO</li><li>ESSONG</li><li>ETONG BIDJOE</li><li>EZEZANG-ESSELE</li><li>MBAKOMO</li><li>NKOD'ABANG</li><li>NKOLTSOGO 1</li><li>NKOLTSOGO 2</li><li>ZIMA</li><li>ZOATOUBSI</li></ul></details>
+    <details class="groupement"><summary>OBALA (26)</summary><ul><li>ABOKONO LYCEE</li><li>EBOL-AKUM</li><li>EKEKOM</li><li>EKOUMDOUMA</li><li>ELIG-BESSALA</li><li>ELOG-NGAZOUMA</li><li>ELOT 1</li><li>FOULASSI</li><li>LEBOBI</li><li>LENGOM</li><li>MBOUA 2</li><li>MEKAS</li><li>NDJONG-MEZEGUE</li><li>NKOL-EWODO</li><li>NKOLFOULOU 3</li><li>NKOL-MBENE</li><li>NKOLMELEN</li><li>NKOLNGUEM 1</li><li>NKOLNGUEM 2</li><li>NKOL-OBILI</li><li>NKOMETOU 3</li><li>OBALA ZONE 2</li><li>QUARTIER BIKOK-ASSI</li><li>QUARTIER ELOT 2</li><li>QUARTIER MBOUA 1</li><li>QUARTIER NKOLBIKOK</li></ul></details>
+    <details class="groupement"><summary>NKOMETOU (11)</summary><ul><li>EKABITA-MENDOUM</li><li>EZEZANG-MENDOUM</li><li>MFOMAKAP</li><li>MINDJOMO</li><li>MVOG-DJIGUI</li><li>NKOLMENDOUGA</li><li>NKOL-NTARA</li><li>NKOLTIMA</li><li>NKOM-NDAMBA</li><li>YEMSOUM</li><li>YEMSOUM 2</li></ul></details>
+    <details class="groupement"><summary>NKOLFEP (9)</summary><ul><li>ELIG-NKOUMA 1</li><li>ELIG-NKOUMA 2</li><li>ELIG-TSOGO</li><li>ETOUD-AYOS</li><li>KOUDANDENG</li><li>LEKIE-ASSI</li><li>NKOL-NDOBO</li><li>NKOM-EFOUFOUM</li><li>NTO</li></ul></details>
+    <details class="groupement"><summary>LOUA (8)</summary><ul><li>KOMO-MVOKANI</li><li>LOUA 2</li><li>NGONGO</li><li>NKOL-EWODO</li><li>NKOLTOMO 2</li><li>YEMESSOA 1</li><li>YEMESSOA 2</li><li>YEMKOUT</li></ul></details>
+    <details class="groupement"><summary>MINKAMA (4)</summary><ul><li>ELOMZOK</li><li>MINKAMA 3</li><li>NKOL-EKUI</li><li>VILLAGE PIONNIER</li></ul></details>
+    <details class="groupement"><summary>EFOK (4)</summary><ul><li>MBELE 1</li><li>MBELE 2</li><li>NTSAN</li><li>TSEK</li></ul></details>
+  </div>
+
+  <!-- SA'A (80 MINAT) -->
+  <div class="commune-block">
+    <div class="commune-title">📌 SA'A (80 villages)</div>
+    <details class="groupement"><summary>SA'A (20)</summary><ul><li>ABEL</li><li>EBANG-MINALA</li><li>EBOGO</li><li>EKALAN-MINKOUL</li><li>EKOUM-DOUMA</li><li>ELESSOGUE</li><li>ESSOL-MEYONG</li><li>KOE</li><li>MANELON</li><li>MBAMA</li><li>MBAZOA</li><li>NKOL-MESSENG</li><li>NKOLO</li><li>NKOL-OFOUMBI</li><li>NKOLZOA 1</li><li>NKOLZOA 2</li><li>NKOLZOMO</li><li>POLO</li><li>QUARTIER BAMILEKE</li><li>QUARTIER HAOUSSA</li></ul></details>
+    <details class="groupement"><summary>EBOMBO (12)</summary><ul><li>KOKOE</li><li>MBASSILA</li><li>MBILMANA</li><li>MENDOUGA-MOKALA</li><li>NDONG-ELANG</li><li>NDOVOLO</li><li>NKOL-EBASSIMBI</li><li>NKOL-EBOMA</li><li>NKOL-MGBANA</li><li>NKOLNDZOMO</li><li>NOLANGOUNG</li><li>NSAN-MENDOUGA</li></ul></details>
+    <details class="groupement"><summary>ENGAB (9)</summary><ul><li>ELANG</li><li>MENGON</li><li>MOMO</li><li>NKOLANG 1</li><li>NKOLANG 2</li><li>NKOL-AWONO</li><li>NKOLBOGO 2</li><li>NKOL-ESSONO</li><li>NLONG-ZOK</li></ul></details>
+    <details class="groupement"><summary>NKOLBOGO (10)</summary><ul><li>LEKOUBEK</li><li>MEKIMEBODO</li><li>MELIK</li><li>NKOLAYOS</li><li>NKOLBOGO 3</li><li>NKOLEVODO</li><li>NKOL-ONGUENE</li><li>ONDONDO 1</li><li>ONDONDO 2</li><li>WOMKOA</li></ul></details>
+    <details class="groupement"><summary>LEBAMZIP (16)</summary><ul><li>EBANG</li><li>EKEKOM</li><li>EKOUM-ONDOM</li><li>LEBAMZIP 1</li><li>LEBAMZIP 2</li><li>LEPOPOMO</li><li>MENGAMA</li><li>NKOL-EBAE</li><li>NKOLKAÏ</li><li>NKOLMELOK</li><li>NKOLMEYOS</li><li>NKOLNDOGO</li><li>NKOLNGOK</li><li>NLONG-ONAMBELE</li><li>NTOBO</li><li>NTSA-EKANG</li></ul></details>
+    <details class="groupement"><summary>NKOL-MVAK (13)</summary><ul><li>EDZEN</li><li>MBAN</li><li>MELIK</li><li>NKOLBIBAK</li><li>NKOL-EKONO</li><li>NKOLMEFON</li><li>NKOLMEKI</li><li>NKOL-MVAK</li><li>NKOLNDZAMA 1</li><li>NKOLNDZAMA 2</li><li>NKOLNTSA</li><li>NKOLVE</li><li>NKOLZOMO</li></ul></details>
+  </div>
+
+  <!-- OKOLA (73 MINAT) -->
+  <div class="commune-block">
+    <div class="commune-title">📌 OKOLA (73 villages)</div>
+    <details class="groupement"><summary>ETON-BETI (22)</summary><ul><li>BILONO 1</li><li>BILONO 2</li><li>EBOD</li><li>EKABITA TOM</li><li>EKONG</li><li>ETOUD</li><li>LEBOUDI 1</li><li>LEBOUDI 2</li><li>METAK</li><li>MINTOTOMO</li><li>MVOUA</li><li>NGOYA 1</li><li>NGOYA 2</li><li>NGOYA 3</li><li>NKOLBEGA</li><li>NKOLESSONG</li><li>NKOLONDOM</li><li>NKONG</li><li>NOUMA</li><li>OBAK</li><li>OKOUKOUDA</li><li>YEGUE-ASSI</li></ul></details>
+    <details class="groupement"><summary>MVOG NAMA 2 (31)</summary><ul><li>AYOS</li><li>ELIG-NDOUM</li><li>ELIG-YEN</li><li>EVIAN</li><li>FEGMIMBANG</li><li>LEBOTH</li><li>LENDOM 1</li><li>LENGON</li><li>MEKAK</li><li>MINSOA 1</li><li>MINSOA 2</li><li>MVA'A 1</li><li>MVA'A 2</li><li>NGOBO-ASSI</li><li>NKODASSA</li><li>NKOLDJOBE</li><li>NKOLEKOTSING</li><li>NKOLFEB</li><li>NKOLFEM</li><li>NKOLMEKOUMA</li><li>NKOLMEVANIZE</li><li>NKOLNYADA</li><li>NKOLPOBLO</li><li>NKOLTSIBA</li><li>NKOLZIBI</li><li>NTUISSONG</li><li>NYEMEYONG</li><li>QUARTIER HAOUSSA</li><li>SONG-ONANA</li><li>VOA 1</li><li>VOA 2</li></ul></details>
+    <details class="groupement"><summary>MVOG-NAMNYE 3 (20)</summary><ul><li>BISSOGO</li><li>BITSINGDA</li><li>EBANGA</li><li>EBOUGSI</li><li>EKEKAM 1</li><li>EKEKAM 2</li><li>KONABENG</li><li>LENDOM 2</li><li>LOUMA</li><li>MBELEKIE</li><li>MPONG 2</li><li>NDANGUENG</li><li>NGONG</li><li>NKOLANGOUNG</li><li>NKOLTOMO</li><li>NKONGZOK</li><li>NTSAMA</li><li>OBAN 1</li><li>OBAN 2</li><li>OYAMA</li></ul></details>
+  </div>
+
+  <!-- ELIG-MFOMO (25 MINAT) -->
+  <div class="commune-block">
+    <div class="commune-title">📌 ELIG-MFOMO (25 villages)</div>
+    <details class="groupement"><summary>ESSELE (20)</summary><ul><li>AAKAK</li><li>BIKOGO</li><li>BODO</li><li>ELIG-MFOMO</li><li>ELIG-ONANA</li><li>ELOT KOS</li><li>ENDAMA 1</li><li>ENDAMA 2</li><li>KOMO-ESSELE</li><li>LEKOUKOUA</li><li>MBANEDOUMA 1</li><li>MBANEDOUMA 2</li><li>MEBOMO</li><li>NKENGUE</li><li>NKOL MBA</li><li>NKOL OBANG 1</li><li>NKOL OBANG 2</li><li>NKOLBIKOK</li><li>NKOLOSSAN</li><li>OKOK ESSELE</li></ul></details>
+    <details class="groupement"><summary>MVOG-KANI (5)</summary><ul><li>ENOBITA</li><li>KOKODO 1</li><li>KOKODO 2</li><li>LEKIE</li><li>NIGA</li></ul></details>
+  </div>
+
+  <!-- EBEBDA (32 MINAT) -->
+  <div class="commune-block">
+    <div class="commune-title">📌 EBEBDA (32 villages)</div>
+    <details class="groupement"><summary>BENYABEGA (9)</summary><ul><li>EBEBDA 1</li><li>EBEBDA 2</li><li>ETAM-KOUMA</li><li>EYENE</li><li>NKANG-EFOK</li><li>NKOM 1</li><li>NKOM 2</li><li>NLONG-ZOK</li><li>TSANG</li></ul></details>
+    <details class="groupement"><summary>ABAM (6)</summary><ul><li>EBONG</li><li>EKOME</li><li>ENDOUM</li><li>KOAN</li><li>NGOKSA</li><li>ZOKOGO</li></ul></details>
+    <details class="groupement"><summary>ABAM-NGOE (5)</summary><ul><li>ABANG-NANG</li><li>LENDONG</li><li>MELEN</li><li>NEGA</li><li>OLONG</li></ul></details>
+    <details class="groupement"><summary>SA'A (6)</summary><ul><li>BIKOGO</li><li>DJOUNYAT</li><li>EBOMZOUT</li><li>MBENEGA</li><li>NDOUNDA</li><li>NKOL-ELOUGA</li></ul></details>
+    <details class="groupement"><summary>NKOLKOSSE (6)</summary><ul><li>BILIG-BINDIK</li><li>LEKA</li><li>NKOG-EDZEN</li><li>NKOLOSSANG</li><li>POLO 1</li><li>POLO 2</li></ul></details>
+  </div>
+
+  <!-- EVODOULA (44 MINAT) -->
+  <div class="commune-block">
+    <div class="commune-title">📌 EVODOULA (44 villages)</div>
+    <details class="groupement"><summary>NTSAS ENDO (23)</summary><ul><li>ELAH</li><li>ELIG-ZOGO</li><li>ENOH</li><li>EYEN MEYONG</li><li>KALNGAHA</li><li>KOMO</li><li>MEYOS</li><li>MGBABANG 1</li><li>MGBABANG 2</li><li>MGBABANG 3</li><li>NGOBO</li><li>NGUESSE</li><li>NKOLASSA 1</li><li>NKOLASSA 2</li><li>NKOLMEYOS 1</li><li>NKOLMEYOS 2</li><li>NKOLNGUELE</li><li>NLOUDOU</li><li>NTOUDA CENTRE</li><li>NTOUDA SUD</li><li>OKOK 1</li><li>OKOK 2</li><li>PONGSOLO</li></ul></details>
+    <details class="groupement"><summary>MVOG-NAMNYE 2 (21)</summary><ul><li>EKOL</li><li>ETOK</li><li>EVODOULA VILLAGE</li><li>MBELBIKOL</li><li>MINWOHO-CENTRE</li><li>MINWOHO-SUD</li><li>NKODABEL</li><li>NKOLABANG</li><li>NKOLAKOK</li><li>NKOLKOUGDA 1</li><li>NKOLKOUGDA 2</li><li>NKOLOHANDJA</li><li>NKOLSENG 1</li><li>NKOLSENG 2</li><li>NLONG-MENANG</li><li>POBO</li><li>QUARTIER ACCUEIL</li><li>QUARTIER AYISSI</li><li>QUARTIER DOUMASSI</li><li>QUARTIER HAOUSSA</li><li>QUARTIER MISSION CATHOLIQUE</li></ul></details>
+  </div>
+
+  <!-- LOBO (26 MINAT) -->
+  <div class="commune-block">
+    <div class="commune-title">📌 LOBO (26 villages)</div>
+    <details class="groupement"><summary>MVOG NAMA 1 (26)</summary><ul><li>ADZAB</li><li>AKOK</li><li>EKEKAM 3</li><li>EKOUMTIK</li><li>EYANG</li><li>KELLE</li><li>KOUDI</li><li>LOBO</li><li>MENGUEK 1</li><li>MENGUEK 2</li><li>MINKOA</li><li>NGOAS</li><li>NGOULMEKONG</li><li>NKOLMELEN</li><li>NKOLMEYANG</li><li>NKOLNGUET</li><li>NKOLYEM</li><li>NKONG-MESSA</li><li>NLONG</li><li>OVANG</li><li>OZOM 1</li><li>OZOM 2</li><li>OZOM 3</li><li>TIKONG</li><li>TSEK</li><li>VOA 3</li></ul></details>
+  </div>
+
 </div>
-<footer>ISGI-Lékié — Mémoire vivante du territoire</footer>
+<footer>
+  <p>ISGI-Lékié — Base MINAT (443 villages) + actualisation terrain Monatélé (+6). Total : 449 villages.</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
 </body>
 </html>
