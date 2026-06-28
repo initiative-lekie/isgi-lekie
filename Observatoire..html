@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observatoire BIP – ISGI-Lékié</title>
+  <meta name="description" content="Observatoire des marchés publics du département de la Lékié – Programmation budgétaire 2016-2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer>
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fefcf8;
+      font-family: 'Inter', sans-serif;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    .navbar {
+      background: #1b3a2d;
+      padding: 0.8rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #c4922a;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo a {
+      color: #e0a83e;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: 700;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .logo span {
+      font-size: 0.7rem;
+      display: block;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .nav-links a:hover {
+      color: #e0a83e;
+    }
+    .nav-links a.active {
+      color: #e0a83e;
+      border-bottom: 2px solid #c4922a;
+    }
+    .burger {
+      display: none;
+      background: none;
+      border: none;
+      color: #e0a83e;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .status-banner {
+      background: #1b3a2d;
+      color: rgba(255, 255, 255, 0.85);
+      padding: 0.4rem 1.5rem;
+      text-align: center;
+      font-size: 0.75rem;
+      border-bottom: 2px solid #c4922a;
+    }
+    .status-banner em {
+      color: #e0a83e;
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .header {
+      margin: 2rem 0 1.5rem;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      font-family: 'Cormorant Garamond', serif;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #1b3a2d;
+      flex-wrap: wrap;
+    }
+
+    .header h1 span {
+      background: #1b3a2d;
+      color: #e0a83e;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.15rem 1rem;
+      border-radius: 100px;
+      margin-left: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #475569;
+      margin-top: 0.25rem;
+      border-left: 4px solid #c4922a;
+      padding-left: 1rem;
+    }
+
+    .meta-source {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #64748b;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .meta-source strong {
+      color: #1e293b;
+    }
+
+    .meta-source .programmation {
+      background: #fff3cd;
+      color: #856404;
+      padding: 0.1rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .note-methodo {
+      background: #fff8e1;
+      border-left: 4px solid #c4922a;
+      padding: 0.75rem 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .note-methodo strong {
+      color: #1b3a2d;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin: 2rem 0 2.5rem;
+    }
+
+    .kpi-card {
+      background: #ffffff;
+      padding: 1.25rem 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e9edf2;
+    }
+
+    .kpi-card .label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .kpi-card .value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1b3a2d;
+      margin-top: 0.2rem;
+      line-height: 1.2;
+    }
+
+    .kpi-card .sub {
+      font-size: 0.9rem;
+      color: #475569;
+      margin-top: 0.2rem;
+    }
+
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .chart-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem 1.5rem 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e9edf2;
+    }
+
+    .chart-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .chart-card h3 small {
+      font-weight: 400;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+
+    .chart-card .chart-wrapper {
+      position: relative;
+      height: 280px;
+    }
+
+    .chart-card .chart-wrapper.tall {
+      height: 340px;
+    }
+
+    .chart-card .chart-wrapper canvas {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .chart-note {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    .chart-full {
+      grid-column: 1 / -1;
+    }
+
+    .table-wrap {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid #e9edf2;
+      margin: 2rem 0 2.5rem;
+      overflow-x: auto;
+    }
+
+    .table-wrap h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    thead {
+      background: #f1f4f9;
+    }
+
+    th {
+      text-align: left;
+      padding: 0.75rem 0.75rem 0.75rem 0;
+      font-weight: 600;
+      color: #1e293b;
+      border-bottom: 2px solid #dde2ea;
+    }
+
+    td {
+      padding: 0.7rem 0.75rem 0.7rem 0;
+      border-bottom: 1px solid #edf1f7;
+    }
+
+    th:last-child,
+    td:last-child {
+      padding-right: 0;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .highlight {
+      background: #eef6fb;
+      font-weight: 600;
+    }
+
+    .commune-table-link {
+      color: #1b3a2d;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .commune-table-link:hover {
+      color: #c4922a;
+      text-decoration: underline;
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .top-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      border: 1px solid #e9edf2;
+    }
+
+    .top-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .top-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #f1f4f9;
+      font-size: 0.92rem;
+    }
+
+    .top-item:last-child {
+      border-bottom: none;
+    }
+
+    .top-item .rank {
+      font-weight: 700;
+      color: #94a3b8;
+      width: 2rem;
+    }
+
+    .top-item .project {
+      flex: 1;
+      padding: 0 0.75rem;
+    }
+
+    .top-item .project .commune {
+      font-size: 0.75rem;
+      color: #64748b;
+      display: block;
+    }
+
+    .top-item .project .commune a {
+      color: #1b3a2d;
+      text-decoration: none;
+    }
+    .top-item .project .commune a:hover {
+      color: #c4922a;
+      text-decoration: underline;
+    }
+
+    .top-item .amount {
+      font-weight: 600;
+      color: #1b3a2d;
+      white-space: nowrap;
+    }
+
+    .top-item .year-badge {
+      background: #e9edf2;
+      border-radius: 100px;
+      padding: 0.05rem 0.65rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #475569;
+      margin-left: 0.5rem;
+    }
+
+    .analysis-box {
+      background: #eef6fb;
+      border-left: 6px solid #1b3a2d;
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      margin: 2.5rem 0 2rem;
+    }
+
+    .analysis-box h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1b3a2d;
+      font-family: 'Cormorant Garamond', serif;
+      margin-bottom: 0.75rem;
+    }
+
+    .analysis-box p {
+      line-height: 1.7;
+      color: #1e293b;
+      margin-bottom: 0.75rem;
+    }
+
+    .analysis-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .analysis-box strong {
+      color: #1b3a2d;
+    }
+
+    footer {
+      background: #0f2c21;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      margin-top: 2rem;
+    }
+    footer .boussole {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.3);
+      margin-top: 0.4rem;
+    }
+    footer a {
+      color: #e0a83e;
+      text-decoration: none;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #c4922a;
+      color: #1b3a2d;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.5rem;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.3s;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 99;
+    }
+    .back-to-top.show {
+      opacity: 1;
+    }
+    .back-to-top:hover {
+      background: #1b3a2d;
+      color: #e0a83e;
+    }
+
+    @media (max-width: 900px) {
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
+      .top-grid {
+        grid-template-columns: 1fr;
+      }
+      .header h1 {
+        font-size: 1.6rem;
+        flex-wrap: wrap;
+      }
+      .kpi-card .value {
+        font-size: 1.5rem;
+      }
+      body {
+        padding: 0;
+      }
+      .container {
+        padding: 0 1rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: row;
+      }
+      .burger {
+        display: block;
+      }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0.5rem;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .kpi-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .kpi-card {
+        padding: 0.9rem 1rem;
+      }
+      .kpi-card .value {
+        font-size: 1.2rem;
+      }
+      .analysis-box {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="status-banner">📊 Observatoire BIP — données de programmation budgétaire 2016-2026</div>
+
+  <div class="navbar">
+    <div class="logo">
+      <a href="index.html">ISGI</a>
+      <span>Lékié — Cameroun</span>
+    </div>
+    <button class="burger" id="burgerBtn">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Accueil</a>
+      <a href="plateforme.html">Plateforme</a>
+      <a href="observatoire.html" class="active">📊 Observatoire</a>
+      <a href="blog.html">Blog</a>
+      <a href="mon-village.html">Mon village</a>
+      <a href="mon-ecole.html">Mon école</a>
+      <a href="tourisme.html">Tourisme</a>
+      <a href="hommage-andre-marie-mbida.html">Hommage</a>
+      <a href="presse.html">Presse</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <header class="header">
+      <h1>
+        📊 Observatoire des Marchés Publics
+        <span>BIP</span>
+      </h1>
+      <p class="subtitle">Programmation Budgétaire d'Investissement Public – Département de la Lékié (2016–2026)</p>
+      <div class="meta-source">
+        <span><strong>📅 Période :</strong> 2016 – 2026 (11 ans)</span>
+        <span><strong>📋 Source :</strong> MINMAP – Données de programmation budgétaire</span>
+        <span><strong>📌 Statut :</strong> Budgets prévisionnels <span class="programmation">programmation</span></span>
+        <span><strong>🏛️ ISGI-Lékié</strong></span>
+      </div>
+    </header>
+
+    <div class="note-methodo">
+      <strong>📌 Note méthodologique :</strong> Toutes les données présentées (2016-2026) sont issues des <strong>programmations budgétaires</strong> du MINMAP. Il s'agit de montants prévisionnels planifiés, non des réalisations effectives.
+      <br>
+      🔗 <strong>Liens vers les communes :</strong> Cliquez sur le nom d'une commune pour accéder à sa fiche détaillée dans <a href="mon-village.html" style="color:#1b3a2d; font-weight:600;">Mon village</a>.
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="label">💵 Montant total programmé</div>
+        <div class="value">30,98 Mds FCFA</div>
+        <div class="sub">1 208 marchés programmés</div>
+      </div>
+      <div class="kpi-card">
+        <div class="label">📈 Moyenne annuelle programmée</div>
+        <div class="value">2,82 Mds FCFA</div>
+        <div class="sub">+63% en 2025 (pic)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="label">🏆 Commune la plus programmée</div>
+        <div class="value"><a href="mon-village.html#okola" style="color:#1b3a2d; text-decoration:none;">Okola</a></div>
+        <div class="sub">4,39 Mds FCFA (14,2%)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="label">🚧 Type de projet dominant</div>
+        <div class="value">ROUTES</div>
+        <div class="sub">27,4% du total (8,5 Mds)</div>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+
+      <div class="chart-card chart-full">
+        <h3>📈 Évolution annuelle programmée <small>valeur (courbe) et volume (barres)</small></h3>
+        <div class="chart-wrapper tall">
+          <canvas id="evolutionChart"></canvas>
+        </div>
+        <div class="chart-note">⚠️ Données de programmation budgétaire — montants prévisionnels</div>
+      </div>
+
+      <div class="chart-card">
+        <h3>
+          🗺️ Répartition par commune
+          <small>valeur totale programmée</small>
+        </h3>
+        <div class="chart-wrapper">
+          <canvas id="communeChart"></canvas>
+        </div>
+        <div style="font-size:0.75rem; color:#94a3b8; text-align:center; margin-top:0.5rem;">
+          Cliquez sur une barre pour voir la commune →
+          <a href="mon-village.html" style="color:#1b3a2d; text-decoration:none; font-weight:600;">Mon village</a>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>🧩 Répartition par type de projet <small>programmé</small></h3>
+        <div class="chart-wrapper">
+          <canvas id="typeChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <h3>
+        📋 Récapitulatif par commune (programmation)
+        <span style="font-size:0.75rem; font-weight:400; color:#94a3b8;">
+          — <a href="mon-village.html" style="color:#1b3a2d;">Voir les fiches villages</a>
+        </span>
+      </h3>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Commune</th>
+            <th class="text-right">Nb marchés</th>
+            <th class="text-right">Montant (FCFA)</th>
+            <th class="text-right">Part (%)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><a href="mon-village.html#okola" class="commune-table-link">Okola</a></td>
+            <td class="text-right">161</td>
+            <td class="text-right">4 393 865 762</td>
+            <td class="text-right">14,18%</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="mon-village.html#evodoula" class="commune-table-link">Evodoula</a></td>
+            <td class="text-right">107</td>
+            <td class="text-right">2 829 097 814</td>
+            <td class="text-right">9,13%</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><a href="mon-village.html#saa" class="commune-table-link">Sa'a</a></td>
+            <td class="text-right">131</td>
+            <td class="text-right">2 656 154 000</td>
+            <td class="text-right">8,57%</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><a href="mon-village.html#obala" class="commune-table-link">Obala</a></td>
+            <td class="text-right">139</td>
+            <td class="text-right">2 640 169 414</td>
+            <td class="text-right">8,52%</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><a href="mon-village.html#monatele" class="commune-table-link">Monatélé</a></td>
+            <td class="text-right">126</td>
+            <td class="text-right">2 614 616 914</td>
+            <td class="text-right">8,44%</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><a href="mon-village.html#lobo" class="commune-table-link">Lobo</a></td>
+            <td class="text-right">72</td>
+            <td class="text-right">2 468 559 256</td>
+            <td class="text-right">7,97%</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><a href="mon-village.html#elig-mfomo" class="commune-table-link">Elig-Mfomo</a></td>
+            <td class="text-right">109</td>
+            <td class="text-right">2 216 981 319</td>
+            <td class="text-right">7,15%</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><a href="mon-village.html#ebebda" class="commune-table-link">Ebebda</a></td>
+            <td class="text-right">95</td>
+            <td class="text-right">2 051 359 824</td>
+            <td class="text-right">6,62%</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><a href="mon-village.html#batchenga" class="commune-table-link">Batchenga</a></td>
+            <td class="text-right">79</td>
+            <td class="text-right">1 697 956 000</td>
+            <td class="text-right">5,48%</td>
+          </tr>
+          <tr class="highlight">
+            <td>—</td>
+            <td><strong>Services déconcentrés</strong></td>
+            <td class="text-right">73</td>
+            <td class="text-right">2 767 366 000</td>
+            <td class="text-right">8,93%</td>
+          </tr>
+          <tr style="font-weight:700; background:#f1f4f9;">
+            <td></td>
+            <td><strong>TOTAL PROGRAMMÉ</strong></td>
+            <td class="text-right"><strong>1 208</strong></td>
+            <td class="text-right"><strong>30 979 131 357</strong></td>
+            <td class="text-right"><strong>100%</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-wrap">
+      <h3>🏅 Top 10 des plus gros marchés programmés (valeur)</h3>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Marché / Projet</th><th>Commune</th><th class="text-right">Montant (FCFA)</th><th>Année</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Reconstruction pont définitif Ngoko + routes</td><td><a href="mon-village.html#lobo" class="commune-table-link">Lobo</a></td><td class="text-right">300 000 000</td><td>2026</td></tr>
+          <tr><td>2</td><td>Cité municipale d'Okola</td><td><a href="mon-village.html#okola" class="commune-table-link">Okola</a></td><td class="text-right">285 000 000</td><td>2024</td></tr>
+          <tr><td>3</td><td>Hôtel de Ville d'Evodoula</td><td><a href="mon-village.html#evodoula" class="commune-table-link">Evodoula</a></td><td class="text-right">282 000 000</td><td>2025</td></tr>
+          <tr><td>4</td><td>Hôtel de Ville de Lobo</td><td><a href="mon-village.html#lobo" class="commune-table-link">Lobo</a></td><td class="text-right">258 000 000</td><td>2021</td></tr>
+          <tr><td>5</td><td>Hôtel de Ville d'Ebebda (clôture)</td><td><a href="mon-village.html#ebebda" class="commune-table-link">Ebebda</a></td><td class="text-right">230 000 000</td><td>2025</td></tr>
+          <tr><td>6</td><td>Construction école publique de Batchenga</td><td><a href="mon-village.html#batchenga" class="commune-table-link">Batchenga</a></td><td class="text-right">195 000 000</td><td>2024</td></tr>
+          <tr><td>7</td><td>Adduction d'eau Monatélé – phase 2</td><td><a href="mon-village.html#monatele" class="commune-table-link">Monatélé</a></td><td class="text-right">180 000 000</td><td>2023</td></tr>
+          <tr><td>8</td><td>Réhabilitation piste rurale Obala – Sa'a</td><td><a href="mon-village.html#obala" class="commune-table-link">Obala</a> / <a href="mon-village.html#saa" class="commune-table-link">Sa'a</a></td><td class="text-right">175 000 000</td><td>2025</td></tr>
+          <tr><td>9</td><td>Électrification rurale d'Elig-Mfomo</td><td><a href="mon-village.html#elig-mfomo" class="commune-table-link">Elig-Mfomo</a></td><td class="text-right">162 000 000</td><td>2023</td></tr>
+          <tr><td>10</td><td>Construction bloc pédagogique Sa'a</td><td><a href="mon-village.html#saa" class="commune-table-link">Sa'a</a></td><td class="text-right">155 000 000</td><td>2022</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="top-grid">
+      <div class="top-card">
+        <h3>🏅 Top 5 des plus gros marchés programmés</h3>
+        <div class="top-item">
+          <span class="rank">1</span>
+          <span class="project">Reconstruction pont définitif Ngoko + routes <span class="commune"><a href="mon-village.html#lobo">Lobo</a></span></span>
+          <span class="amount">300 M</span>
+          <span class="year-badge">2026</span>
+        </div>
+        <div class="top-item">
+          <span class="rank">2</span>
+          <span class="project">Cité municipale d'Okola <span class="commune"><a href="mon-village.html#okola">Okola</a></span></span>
+          <span class="amount">285 M</span>
+          <span class="year-badge">2024</span>
+        </div>
+        <div class="top-item">
+          <span class="rank">3</span>
+          <span class="project">Hôtel de Ville d'Evodoula <span class="commune"><a href="mon-village.html#evodoula">Evodoula</a></span></span>
+          <span class="amount">282 M</span>
+          <span class="year-badge">2025</span>
+        </div>
+        <div class="top-item">
+          <span class="rank">4</span>
+          <span class="project">Hôtel de Ville de Lobo <span class="commune"><a href="mon-village.html#lobo">Lobo</a></span></span>
+          <span class="amount">258 M</span>
+          <span class="year-badge">2021</span>
+        </div>
+        <div class="top-item">
+          <span class="rank">5</span>
+          <span class="project">Hôtel de Ville d'Ebebda (clôture) <span class="commune"><a href="mon-village.html#ebebda">Ebebda</a></span></span>
+          <span class="amount">230 M</span>
+          <span class="year-badge">2025</span>
+        </div>
+      </div>
+      <div class="top-card">
+        <h3>🏅 Top 5 des communes les plus programmées</h3>
+        <div class="top-item">
+          <span class="rank">1</span>
+          <span class="project"><a href="mon-village.html#okola" style="color:#1b3a2d; text-decoration:none; font-weight:600;">Okola</a></span>
+          <span class="amount">4,39 Mds</span>
+          <span class="year-badge">14,2%</span>
+        </div>
+        <div class="top-item">
+          <span class="rank">2</span>
+          <span class="project"><a href="mon-village.html#evodoula" style="color:#1b3a2d; text-decoration:none; font-weight:600;">Evodoula</a></span>
+          <span class="amount">2,83 Mds</span>
+          <span class="year-badge">9,1%</span>
+        </div>
+        <div class="top-item">
+          <span class="rank">3</span>
+          <span class="project"><a href="mon-village.html#saa" style="color:#1b3a2d; text-decoration:none; font-weight:600;">Sa'a</a></span>
+          <span class="amount">2,66 Mds</span>
+          <span class="year-badge">8,6%</span>
+        </div>
+        <div class="top-item">
+          <span class="rank">4</span>
+          <span class="project"><a href="mon-village.html#obala" style="color:#1b3a2d; text-decoration:none; font-weight:600;">Obala</a></span>
+          <span class="amount">2,64 Mds</span>
+          <span class="year-badge">8,5%</span>
+        </div>
+        <div class="top-item">
+          <span class="rank">5</span>
+          <span class="project"><a href="mon-village.html#monatele" style="color:#1b3a2d; text-decoration:none; font-weight:600;">Monatélé</a></span>
+          <span class="amount">2,61 Mds</span>
+          <span class="year-badge">8,4%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="analysis-box">
+      <h3>📌 Analyse BIP 2016–2026 – Lékié (programmation)</h3>
+      <p>
+        Sur 11 ans, <strong>30,98 milliards FCFA</strong> ont été programmés dans le département de la Lékié à travers <strong>1 208 marchés publics</strong> planifiés.
+      </p>
+      <p>
+        <strong>🔹 Nature des données :</strong> L'ensemble des montants présentés (2016-2026) correspond aux <strong>programmations budgétaires</strong> du MINMAP. Il s'agit d'une vision prévisionnelle des investissements publics sur 11 ans, non des réalisations effectives.
+      </p>
+      <p>
+        <strong>🔹 Tendances :</strong> Après une relative stabilité entre 2016 et 2024 (2,5 Mds en moyenne), l'année <strong>2025</strong> marque un bond spectaculaire avec <strong>4,07 milliards FCFA</strong> programmés, soit une hausse de <strong>63%</strong> par rapport à 2024. Cette dynamique se confirme en 2026 avec <strong>3,53 milliards</strong> planifiés.
+      </p>
+      <p>
+        <strong>🔹 Disparités territoriales :</strong> <strong>Okola</strong> concentre 14,18% des programmations (4,39 Mds), devançant largement les autres communes. À l'opposé, <strong>Batchenga</strong> ne capte que 5,48% du total (1,70 Mds), soit un écart de 1 à 2,6.
+      </p>
+      <p>
+        <strong>🔹 Priorités sectorielles :</strong> Les <strong>routes et pistes rurales</strong> arrivent en tête avec 27,4% du BIP programmé, suivies des <strong>adductions d'eau et électrification</strong> (23,2%) et des <strong>bâtiments éducatifs et communaux</strong> (21,9%). Ces trois postes représentent près des trois quarts des investissements planifiés.
+      </p>
+      <p>
+        <strong>🔹 Services déconcentrés :</strong> Avec 2,77 Mds (8,93%), ils jouent un rôle significatif dans l'équipement départemental programmé (Délégations, établissements scolaires, infrastructures d'État).
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+    <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+  </footer>
+
+  <a href="#" id="backToTop" class="back-to-top" title="Retour en haut">↑</a>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // Burger menu
+      const burger = document.getElementById('burgerBtn');
+      const navLinks = document.getElementById('navLinks');
+      if (burger && navLinks) {
+        burger.addEventListener('click', function() {
+          navLinks.classList.toggle('show');
+          burger.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
+        });
+        navLinks.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            navLinks.classList.remove('show');
+            burger.textContent = '☰';
+          });
+        });
+        document.addEventListener('click', function(e) {
+          if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+            navLinks.classList.remove('show');
+            burger.textContent = '☰';
+          }
+        });
+      }
+
+      // Back to top
+      const backToTop = document.getElementById('backToTop');
+      if (backToTop) {
+        window.addEventListener('scroll', function() {
+          backToTop.classList.toggle('show', window.scrollY > 300);
+        });
+        backToTop.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // ---- GRAPHIQUES ----
+
+      const years = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'];
+      const volumes = [109, 149, 103, 108, 114, 110, 81, 102, 98, 126, 108];
+      const valeurs = [2.40, 2.74, 2.47, 2.68, 2.45, 2.89, 2.27, 2.99, 2.49, 4.07, 3.53];
+
+      // Évolution
+      const ctx1 = document.getElementById('evolutionChart').getContext('2d');
+      new Chart(ctx1, {
+        type: 'bar',
+        data: {
+          labels: years,
+          datasets: [{
+            label: 'Volume (nb marchés programmés)',
+            data: volumes,
+            backgroundColor: 'rgba(30, 75, 107, 0.25)',
+            borderColor: '#1b3a2d',
+            borderWidth: 1.5,
+            borderRadius: 4,
+            order: 2,
+            yAxisID: 'y1'
+          }, {
+            label: 'Valeur (milliards FCFA)',
+            data: valeurs,
+            type: 'line',
+            borderColor: '#c4922a',
+            backgroundColor: 'rgba(196, 146, 42, 0.10)',
+            borderWidth: 3,
+            pointBackgroundColor: '#c4922a',
+            pointBorderColor: '#fff',
+            pointBorderWidth: 2,
+            pointRadius: 5,
+            tension: 0.3,
+            fill: true,
+            order: 1,
+            yAxisID: 'y'
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'index',
+            intersect: false
+          },
+          plugins: {
+            legend: {
+              position: 'top',
+              labels: {
+                usePointStyle: true,
+                padding: 20,
+                font: { size: 13, weight: '500' }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(ctx) {
+                  if (ctx.datasetIndex === 0) return ctx.dataset.label + ' : ' + ctx.parsed.y + ' marchés';
+                  return ctx.dataset.label + ' : ' + ctx.parsed.y.toFixed(2) + ' Mds FCFA';
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              position: 'left',
+              grid: { color: 'rgba(0,0,0,0.04)' },
+              ticks: {
+                callback: function(value) { return value.toFixed(1) + ' Mds'; }
+              }
+            },
+            y1: {
+              beginAtZero: true,
+              position: 'right',
+              grid: { display: false },
+              ticks: {
+                callback: function(value) { return value + ' marchés'; }
+              }
+            },
+            x: {
+              grid: { display: false }
+            }
+          }
+        }
+      });
+
+      // Répartition par commune (barres horizontales)
+      const communes = ['Okola', 'Evodoula', 'Sa\'a', 'Obala', 'Monatélé', 'Lobo', 'Elig-Mfomo', 'Ebebda', 'Batchenga'];
+      const valeursCommunes = [4.39, 2.83, 2.66, 2.64, 2.61, 2.47, 2.22, 2.05, 1.70];
+      const couleursCommunes = ['#1b3a2d', '#2d7a9b', '#3ba3c4', '#5bb8d4', '#7ccce0', '#a8dceb', '#b17d5c', '#8a6e8c', '#9aa7b5'];
+
+      const ctx2 = document.getElementById('communeChart').getContext('2d');
+      new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: communes,
+          datasets: [{
+            label: 'Montant (milliards FCFA)',
+            data: valeursCommunes,
+            backgroundColor: couleursCommunes,
+            borderRadius: 4,
+            borderSkipped: false,
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              callbacks: {
+                label: function(ctx) {
+                  return ctx.parsed.x.toFixed(2) + ' Mds FCFA';
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              beginAtZero: true,
+              grid: { color: 'rgba(0,0,0,0.04)' },
+              ticks: {
+                callback: function(value) { return value.toFixed(1) + ' Mds'; }
+              }
+            },
+            y: {
+              grid: { display: false }
+            }
+          }
+        }
+      });
+
+      // Répartition par type
+      const types = ['ROUTES', 'AI (Eau/Électrification)', 'BEC (Bâtiments)', 'AG (Acquisitions)', 'SPI (Études/MO)'];
+      const valeursTypes = [8.50, 7.20, 6.80, 5.80, 0.28];
+      const couleursTypes = ['#4a7c59', '#2d7a9b', '#b17d5c', '#8a6e8c', '#9aa7b5'];
+
+      const ctx3 = document.getElementById('typeChart').getContext('2d');
+      new Chart(ctx3, {
+        type: 'doughnut',
+        data: {
+          labels: types,
+          datasets: [{
+            data: valeursTypes,
+            backgroundColor: couleursTypes,
+            borderWidth: 3,
+            borderColor: '#ffffff',
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '65%',
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: {
+                usePointStyle: true,
+                padding: 16,
+                font: { size: 12, weight: '500' }
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(ctx) {
+                  const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                  const pct = ((ctx.parsed / total) * 100).toFixed(1);
+                  return ctx.label + ' : ' + ctx.parsed.toFixed(2) + ' Mds (' + pct + '%)';
+                }
+              }
+            }
+          }
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>
