@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sport – ISGI-Lékié</title>
+  <meta name="description" content="Le sport dans la Lékié — Lions Indomptables, clubs mythiques, championnats de vacances 2026 et certification.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsOrganization",
+      "name": "ISGI-Lékié Sport",
+      "description": "Le sport dans la Lékié — Lions Indomptables, clubs mythiques, championnats de vacances 2026 et certification.",
+      "url": "https://isgi-lekie.cm/sport.html",
+      "member": [
+        {"@type": "SportsTeam", "name": "Eding Sport FC", "foundingDate": "2012-02-01", "sport": "Football"},
+        {"@type": "SportsTeam", "name": "Lékié FC", "foundingDate": "2023", "sport": "Football"}
+      ]
+    }
+  </script>
+  <style>
+    :root {
+      --vert: #1b3a2d;
+      --vert2: #2a5a44;
+      --or: #c4922a;
+      --or2: #e0a83e;
+      --creme: #f4efe6;
+      --creme2: #ede5d8;
+      --blanc: #f8f6f0;
+      --texte: #2c2c28;
+      --gris: #5a5a50;
+      --gris2: #94a3b8;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Inter',sans-serif;background:var(--blanc);color:var(--texte);line-height:1.6;}
+    .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
+
+    nav{background:var(--vert);padding:0.8rem 1.5rem;border-bottom:2px solid var(--or);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100;}
+    .logo a{color:var(--or2);text-decoration:none;font-size:1.5rem;font-weight:700;font-family:'Cormorant Garamond',serif;}
+    .logo span{font-size:0.7rem;display:block;color:rgba(255,255,255,0.7);}
+    .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
+    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;}
+    .nav-links a:hover,.nav-links a.active{color:var(--or2);}
+    .burger{display:none;background:none;border:none;color:var(--or2);font-size:1.8rem;cursor:pointer;}
+
+    .page-header{background:var(--vert);padding:2.5rem 1.5rem;border-bottom:4px solid var(--or);text-align:center;}
+    .page-header h1{color:#fff;border-left:none;padding-left:0;font-size:2.5rem;font-family:'Cormorant Garamond',serif;}
+    .page-header h1 em{color:var(--or2);font-style:italic;}
+    .page-header p{color:rgba(255,255,255,0.75);margin-top:0.5rem;}
+
+    section{padding:2.5rem 0;border-bottom:1px solid var(--creme2);}
+    .section-title{font-size:1.6rem;color:var(--vert);margin-bottom:1.5rem;border-left:6px solid var(--or);padding-left:1rem;font-family:'Cormorant Garamond',serif;}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:1rem;}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:1rem;}
+    .card{background:#fff;border:1px solid var(--creme2);border-radius:16px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s;position:relative;}
+    .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.06);}
+    .card h3{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin-bottom:0.5rem;}
+    .card p{color:var(--gris);font-size:0.9rem;margin-top:0.3rem;}
+    .badge-statut{display:inline-block;font-size:0.62rem;padding:0.15rem 0.5rem;border-radius:20px;font-weight:600;margin-top:0.5rem;}
+    .badge-valide{background:#e8f5e9;color:#2e7d32;}
+    .badge-encours{background:#fff8e1;color:#856404;}
+    .badge-contributif{background:#e8dfd0;color:#5a5a50;}
+    .badge-en-cours{background:#d4edda;color:#155724;font-weight:700;}
+    .btn{display:inline-block;background:var(--or);color:#1b3a2d;padding:0.5rem 1.2rem;border-radius:40px;text-decoration:none;font-weight:600;margin-top:0.5rem;border:none;cursor:pointer;font-size:0.85rem;}
+    .btn:hover{background:var(--vert);color:var(--or2);}
+    .btn-outline{border:1.5px solid var(--vert);background:transparent;}
+    .btn-outline:hover{background:var(--vert);color:#fff;}
+    .btn-small{padding:0.3rem 0.8rem;font-size:0.75rem;}
+
+    .search-bar{display:flex;gap:0.8rem;flex-wrap:wrap;margin:1rem 0 1.5rem;align-items:center;}
+    .search-input{flex:1;padding:0.6rem 1rem;border:1.5px solid var(--creme2);border-radius:30px;font-family:'Inter',sans-serif;font-size:0.85rem;min-width:150px;}
+    .search-input:focus{outline:2px solid var(--or);border-color:var(--or);}
+
+    .filtres-bar{display:flex;flex-wrap:wrap;gap:0.8rem;align-items:center;margin:0.5rem 0 1.5rem;}
+    .filter-btn{padding:0.4rem 1rem;border:1.5px solid var(--creme2);border-radius:30px;background:#fff;font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:500;cursor:pointer;transition:all 0.2s;color:var(--texte);}
+    .filter-btn:hover,.filter-btn.actif{background:var(--vert);color:#fff;border-color:var(--vert);}
+    .compteur-clubs{font-size:0.8rem;color:var(--gris2);margin-left:auto;}
+
+    .joueur-card,.club-card{background:#fff;border:1px solid var(--creme2);border-radius:12px;padding:1rem;display:flex;flex-direction:column;}
+    .joueur-card .nom,.club-card .nom-club{font-weight:700;font-size:1.1rem;color:var(--vert);}
+    .joueur-card .info,.club-card .detail{font-size:0.85rem;color:var(--gris);margin-top:0.2rem;}
+    .joueur-card .origine,.club-card .commune-club{font-size:0.75rem;color:var(--gris2);margin-top:0.2rem;}
+    .joueur-card .palmares{font-size:0.85rem;color:var(--texte);margin-top:0.4rem;}
+    .img-placeholder{background:var(--creme);border-radius:8px;padding:0.5rem;text-align:center;font-size:0.75rem;color:var(--gris2);margin-bottom:0.5rem;}
+
+    .notice{background:#fff8e1;border-left:4px solid var(--or);padding:0.8rem 1.2rem;border-radius:8px;margin:1.5rem 0;}
+
+    .maps-link,.share-link{display:inline-block;margin-top:0.3rem;font-size:0.75rem;color:var(--vert);text-decoration:none;}
+    .maps-link:hover,.share-link:hover{color:var(--or);text-decoration:underline;}
+
+    .map-wrapper{margin:1.5rem 0;border-radius:16px;overflow:hidden;border:1px solid var(--creme2);}
+    #stadiumMap{height:350px;width:100%;}
+
+    footer{background:#0f2c21;color:rgba(255,255,255,0.5);text-align:center;padding:2rem;font-size:0.8rem;margin-top:2rem;}
+    footer .boussole{font-style:italic;color:rgba(255,255,255,0.3);margin-top:0.4rem;}
+    .back-to-top{position:fixed;bottom:20px;right:20px;background:var(--or);color:#1b3a2d;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:99;}
+    .back-to-top.show{opacity:1;}
+    .back-to-top:hover{background:var(--vert);color:var(--or2);}
+
+    @media(max-width:700px){
+      nav{flex-direction:row;}
+      .burger{display:block;}
+      .nav-links{display:none;width:100%;flex-direction:column;align-items:center;}
+      .nav-links.show{display:flex;}
+      .grid-2,.grid-3{grid-template-columns:1fr;}
+      .filtres-bar{flex-wrap:wrap;}
+      .compteur-clubs{margin-left:0;}
+      #stadiumMap{height:250px;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="plateforme.html">Plateforme</a>
+    <a href="observatoire.html">📊 Observatoire</a>
+    <a href="annuaire.html">📇 Annuaire</a>
+    <a href="presse.html">Presse</a>
+    <a href="mon-village.html">Mon village</a>
+    <a href="mon-ecole.html">Mon école</a>
+    <a href="sport.html" class="active">🏆 Sport</a>
+    <a href="tourisme.html">Tourisme</a>
+    <a href="hommage-andre-marie-mbida.html">Hommage</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>🏆 Le sport dans <em>la Lékié</em></h1>
+  <p>Lions Indomptables, clubs mythiques, championnats de vacances 2026 et certification — un patrimoine vivant</p>
+</div>
+
+<div class="container">
+
+  <!-- ============================================================ -->
+  <!-- LIONS INDOMPTABLES -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🦁 Lions Indomptables originaires de la Lékié</h2>
+    <p style="color:var(--gris2); margin-bottom:1.5rem;">Plusieurs enfants du territoire ont porté haut les couleurs du Cameroun sous le maillot de l'équipe nationale.</p>
+
+    <div class="grid-2">
+      <div class="joueur-card"><div class="img-placeholder">📷 Photo à venir</div><div class="nom">Élie Onana "Panka"</div><div class="origine">📍 Okola</div><div class="info">Défenseur international (1951–2018).</div><div class="palmares">🏆 Coupe du Monde 1982 · 🏆 CAN 1984 · 🏆 Champion du Cameroun 1985, 1986 (Canon)</div></div>
+      <div class="joueur-card"><div class="img-placeholder">📷 Photo à venir</div><div class="nom">Louis-Paul M'Fédé</div><div class="origine">📍 Monatélé</div><div class="info">Milieu de terrain (1961–2013).</div><div class="palmares">🏆 Coupe du Monde 1990, 1994 · 🏆 JO 1984 · Canon de Yaoundé, Stade Rennais</div></div>
+      <div class="joueur-card"><div class="img-placeholder">📷 Photo à venir</div><div class="nom">Jules Denis Onana</div><div class="origine">📍 Okola</div><div class="info">Défenseur international (né en 1964).</div><div class="palmares">🏆 Coupe du Monde 1990 · Canon de Yaoundé, Indonésie</div></div>
+      <div class="joueur-card"><div class="img-placeholder">📷 Photo à venir</div><div class="nom">Lucien Mettomo</div><div class="origine">📍 Originaire de la Lékié</div><div class="info">Défenseur international (né en 1977).</div><div class="palmares">🏆 CAN 2000, 2002 · 🏆 Coupe du Monde 2002 · Saint-Étienne, Manchester City, Kaiserslautern</div></div>
+      <div class="joueur-card"><div class="img-placeholder">📷 Photo à venir</div><div class="nom">Christian Bekamenga</div><div class="origine">📍 Monatélé</div><div class="info">Attaquant international (né en 1986).</div><div class="palmares">🌍 Carrière internationale (Malaisie, Indonésie, France, Turquie, Chine, Bolivie, Bangladesh) · Sélection en 2016</div></div>
+    </div>
+
+    <div class="notice">
+      <p>📌 <strong>Vincent Onana</strong> — Originaire de Leboth (Okola), président de la FECAFOOT (1996–1998). Mandat controversé, démis avant la Coupe du Monde 1998. Décédé en octobre 2024, inhumé en Lékié.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- DIRIGEANTS SPORTIFS -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">👑 Dirigeants sportifs</h2>
+    <div class="grid-2">
+      <div class="card"><h3>Paul Eyebe Lebogo</h3><p>Président de Canon de Yaoundé (1993–1997). Originaire de la Lékié.</p><p style="font-size:0.85rem;color:var(--gris2);">Aucun titre majeur remporté pendant son mandat (conflits internes, crise).</p><span class="badge-statut badge-valide">Validé</span></div>
+      <div class="card"><h3>Saint Fabien Mvogo</h3><p>Fondateur d'Eding Sport FC (2012). Natif de la Lékié.</p><p style="font-size:0.85rem;color:var(--gris2);">A mené le club de la régionale à la gloire nationale.</p><span class="badge-statut badge-valide">Validé</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CLUBS MYTHIQUES AVEC FILTRE + RECHERCHE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">⚽ Clubs mythiques de la Lékié</h2>
+    <p style="color:var(--gris2); margin-bottom:0.5rem;">Filtrez par commune ou recherchez un club par nom.</p>
+
+    <div class="search-bar">
+      <input type="text" id="clubSearch" class="search-input" placeholder="🔍 Rechercher un club..." aria-label="Rechercher un club">
+    </div>
+
+    <div class="filtres-bar" id="clubFilters">
+      <button type="button" class="filter-btn actif" data-commune="tous">Tous</button>
+      <button type="button" class="filter-btn" data-commune="lekie">Lékié</button>
+      <button type="button" class="filter-btn" data-commune="elig-mfomo">Elig-Mfomo</button>
+      <button type="button" class="filter-btn" data-commune="saa">Sa'a</button>
+      <button type="button" class="filter-btn" data-commune="obala">Obala</button>
+      <button type="button" class="filter-btn" data-commune="monatele">Monatélé</button>
+      <span class="compteur-clubs" id="clubCount">6 clubs trouvés</span>
+    </div>
+
+    <div class="grid-2" id="clubsGrid">
+      <div class="club-card" data-commune="lekie" data-nom="Eding Sport FC"><div class="img-placeholder">📷 Logo à venir</div><div class="nom-club">Eding Sport FC</div><div class="commune-club">📍 Lékié</div><div class="detail">Fondé le 1er février 2012 par Saint Fabien Mvogo.</div><div class="detail">🏆 Champion du Cameroun (Elite One) : <strong>2017</strong></div><div class="detail">📈 Ascension fulgurante : régionale → Elite One en 4 ans.</div><div class="detail">🌍 Participation à la Ligue des Champions CAF 2018.</div><div class="detail">📉 Actuellement en Elite Two (2026), avec sanctions FIFA.</div><span class="badge-statut badge-valide">Validé</span></div>
+
+      <div class="club-card" data-commune="elig-mfomo" data-nom="Lékié FC"><div class="img-placeholder">📷 Logo à venir</div><div class="nom-club">Lékié FC</div><div class="commune-club">📍 Elig-Mfomo</div><div class="detail">🏆 Championnes du Cameroun 2023 (Guinness Super League).</div><div class="detail">L'une des meilleures équipes féminines du pays.</div><span class="badge-statut badge-valide">Validé</span></div>
+
+      <div class="club-card" data-commune="saa" data-nom="Éclair de Sa'a"><div class="img-placeholder">📷 Logo à venir</div><div class="nom-club">Éclair de Sa'a</div><div class="commune-club">📍 Sa'a</div><div class="detail">⚪ Équipe féminine évoluant en Guinness Super League.</div><div class="detail">Vice-championne à plusieurs reprises.</div><div class="detail">🤝 André Onana (Galatasaray) — Président d'honneur.</div><span class="badge-statut badge-valide">Validé</span></div>
+
+      <div class="club-card" data-commune="obala" data-nom="Tarzan d'Obala"><div class="img-placeholder">📷 Logo à venir</div><div class="nom-club">Tarzan d'Obala</div><div class="commune-club">📍 Obala</div><div class="detail">Club mythique et emblématique, centre de formation actif.</div><div class="detail">Participe à la Coupe du Cameroun.</div><span class="badge-statut badge-encours">En cours</span></div>
+
+      <div class="club-card" data-commune="monatele" data-nom="Royal de Monatélé"><div class="img-placeholder">📷 Logo à venir</div><div class="nom-club">Royal de Monatélé</div><div class="commune-club">📍 Monatélé</div><div class="detail">Club historique, a évolué en divisions nationales.</div><div class="detail">Soutenu par la mairie de Monatélé.</div><span class="badge-statut badge-encours">En cours</span></div>
+
+      <div class="club-card" data-commune="lekie" data-nom="Lorema FC"><div class="img-placeholder">📷 Logo à venir</div><div class="nom-club">Lorema FC</div><div class="commune-club">📍 Lékié (à confirmer)</div><div class="detail">Ancien club, fondé vers 1993 par des dissidents du Canon.</div><div class="detail">Connu pour son équipe féminine (Coupe du Cameroun).</div><span class="badge-statut badge-contributif">À compléter</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CARTE DES STADES -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🗺️ Carte des stades et championnats</h2>
+    <p style="color:var(--gris2); margin-bottom:1rem;">Localisation des stades où se déroulent les championnats de vacances 2026.</p>
+    <div class="map-wrapper">
+      <div id="stadiumMap"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CHAMPIONNATS DE VACANCES 2026 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🏆 Championnats de vacances 2026</h2>
+    <p style="color:var(--gris2); margin-bottom:1.5rem;">La Lékié vibre au rythme du football pendant les vacances. Voici les compétitions de l'été 2026.</p>
+
+    <div class="grid-2" id="championnatsGrid">
+      <div class="card" id="bitsingda" data-date="2026-07-05" data-fin="2026-08-30">
+        <h3>⚽ Championnat de vacances de Bitsingda</h3>
+        <p><strong>Lieu :</strong> Bitsingda (Okola) — Stade CES</p>
+        <p><strong>Dates :</strong> 05 juillet – 30 août 2026</p>
+        <p><strong>Promoteur :</strong> MBO Louis Dimitri</p>
+        <p><strong>Activités :</strong> Songho, Handball</p>
+        <p><strong>Contacts :</strong> <a href="tel:657830196">657 83 01 96</a> / <a href="tel:698180204">698 18 02 04</a> / <a href="tel:683023868">683 02 38 68</a></p>
+        <span class="badge-statut badge-encours" id="badge-bitsingda">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Stade+CES+Bitsingda+Okola" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Championnat%20de%20vacances%20de%20Bitsingda%20-%2005%20juillet%202026%20https://isgi-lekie.cm/sport.html#bitsingda" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <div class="card" id="obeng" data-date="2026-07-09" data-fin="2026-07-09">
+        <h3>🏟️ Tournoi de l'Unité — Obeng</h3>
+        <p><strong>Lieu :</strong> Stade Municipal d'Obeng (Monatélé)</p>
+        <p><strong>Début :</strong> 09 juillet 2026 à 15h</p>
+        <p><strong>Organisateur :</strong> Mairie de Monatélé</p>
+        <p><strong>Particularité :</strong> "Sport pour tous"</p>
+        <span class="badge-statut badge-encours" id="badge-obeng">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Stade+Municipal+Obeng+Monatélé" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Tournoi%20de%20l'Unité%20-%20Obeng%20-%2009%20juillet%202026%20https://isgi-lekie.cm/sport.html#obeng" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <div class="card" id="lobo" data-date="2026-07-12" data-fin="2026-08-30">
+        <h3>🏆 Tradex SA Champion League Lobo 2026</h3>
+        <p><strong>Lieu :</strong> Stade municipal de Lobo</p>
+        <p><strong>Dates :</strong> 12 juillet – 30 août 2026 (finale)</p>
+        <p><strong>Organisateur :</strong> Mairie de Lobo</p>
+        <p><strong>Président :</strong> Gaspard Atangana</p>
+        <p><strong>Parrain :</strong> Sénateur Jean Marie Mama</p>
+        <p><strong>Sponsor :</strong> Tradex</p>
+        <p><strong>1er match :</strong> Petit Fils FC 1-0 Lion Vert d'Ekoumtick</p>
+        <p style="font-size:0.85rem;color:var(--gris2);">Présence des autorités, artistes et personnalités médiatiques</p>
+        <span class="badge-statut badge-encours" id="badge-lobo">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Stade+municipal+de+Lobo" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Tradex%20SA%20Champion%20League%20Lobo%202026%20-%2012%20juillet%202026%20https://isgi-lekie.cm/sport.html#lobo" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <div class="card" id="nkolowono" data-date="2026-07-12" data-fin="2026-08-30">
+        <h3>⚽ Festy Foot Nkol-Owono 2026</h3>
+        <p><strong>Lieu :</strong> Nkol-Owono</p>
+        <p><strong>Promoteur :</strong> Marcel Beauregard Noah Alima</p>
+        <p><strong>Particularité :</strong> Engagement citoyen, éducation par le sport, cohésion sociale</p>
+        <p style="font-size:0.85rem;color:var(--gris2);">Présence des autorités administratives et municipales à la cérémonie d'ouverture</p>
+        <span class="badge-statut badge-encours" id="badge-nkolowono">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Nkol-Owono" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Festy%20Foot%20Nkol-Owono%202026%20-%2012%20juillet%202026%20https://isgi-lekie.cm/sport.html#nkolowono" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <div class="card" id="tala" data-date="2026-07-12" data-fin="2026-08-30">
+        <h3>⚽ Festi-Foot Vacances TALA 2026</h3>
+        <p><strong>Lieu :</strong> Stade Saint Luc de Tala (Monatélé)</p>
+        <p><strong>Dates :</strong> 12 juillet – 30 août 2026</p>
+        <p><strong>Promoteurs :</strong> ETOUNDI MEVO Rene, MVILONGO Boris, MBILONGO Serge</p>
+        <p><strong>Marraine :</strong> Honorable Tassi Evelyne</p>
+        <p><strong>Équipes :</strong> 10 équipes engagées</p>
+        <span class="badge-statut badge-encours" id="badge-tala">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Stade+Saint+Luc+de+Tala+Monatélé" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Festi-Foot%20Vacances%20TALA%202026%20-%2012%20juillet%202026%20https://isgi-lekie.cm/sport.html#tala" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <div class="card" id="mengono" data-date="2026-07-19" data-fin="2026-08-30">
+        <h3>🏅 Mengono Festy Foot Vacances</h3>
+        <p><strong>Lieu :</strong> Stade Saint Daniel, Mengono</p>
+        <p><strong>Lancement :</strong> Dimanche 19 juillet 2026 à 14h00</p>
+        <p><strong>Comité :</strong> <a href="tel:698959759">698 959 759</a> / <a href="tel:679280624">679 280 624</a></p>
+        <p><strong>5e édition</strong></p>
+        <span class="badge-statut badge-encours" id="badge-mengono">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Stade+Saint+Daniel+Mengono" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Mengono%20Festy%20Foot%20Vacances%20-%2019%20juillet%202026%20https://isgi-lekie.cm/sport.html#mengono" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <div class="card" id="nkolkosse" data-date="2026-07-19" data-fin="2026-08-30">
+        <h3>🏆 Tournoi de la Fraternité NKOLKOSSE</h3>
+        <p><strong>Lieu :</strong> Nkolkosse</p>
+        <p><strong>Organisateur :</strong> MVOGO MINKOULOU Bienvenu</p>
+        <p><strong>1re édition — 2026</strong></p>
+        <p><strong>Dotation :</strong> 500 000 F (champion), 300 000 F (coupe)</p>
+        <span class="badge-statut badge-encours" id="badge-nkolkosse">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Nkolkosse" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Tournoi%20de%20la%20Fraternité%20NKOLKOSSE%20-%2019%20juillet%202026%20https://isgi-lekie.cm/sport.html#nkolkosse" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <div class="card" id="evodoula" data-date="2026-08-07" data-fin="2026-08-09">
+        <h3>🏅 Super Coupe RAFDEL Evodoula</h3>
+        <p><strong>Lieu :</strong> Evodoula</p>
+        <p><strong>Dates :</strong> 07 – 09 août 2026</p>
+        <p><strong>Président :</strong> S.M. Joseph Laurent Kamgue Abbe</p>
+        <p><strong>3e édition</strong></p>
+        <p style="font-size:0.85rem;color:var(--gris2);">Sport · Fraternité · Développement</p>
+        <span class="badge-statut badge-encours" id="badge-evodoula">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Evodoula" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Super%20Coupe%20RAFDEL%20Evodoula%20-%2007%20août%202026%20https://isgi-lekie.cm/sport.html#evodoula" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:1.5rem;">
+      <a href="plateforme.html#contribuer" class="btn btn-outline">📢 Signaler un autre championnat</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRC96ViA9I0QHSnGAbA4iTa_QMs0SonWxxqhi0TBzo4UnX9Q/viewform" target="_blank" class="btn" style="margin-left:0.5rem;">📝 Demander une certification</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- INFRASTRUCTURES SPORTIVES -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🏟️ Infrastructures sportives</h2>
+    <p style="color:var(--gris2); margin-bottom:1rem;">Le département dispose de plusieurs stades et terrains — venez compléter cette liste.</p>
+    <div class="grid-2">
+      <div class="card"><h3>🏟️ Stade Municipal</h3><p>Obala</p><span class="badge-statut badge-encours">À compléter</span></div>
+      <div class="card"><h3>🏟️ Stade de Monatélé</h3><p>Monatélé</p><span class="badge-statut badge-encours">À compléter</span></div>
+      <div class="card"><h3>🏟️ Stade Saint Daniel</h3><p>Mengono</p><span class="badge-statut badge-encours">À compléter</span></div>
+      <div class="card"><h3>🏟️ Stade Saint Luc de Tala</h3><p>Tala (Monatélé)</p><span class="badge-statut badge-encours">À compléter</span></div>
+      <div class="card"><h3>🏟️ Stade CES</h3><p>Bitsingda (Okola)</p><span class="badge-statut badge-encours">À compléter</span></div>
+      <div class="card"><h3>🏟️ Stade municipal de Lobo</h3><p>Lobo</p><span class="badge-statut badge-encours">À compléter</span></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut">↑</a>
+
+<script>
+  // ---- BURGER MENU ----
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+
+  // ---- BACK TO TOP ----
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ---- CARTE LEAFLET ----
+  try {
+    const map = L.map('stadiumMap').setView([4.15, 11.4], 9.2);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd' }).addTo(map);
+
+    const stadiums = [
+      { nom: "Stade CES", commune: "Bitsingda (Okola)", lat: 4.0167, lng: 11.3833, lien: "#bitsingda" },
+      { nom: "Stade Municipal d'Obeng", commune: "Monatélé", lat: 4.1875, lng: 11.2525, lien: "#obeng" },
+      { nom: "Stade municipal de Lobo", commune: "Lobo", lat: 3.9833, lng: 11.4, lien: "#lobo" },
+      { nom: "Stade Saint Daniel", commune: "Mengono", lat: 4.15, lng: 11.35, lien: "#mengono" },
+      { nom: "Stade Saint Luc de Tala", commune: "Tala (Monatélé)", lat: 4.17, lng: 11.28, lien: "#tala" },
+      { nom: "Stade de Nkol-Owono", commune: "Nkol-Owono", lat: 4.12, lng: 11.38, lien: "#nkolowono" },
+      { nom: "Stade de Nkolkosse", commune: "Nkolkosse", lat: 4.1, lng: 11.15, lien: "#nkolkosse" },
+      { nom: "Stade d'Evodoula", commune: "Evodoula", lat: 4.083, lng: 11.2, lien: "#evodoula" }
+    ];
+
+    stadiums.forEach(function(s) {
+      L.marker([s.lat, s.lng])
+        .addTo(map)
+        .bindPopup('<strong>' + s.nom + '</strong><br>' + s.commune + '<br><a href="' + s.lien + '" style="color:#1b3a2d;font-weight:600;">Voir le championnat →</a>');
+    });
+  } catch(e) {
+    // Fallback silencieux si la carte ne charge pas
+  }
+
+  // ---- BADGE "EN COURS" AUTOMATIQUE ----
+  function updateBadges() {
+    const today = new Date();
+    const cards = document.querySelectorAll('#championnatsGrid .card');
+    cards.forEach(function(card) {
+      const dateDebut = card.dataset.date;
+      const dateFin = card.dataset.fin;
+      if (!dateDebut) return;
+
+      const debut = new Date(dateDebut);
+      const fin = dateFin ? new Date(dateFin) : new Date(dateDebut);
+      const badge = card.querySelector('.badge-statut');
+
+      if (badge) {
+        if (today >= debut && today <= fin) {
+          badge.textContent = '🔴 En cours';
+          badge.className = 'badge-statut badge-en-cours';
+        } else if (today < debut) {
+          badge.textContent = '📅 À venir';
+          badge.className = 'badge-statut badge-encours';
+        } else {
+          badge.textContent = '✅ Terminé';
+          badge.className = 'badge-statut badge-valide';
+        }
+      }
+    });
+  }
+
+  // ---- FILTRE + RECHERCHE CLUBS ----
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const clubCards = document.querySelectorAll('.club-card');
+  const clubCount = document.getElementById('clubCount');
+  const clubSearch = document.getElementById('clubSearch');
+
+  function filterClubs() {
+    const activeFilter = document.querySelector('.filter-btn.actif');
+    const filterCommune = activeFilter ? activeFilter.dataset.commune : 'tous';
+    const searchTerm = clubSearch.value.toLowerCase().trim();
+
+    let visibleCount = 0;
+    clubCards.forEach(function(card) {
+      const matchesCommune = filterCommune === 'tous' || card.dataset.commune === filterCommune;
+      const matchesSearch = !searchTerm || card.dataset.nom.toLowerCase().includes(searchTerm);
+      const isVisible = matchesCommune && matchesSearch;
+      card.style.display = isVisible ? 'flex' : 'none';
+      if (isVisible) visibleCount++;
+    });
+    clubCount.textContent = visibleCount + ' club' + (visibleCount > 1 ? 's' : '') + ' trouvé' + (visibleCount > 1 ? 's' : '');
+  }
+
+  filterBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(function(b) { b.classList.remove('actif'); });
+      btn.classList.add('actif');
+      filterClubs();
+    });
+  });
+
+  clubSearch.addEventListener('input', filterClubs);
+
+  // ---- TRI DES CHAMPIONNATS PAR DATE ----
+  const championnatsGrid = document.getElementById('championnatsGrid');
+  const cards = Array.from(championnatsGrid.querySelectorAll('.card'));
+
+  cards.sort(function(a, b) {
+    const dateA = a.dataset.date || '9999-12-31';
+    const dateB = b.dataset.date || '9999-12-31';
+    return dateA.localeCompare(dateB);
+  });
+
+  cards.forEach(function(card) {
+    championnatsGrid.appendChild(card);
+  });
+
+  // ---- INITIALISATION ----
+  filterClubs();
+  updateBadges();
+</script>
+</body>
+</html>
