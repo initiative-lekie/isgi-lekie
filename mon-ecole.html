@@ -4,32 +4,702 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mon école – ISGI-Lékié</title>
+  <meta name="description" content="Annuaire des écoles primaires, secondaires et centres de formation du département de la Lékié. Données issues des PCD, MINESEC et FEICOM/INS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GovernmentOrganization",
+      "name": "ISGI-Lékié - Annuaire des écoles",
+      "description": "Annuaire des écoles primaires, secondaires et centres de formation du département de la Lékié.",
+      "areaServed": "Département de la Lékié, Cameroun",
+      "url": "https://isgi-lekie.cm/mon-ecole.html"
+    }
+  </script>
   <style>
+    :root {
+      --vert: #1b3a2d;
+      --vert2: #2a5a44;
+      --or: #c4922a;
+      --or2: #e0a83e;
+      --creme: #f4efe6;
+      --creme2: #ede5d8;
+      --blanc: #fefcf8;
+      --texte: #2c2c28;
+      --gris: #5a5a50;
+      --gris2: #94a3b8;
+    }
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Inter',sans-serif;background:#FEFCF8;color:#2c2c28;line-height:1.6;}
-    .container{max-width:1000px;margin:0 auto;padding:2rem;}
-    .navbar{background:#1B4332;padding:1rem;border-bottom:2px solid #C8922A;text-align:center;}
-    .navbar a{color:#FEFCF8;margin:0 1rem;text-decoration:none;}
-    h1{font-family:'Cormorant Garamond',serif;color:#1B4332;}
-    .card{background:#F5F0E8;padding:1rem;margin:1rem 0;border-radius:12px;}
-    footer{text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid #ddd;font-size:0.8rem;}
+    body{font-family:'Inter',sans-serif;background:var(--blanc);color:var(--texte);line-height:1.6;}
+    .container{max-width:1100px;margin:0 auto;padding:2rem;}
+
+    nav{background:var(--vert);padding:0.8rem 1.5rem;border-bottom:2px solid var(--or);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100;}
+    .logo a{color:var(--or2);text-decoration:none;font-size:1.5rem;font-weight:700;font-family:'Cormorant Garamond',serif;}
+    .logo span{font-size:0.7rem;display:block;color:rgba(255,255,255,0.7);}
+    .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
+    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;}
+    .nav-links a:hover{color:var(--or2);}
+    .nav-links a.active{color:var(--or2);border-bottom:2px solid var(--or);padding-bottom:0.2rem;}
+    .burger{display:none;background:none;border:none;color:var(--or2);font-size:1.8rem;cursor:pointer;}
+
+    main.container{max-width:1100px;margin:0 auto;padding:2rem;}
+
+    h1{font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:1rem;border-left:6px solid var(--or);padding-left:1rem;}
+
+    .search-bar{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:1rem;align-items:center;}
+    .search-input{flex:1;padding:0.6rem 1rem;border:1.5px solid var(--creme2);border-radius:30px;font-family:'Inter',sans-serif;font-size:0.85rem;min-width:150px;}
+    .search-input:focus{outline:2px solid var(--or);border-color:var(--or);}
+    .compteur-ecoles{font-size:0.8rem;color:var(--gris2);}
+
+    .filtres-bar{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;}
+    .filtre-btn{padding:0.3rem 0.8rem;border:1.5px solid var(--creme2);border-radius:30px;background:#fff;font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:500;cursor:pointer;transition:all 0.2s;color:var(--texte);}
+    .filtre-btn:hover{background:var(--vert);color:#fff;border-color:var(--vert);}
+    .filtre-btn.active{background:var(--vert);color:#fff;border-color:var(--vert);}
+
+    .commune-block{margin-bottom:2rem;border:1px solid var(--creme2);border-radius:16px;overflow:hidden;transition:opacity 0.3s;}
+    .commune-title{background:var(--vert);color:#fff;padding:0.8rem 1.2rem;font-size:1.2rem;font-weight:600;font-family:'Cormorant Garamond',serif;}
+    .ecole-section{background:var(--creme);margin:0.5rem 1rem 1rem 1rem;border-radius:12px;padding:0.8rem 1.2rem;}
+    .ecole-section h4{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1rem;margin-bottom:0.5rem;}
+    .ecole-section ul{margin:0.2rem 0 0.2rem 1.5rem;padding:0;}
+    .ecole-section li{margin:0.2rem 0;font-size:0.9rem;}
+    .badge-statut{display:inline-block;font-size:0.62rem;padding:0.15rem 0.5rem;border-radius:20px;font-weight:600;margin-left:0.4rem;}
+    .badge-valide{background:#e8f5e9;color:#2e7d32;}
+    .badge-encours{background:#fff8e1;color:#856404;}
+    .badge-contributif{background:#e8dfd0;color:#5a5a50;}
+
+    .btn-contribuer{display:inline-block;margin-top:0.5rem;font-size:0.75rem;color:var(--or);text-decoration:none;}
+    .btn-contribuer:hover{text-decoration:underline;}
+
+    .panorama-block{background:var(--creme);border-radius:16px;padding:1.5rem;margin:1.5rem 0;border:1px solid var(--creme2);}
+    .panorama-block table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+    .panorama-block th{background:var(--vert);color:#fff;padding:0.5rem;text-align:left;}
+    .panorama-block td{padding:0.4rem;border-bottom:1px solid var(--creme2);}
+    .panorama-block tr:nth-child(even){background:#f9f7f2;}
+    .panorama-block .positif{color:#2e7d32;font-weight:700;}
+    .panorama-block .source{font-size:0.7rem;color:var(--gris2);margin-top:0.5rem;}
+
+    .tableau-recap{background:var(--creme);border-radius:16px;padding:1rem;margin-bottom:1.5rem;border:1px solid var(--creme2);overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    .tableau-recap table{width:100%;border-collapse:collapse;font-size:0.8rem;min-width:500px;}
+    .tableau-recap th{background:var(--vert);color:#fff;padding:0.4rem;text-align:left;}
+    .tableau-recap td{padding:0.4rem;border-bottom:1px solid var(--creme2);}
+    .tableau-recap tr:nth-child(even){background:#f9f7f2;}
+    .tableau-recap .commune-link{color:var(--vert);text-decoration:none;font-weight:600;}
+    .tableau-recap .commune-link:hover{text-decoration:underline;}
+
+    .stats-block{background:var(--creme);border-radius:16px;padding:1.5rem;margin:1.5rem 0;border:1px solid var(--creme2);}
+    .stats-block h4{font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:0.8rem;}
+    .stats-block table{width:100%;border-collapse:collapse;font-size:0.8rem;}
+    .stats-block th{background:var(--vert);color:#fff;padding:0.4rem;text-align:left;}
+    .stats-block td{padding:0.4rem;border-bottom:1px solid var(--creme2);}
+    .stats-block tr:nth-child(even){background:#f9f7f2;}
+    .stats-block .source{font-size:0.7rem;color:var(--gris2);margin-top:0.5rem;}
+
+    .sticky-cta{position:sticky;bottom:0;z-index:99;background:var(--or);color:var(--vert);padding:0.6rem;text-align:center;font-weight:600;font-size:0.9rem;border-top:2px solid var(--vert);transition:opacity 0.3s;}
+    .sticky-cta a{color:var(--vert);text-decoration:underline;}
+
+    .carte-ecoles{margin:1.5rem 0;border-radius:16px;overflow:hidden;border:1px solid var(--creme2);}
+    #schoolMap{height:350px;width:100%;background:var(--creme2);}
+
+    footer{text-align:center;margin-top:3rem;padding-top:1rem;border-top:1px solid var(--creme2);font-size:0.8rem;color:var(--gris2);}
+    .note{background:#fff8e1;padding:1rem;border-left:4px solid var(--or);margin:1rem 0;border-radius:4px;}
+    .note strong{color:#c62828;}
+    .back-to-top{position:fixed;bottom:70px;right:20px;background:var(--or);color:#1b3a2d;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:98;}
+    .back-to-top.show{opacity:1;}
+    .back-to-top:hover{background:var(--vert);color:var(--or2);}
+
+    .no-results{display:none;text-align:center;padding:2rem;color:var(--gris2);font-style:italic;}
+    .highlight{background:var(--or);color:#fff;padding:0.05rem 0.2rem;border-radius:3px;}
+
+    @media(max-width:700px){
+      nav{flex-direction:row;}
+      .burger{display:block;}
+      .nav-links{display:none;width:100%;flex-direction:column;align-items:center;padding-top:0.5rem;}
+      .nav-links.show{display:flex;}
+      .ecole-section ul{margin-left:1rem;}
+      .commune-title{font-size:1rem;}
+      .tableau-recap{font-size:0.7rem;}
+      .panorama-block table,.stats-block table{font-size:0.7rem;}
+      .back-to-top{bottom:65px;}
+      #schoolMap{height:250px;}
+    }
   </style>
 </head>
 <body>
-<div class="navbar">
-  <a href="index.html">Accueil</a>
-  <a href="plateforme.html">Plateforme</a>
-  <a href="blog.html">Blog</a>
-</div>
-<div class="container">
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="plateforme.html">Plateforme</a>
+    <a href="observatoire.html">📊 Observatoire</a>
+    <a href="annuaire.html">📇 Annuaire</a>
+    <a href="blog.html">Blog</a>
+    <a href="mon-village.html">Mon village</a>
+    <a href="mon-ecole.html" class="active" aria-current="page">Mon école</a>
+    <a href="sport.html">🏆 Sport</a>
+    <a href="tourisme.html">Tourisme</a>
+    <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
+  </div>
+</nav>
+
+<main class="container">
+
   <h1>📚 Mon école</h1>
-  <p>Établissements scolaires du territoire et initiatives éducatives des enfants de la Lékié.</p>
-  <div class="card"><strong>École primaire publique d’Eyen-Meyong</strong><br>Primaire – Public – Commune de Monatélé</div>
-  <div class="card"><strong>Groupe scolaire La Trinité (Douala)</strong><br>Privé – Fondé par un enfant de la Lékié</div>
-  <div class="card"><strong>Groupe La PERLE (Douala)</strong><br>Formation – Initiative diaspora</div>
-  <p>📢 <a href="plateforme.html#contribuer">Ajouter une école ou une information</a></p>
+  <p class="note">📌 Établissements scolaires du département de la Lékié — données issues des Plans Communaux de Développement (PCD) et du <strong>Panorama Scolaire MINESEC (2015/2016)</strong>.<br>
+  <strong>⚠️ Ces données datent pour certaines d'environ 10 ans et sont en cours d'actualisation.</strong> Votre contribution est précieuse.</p>
+
+  <!-- PANORAMA COMPARATIF -->
+  <div class="panorama-block">
+    <h4 style="font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:0.8rem;">📊 Poids de la Lékié dans la Région du Centre (2015/2016)</h4>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+      <table>
+        <thead>
+          <tr><th scope="col">Indicateur</th><th scope="col">Centre</th><th scope="col">Lékié</th><th scope="col">Écart</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Poids des établissements</td><td>100%</td><td><strong>11,2%</strong></td><td>+1,4 pt</td></tr>
+          <tr><td>Poids des élèves (ESG + ESTP)</td><td>100%</td><td><strong>9,8%</strong></td><td>–</td></tr>
+          <tr><td>Poids des salles de classe</td><td>100%</td><td><strong>9,9%</strong></td><td>–</td></tr>
+          <tr><td>Poids des enseignants</td><td>100%</td><td><strong>8,2%</strong></td><td>–</td></tr>
+          <tr><td>Salles de classe en dur</td><td>89,6%</td><td><strong>93,1%</strong></td><td class="positif">✅ +3,5 pts</td></tr>
+          <tr><td>Élèves par salle</td><td>27</td><td><strong>26</strong></td><td>–</td></tr>
+          <tr><td>Élèves par place assise</td><td>1,04</td><td><strong>1,00</strong></td><td>–</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="source">📌 Source : MINESEC — Panorama Scolaire Région du Centre (2015/2016)</p>
+  </div>
+
+  <!-- STATISTIQUES DÉTAILLÉES -->
+  <div class="stats-block">
+    <h4>📊 Statistiques détaillées — Enseignement secondaire dans la Lékié (2015/2016)</h4>
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+      <table>
+        <thead>
+          <tr><th scope="col">Indicateur</th><th scope="col">Public</th><th scope="col">Public+Privé</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Établissements</td><td>88</td><td>113</td></tr>
+          <tr><td>Élèves (ESG + ESTP)</td><td>39 939</td><td>45 595</td></tr>
+          <tr><td>Élèves (Enseignement Normal)</td><td>233</td><td>247</td></tr>
+          <tr><td>Salles de classe</td><td>778</td><td>1 026</td></tr>
+          <tr><td>Salles en dur</td><td>679</td><td>908</td></tr>
+          <tr><td>Places assises</td><td>39 979</td><td>–</td></tr>
+          <tr><td>Ratio élèves / salle</td><td>23,45</td><td>–</td></tr>
+          <tr><td>Ratio élève / place assise</td><td>1,00</td><td>–</td></tr>
+          <tr><td>Enseignants (total)</td><td>2 238</td><td>2 959</td></tr>
+          <tr><td>Enseignants fonctionnaires</td><td>1 392</td><td>1 610</td></tr>
+          <tr><td>Enseignants contractuels</td><td>121</td><td>121</td></tr>
+          <tr><td>Enseignants vacataires</td><td>725</td><td>1 228</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="source">📌 Source : MINESEC — Panorama Scolaire Région du Centre (2015/2016)</p>
+  </div>
+
+  <!-- TABLEAU RÉCAPITULATIF -->
+  <div class="tableau-recap" id="recap">
+    <h4 style="font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:0.5rem;">📊 Récapitulatif par commune (PCD)</h4>
+    <table>
+      <thead>
+        <tr><th scope="col">Commune</th><th scope="col">Maternelles</th><th scope="col">Primaires</th><th scope="col">Secondaires</th><th scope="col">Professionnel</th><th scope="col">Total</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="#obala" class="commune-link">Obala</a></td><td>5</td><td>31</td><td>20</td><td>0</td><td>56</td></tr>
+        <tr><td><a href="#monatele" class="commune-link">Monatélé</a></td><td>24</td><td>40</td><td>8</td><td>1</td><td>73</td></tr>
+        <tr><td><a href="#evodoula" class="commune-link">Evodoula</a></td><td>9</td><td>21</td><td>9</td><td>2</td><td>41</td></tr>
+        <tr><td><a href="#ebebda" class="commune-link">Ebebda</a></td><td>19</td><td>28</td><td>6</td><td>0</td><td>53</td></tr>
+        <tr><td><a href="#elig-mfomo" class="commune-link">Elig-Mfomo</a></td><td>9</td><td>19</td><td>6</td><td>0</td><td>34</td></tr>
+        <tr><td><a href="#saa" class="commune-link">Sa'a</a></td><td>44</td><td>59</td><td>14</td><td>2</td><td>119</td></tr>
+        <tr><td><a href="#okola" class="commune-link">Okola</a></td><td>43</td><td>62</td><td>19</td><td>3</td><td>127</td></tr>
+        <tr><td><a href="#batchenga" class="commune-link">Batchenga</a></td><td>1</td><td>10</td><td>3</td><td>0</td><td>14</td></tr>
+        <tr><td><a href="#lobo" class="commune-link">Lobo</a></td><td>3</td><td>19</td><td>5</td><td>0</td><td>27</td></tr>
+        <tr style="font-weight:700;background:var(--vert);color:#fff;"><td>TOTAL</td><td>157</td><td>289</td><td>90</td><td>8</td><td>544</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CARTE DES ÉCOLES (structure prête) -->
+  <div class="carte-ecoles">
+    <div id="schoolMap" style="display:flex;align-items:center;justify-content:center;color:var(--gris2);font-style:italic;flex-direction:column;gap:0.5rem;">
+      <span>🗺️</span>
+      <span>Carte des écoles en cours de construction</span>
+      <span style="font-size:0.75rem;">Les coordonnées seront ajoutées à partir des contributions</span>
+    </div>
+  </div>
+
+  <!-- BARRE DE RECHERCHE -->
+  <div class="search-bar">
+    <input type="text" id="searchEcole" class="search-input" placeholder="🔍 Rechercher une école, un établissement, une commune..." aria-label="Rechercher une école">
+    <span class="compteur-ecoles" id="compteurEcoles">9 communes trouvées</span>
+  </div>
+
+  <!-- FILTRES RAPIDES -->
+  <div class="filtres-bar" id="filtresCommunes">
+    <button class="filtre-btn active" data-commune="all">Toutes</button>
+    <button class="filtre-btn" data-commune="obala">Obala</button>
+    <button class="filtre-btn" data-commune="monatele">Monatélé</button>
+    <button class="filtre-btn" data-commune="evodoula">Evodoula</button>
+    <button class="filtre-btn" data-commune="ebebda">Ebebda</button>
+    <button class="filtre-btn" data-commune="elig-mfomo">Elig-Mfomo</button>
+    <button class="filtre-btn" data-commune="saa">Sa'a</button>
+    <button class="filtre-btn" data-commune="okola">Okola</button>
+    <button class="filtre-btn" data-commune="batchenga">Batchenga</button>
+    <button class="filtre-btn" data-commune="lobo">Lobo</button>
+  </div>
+
+  <div id="noResults" class="no-results">Aucun établissement trouvé pour cette recherche.</div>
+
+  <!-- ============================================================ -->
+  <!-- OBALA -->
+  <!-- ============================================================ -->
+  <div class="commune-block" id="obala">
+    <div class="commune-title">📌 OBALA <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement maternel et primaire</h4>
+      <ul>
+        <li><strong>Écoles primaires publiques :</strong> 19</li>
+        <li><strong>Écoles primaires privées :</strong> 12</li>
+        <li><strong>Écoles maternelles publiques :</strong> 5</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement secondaire</h4>
+      <ul>
+        <li><strong>Lycées :</strong> 13</li>
+        <li><strong>CES / CETIC :</strong> 7</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+  </div>
+
+  <!-- MONATÉLÉ -->
+  <div class="commune-block" id="monatele">
+    <div class="commune-title">📌 MONATÉLÉ <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement maternel et primaire</h4>
+      <ul>
+        <li><strong>Écoles primaires publiques :</strong> 31</li>
+        <li><strong>Écoles primaires privées laïques :</strong> 4</li>
+        <li><strong>Écoles primaires privées confessionnelles :</strong> 5</li>
+        <li><strong>Écoles maternelles :</strong> 24</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>📅 Années de création (écoles primaires)</h4>
+      <ul>
+        <li><strong>1949</strong> — NKOLOSSANANGA</li>
+        <li><strong>1953</strong> — Nlongbong 1</li>
+        <li><strong>1954</strong> — Nkolngal</li>
+        <li><strong>1957</strong> — Lenouck</li>
+        <li><strong>1958</strong> — Nkolngobo</li>
+      </ul>
+    </div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement secondaire et professionnel</h4>
+      <ul>
+        <li><strong>Lycée de Monatélé</strong></li>
+        <li><strong>Lycée technique de Monatélé</strong></li>
+        <li><strong>Lycée bilingue de Monatélé</strong></li>
+        <li><strong>CES d'Elig-Ambassa</strong></li>
+        <li><strong>CES de Koumgouda Centre</strong></li>
+        <li><strong>CES de Nkolosse</strong></li>
+        <li><strong>CETIC de Monatélé</strong></li>
+        <li><strong>CETIC d'Elig-Ambassa</strong></li>
+        <li><strong>CEGTI Saint Benoit de Tala</strong> (privé)</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+  </div>
+
+  <!-- EVODOULA -->
+  <div class="commune-block" id="evodoula">
+    <div class="commune-title">📌 EVODOULA <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement maternel et primaire</h4>
+      <ul>
+        <li><strong>Écoles primaires publiques :</strong> 21</li>
+        <li><strong>Écoles maternelles :</strong> 9</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement secondaire</h4>
+      <ul>
+        <li><strong>Lycée général d'Evodoula</strong></li>
+        <li><strong>Lycée technique d'Evodoula</strong></li>
+        <li><strong>Lycée de Pongsolo</strong></li>
+        <li><strong>Lycée de Nkolkougda I</strong></li>
+        <li><strong>Lycée de Nkolassa I</strong></li>
+        <li><strong>CES de Komo-Evodoula</strong></li>
+        <li><strong>CES de Nloudou</strong></li>
+        <li><strong>CETIC de Nkolassa I</strong></li>
+        <li><strong>CETIC de Mgbabang III</strong></li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🔧 Enseignement professionnel</h4>
+      <ul>
+        <li><strong>SAR/SM d'Evodoula</strong></li>
+        <li><strong>CFR d'Evodoula</strong></li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+  </div>
+
+  <!-- EBEBDA -->
+  <div class="commune-block" id="ebebda">
+    <div class="commune-title">📌 EBEBDA <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement maternel</h4>
+      <ul>
+        <li><strong>Écoles maternelles publiques :</strong> 11</li>
+        <li><strong>Écoles maternelles catholiques :</strong> 6</li>
+        <li><strong>Écoles maternelles privées :</strong> 2</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement primaire</h4>
+      <ul>
+        <li><strong>Écoles primaires publiques :</strong> 23</li>
+        <li><strong>Écoles primaires catholiques :</strong> 5</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement secondaire</h4>
+      <ul>
+        <li><strong>Lycée général d'Ebebda II</strong></li>
+        <li><strong>CES de Koan</strong></li>
+        <li><strong>CES de Leka</strong></li>
+        <li><strong>CES de Nkang-Efok</strong></li>
+        <li><strong>CES de Nkom I</strong></li>
+        <li><strong>CETIC de Ngoksa'a</strong></li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+  </div>
+
+  <!-- ELIG-MFOMO -->
+  <div class="commune-block" id="elig-mfomo">
+    <div class="commune-title">📌 ELIG-MFOMO <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement maternel et primaire</h4>
+      <ul>
+        <li><strong>Écoles primaires publiques :</strong> 19</li>
+        <li><strong>Écoles maternelles publiques :</strong> 9</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement secondaire</h4>
+      <ul>
+        <li><strong>Lycée de Kokodo</strong></li>
+        <li><strong>Lycée de Niga</strong></li>
+        <li><strong>Lycée d'Elig-Mfomo</strong></li>
+        <li><strong>Lycée Technique d'Elig-Mfomo</strong></li>
+        <li><strong>CETIC d'Endama</strong></li>
+        <li><strong>CETIC de Nkolossan</strong></li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+  </div>
+
+  <!-- SA'A -->
+  <div class="commune-block" id="saa">
+    <div class="commune-title">📌 SA'A <span class="badge-statut badge-encours">En cours</span></div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement maternel et primaire</h4>
+      <ul>
+        <li><strong>Écoles primaires :</strong> 59 (47 publiques, 12 privées)</li>
+        <li><strong>Écoles maternelles :</strong> 44 (32 publiques, 12 privées)</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement secondaire</h4>
+      <ul>
+        <li><strong>Lycées généraux :</strong> 4</li>
+        <li><strong>Lycées techniques :</strong> 2</li>
+        <li><strong>CES :</strong> 6</li>
+        <li><strong>CETIC :</strong> 2</li>
+        <li><strong>Collèges privés :</strong> 2</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🔧 Formation professionnelle</h4>
+      <ul>
+        <li><strong>SAR/SM de Sa'a</strong></li>
+        <li><strong>École des infirmiers</strong></li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+  </div>
+
+  <!-- OKOLA -->
+  <div class="commune-block" id="okola">
+    <div class="commune-title">📌 OKOLA <span class="badge-statut badge-encours">En cours</span></div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement maternel et primaire</h4>
+      <ul>
+        <li><strong>Écoles :</strong> 105 (43 maternelles, 62 primaires)</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement secondaire</h4>
+      <ul>
+        <li><strong>Lycées / Collèges :</strong> 7</li>
+        <li><strong>CES / CETIC :</strong> 11</li>
+        <li><strong>Collèges privés :</strong> 2</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🔧 Formation professionnelle</h4>
+      <ul>
+        <li><strong>Centre de formation des personnels de santé</strong></li>
+        <li><strong>SAR/SM :</strong> 2</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+  </div>
+
+  <!-- BATCHENGA -->
+  <div class="commune-block" id="batchenga">
+    <div class="commune-title">📌 BATCHENGA <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement maternel et primaire</h4>
+      <ul>
+        <li><strong>Écoles primaires publiques :</strong> 7</li>
+        <li><strong>Écoles primaires privées :</strong> 3</li>
+        <li><strong>Écoles maternelles publiques :</strong> 1</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement secondaire</h4>
+      <ul>
+        <li><strong>Lycée classique de Batchenga</strong></li>
+        <li><strong>CETIC de Batchenga</strong></li>
+        <li><strong>CES de Nkolmekok</strong></li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+  </div>
+
+  <!-- LOBO -->
+  <div class="commune-block" id="lobo">
+    <div class="commune-title">📌 LOBO <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement maternel et primaire</h4>
+      <ul>
+        <li><strong>Écoles primaires :</strong> 19</li>
+        <li><strong>Écoles maternelles :</strong> 3</li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+    <div class="ecole-section">
+      <h4>🏫 Enseignement secondaire</h4>
+      <ul>
+        <li><strong>Lycée de Lobo</strong></li>
+        <li><strong>Lycée de Nlong</strong></li>
+        <li><strong>CES de Nkolmeyang-Lobo</strong></li>
+        <li><strong>CES d'Ekekam III</strong></li>
+        <li><strong>CETIC de Lobo</strong></li>
+      </ul>
+      <a href="plateforme.html#contribuer" class="btn-contribuer">📢 Signaler une mise à jour</a>
+    </div>
+  </div>
+
+</main>
+
+<!-- BANDEAU STICKY -->
+<div class="sticky-cta" id="stickyCta">
+  📢 Aidez-nous à mettre à jour les données de votre école — <a href="plateforme.html#contribuer">Contribuez maintenant</a>
 </div>
-<footer>ISGI-Lékié — Éducation et transmission</footer>
+
+<footer>
+  <p>ISGI-Lékié — Données issues des PCD et MINESEC (2015/2016) · En cours d’actualisation.</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
+
+<script>
+  // ---- BURGER MENU ----
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+
+  // ---- BACK TO TOP ----
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ---- MASQUER STICKY CTA EN BAS DE PAGE ----
+  const stickyCta = document.getElementById('stickyCta');
+  if (stickyCta) {
+    window.addEventListener('scroll', function() {
+      const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+      stickyCta.style.opacity = isBottom ? '0' : '1';
+      stickyCta.style.pointerEvents = isBottom ? 'none' : 'auto';
+    });
+  }
+
+  // ---- RECHERCHE + SURlIGNAGE AVEC DEBOUNCE ----
+  const searchEcole = document.getElementById('searchEcole');
+  const noResults = document.getElementById('noResults');
+  const compteurEcoles = document.getElementById('compteurEcoles');
+  let searchTimeout = null;
+
+  function highlightText(element, query) {
+    const text = element.textContent;
+    if (!query || query.length < 2) return text;
+    const regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    return text.replace(regex, '<span class="highlight">$1</span>');
+  }
+
+  function applyHighlight(query) {
+    const allLi = document.querySelectorAll('.ecole-section li');
+    allLi.forEach(function(li) {
+      const original = li.getAttribute('data-original') || li.textContent;
+      if (!li.getAttribute('data-original')) {
+        li.setAttribute('data-original', li.textContent);
+      }
+      if (query.length >= 2) {
+        li.innerHTML = highlightText(li, query);
+      } else {
+        li.innerHTML = li.getAttribute('data-original');
+      }
+    });
+  }
+
+  function performSearch(query) {
+    const allCommunes = document.querySelectorAll('.commune-block');
+    let found = 0;
+
+    applyHighlight(query);
+
+    allCommunes.forEach(function(commune) {
+      const text = commune.textContent.toLowerCase();
+      const match = !query || text.includes(query.toLowerCase());
+      commune.style.display = match ? 'block' : 'none';
+      if (match) found++;
+    });
+
+    if (found > 0 && query.length > 2) {
+      const firstVisible = document.querySelector('.commune-block[style*="block"]');
+      if (firstVisible) {
+        firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    if (noResults) {
+      noResults.style.display = (query.length > 0 && found === 0) ? 'block' : 'none';
+    }
+
+    if (compteurEcoles) {
+      compteurEcoles.textContent = found + ' commune' + (found > 1 ? 's' : '') + ' trouvée' + (found > 1 ? 's' : '');
+    }
+  }
+
+  if (searchEcole) {
+    searchEcole.addEventListener('input', function(e) {
+      const query = e.target.value.trim();
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(function() {
+        performSearch(query);
+      }, 200);
+    });
+  }
+
+  // ---- FILTRES RAPIDES ----
+  const filtreBtns = document.querySelectorAll('.filtre-btn');
+
+  filtreBtns.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      const id = this.dataset.commune;
+
+      filtreBtns.forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+
+      const allCommunes = document.querySelectorAll('.commune-block');
+
+      if (id === 'all') {
+        allCommunes.forEach(function(commune) {
+          commune.style.display = 'block';
+        });
+        if (searchEcole) {
+          searchEcole.value = '';
+          clearTimeout(searchTimeout);
+          performSearch('');
+        }
+        if (compteurEcoles) {
+          compteurEcoles.textContent = '9 communes trouvées';
+        }
+        if (noResults) {
+          noResults.style.display = 'none';
+        }
+        applyHighlight('');
+      } else {
+        const target = document.getElementById(id);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        if (searchEcole) {
+          searchEcole.value = '';
+          clearTimeout(searchTimeout);
+          performSearch('');
+        }
+      }
+    });
+  });
+
+  // ---- SCROLL VERS LA COMMUNE ----
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      setTimeout(function() {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
+  }
+</script>
 </body>
 </html>
