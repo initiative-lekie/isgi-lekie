@@ -4,79 +4,110 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mon village – ISGI-Lékié</title>
+  <meta name="description" content="Annuaire des villages et quartiers de la Lékié — 449 villages répartis dans 9 communes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --vert: #1b3a2d;
+      --vert2: #2a5a44;
+      --or: #c4922a;
+      --or2: #e0a83e;
+      --creme: #f4efe6;
+      --creme2: #ede5d8;
+      --blanc: #fefcf8;
+      --texte: #2c2c28;
+      --gris: #5a5a50;
+      --gris2: #94a3b8;
+    }
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Inter',sans-serif;background:#FEFCF8;color:#2c2c28;line-height:1.6;}
+    body{font-family:'Inter',sans-serif;background:var(--blanc);color:var(--texte);line-height:1.6;}
     .container{max-width:1000px;margin:0 auto;padding:2rem;}
-    .navbar{background:#1B4332;padding:1rem;border-bottom:2px solid #C8922A;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-    .logo a{color:#e0a83e;text-decoration:none;font-size:1.5rem;font-weight:700;font-family:'Cormorant Garamond',serif;}
+
+    nav{background:var(--vert);padding:0.8rem 1.5rem;border-bottom:2px solid var(--or);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100;}
+    .logo a{color:var(--or2);text-decoration:none;font-size:1.5rem;font-weight:700;font-family:'Cormorant Garamond',serif;}
     .logo span{font-size:0.7rem;display:block;color:rgba(255,255,255,0.7);}
     .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
     .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;}
-    .nav-links a:hover{color:#e0a83e;}
-    .burger{display:none;background:none;border:none;color:#e0a83e;font-size:1.8rem;cursor:pointer;}
-    h1{font-family:'Cormorant Garamond',serif;color:#1B4332;margin-bottom:1rem;}
-    .commune-block{margin-bottom:2rem;border:1px solid #e8dfd0;border-radius:16px;overflow:hidden;}
-    .commune-title{background:#1B4332;color:#FEFCF8;padding:0.8rem 1.2rem;font-size:1.2rem;font-weight:600;font-family:'Cormorant Garamond',serif;}
-    .commune-title .badge-bip{background:#c4922a;color:#1B4332;font-size:0.65rem;padding:0.1rem 0.6rem;border-radius:20px;margin-left:0.8rem;font-family:'Inter',sans-serif;font-weight:600;}
-    .commune-bip{background:#eef6fb;border-left:4px solid #c4922a;padding:0.7rem 1rem;margin:0.5rem 1rem 0.5rem 1rem;border-radius:8px;font-size:0.85rem;}
-    .commune-bip strong{color:#1B4332;}
-    .commune-bip .bip-link{color:#1B4332;font-weight:600;text-decoration:none;}
-    .commune-bip .bip-link:hover{color:#c4922a;text-decoration:underline;}
-    .groupement{background:#F5F0E8;margin:0.5rem 1rem 1rem 1rem;border-radius:12px;}
-    .groupement summary{font-weight:700;padding:0.8rem;cursor:pointer;color:#1B4332;background:#F5F0E8;border-radius:12px;}
+    .nav-links a:hover{color:var(--or2);}
+    .burger{display:none;background:none;border:none;color:var(--or2);font-size:1.8rem;cursor:pointer;}
+
+    h1{font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:1rem;border-left:6px solid var(--or);padding-left:1rem;}
+    .commune-block{margin-bottom:2rem;border:1px solid var(--creme2);border-radius:16px;overflow:hidden;}
+    .commune-title{background:var(--vert);color:#fff;padding:0.8rem 1.2rem;font-size:1.2rem;font-weight:600;font-family:'Cormorant Garamond',serif;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
+    .commune-title .village-count{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.7);}
+    .groupement{background:var(--creme);margin:0.5rem 1rem 1rem 1rem;border-radius:12px;}
+    .groupement summary{font-weight:700;padding:0.8rem;cursor:pointer;color:var(--vert);background:var(--creme);border-radius:12px;font-size:0.95rem;}
+    .groupement summary:hover{background:var(--creme2);}
     .groupement ul{margin:0.5rem 1rem 1rem 2rem;padding:0;}
     .groupement li{margin:0.2rem 0;font-size:0.9rem;}
+
+    .search-bar{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center;}
+    .search-input{flex:1;padding:0.6rem 1rem;border:1.5px solid var(--creme2);border-radius:30px;font-family:'Inter',sans-serif;font-size:0.85rem;min-width:150px;}
+    .search-input:focus{outline:2px solid var(--or);border-color:var(--or);}
+
     .lien-fiche{font-size:0.75rem;margin-left:0.5rem;}
-    .lien-fiche a{color:#C8922A;text-decoration:none;}
-    footer{text-align:center;margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;font-size:0.8rem;color:#8a8a80;}
-    .note{background:#F4F0E0;padding:1rem;border-left:4px solid #C8922A;margin:1rem 0;}
-    .back-to-top{position:fixed;bottom:20px;right:20px;background:#c4922a;color:#1b3a2d;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:99;}
+    .lien-fiche a{color:var(--or);text-decoration:none;}
+    .lien-fiche a:hover{text-decoration:underline;}
+
+    .lien-sport{margin-left:0.5rem;font-size:0.7rem;}
+    .lien-sport a{color:var(--vert);text-decoration:none;background:#e8f5e9;padding:0.05rem 0.5rem;border-radius:12px;}
+    .lien-sport a:hover{background:var(--or);color:#fff;}
+
+    footer{text-align:center;margin-top:3rem;padding-top:1rem;border-top:1px solid var(--creme2);font-size:0.8rem;color:var(--gris2);}
+    .note{background:#fff8e1;padding:1rem;border-left:4px solid var(--or);margin:1rem 0;border-radius:4px;}
+    .back-to-top{position:fixed;bottom:20px;right:20px;background:var(--or);color:#1b3a2d;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:99;}
     .back-to-top.show{opacity:1;}
-    .back-to-top:hover{background:#1b3a2d;color:#e0a83e;}
-    @media (max-width:700px){.navbar{flex-direction:row;}.burger{display:block;}.nav-links{display:none;width:100%;flex-direction:column;align-items:center;padding-top:0.5rem;}.nav-links.show{display:flex;}.groupement ul{margin:0.5rem 0.5rem 1rem 1.2rem;}}
+    .back-to-top:hover{background:var(--vert);color:var(--or2);}
+
+    .no-results{display:none;text-align:center;padding:2rem;color:var(--gris2);font-style:italic;}
+
+    @media(max-width:700px){
+      nav{flex-direction:row;}
+      .burger{display:block;}
+      .nav-links{display:none;width:100%;flex-direction:column;align-items:center;padding-top:0.5rem;}
+      .nav-links.show{display:flex;}
+      .groupement ul{margin:0.5rem 0.5rem 1rem 1.2rem;}
+      .commune-title{font-size:1rem;}
+    }
   </style>
 </head>
 <body>
 
-<div class="navbar">
+<nav>
   <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
-  <button class="burger" id="burgerBtn">☰</button>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
   <div class="nav-links" id="navLinks">
     <a href="index.html">Accueil</a>
     <a href="plateforme.html">Plateforme</a>
     <a href="observatoire.html">📊 Observatoire</a>
+    <a href="annuaire.html">📇 Annuaire</a>
     <a href="blog.html">Blog</a>
     <a href="mon-ecole.html">Mon école</a>
+    <a href="sport.html">🏆 Sport</a>
     <a href="tourisme.html">Tourisme</a>
     <a href="hommage-andre-marie-mbida.html">Hommage</a>
     <a href="presse.html">Presse</a>
   </div>
-</div>
+</nav>
 
 <div class="container">
   <h1>🏘️ Mon village</h1>
-  <p class="note">📌 Données en cours de collecte et d’actualisation. Les listes ci-dessous sont progressives – votre contribution est précieuse.<br>Les entités listées correspondent aux <strong>chefferies traditionnelles de 3e degré</strong> (villages / quartiers).</p>
+  <p class="note">📌 Données issues des Plans Communaux de Développement (PCD) — certaines datent d'environ 10 ans. Les listes sont progressives – votre contribution est précieuse.<br>Les entités listées correspondent aux <strong>chefferies traditionnelles de 3e degré</strong> (villages / quartiers).</p>
 
-  <!-- ============================================================ -->
+  <!-- BARRE DE RECHERCHE -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" class="search-input" placeholder="🔍 Rechercher un village, un quartier..." aria-label="Rechercher un village">
+  </div>
+  <div id="noResults" class="no-results">Aucun village trouvé pour cette recherche.</div>
+
   <!-- MONATÉLÉ -->
-  <!-- ============================================================ -->
   <div class="commune-block" id="monatele">
-    <div class="commune-title">📌 MONATÉLÉ <span class="badge-bip">BIP</span></div>
-
-    <div class="commune-bip">
-      <strong>📊 Programmation BIP – Monatélé</strong><br>
-      💰 Montant total programmé : <strong>2,61 Mds FCFA</strong><br>
-      📋 Nombre de marchés : <strong>126</strong><br>
-      🏆 Principal projet : Adduction d'eau Monatélé – phase 2 (180 M FCFA)<br>
-      🔗 <a href="observatoire.html#monatele" class="bip-link">Voir dans l'observatoire →</a>
-    </div>
-
-    <details class="groupement"><summary>MVOG-NAMNYE 1 (22)</summary><ul><li>EBONDÉGUÉ</li><li>EKEKOM</li><li>LEKOUN</li><li>LÉLA</li><li>MENGONO</li><li>MGBABA 1</li><li>MGBABA 2</li><li>MONABO 1</li><li>MONABO 2</li><li>MPONG</li><li>MVOMEKAK 1</li><li>NKOLMEBEL</li><li>NKOLMELONG</li><li>NKOLNDOUP</li><li>NKOMBIBAM 1</li><li>NKOMBIBAM 2</li><li>NLONGBON 1</li><li>NLONGBON 2</li><li>NLONGBON 3</li><li>NLONGBON 4</li><li>OVANG</li><li>ZOBSILA</li></ul></details>
-    <details class="groupement"><summary>KOUGOUDA (16)</summary><ul><li>EBANGA</li><li>EBOLMONGO</li><li>ELON</li><li>EMANA</li><li>EZEZANG</li><li>KOUGOUDA 1</li><li>KOUGOUDA 2</li><li>MVOMEKAK 2</li><li>NGOMO</li><li>NGOMO-CENTRE</li><li>NKOG-BONG</li><li>NKOG-EKOGO</li><li>NKOLTOMO 1</li><li>NKOLTOMO 3</li><li>NKOLVE</li><li>POUPOUMA</li></ul></details>
-    <details class="groupement"><summary>NKOLKOSSE (6)</summary><ul><li>BIKOGO</li><li>NKANG</li><li>NKOLKOSSE</li><li>NKOLMETOLO</li><li>NKOLOSSANANGA</li><li>OKOKODO</li></ul></details>
-    <details class="groupement">
+    <div class="commune-title">📌 MONATÉLÉ <span class="village-count" id="count-monatele">0 villages</span></div>
+    <details class="groupement" data-groupement="monatele"><summary>MVOG-NAMNYE 1 (22)</summary><ul><li>EBONDÉGUÉ</li><li>EKEKOM</li><li>LEKOUN</li><li>LÉLA</li><li>MENGONO</li><li>MGBABA 1</li><li>MGBABA 2</li><li>MONABO 1</li><li>MONABO 2</li><li>MPONG</li><li>MVOMEKAK 1</li><li>NKOLMEBEL</li><li>NKOLMELONG</li><li>NKOLNDOUP</li><li>NKOMBIBAM 1</li><li>NKOMBIBAM 2</li><li>NLONGBON 1</li><li>NLONGBON 2</li><li>NLONGBON 3</li><li>NLONGBON 4</li><li>OVANG</li><li>ZOBSILA</li></ul></details>
+    <details class="groupement" data-groupement="monatele"><summary>KOUGOUDA (16)</summary><ul><li>EBANGA</li><li>EBOLMONGO</li><li>ELON</li><li>EMANA</li><li>EZEZANG</li><li>KOUGOUDA 1</li><li>KOUGOUDA 2</li><li>MVOMEKAK 2</li><li>NGOMO</li><li>NGOMO-CENTRE</li><li>NKOG-BONG</li><li>NKOG-EKOGO</li><li>NKOLTOMO 1</li><li>NKOLTOMO 3</li><li>NKOLVE</li><li>POUPOUMA</li></ul></details>
+    <details class="groupement" data-groupement="monatele"><summary>NKOLKOSSE (6)</summary><ul><li>BIKOGO</li><li>NKANG</li><li>NKOLKOSSE</li><li>NKOLMETOLO</li><li>NKOLOSSANANGA</li><li>OKOKODO</li></ul></details>
+    <details class="groupement" data-groupement="monatele">
       <summary>EYEN-MEYONG (9)</summary>
       <ul>
         <li>EKOUDA</li>
@@ -90,197 +121,112 @@
         <li>TALA 2</li>
       </ul>
     </details>
-    <details class="groupement"><summary>EKOT (25)</summary><ul><li>ALLOGENES 1</li><li>ALLOGENES 2</li><li>ALLOGENES 3</li><li>AVOH</li><li>ETOM</li><li>LENOUCK</li><li>LEVEM</li><li>MONATELE 1</li><li>MONATELE 2</li><li>MONG</li><li>NDOUP</li><li>NKOLEVIDA</li><li>NKOLMELEN</li><li>NKOLNGAL</li><li>NKOLOWONO</li><li>NKONGMESSE 1</li><li>NKONGMESSE 2</li><li>NKONGMESSA</li><li>NTOL</li><li>OSSEBE</li><li>NKONGMEDOG</li><li>Sous-bois</li><li>Obeng</li><li>Ndoup quartier</li><li>Nyatmang</li></ul></details>
+    <details class="groupement" data-groupement="monatele"><summary>EKOT (25)</summary><ul><li>ALLOGENES 1</li><li>ALLOGENES 2</li><li>ALLOGENES 3</li><li>AVOH</li><li>ETOM</li><li>LENOUCK</li><li>LEVEM</li><li>MONATELE 1</li><li>MONATELE 2</li><li>MONG</li><li>NDOUP</li><li>NKOLEVIDA</li><li>NKOLMELEN</li><li>NKOLNGAL</li><li>NKOLOWONO</li><li>NKONGMESSE 1</li><li>NKONGMESSE 2</li><li>NKONGMESSA</li><li>NTOL</li><li>OSSEBE</li><li>NKONGMEDOG</li><li>Sous-bois</li><li>Obeng</li><li>Ndoup quartier</li><li>Nyatmang</li></ul></details>
   </div>
 
-  <!-- ============================================================ -->
   <!-- BATCHENGA -->
-  <!-- ============================================================ -->
   <div class="commune-block" id="batchenga">
-    <div class="commune-title">📌 BATCHENGA <span class="badge-bip">BIP</span></div>
-
-    <div class="commune-bip">
-      <strong>📊 Programmation BIP – Batchenga</strong><br>
-      💰 Montant total programmé : <strong>1,70 Mds FCFA</strong><br>
-      📋 Nombre de marchés : <strong>79</strong><br>
-      🏆 Principal projet : Construction école publique (195 M FCFA)<br>
-      🔗 <a href="observatoire.html#batchenga" class="bip-link">Voir dans l'observatoire →</a>
-    </div>
-
-    <details class="groupement"><summary>BATCHENGA (15)</summary><ul><li>BALLONG 1</li><li>BALLONG 2</li><li>BIYAGA</li><li>EBANG-MINALA</li><li>ELON</li><li>EMANA</li><li>EMANA BATCHENGA</li><li>FAMENASSI</li><li>MEBASSA</li><li>NACHTIGAL</li><li>NALASSI</li><li>NDJI</li><li>NKOPKALI</li><li>OLEMBE</li><li>OTIBILI</li></ul></details>
+    <div class="commune-title">📌 BATCHENGA <span class="village-count" id="count-batchenga">0 villages</span></div>
+    <details class="groupement" data-groupement="batchenga"><summary>BATCHENGA (15)</summary><ul><li>BALLONG 1</li><li>BALLONG 2</li><li>BIYAGA</li><li>EBANG-MINALA</li><li>ELON</li><li>EMANA</li><li>EMANA BATCHENGA</li><li>FAMENASSI</li><li>MEBASSA</li><li>NACHTIGAL</li><li>NALASSI</li><li>NDJI</li><li>NKOPKALI</li><li>OLEMBE</li><li>OTIBILI</li></ul></details>
   </div>
 
-  <!-- ============================================================ -->
   <!-- OBALA -->
-  <!-- ============================================================ -->
   <div class="commune-block" id="obala">
-    <div class="commune-title">📌 OBALA <span class="badge-bip">BIP</span></div>
-
-    <div class="commune-bip">
-      <strong>📊 Programmation BIP – Obala</strong><br>
-      💰 Montant total programmé : <strong>2,64 Mds FCFA</strong><br>
-      📋 Nombre de marchés : <strong>139</strong><br>
-      🏆 Principal projet : Réhabilitation piste rurale Obala – Sa'a (175 M FCFA)<br>
-      🔗 <a href="observatoire.html#obala" class="bip-link">Voir dans l'observatoire →</a>
-    </div>
-
-    <details class="groupement"><summary>ENDINDING (14)</summary><ul><li>ABONO</li><li>EFOUMELESSI</li><li>EKABITA-ESSELE</li><li>ELIG-BODO</li><li>ELIG-MGOMO</li><li>ESSONG</li><li>ETONG BIDJOE</li><li>EZEZANG-ESSELE</li><li>MBAKOMO</li><li>NKOD'ABANG</li><li>NKOLTSOGO 1</li><li>NKOLTSOGO 2</li><li>ZIMA</li><li>ZOATOUBSI</li></ul></details>
-    <details class="groupement"><summary>OBALA (26)</summary><ul><li>ABOKONO LYCEE</li><li>EBOL-AKUM</li><li>EKEKOM</li><li>EKOUMDOUMA</li><li>ELIG-BESSALA</li><li>ELOG-NGAZOUMA</li><li>ELOT 1</li><li>FOULASSI</li><li>LEBOBI</li><li>LENGOM</li><li>MBOUA 2</li><li>MEKAS</li><li>NDJONG-MEZEGUE</li><li>NKOL-EWODO</li><li>NKOLFOULOU 3</li><li>NKOL-MBENE</li><li>NKOLMELEN</li><li>NKOLNGUEM 1</li><li>NKOLNGUEM 2</li><li>NKOL-OBILI</li><li>NKOMETOU 3</li><li>OBALA ZONE 2</li><li>QUARTIER BIKOK-ASSI</li><li>QUARTIER ELOT 2</li><li>QUARTIER MBOUA 1</li><li>QUARTIER NKOLBIKOK</li></ul></details>
-    <details class="groupement"><summary>NKOMETOU (11)</summary><ul><li>EKABITA-MENDOUM</li><li>EZEZANG-MENDOUM</li><li>MFOMAKAP</li><li>MINDJOMO</li><li>MVOG-DJIGUI</li><li>NKOLMENDOUGA</li><li>NKOL-NTARA</li><li>NKOLTIMA</li><li>NKOM-NDAMBA</li><li>YEMSOUM</li><li>YEMSOUM 2</li></ul></details>
-    <details class="groupement"><summary>NKOLFEP (9)</summary><ul><li>ELIG-NKOUMA 1</li><li>ELIG-NKOUMA 2</li><li>ELIG-TSOGO</li><li>ETOUD-AYOS</li><li>KOUDANDENG</li><li>LEKIE-ASSI</li><li>NKOL-NDOBO</li><li>NKOM-EFOUFOUM</li><li>NTO</li></ul></details>
-    <details class="groupement"><summary>LOUA (8)</summary><ul><li>KOMO-MVOKANI</li><li>LOUA 2</li><li>NGONGO</li><li>NKOL-EWODO</li><li>NKOLTOMO 2</li><li>YEMESSOA 1</li><li>YEMESSOA 2</li><li>YEMKOUT</li></ul></details>
-    <details class="groupement"><summary>MINKAMA (4)</summary><ul><li>ELOMZOK</li><li>MINKAMA 3</li><li>NKOL-EKUI</li><li>VILLAGE PIONNIER</li></ul></details>
-    <details class="groupement"><summary>EFOK (4)</summary><ul><li>MBELE 1</li><li>MBELE 2</li><li>NTSAN</li><li>TSEK</li></ul></details>
+    <div class="commune-title">📌 OBALA <span class="village-count" id="count-obala">0 villages</span></div>
+    <details class="groupement" data-groupement="obala"><summary>ENDINDING (14)</summary><ul><li>ABONO</li><li>EFOUMELESSI</li><li>EKABITA-ESSELE</li><li>ELIG-BODO</li><li>ELIG-MGOMO</li><li>ESSONG</li><li>ETONG BIDJOE</li><li>EZEZANG-ESSELE</li><li>MBAKOMO</li><li>NKOD'ABANG</li><li>NKOLTSOGO 1</li><li>NKOLTSOGO 2</li><li>ZIMA</li><li>ZOATOUBSI</li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>OBALA (26)</summary><ul><li>ABOKONO LYCEE</li><li>EBOL-AKUM</li><li>EKEKOM</li><li>EKOUMDOUMA</li><li>ELIG-BESSALA</li><li>ELOG-NGAZOUMA</li><li>ELOT 1</li><li>FOULASSI</li><li>LEBOBI</li><li>LENGOM</li><li>MBOUA 2</li><li>MEKAS</li><li>NDJONG-MEZEGUE</li><li>NKOL-EWODO</li><li>NKOLFOULOU 3</li><li>NKOL-MBENE</li><li>NKOLMELEN</li><li>NKOLNGUEM 1</li><li>NKOLNGUEM 2</li><li>NKOL-OBILI</li><li>NKOMETOU 3</li><li>OBALA ZONE 2</li><li>QUARTIER BIKOK-ASSI</li><li>QUARTIER ELOT 2</li><li>QUARTIER MBOUA 1</li><li>QUARTIER NKOLBIKOK</li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>NKOMETOU (11)</summary><ul><li>EKABITA-MENDOUM</li><li>EZEZANG-MENDOUM</li><li>MFOMAKAP</li><li>MINDJOMO</li><li>MVOG-DJIGUI</li><li>NKOLMENDOUGA</li><li>NKOL-NTARA</li><li>NKOLTIMA</li><li>NKOM-NDAMBA</li><li>YEMSOUM</li><li>YEMSOUM 2</li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>NKOLFEP (9)</summary><ul><li>ELIG-NKOUMA 1</li><li>ELIG-NKOUMA 2</li><li>ELIG-TSOGO</li><li>ETOUD-AYOS</li><li>KOUDANDENG</li><li>LEKIE-ASSI</li><li>NKOL-NDOBO</li><li>NKOM-EFOUFOUM</li><li>NTO</li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>LOUA (8)</summary><ul><li>KOMO-MVOKANI</li><li>LOUA 2</li><li>NGONGO</li><li>NKOL-EWODO</li><li>NKOLTOMO 2</li><li>YEMESSOA 1</li><li>YEMESSOA 2</li><li>YEMKOUT</li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>MINKAMA (4)</summary><ul><li>ELOMZOK</li><li>MINKAMA 3</li><li>NKOL-EKUI</li><li>VILLAGE PIONNIER</li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>EFOK (4)</summary><ul><li>MBELE 1</li><li>MBELE 2</li><li>NTSAN</li><li>TSEK</li></ul></details>
   </div>
 
-  <!-- ============================================================ -->
   <!-- SA'A -->
-  <!-- ============================================================ -->
   <div class="commune-block" id="saa">
-    <div class="commune-title">📌 SA'A <span class="badge-bip">BIP</span></div>
-
-    <div class="commune-bip">
-      <strong>📊 Programmation BIP – Sa'a</strong><br>
-      💰 Montant total programmé : <strong>2,66 Mds FCFA</strong><br>
-      📋 Nombre de marchés : <strong>131</strong><br>
-      🏆 Principal projet : Construction bloc pédagogique (155 M FCFA)<br>
-      🔗 <a href="observatoire.html#saa" class="bip-link">Voir dans l'observatoire →</a>
-    </div>
-
-    <details class="groupement"><summary>SA'A (20)</summary><ul><li>ABEL</li><li>EBANG-MINALA</li><li>EBOGO</li><li>EKALAN-MINKOUL</li><li>EKOUM-DOUMA</li><li>ELESSOGUE</li><li>ESSOL-MEYONG</li><li>KOE</li><li>MANELON</li><li>MBAMA</li><li>MBAZOA</li><li>NKOL-MESSENG</li><li>NKOLO</li><li>NKOL-OFOUMBI</li><li>NKOLZOA 1</li><li>NKOLZOA 2</li><li>NKOLZOMO</li><li>POLO</li><li>QUARTIER BAMILEKE</li><li>QUARTIER HAOUSSA</li></ul></details>
-    <details class="groupement"><summary>EBOMBO (12)</summary><ul><li>KOKOE</li><li>MBASSILA</li><li>MBILMANA</li><li>MENDOUGA-MOKALA</li><li>NDONG-ELANG</li><li>NDOVOLO</li><li>NKOL-EBASSIMBI</li><li>NKOL-EBOMA</li><li>NKOL-MGBANA</li><li>NKOLNDZOMO</li><li>NOLANGOUNG</li><li>NSAN-MENDOUGA</li></ul></details>
-    <details class="groupement"><summary>ENGAB (9)</summary><ul><li>ELANG</li><li>MENGON</li><li>MOMO</li><li>NKOLANG 1</li><li>NKOLANG 2</li><li>NKOL-AWONO</li><li>NKOLBOGO 2</li><li>NKOL-ESSONO</li><li>NLONG-ZOK</li></ul></details>
-    <details class="groupement"><summary>NKOLBOGO (10)</summary><ul><li>LEKOUBEK</li><li>MEKIMEBODO</li><li>MELIK</li><li>NKOLAYOS</li><li>NKOLBOGO 3</li><li>NKOLEVODO</li><li>NKOL-ONGUENE</li><li>ONDONDO 1</li><li>ONDONDO 2</li><li>WOMKOA</li></ul></details>
-    <details class="groupement"><summary>LEBAMZIP (16)</summary><ul><li>EBANG</li><li>EKEKOM</li><li>EKOUM-ONDOM</li><li>LEBAMZIP 1</li><li>LEBAMZIP 2</li><li>LEPOPOMO</li><li>MENGAMA</li><li>NKOL-EBAE</li><li>NKOLKAÏ</li><li>NKOLMELOK</li><li>NKOLMEYOS</li><li>NKOLNDOGO</li><li>NKOLNGOK</li><li>NLONG-ONAMBELE</li><li>NTOBO</li><li>NTSA-EKANG</li></ul></details>
-    <details class="groupement"><summary>NKOL-MVAK (13)</summary><ul><li>EDZEN</li><li>MBAN</li><li>MELIK</li><li>NKOLBIBAK</li><li>NKOL-EKONO</li><li>NKOLMEFON</li><li>NKOLMEKI</li><li>NKOL-MVAK</li><li>NKOLNDZAMA 1</li><li>NKOLNDZAMA 2</li><li>NKOLNTSA</li><li>NKOLVE</li><li>NKOLZOMO</li></ul></details>
+    <div class="commune-title">📌 SA'A <span class="village-count" id="count-saa">0 villages</span></div>
+    <details class="groupement" data-groupement="saa"><summary>SA'A (20)</summary><ul><li>ABEL</li><li>EBANG-MINALA</li><li>EBOGO</li><li>EKALAN-MINKOUL</li><li>EKOUM-DOUMA</li><li>ELESSOGUE</li><li>ESSOL-MEYONG</li><li>KOE</li><li>MANELON</li><li>MBAMA</li><li>MBAZOA</li><li>NKOL-MESSENG</li><li>NKOLO</li><li>NKOL-OFOUMBI</li><li>NKOLZOA 1</li><li>NKOLZOA 2</li><li>NKOLZOMO</li><li>POLO</li><li>QUARTIER BAMILEKE</li><li>QUARTIER HAOUSSA</li></ul></details>
+    <details class="groupement" data-groupement="saa"><summary>EBOMBO (12)</summary><ul><li>KOKOE</li><li>MBASSILA</li><li>MBILMANA</li><li>MENDOUGA-MOKALA</li><li>NDONG-ELANG</li><li>NDOVOLO</li><li>NKOL-EBASSIMBI</li><li>NKOL-EBOMA</li><li>NKOL-MGBANA</li><li>NKOLNDZOMO</li><li>NOLANGOUNG</li><li>NSAN-MENDOUGA</li></ul></details>
+    <details class="groupement" data-groupement="saa"><summary>ENGAB (9)</summary><ul><li>ELANG</li><li>MENGON</li><li>MOMO</li><li>NKOLANG 1</li><li>NKOLANG 2</li><li>NKOL-AWONO</li><li>NKOLBOGO 2</li><li>NKOL-ESSONO</li><li>NLONG-ZOK</li></ul></details>
+    <details class="groupement" data-groupement="saa"><summary>NKOLBOGO (10)</summary><ul><li>LEKOUBEK</li><li>MEKIMEBODO</li><li>MELIK</li><li>NKOLAYOS</li><li>NKOLBOGO 3</li><li>NKOLEVODO</li><li>NKOL-ONGUENE</li><li>ONDONDO 1</li><li>ONDONDO 2</li><li>WOMKOA</li></ul></details>
+    <details class="groupement" data-groupement="saa"><summary>LEBAMZIP (16)</summary><ul><li>EBANG</li><li>EKEKOM</li><li>EKOUM-ONDOM</li><li>LEBAMZIP 1</li><li>LEBAMZIP 2</li><li>LEPOPOMO</li><li>MENGAMA</li><li>NKOL-EBAE</li><li>NKOLKAÏ</li><li>NKOLMELOK</li><li>NKOLMEYOS</li><li>NKOLNDOGO</li><li>NKOLNGOK</li><li>NLONG-ONAMBELE</li><li>NTOBO</li><li>NTSA-EKANG</li></ul></details>
+    <details class="groupement" data-groupement="saa"><summary>NKOL-MVAK (13)</summary><ul><li>EDZEN</li><li>MBAN</li><li>MELIK</li><li>NKOLBIBAK</li><li>NKOL-EKONO</li><li>NKOLMEFON</li><li>NKOLMEKI</li><li>NKOL-MVAK</li><li>NKOLNDZAMA 1</li><li>NKOLNDZAMA 2</li><li>NKOLNTSA</li><li>NKOLVE</li><li>NKOLZOMO</li></ul></details>
   </div>
 
-  <!-- ============================================================ -->
   <!-- OKOLA -->
-  <!-- ============================================================ -->
   <div class="commune-block" id="okola">
-    <div class="commune-title">📌 OKOLA <span class="badge-bip">BIP</span></div>
-
-    <div class="commune-bip">
-      <strong>📊 Programmation BIP – Okola</strong><br>
-      💰 Montant total programmé : <strong>4,39 Mds FCFA</strong><br>
-      📋 Nombre de marchés : <strong>161</strong><br>
-      🏆 Principal projet : Cité municipale d'Okola (285 M FCFA)<br>
-      🔗 <a href="observatoire.html#okola" class="bip-link">Voir dans l'observatoire →</a>
-    </div>
-
-    <details class="groupement"><summary>ETON-BETI (22)</summary><ul><li>BILONO 1</li><li>BILONO 2</li><li>EBOD</li><li>EKABITA TOM</li><li>EKONG</li><li>ETOUD</li><li>LEBOUDI 1</li><li>LEBOUDI 2</li><li>METAK</li><li>MINTOTOMO</li><li>MVOUA</li><li>NGOYA 1</li><li>NGOYA 2</li><li>NGOYA 3</li><li>NKOLBEGA</li><li>NKOLESSONG</li><li>NKOLONDOM</li><li>NKONG</li><li>NOUMA</li><li>OBAK</li><li>OKOUKOUDA</li><li>YEGUE-ASSI</li></ul></details>
-    <details class="groupement"><summary>MVOG NAMA 2 (31)</summary><ul><li>AYOS</li><li>ELIG-NDOUM</li><li>ELIG-YEN</li><li>EVIAN</li><li>FEGMIMBANG</li><li>LEBOTH</li><li>LENDOM 1</li><li>LENGON</li><li>MEKAK</li><li>MINSOA 1</li><li>MINSOA 2</li><li>MVA'A 1</li><li>MVA'A 2</li><li>NGOBO-ASSI</li><li>NKODASSA</li><li>NKOLDJOBE</li><li>NKOLEKOTSING</li><li>NKOLFEB</li><li>NKOLFEM</li><li>NKOLMEKOUMA</li><li>NKOLMEVANIZE</li><li>NKOLNYADA</li><li>NKOLPOBLO</li><li>NKOLTSIBA</li><li>NKOLZIBI</li><li>NTUISSONG</li><li>NYEMEYONG</li><li>QUARTIER HAOUSSA</li><li>SONG-ONANA</li><li>VOA 1</li><li>VOA 2</li></ul></details>
-    <details class="groupement"><summary>MVOG-NAMNYE 3 (20)</summary><ul><li>BISSOGO</li><li>BITSINGDA</li><li>EBANGA</li><li>EBOUGSI</li><li>EKEKAM 1</li><li>EKEKAM 2</li><li>KONABENG</li><li>LENDOM 2</li><li>LOUMA</li><li>MBELEKIE</li><li>MPONG 2</li><li>NDANGUENG</li><li>NGONG</li><li>NKOLANGOUNG</li><li>NKOLTOMO</li><li>NKONGZOK</li><li>NTSAMA</li><li>OBAN 1</li><li>OBAN 2</li><li>OYAMA</li></ul></details>
+    <div class="commune-title">📌 OKOLA <span class="village-count" id="count-okola">0 villages</span></div>
+    <details class="groupement" data-groupement="okola"><summary>ETON-BETI (22)</summary><ul><li>BILONO 1</li><li>BILONO 2</li><li>EBOD</li><li>EKABITA TOM</li><li>EKONG</li><li>ETOUD</li><li>LEBOUDI 1</li><li>LEBOUDI 2</li><li>METAK</li><li>MINTOTOMO</li><li>MVOUA</li><li>NGOYA 1</li><li>NGOYA 2</li><li>NGOYA 3</li><li>NKOLBEGA</li><li>NKOLESSONG</li><li>NKOLONDOM</li><li>NKONG</li><li>NOUMA</li><li>OBAK</li><li>OKOUKOUDA</li><li>YEGUE-ASSI</li></ul></details>
+    <details class="groupement" data-groupement="okola"><summary>MVOG NAMA 2 (31)</summary><ul><li>AYOS</li><li>ELIG-NDOUM</li><li>ELIG-YEN</li><li>EVIAN</li><li>FEGMIMBANG</li><li>LEBOTH</li><li>LENDOM 1</li><li>LENGON</li><li>MEKAK</li><li>MINSOA 1</li><li>MINSOA 2</li><li>MVA'A 1</li><li>MVA'A 2</li><li>NGOBO-ASSI</li><li>NKODASSA</li><li>NKOLDJOBE</li><li>NKOLEKOTSING</li><li>NKOLFEB</li><li>NKOLFEM</li><li>NKOLMEKOUMA</li><li>NKOLMEVANIZE</li><li>NKOLNYADA</li><li>NKOLPOBLO</li><li>NKOLTSIBA</li><li>NKOLZIBI</li><li>NTUISSONG</li><li>NYEMEYONG</li><li>QUARTIER HAOUSSA</li><li>SONG-ONANA</li><li>VOA 1</li><li>VOA 2</li></ul></details>
+    <details class="groupement" data-groupement="okola"><summary>MVOG-NAMNYE 3 (20)</summary><ul><li>BISSOGO</li><li>BITSINGDA</li><li>EBANGA</li><li>EBOUGSI</li><li>EKEKAM 1</li><li>EKEKAM 2</li><li>KONABENG</li><li>LENDOM 2</li><li>LOUMA</li><li>MBELEKIE</li><li>MPONG 2</li><li>NDANGUENG</li><li>NGONG</li><li>NKOLANGOUNG</li><li>NKOLTOMO</li><li>NKONGZOK</li><li>NTSAMA</li><li>OBAN 1</li><li>OBAN 2</li><li>OYAMA</li></ul></details>
   </div>
 
-  <!-- ============================================================ -->
   <!-- ELIG-MFOMO -->
-  <!-- ============================================================ -->
   <div class="commune-block" id="elig-mfomo">
-    <div class="commune-title">📌 ELIG-MFOMO <span class="badge-bip">BIP</span></div>
-
-    <div class="commune-bip">
-      <strong>📊 Programmation BIP – Elig-Mfomo</strong><br>
-      💰 Montant total programmé : <strong>2,22 Mds FCFA</strong><br>
-      📋 Nombre de marchés : <strong>109</strong><br>
-      🏆 Principal projet : Électrification rurale (162 M FCFA)<br>
-      🔗 <a href="observatoire.html#elig-mfomo" class="bip-link">Voir dans l'observatoire →</a>
-    </div>
-
-    <details class="groupement"><summary>ESSELE 1 et 2 (20 villages documentés, liste en cours pour les 5 restants)</summary><ul><li>AAKAK</li><li>BIKOGO</li><li>BODO</li><li>ELIG-MFOMO</li><li>ELIG-ONANA</li><li>ELOT KOS</li><li>ENDAMA 1</li><li>ENDAMA 2</li><li>KOMO-ESSELE</li><li>LEKOUKOUA</li><li>MBANEDOUMA 1</li><li>MBANEDOUMA 2</li><li>MEBOMO</li><li>NKENGUE</li><li>NKOL MBA</li><li>NKOL OBANG 1</li><li>NKOL OBANG 2</li><li>NKOLBIKOK</li><li>NKOLOSSAN</li><li>OKOK ESSELE</li></ul></details>
-    <details class="groupement"><summary>MVOG-KANI (5)</summary><ul><li>ENOBITA</li><li>KOKODO 1</li><li>KOKODO 2</li><li>LEKIE</li><li>NIGA</li></ul></details>
+    <div class="commune-title">📌 ELIG-MFOMO <span class="village-count" id="count-elig-mfomo">0 villages</span></div>
+    <details class="groupement" data-groupement="elig-mfomo"><summary>ESSELE 1 et 2 (20 villages documentés, liste en cours pour les 5 restants)</summary><ul><li>AAKAK</li><li>BIKOGO</li><li>BODO</li><li>ELIG-MFOMO</li><li>ELIG-ONANA</li><li>ELOT KOS</li><li>ENDAMA 1</li><li>ENDAMA 2</li><li>KOMO-ESSELE</li><li>LEKOUKOUA</li><li>MBANEDOUMA 1</li><li>MBANEDOUMA 2</li><li>MEBOMO</li><li>NKENGUE</li><li>NKOL MBA</li><li>NKOL OBANG 1</li><li>NKOL OBANG 2</li><li>NKOLBIKOK</li><li>NKOLOSSAN</li><li>OKOK ESSELE</li></ul></details>
+    <details class="groupement" data-groupement="elig-mfomo"><summary>MVOG-KANI (5)</summary><ul><li>ENOBITA</li><li>KOKODO 1</li><li>KOKODO 2</li><li>LEKIE</li><li>NIGA</li></ul></details>
   </div>
 
-  <!-- ============================================================ -->
   <!-- EBEBDA -->
-  <!-- ============================================================ -->
   <div class="commune-block" id="ebebda">
-    <div class="commune-title">📌 EBEBDA <span class="badge-bip">BIP</span></div>
-
-    <div class="commune-bip">
-      <strong>📊 Programmation BIP – Ebebda</strong><br>
-      💰 Montant total programmé : <strong>2,05 Mds FCFA</strong><br>
-      📋 Nombre de marchés : <strong>95</strong><br>
-      🏆 Principal projet : Hôtel de Ville d'Ebebda (clôture) (230 M FCFA)<br>
-      🔗 <a href="observatoire.html#ebebda" class="bip-link">Voir dans l'observatoire →</a>
-    </div>
-
-    <details class="groupement"><summary>BENYABEGA (9)</summary><ul><li>EBEBDA 1</li><li>EBEBDA 2</li><li>ETAM-KOUMA</li><li>EYENE</li><li>NKANG-EFOK</li><li>NKOM 1</li><li>NKOM 2</li><li>NLONG-ZOK</li><li>TSANG</li></ul></details>
-    <details class="groupement"><summary>ABAM (6)</summary><ul><li>EBONG</li><li>EKOME</li><li>ENDOUM</li><li>KOAN</li><li>NGOKSA</li><li>ZOKOGO</li></ul></details>
-    <details class="groupement"><summary>ABAM-NGOE (5)</summary><ul><li>ABANG-NANG</li><li>LENDONG</li><li>MELEN</li><li>NEGA</li><li>OLONG</li></ul></details>
-    <details class="groupement"><summary>SA'A (6)</summary><ul><li>BIKOGO</li><li>DJOUNYAT</li><li>EBOMZOUT</li><li>MBENEGA</li><li>NDOUNDA</li><li>NKOL-ELOUGA</li></ul></details>
-    <details class="groupement"><summary>NKOLKOSSE (6)</summary><ul><li>BILIG-BINDIK</li><li>LEKA</li><li>NKOG-EDZEN</li><li>NKOLOSSANG</li><li>POLO 1</li><li>POLO 2</li></ul></details>
+    <div class="commune-title">📌 EBEBDA <span class="village-count" id="count-ebebda">0 villages</span></div>
+    <details class="groupement" data-groupement="ebebda"><summary>BENYABEGA (9)</summary><ul><li>EBEBDA 1</li><li>EBEBDA 2</li><li>ETAM-KOUMA</li><li>EYENE</li><li>NKANG-EFOK</li><li>NKOM 1</li><li>NKOM 2</li><li>NLONG-ZOK</li><li>TSANG</li></ul></details>
+    <details class="groupement" data-groupement="ebebda"><summary>ABAM (6)</summary><ul><li>EBONG</li><li>EKOME</li><li>ENDOUM</li><li>KOAN</li><li>NGOKSA</li><li>ZOKOGO</li></ul></details>
+    <details class="groupement" data-groupement="ebebda"><summary>ABAM-NGOE (5)</summary><ul><li>ABANG-NANG</li><li>LENDONG</li><li>MELEN</li><li>NEGA</li><li>OLONG</li></ul></details>
+    <details class="groupement" data-groupement="ebebda"><summary>SA'A (6)</summary><ul><li>BIKOGO</li><li>DJOUNYAT</li><li>EBOMZOUT</li><li>MBENEGA</li><li>NDOUNDA</li><li>NKOL-ELOUGA</li></ul></details>
+    <details class="groupement" data-groupement="ebebda"><summary>NKOLKOSSE (6)</summary><ul><li>BILIG-BINDIK</li><li>LEKA</li><li>NKOG-EDZEN</li><li>NKOLOSSANG</li><li>POLO 1</li><li>POLO 2</li></ul></details>
   </div>
 
-  <!-- ============================================================ -->
   <!-- EVODOULA -->
-  <!-- ============================================================ -->
   <div class="commune-block" id="evodoula">
-    <div class="commune-title">📌 EVODOULA <span class="badge-bip">BIP</span></div>
-
-    <div class="commune-bip">
-      <strong>📊 Programmation BIP – Evodoula</strong><br>
-      💰 Montant total programmé : <strong>2,83 Mds FCFA</strong><br>
-      📋 Nombre de marchés : <strong>107</strong><br>
-      🏆 Principal projet : Hôtel de Ville d'Evodoula (282 M FCFA)<br>
-      🔗 <a href="observatoire.html#evodoula" class="bip-link">Voir dans l'observatoire →</a>
-    </div>
-
-    <details class="groupement"><summary>NTSAS ENDO (23)</summary><ul><li>ELAH</li><li>ELIG-ZOGO</li><li>ENOH</li><li>EYEN MEYONG</li><li>KALNGAHA</li><li>KOMO</li><li>MEYOS</li><li>MGBABANG 1</li><li>MGBABANG 2</li><li>MGBABANG 3</li><li>NGOBO</li><li>NGUESSE</li><li>NKOLASSA 1</li><li>NKOLASSA 2</li><li>NKOLMEYOS 1</li><li>NKOLMEYOS 2</li><li>NKOLNGUELE</li><li>NLOUDOU</li><li>NTOUDA CENTRE</li><li>NTOUDA SUD</li><li>OKOK 1</li><li>OKOK 2</li><li>PONGSOLO</li></ul></details>
-    <details class="groupement"><summary>MVOG-NAMNYE 2 (21)</summary><ul><li>EKOL</li><li>ETOK</li><li>EVODOULA VILLAGE</li><li>MBELBIKOL</li><li>MINWOHO-CENTRE</li><li>MINWOHO-SUD</li><li>NKODABEL</li><li>NKOLABANG</li><li>NKOLAKOK</li><li>NKOLKOUGDA 1</li><li>NKOLKOUGDA 2</li><li>NKOLOHANDJA</li><li>NKOLSENG 1</li><li>NKOLSENG 2</li><li>NLONG-MENANG</li><li>POBO</li><li>QUARTIER ACCUEIL</li><li>QUARTIER AYISSI</li><li>QUARTIER DOUMASSI</li><li>QUARTIER HAOUSSA</li><li>QUARTIER MISSION CATHOLIQUE</li></ul></details>
+    <div class="commune-title">📌 EVODOULA <span class="village-count" id="count-evodoula">0 villages</span></div>
+    <details class="groupement" data-groupement="evodoula"><summary>NTSAS ENDO (23)</summary><ul><li>ELAH</li><li>ELIG-ZOGO</li><li>ENOH</li><li>EYEN MEYONG</li><li>KALNGAHA</li><li>KOMO</li><li>MEYOS</li><li>MGBABANG 1</li><li>MGBABANG 2</li><li>MGBABANG 3</li><li>NGOBO</li><li>NGUESSE</li><li>NKOLASSA 1</li><li>NKOLASSA 2</li><li>NKOLMEYOS 1</li><li>NKOLMEYOS 2</li><li>NKOLNGUELE</li><li>NLOUDOU</li><li>NTOUDA CENTRE</li><li>NTOUDA SUD</li><li>OKOK 1</li><li>OKOK 2</li><li>PONGSOLO</li></ul></details>
+    <details class="groupement" data-groupement="evodoula"><summary>MVOG-NAMNYE 2 (21)</summary><ul><li>EKOL</li><li>ETOK</li><li>EVODOULA VILLAGE</li><li>MBELBIKOL</li><li>MINWOHO-CENTRE</li><li>MINWOHO-SUD</li><li>NKODABEL</li><li>NKOLABANG</li><li>NKOLAKOK</li><li>NKOLKOUGDA 1</li><li>NKOLKOUGDA 2</li><li>NKOLOHANDJA</li><li>NKOLSENG 1</li><li>NKOLSENG 2</li><li>NLONG-MENANG</li><li>POBO</li><li>QUARTIER ACCUEIL</li><li>QUARTIER AYISSI</li><li>QUARTIER DOUMASSI</li><li>QUARTIER HAOUSSA</li><li>QUARTIER MISSION CATHOLIQUE</li></ul></details>
   </div>
 
-  <!-- ============================================================ -->
   <!-- LOBO -->
-  <!-- ============================================================ -->
   <div class="commune-block" id="lobo">
-    <div class="commune-title">📌 LOBO <span class="badge-bip">BIP</span></div>
-
-    <div class="commune-bip">
-      <strong>📊 Programmation BIP – Lobo</strong><br>
-      💰 Montant total programmé : <strong>2,47 Mds FCFA</strong><br>
-      📋 Nombre de marchés : <strong>72</strong><br>
-      🏆 Principal projet : Reconstruction pont définitif Ngoko + routes (300 M FCFA)<br>
-      🔗 <a href="observatoire.html#lobo" class="bip-link">Voir dans l'observatoire →</a>
-    </div>
-
-    <details class="groupement"><summary>MVOG NAMA 1 (26)</summary><ul><li>ADZAB</li><li>AKOK</li><li>EKEKAM 3</li><li>EKOUMTIK</li><li>EYANG</li><li>KELLE</li><li>KOUDI</li><li>LOBO</li><li>MENGUEK 1</li><li>MENGUEK 2</li><li>MINKOA</li><li>NGOAS</li><li>NGOULMEKONG</li><li>NKOLMELEN</li><li>NKOLMEYANG</li><li>NKOLNGUET</li><li>NKOLYEM</li><li>NKONG-MESSA</li><li>NLONG</li><li>OVANG</li><li>OZOM 1</li><li>OZOM 2</li><li>OZOM 3</li><li>TIKONG</li><li>TSEK</li><li>VOA 3</li></ul></details>
+    <div class="commune-title">📌 LOBO <span class="village-count" id="count-lobo">0 villages</span></div>
+    <details class="groupement" data-groupement="lobo"><summary>MVOG NAMA 1 (26)</summary><ul><li>ADZAB</li><li>AKOK</li><li>EKEKAM 3</li><li>EKOUMTIK</li><li>EYANG</li><li>KELLE</li><li>KOUDI</li><li>LOBO</li><li>MENGUEK 1</li><li>MENGUEK 2</li><li>MINKOA</li><li>NGOAS</li><li>NGOULMEKONG</li><li>NKOLMELEN</li><li>NKOLMEYANG</li><li>NKOLNGUET</li><li>NKOLYEM</li><li>NKONG-MESSA</li><li>NLONG</li><li>OVANG</li><li>OZOM 1</li><li>OZOM 2</li><li>OZOM 3</li><li>TIKONG</li><li>TSEK</li><li>VOA 3</li></ul></details>
   </div>
 
 </div>
 
 <footer>
-  <p>ISGI-Lékié — Données en cours de collecte et d’actualisation. Appel à contribution.</p>
+  <p>ISGI-Lékié — Données issues des PCD · En cours de collecte et d’actualisation. Appel à contribution.</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
 
 <a href="#" id="backToTop" class="back-to-top" title="Retour en haut">↑</a>
 
 <script>
-  // Burger menu
+  // ---- BURGER MENU ----
   const burger = document.getElementById('burgerBtn');
   const navLinks = document.getElementById('navLinks');
   if (burger && navLinks) {
     burger.addEventListener('click', function() {
-      navLinks.classList.toggle('show');
-      burger.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
     });
     navLinks.querySelectorAll('a').forEach(function(link) {
       link.addEventListener('click', function() {
         navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
         burger.textContent = '☰';
       });
     });
     document.addEventListener('click', function(e) {
       if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
         navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
         burger.textContent = '☰';
       }
     });
   }
 
-  // Back to top
+  // ---- BACK TO TOP ----
   const backToTop = document.getElementById('backToTop');
   if (backToTop) {
     window.addEventListener('scroll', function() {
@@ -292,15 +238,89 @@
     });
   }
 
-  // Scroll vers la commune si # dans l'URL
-  if (window.location.hash) {
-    const target = document.querySelector(window.location.hash);
-    if (target) {
-      setTimeout(function() {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
-    }
+  // ---- COMPTEUR DE VILLAGES ----
+  function countVillages() {
+    const communes = document.querySelectorAll('.commune-block');
+    communes.forEach(function(commune) {
+      const groupements = commune.querySelectorAll('.groupement ul');
+      let total = 0;
+      groupements.forEach(function(ul) {
+        total += ul.querySelectorAll('li').length;
+      });
+      const countSpan = commune.querySelector('.village-count');
+      if (countSpan) {
+        countSpan.textContent = total + ' villages';
+      }
+    });
   }
+
+  // ---- NORMALISATION DES ACCENTS ----
+  function normalize(str) {
+    return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  // ---- RECHERCHE DE VILLAGES ----
+  const searchInput = document.getElementById('searchInput');
+  const noResults = document.getElementById('noResults');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', function(e) {
+      const query = normalize(e.target.value.trim());
+      const allLi = document.querySelectorAll('.groupement li');
+      let found = 0;
+
+      allLi.forEach(function(li) {
+        const text = normalize(li.textContent);
+        const match = text.includes(query);
+        li.style.display = match ? 'list-item' : 'none';
+
+        // Ouvre automatiquement le <details> parent si un résultat est trouvé
+        if (match) {
+          const details = li.closest('details');
+          if (details) {
+            details.setAttribute('open', '');
+          }
+          found++;
+        }
+      });
+
+      // Si la recherche est vide, referme tous les details
+      if (query.length === 0) {
+        document.querySelectorAll('.groupement').forEach(function(details) {
+          details.removeAttribute('open');
+        });
+      }
+
+      // Affiche ou cache le message "Aucun village trouvé"
+      if (noResults) {
+        noResults.style.display = (query.length > 0 && found === 0) ? 'block' : 'none';
+      }
+
+      // Cache les groupements vides
+      document.querySelectorAll('.groupement').forEach(function(group) {
+        const visibleItems = group.querySelectorAll('li[style*="display: list-item"], li:not([style*="display: none"])');
+        const hasVisible = Array.from(visibleItems).some(function(li) {
+          return li.style.display !== 'none';
+        });
+        group.style.display = (query.length === 0 || hasVisible) ? 'block' : 'none';
+      });
+    });
+  }
+
+  // ---- INITIALISATION ----
+  document.addEventListener('DOMContentLoaded', function() {
+    countVillages();
+
+    // Scroll vers la commune si # dans l'URL
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        setTimeout(function() {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      }
+    }
+  });
 </script>
 </body>
 </html>
