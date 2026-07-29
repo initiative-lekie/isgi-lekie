@@ -30,7 +30,7 @@
       --or2: #e0a83e;
       --creme: #f4efe6;
       --creme2: #ede5d8;
-      --blanc: #f8f6f0;
+      --blanc: #fefcf8;
       --texte: #2c2c28;
       --gris: #5a5a50;
       --gris2: #94a3b8;
@@ -51,6 +51,7 @@
     .page-header h1{color:#fff;border-left:none;padding-left:0;font-size:2.5rem;font-family:'Cormorant Garamond',serif;}
     .page-header h1 em{color:var(--or2);font-style:italic;}
     .page-header p{color:rgba(255,255,255,0.75);margin-top:0.5rem;}
+    .page-header .maj{font-size:0.7rem;color:var(--or2);margin-top:0.3rem;}
 
     section{padding:2.5rem 0;border-bottom:1px solid var(--creme2);}
     .section-title{font-size:1.6rem;color:var(--vert);margin-bottom:1.5rem;border-left:6px solid var(--or);padding-left:1rem;font-family:'Cormorant Garamond',serif;}
@@ -89,27 +90,37 @@
 
     .notice{background:#fff8e1;border-left:4px solid var(--or);padding:0.8rem 1.2rem;border-radius:8px;margin:1.5rem 0;}
 
-    .maps-link,.share-link{display:inline-block;margin-top:0.3rem;font-size:0.75rem;color:var(--vert);text-decoration:none;}
-    .maps-link:hover,.share-link:hover{color:var(--or);text-decoration:underline;}
-
     .map-wrapper{margin:1.5rem 0;border-radius:16px;overflow:hidden;border:1px solid var(--creme2);}
     #stadiumMap{height:350px;width:100%;}
 
+    .maps-link,.share-link{display:inline-block;margin-top:0.3rem;font-size:0.75rem;color:var(--vert);text-decoration:none;}
+    .maps-link:hover,.share-link:hover{color:var(--or);text-decoration:underline;}
+
+    .tableau-classement{width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:0.5rem;}
+    .tableau-classement th{background:var(--vert);color:#fff;padding:0.3rem;text-align:left;}
+    .tableau-classement td{padding:0.3rem;border-bottom:1px solid var(--creme2);}
+    .tableau-classement tr:nth-child(even){background:#f9f7f2;}
+
     footer{background:#0f2c21;color:rgba(255,255,255,0.5);text-align:center;padding:2rem;font-size:0.8rem;margin-top:2rem;}
     footer .boussole{font-style:italic;color:rgba(255,255,255,0.3);margin-top:0.4rem;}
+    footer .maj{font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:0.3rem;}
+
     .back-to-top{position:fixed;bottom:20px;right:20px;background:var(--or);color:#1b3a2d;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:99;}
     .back-to-top.show{opacity:1;}
     .back-to-top:hover{background:var(--vert);color:var(--or2);}
 
+    .nature-marathon{background:#e3f2fd;color:#0d47a1;padding:0.2rem 0.6rem;border-radius:12px;font-size:0.7rem;font-weight:600;display:inline-block;margin-top:0.2rem;}
+
     @media(max-width:700px){
       nav{flex-direction:row;}
       .burger{display:block;}
-      .nav-links{display:none;width:100%;flex-direction:column;align-items:center;}
+      .nav-links{display:none;width:100%;flex-direction:column;align-items:center;padding-top:0.5rem;}
       .nav-links.show{display:flex;}
       .grid-2,.grid-3{grid-template-columns:1fr;}
       .filtres-bar{flex-wrap:wrap;}
       .compteur-clubs{margin-left:0;}
       #stadiumMap{height:250px;}
+      .tableau-classement{font-size:0.7rem;}
     }
   </style>
 </head>
@@ -121,20 +132,21 @@
   <div class="nav-links" id="navLinks">
     <a href="index.html">Accueil</a>
     <a href="plateforme.html">Plateforme</a>
-    <a href="observatoire.html">📊 Observatoire</a>
-    <a href="annuaire.html">📇 Annuaire</a>
-    <a href="presse.html">Presse</a>
     <a href="mon-village.html">Mon village</a>
     <a href="mon-ecole.html">Mon école</a>
-    <a href="sport.html" class="active">🏆 Sport</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html" class="active">Sport</a>
+    <a href="certification.html">Certification</a>
     <a href="tourisme.html">Tourisme</a>
     <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
   </div>
 </nav>
 
 <div class="page-header">
   <h1>🏆 Le sport dans <em>la Lékié</em></h1>
   <p>Lions Indomptables, clubs mythiques, championnats de vacances 2026 et certification — un patrimoine vivant</p>
+  <p class="maj">📅 Dernière mise à jour : 28 Juillet 2026</p>
 </div>
 
 <div class="container">
@@ -157,6 +169,9 @@
     <div class="notice">
       <p>📌 <strong>Vincent Onana</strong> — Originaire de Leboth (Okola), président de la FECAFOOT (1996–1998). Mandat controversé, démis avant la Coupe du Monde 1998. Décédé en octobre 2024, inhumé en Lékié.</p>
     </div>
+    <p style="font-size:0.75rem; color:var(--gris2); margin-top:1rem;">
+      📌 Sources : Archives FECAFOOT, histoire du football camerounais, contribution des communautés.
+    </p>
   </section>
 
   <!-- ============================================================ -->
@@ -174,7 +189,7 @@
   <!-- CLUBS MYTHIQUES AVEC FILTRE + RECHERCHE -->
   <!-- ============================================================ -->
   <section>
-    <h2 class="section-title">⚽ Clubs mythiques de la Lékié</h2>
+    <h2 class="section-title">⚽ Clubs mythiques de la Lékié</h2>
     <p style="color:var(--gris2); margin-bottom:0.5rem;">Filtrez par commune ou recherchez un club par nom.</p>
 
     <div class="search-bar">
@@ -212,6 +227,7 @@
   <section>
     <h2 class="section-title">🗺️ Carte des stades et championnats</h2>
     <p style="color:var(--gris2); margin-bottom:1rem;">Localisation des stades où se déroulent les championnats de vacances 2026.</p>
+    <p style="font-size:0.7rem; color:var(--gris2); margin-bottom:1rem;">🗺️ Données cartographiques OpenStreetMap</p>
     <div class="map-wrapper">
       <div id="stadiumMap"></div>
     </div>
@@ -222,11 +238,13 @@
   <!-- ============================================================ -->
   <section>
     <h2 class="section-title">🏆 Championnats de vacances 2026</h2>
-    <p style="color:var(--gris2); margin-bottom:1.5rem;">La Lékié vibre au rythme du football pendant les vacances. Voici les compétitions de l'été 2026.</p>
+    <p style="color:var(--gris2); margin-bottom:1.5rem;">La Lékié vibre au rythme du sport pendant les vacances. Voici les compétitions de l'été 2026.</p>
 
     <div class="grid-2" id="championnatsGrid">
-      <div class="card" id="bitsingda" data-date="2026-07-05" data-fin="2026-08-30">
-        <h3>⚽ Championnat de vacances de Bitsingda</h3>
+
+      <!-- 1. BITSINGDA -->
+      <div class="card" data-date="2026-07-05" data-fin="2026-08-30">
+        <h3>⚽ Championnat de vacances de Bitsingda</h3>
         <p><strong>Lieu :</strong> Bitsingda (Okola) — Stade CES</p>
         <p><strong>Dates :</strong> 05 juillet – 30 août 2026</p>
         <p><strong>Promoteur :</strong> MBO Louis Dimitri</p>
@@ -237,18 +255,8 @@
         <a href="https://wa.me/?text=Championnat%20de%20vacances%20de%20Bitsingda%20-%2005%20juillet%202026%20https://isgi-lekie.cm/sport.html#bitsingda" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
       </div>
 
-      <div class="card" id="obeng" data-date="2026-07-09" data-fin="2026-07-09">
-        <h3>🏟️ Tournoi de l'Unité — Obeng</h3>
-        <p><strong>Lieu :</strong> Stade Municipal d'Obeng (Monatélé)</p>
-        <p><strong>Début :</strong> 09 juillet 2026 à 15h</p>
-        <p><strong>Organisateur :</strong> Mairie de Monatélé</p>
-        <p><strong>Particularité :</strong> "Sport pour tous"</p>
-        <span class="badge-statut badge-encours" id="badge-obeng">En cours</span><br>
-        <a href="https://www.google.com/maps/search/?api=1&query=Stade+Municipal+Obeng+Monatélé" target="_blank" class="maps-link">📍 Voir sur la carte</a>
-        <a href="https://wa.me/?text=Tournoi%20de%20l'Unité%20-%20Obeng%20-%2009%20juillet%202026%20https://isgi-lekie.cm/sport.html#obeng" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
-      </div>
-
-      <div class="card" id="lobo" data-date="2026-07-12" data-fin="2026-08-30">
+      <!-- 2. TRADEX SA CHAMPION LEAGUE LOBO -->
+      <div class="card" data-date="2026-07-12" data-fin="2026-08-30">
         <h3>🏆 Tradex SA Champion League Lobo 2026</h3>
         <p><strong>Lieu :</strong> Stade municipal de Lobo</p>
         <p><strong>Dates :</strong> 12 juillet – 30 août 2026 (finale)</p>
@@ -263,19 +271,33 @@
         <a href="https://wa.me/?text=Tradex%20SA%20Champion%20League%20Lobo%202026%20-%2012%20juillet%202026%20https://isgi-lekie.cm/sport.html#lobo" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
       </div>
 
-      <div class="card" id="nkolowono" data-date="2026-07-12" data-fin="2026-08-30">
-        <h3>⚽ Festy Foot Nkol-Owono 2026</h3>
+      <!-- 3. FESTY FOOT NKOL-OWONO (mis à jour) -->
+      <div class="card" data-date="2026-08-11" data-fin="2026-08-19">
+        <h3>⚽ Festy Foot Nkol-Owono 2026</h3>
         <p><strong>Lieu :</strong> Nkol-Owono</p>
-        <p><strong>Promoteur :</strong> Marcel Beauregard Noah Alima</p>
-        <p><strong>Particularité :</strong> Engagement citoyen, éducation par le sport, cohésion sociale</p>
-        <p style="font-size:0.85rem;color:var(--gris2);">Présence des autorités administratives et municipales à la cérémonie d'ouverture</p>
+        <p><strong>Dates :</strong> 11 – 19 août 2026</p>
+        <p><strong>Organisateur :</strong> MESSI AWONO André (Président du comité)</p>
+        <p><strong>Contacts :</strong> <a href="tel:674252315">674 25 23 15</a> / <a href="tel:674970191">674 97 01 91</a></p>
+        <p style="font-size:0.8rem;color:var(--gris2); margin-top:0.3rem;">
+          <strong>Programme :</strong><br>
+          11/08 : Nouveau Quartier vs Avenir perroquet (14h) · Nouvelle Génération vs Leader (16h)<br>
+          12/08 : Vétéran vs Avenir Éthomango (16h) · Soleil vs Éduralis<br>
+          13/08 : Barranco vs Avenir perroquet (14h) · Terminator vs Nouvelle Génération (16h)<br>
+          14/08 : Leader vs Avenir Éthomango (16h) · Barranco vs Vétéran (14h)<br>
+          15/08 : Terminator vs Avenir perroquet (16h) · Soleil vs Nouvelle Génération (16h)<br>
+          16/08 : Nouveau Quartier vs Nouvelle Génération (14h) · Éduralis vs Leader (16h)<br>
+          17/08 : Soleil vs Terminator (14h) · Avenir Éthomango vs Barranco (16h)<br>
+          18/08 : Éduralis vs Avenir perroquet (14h) · Vétéran vs Nouvelle Génération (16h)<br>
+          19/08 : Avenir Éthomango vs Nouveau Quartier (14h)
+        </p>
         <span class="badge-statut badge-encours" id="badge-nkolowono">En cours</span><br>
         <a href="https://www.google.com/maps/search/?api=1&query=Nkol-Owono" target="_blank" class="maps-link">📍 Voir sur la carte</a>
-        <a href="https://wa.me/?text=Festy%20Foot%20Nkol-Owono%202026%20-%2012%20juillet%202026%20https://isgi-lekie.cm/sport.html#nkolowono" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+        <a href="https://wa.me/?text=Festy%20Foot%20Nkol-Owono%202026%20-%2011%20août%202026%20https://isgi-lekie.cm/sport.html#nkolowono" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
       </div>
 
-      <div class="card" id="tala" data-date="2026-07-12" data-fin="2026-08-30">
-        <h3>⚽ Festi-Foot Vacances TALA 2026</h3>
+      <!-- 4. FESTI-FOOT VACANCES TALA -->
+      <div class="card" data-date="2026-07-12" data-fin="2026-08-30">
+        <h3>⚽ Festi-Foot Vacances TALA 2026</h3>
         <p><strong>Lieu :</strong> Stade Saint Luc de Tala (Monatélé)</p>
         <p><strong>Dates :</strong> 12 juillet – 30 août 2026</p>
         <p><strong>Promoteurs :</strong> ETOUNDI MEVO Rene, MVILONGO Boris, MBILONGO Serge</p>
@@ -286,7 +308,8 @@
         <a href="https://wa.me/?text=Festi-Foot%20Vacances%20TALA%202026%20-%2012%20juillet%202026%20https://isgi-lekie.cm/sport.html#tala" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
       </div>
 
-      <div class="card" id="mengono" data-date="2026-07-19" data-fin="2026-08-30">
+      <!-- 5. MENGONO FESTY FOOT VACANCES -->
+      <div class="card" data-date="2026-07-19" data-fin="2026-08-30">
         <h3>🏅 Mengono Festy Foot Vacances</h3>
         <p><strong>Lieu :</strong> Stade Saint Daniel, Mengono</p>
         <p><strong>Lancement :</strong> Dimanche 19 juillet 2026 à 14h00</p>
@@ -297,18 +320,96 @@
         <a href="https://wa.me/?text=Mengono%20Festy%20Foot%20Vacances%20-%2019%20juillet%202026%20https://isgi-lekie.cm/sport.html#mengono" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
       </div>
 
-      <div class="card" id="nkolkosse" data-date="2026-07-19" data-fin="2026-08-30">
-        <h3>🏆 Tournoi de la Fraternité NKOLKOSSE</h3>
+      <!-- 6. TOURNOI DE LA FRATERNITÉ NKOLKOSSE (mis à jour) -->
+      <div class="card" data-date="2026-06-28" data-fin="2026-08-09">
+        <h3>🏆 Tournoi de la Fraternité NKOLKOSSE 2026</h3>
         <p><strong>Lieu :</strong> Nkolkosse</p>
+        <p><strong>Dates :</strong> 28 juin – 09 août 2026</p>
         <p><strong>Organisateur :</strong> MVOGO MINKOULOU Bienvenu</p>
-        <p><strong>1re édition — 2026</strong></p>
-        <p><strong>Dotation :</strong> 500 000 F (champion), 300 000 F (coupe)</p>
+        <p><strong>1ère édition</strong></p>
+        <p style="font-size:0.85rem;color:var(--gris); margin-top:0.3rem;">
+          <strong>Poule A :</strong> Eding FC · Mascara FC · Livre de Foot FC · 2-0 Mtélé<br>
+          <strong>Poule B :</strong> Tonnerre FC · Santos FC · Balto FC · Power FC<br>
+          <strong>Poule C :</strong> Brésil FC · Piment FC · KNFC · Génération Eding FC · Nouveau Quartier FC · Onze Frères FC
+        </p>
+        <p style="font-size:0.8rem;color:var(--gris2);">
+          🏆 Dotations : 500 000 F (champion), 300 000 F (coupe)
+        </p>
+        <p style="font-size:0.7rem;color:var(--gris2); margin-top:0.3rem;">
+          Sponsors : Orange · Global Tech · PILS (Parfaitpédie)
+        </p>
         <span class="badge-statut badge-encours" id="badge-nkolkosse">En cours</span><br>
         <a href="https://www.google.com/maps/search/?api=1&query=Nkolkosse" target="_blank" class="maps-link">📍 Voir sur la carte</a>
-        <a href="https://wa.me/?text=Tournoi%20de%20la%20Fraternité%20NKOLKOSSE%20-%2019%20juillet%202026%20https://isgi-lekie.cm/sport.html#nkolkosse" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+        <a href="https://wa.me/?text=Tournoi%20de%20la%20Fraternité%20NKOLKOSSE%202026%20-%201ère%20édition%20https://isgi-lekie.cm/sport.html#nkolkosse" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
       </div>
 
-      <div class="card" id="evodoula" data-date="2026-08-07" data-fin="2026-08-09">
+      <!-- 7. SUPER COUPE DE L'ESPÉRANCE NDONGO ESSOMBA -->
+      <div class="card" data-date="2026-07-19" data-fin="2026-08-10">
+        <h3>🏆 Super Coupe de l'Espérance NDONGO ESSOMBA</h3>
+        <p><strong>Lieu :</strong> Stade du CES</p>
+        <p><strong>Début :</strong> 19 juillet 2026 à 14h00</p>
+        <p><strong>Promoteur :</strong> Hon. Jean Bernard NDONGO ESSALA</p>
+        <p><strong>Parrain :</strong> S.M. ESSALA Gilbert Philémon (Chef du Groupement Nkolbogo)</p>
+        <p style="font-size:0.85rem;color:var(--gris2);">"Unis par le sport, portés par l'espérance"</p>
+        <span class="badge-statut badge-encours" id="badge-ndongoessomba">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Stade+CES" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Super%20Coupe%20de%20l'Espérance%20NDONGO%20ESSOMBA%20-%2019%20juillet%202026%20https://isgi-lekie.cm/sport.html#ndongoessomba" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <!-- 8. TOURNOI DE L'UNITÉ — 5e ÉDITION (fusionné, conserve la 5e édition) -->
+      <div class="card" data-date="2026-07-19" data-fin="2026-08-10">
+        <h3>🏆 Tournoi de l'Unité — 5e édition</h3>
+        <p><strong>Lieu :</strong> Stade Municipal d'Obeng (Monatélé)</p>
+        <p><strong>Dates :</strong> 19 juillet – 10 août 2026</p>
+        <p><strong>Organisateur :</strong> Mairie de Monatélé</p>
+        <p><strong>Thème :</strong> "Travail - Unité - Développement"</p>
+        <p style="font-size:0.85rem;color:var(--gris2);">⚽ Phase retour du 29 juillet au 10 août 2026</p>
+        <span class="badge-statut badge-encours" id="badge-unite">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Monatélé" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Tournoi%20de%20l'Unité%20-%205e%20édition%20https://isgi-lekie.cm/sport.html#unite" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <!-- 9. FESTI FOOT BATCHENGA -->
+      <div class="card" data-date="2026-07-26" data-fin="2026-08-30">
+        <h3>⚽ Festi Foot Batchenga — 6e édition</h3>
+        <p><strong>Lieu :</strong> Stade Municipal de Batchenga / Stade Municipal Ndjocas d'Emana</p>
+        <p><strong>Date :</strong> Dimanche 26 juillet 2026</p>
+        <p><strong>Patron :</strong> Monsieur SOUGA ANATOLE (Maire de Batchenga)</p>
+        <p><strong>Organisateur :</strong> Batchenga Youth Events</p>
+        <span class="badge-statut badge-encours" id="badge-batchenga">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Batchenga" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Festi%20Foot%20Batchenga%20-%206e%20édition%20https://isgi-lekie.cm/sport.html#batchenga" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <!-- 10. OBALA FOOT VACANCES -->
+      <div class="card" data-date="2026-07-26" data-fin="2026-08-30">
+        <h3>⚽ Obala Foot Vacances 2026</h3>
+        <p><strong>Lieu :</strong> Stade Municipal d'Obala</p>
+        <p><strong>Organisateur :</strong> Mairie d'Obala</p>
+        <p><strong>Particularité :</strong> Cérémonie d'ouverture avec autorités administratives, traditionnelles et religieuses</p>
+        <p style="font-size:0.85rem;color:var(--gris2);">Concours du quartier et village les plus propres</p>
+        <span class="badge-statut badge-encours" id="badge-obala">En cours</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Obala" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Obala%20Foot%20Vacances%202026%20https://isgi-lekie.cm/sport.html#obala" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <!-- 11. MARATHON MARADÉL (nature précisée) -->
+      <div class="card" data-date="2026-07-26" data-fin="2026-08-30">
+        <h3>🏃 Marathon de la Lékié MARADÉL — 2e édition</h3>
+        <p><span class="nature-marathon">🏃 Marathon (42,195 km)</span></p>
+        <p><strong>Lieu :</strong> Monatélé / Ebebda</p>
+        <p><strong>Distance :</strong> 42,195 km</p>
+        <p><strong>Thème :</strong> "STOP À L'INCIVISME SUR NOS AXES ROUTIERS"</p>
+        <p><strong>Catégories :</strong> Seniors (Dames & Messieurs), Juniors (Dames & Messieurs)</p>
+        <p><strong>Avec le soutien :</strong> Fédération Camerounaise d'Athlétisme</p>
+        <p><strong>Contact :</strong> <a href="tel:690595327">690 59 53 27</a></p>
+        <span class="badge-statut badge-encours" id="badge-maradel">À venir</span><br>
+        <a href="https://www.google.com/maps/search/?api=1&query=Monatélé" target="_blank" class="maps-link">📍 Voir sur la carte</a>
+        <a href="https://wa.me/?text=Marathon%20de%20la%20Lékié%20MARADÉL%20-%202e%20édition%20https://isgi-lekie.cm/sport.html#maradel" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
+      </div>
+
+      <!-- 12. SUPER COUPE RAFDEL EVODOULA -->
+      <div class="card" data-date="2026-08-07" data-fin="2026-08-09">
         <h3>🏅 Super Coupe RAFDEL Evodoula</h3>
         <p><strong>Lieu :</strong> Evodoula</p>
         <p><strong>Dates :</strong> 07 – 09 août 2026</p>
@@ -319,11 +420,12 @@
         <a href="https://www.google.com/maps/search/?api=1&query=Evodoula" target="_blank" class="maps-link">📍 Voir sur la carte</a>
         <a href="https://wa.me/?text=Super%20Coupe%20RAFDEL%20Evodoula%20-%2007%20août%202026%20https://isgi-lekie.cm/sport.html#evodoula" target="_blank" class="share-link">📲 Partager sur WhatsApp</a>
       </div>
+
     </div>
 
     <div style="text-align:center; margin-top:1.5rem;">
       <a href="plateforme.html#contribuer" class="btn btn-outline">📢 Signaler un autre championnat</a>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRC96ViA9I0QHSnGAbA4iTa_QMs0SonWxxqhi0TBzo4UnX9Q/viewform" target="_blank" class="btn" style="margin-left:0.5rem;">📝 Demander une certification</a>
+      <a href="certification.html" class="btn" style="margin-left:0.5rem;">🏅 Découvrir la certification ISGI-Lékié</a>
     </div>
   </section>
 
@@ -347,10 +449,14 @@
 
 <footer>
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 28 Juillet 2026</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+  <p style="font-size:0.7rem; margin-top:0.5rem; color:rgba(255,255,255,0.3);">
+    🗺️ Données cartographiques OpenStreetMap — Contribuez à améliorer la carte de votre territoire
+  </p>
 </footer>
 
-<a href="#" id="backToTop" class="back-to-top" title="Retour en haut">↑</a>
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
 
 <script>
   // ---- BURGER MENU ----
@@ -397,13 +503,15 @@
 
     const stadiums = [
       { nom: "Stade CES", commune: "Bitsingda (Okola)", lat: 4.0167, lng: 11.3833, lien: "#bitsingda" },
-      { nom: "Stade Municipal d'Obeng", commune: "Monatélé", lat: 4.1875, lng: 11.2525, lien: "#obeng" },
+      { nom: "Stade Municipal d'Obeng", commune: "Monatélé", lat: 4.1875, lng: 11.2525, lien: "#unite" },
       { nom: "Stade municipal de Lobo", commune: "Lobo", lat: 3.9833, lng: 11.4, lien: "#lobo" },
       { nom: "Stade Saint Daniel", commune: "Mengono", lat: 4.15, lng: 11.35, lien: "#mengono" },
       { nom: "Stade Saint Luc de Tala", commune: "Tala (Monatélé)", lat: 4.17, lng: 11.28, lien: "#tala" },
       { nom: "Stade de Nkol-Owono", commune: "Nkol-Owono", lat: 4.12, lng: 11.38, lien: "#nkolowono" },
       { nom: "Stade de Nkolkosse", commune: "Nkolkosse", lat: 4.1, lng: 11.15, lien: "#nkolkosse" },
-      { nom: "Stade d'Evodoula", commune: "Evodoula", lat: 4.083, lng: 11.2, lien: "#evodoula" }
+      { nom: "Stade d'Evodoula", commune: "Evodoula", lat: 4.083, lng: 11.2, lien: "#evodoula" },
+      { nom: "Stade de Batchenga", commune: "Batchenga", lat: 4.2333, lng: 11.6833, lien: "#batchenga" },
+      { nom: "Stade d'Obala", commune: "Obala", lat: 4.1589, lng: 11.5339, lien: "#obala" }
     ];
 
     stadiums.forEach(function(s) {
@@ -412,7 +520,7 @@
         .bindPopup('<strong>' + s.nom + '</strong><br>' + s.commune + '<br><a href="' + s.lien + '" style="color:#1b3a2d;font-weight:600;">Voir le championnat →</a>');
     });
   } catch(e) {
-    // Fallback silencieux si la carte ne charge pas
+    // Fallback silencieux
   }
 
   // ---- BADGE "EN COURS" AUTOMATIQUE ----
