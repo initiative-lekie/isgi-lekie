@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certification – ISGI-Lékié</title>
+  <meta name="description" content="Certification ISGI-Lékié — Qualifier et valoriser les initiatives territoriales. CISFOOTVAC, certifications culturelles et économiques.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vert: #1b3a2d;
+      --vert2: #2a5a44;
+      --or: #c4922a;
+      --or2: #e0a83e;
+      --creme: #f4efe6;
+      --creme2: #ede5d8;
+      --blanc: #fefcf8;
+      --texte: #2c2c28;
+      --gris: #5a5a50;
+      --gris2: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--blanc); color: var(--texte); line-height: 1.6; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    nav { background: var(--vert); padding: 0.8rem 1.5rem; border-bottom: 2px solid var(--or); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; z-index: 100; }
+    .logo a { color: var(--or2); text-decoration: none; font-size: 1.5rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
+    .logo span { font-size: 0.7rem; display: block; color: rgba(255,255,255,0.7); }
+    .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.8rem; font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--or2); }
+    .nav-links a.active { border-bottom: 2px solid var(--or); padding-bottom: 0.2rem; }
+    .burger { display: none; background: none; border: none; color: var(--or2); font-size: 1.8rem; cursor: pointer; }
+
+    .page-header { background: var(--vert); padding: 2.5rem 1.5rem; border-bottom: 4px solid var(--or); text-align: center; }
+    .page-header h1 { color: #fff; border-left: none; padding-left: 0; font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; }
+    .page-header h1 em { color: var(--or2); font-style: italic; }
+    .page-header p { color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.3rem; }
+
+    section { padding: 2.5rem 0; border-bottom: 1px solid var(--creme2); }
+    .section-title { font-size: 1.6rem; color: var(--vert); margin-bottom: 1.5rem; border-left: 6px solid var(--or); padding-left: 1rem; font-family: 'Cormorant Garamond', serif; }
+    .section-sub { color: var(--gris2); margin-bottom: 1.5rem; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .card { background: #fff; border: 1px solid var(--creme2); border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .card h3 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .card p { color: var(--gris); font-size: 0.9rem; margin-top: 0.3rem; }
+
+    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; margin-top: 0.5rem; }
+    .badge-valide { background: #e8f5e9; color: #2e7d32; }
+    .badge-encours { background: #fff8e1; color: #856404; }
+    .badge-contributif { background: #e8dfd0; color: #5a5a50; }
+
+    .btn { display: inline-block; background: var(--or); color: #1b3a2d; padding: 0.5rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; margin-top: 0.5rem; border: none; cursor: pointer; font-size: 0.85rem; }
+    .btn:hover { background: var(--vert); color: var(--or2); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--vert); color: var(--vert); }
+    .btn-outline:hover { background: var(--vert); color: #fff; }
+
+    .processus-step { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--creme2); }
+    .processus-step:last-child { border-bottom: none; }
+    .processus-step .step-num { font-weight: 700; color: var(--or); font-size: 1.2rem; min-width: 2.5rem; }
+    .processus-step .step-content { flex: 1; }
+    .processus-step .step-content strong { color: var(--vert); }
+
+    .table-wrap { background: #fff; border-radius: 16px; padding: 1.5rem; border: 1px solid var(--creme2); margin: 2rem 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 400px; }
+    .table-wrap th { background: var(--vert); color: #fff; padding: 0.5rem; text-align: left; }
+    .table-wrap td { padding: 0.4rem; border-bottom: 1px solid var(--creme2); }
+    .table-wrap tr:nth-child(even) { background: #f9f7f2; }
+    .table-wrap .source { font-size: 0.7rem; color: var(--gris2); margin-top: 0.5rem; }
+
+    .note { background: #fff8e1; padding: 1rem; border-left: 4px solid var(--or); margin: 1rem 0; border-radius: 4px; font-size: 0.9rem; }
+
+    .doc-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+    .doc-link { display: inline-block; padding: 0.4rem 1rem; border: 1.5px solid var(--creme2); border-radius: 30px; font-size: 0.8rem; color: var(--vert); text-decoration: none; transition: all 0.2s; }
+    .doc-link:hover { background: var(--vert); color: #fff; border-color: var(--vert); }
+
+    footer { background: #0f2c21; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.8rem; margin-top: 2rem; }
+    footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
+    footer .maj { font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 0.3rem; }
+
+    .back-to-top { position: fixed; bottom: 20px; right: 20px; background: var(--or); color: #1b3a2d; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.5rem; font-weight: bold; opacity: 0; transition: opacity 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 99; }
+    .back-to-top.show { opacity: 1; }
+    .back-to-top:hover { background: var(--vert); color: var(--or2); }
+
+    @media (max-width: 700px) { nav { flex-direction: row; } .burger { display: block; } .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; padding-top: 0.5rem; } .nav-links.show { display: flex; } .container { padding: 0 1rem; } .page-header h1 { font-size: 1.8rem; } .grid-2 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="plateforme.html">Plateforme</a>
+    <a href="mon-village.html">Mon village</a>
+    <a href="mon-ecole.html">Mon école</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html" class="active">Certification</a>
+    <a href="tourisme.html">Tourisme</a>
+    <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>🏅 Certification <em>ISGI-Lékié</em></h1>
+  <p>Qualifier, valoriser et mémoriser les initiatives territoriales</p>
+  <p class="maj">📅 Dernière mise à jour : 28 Juillet 2026</p>
+</div>
+
+<div class="container">
+
+  <!-- ============================================================ -->
+  <!-- SECTION 1 : VISION -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📌 Vision de la certification territoriale</h2>
+    <div class="note">
+      La certification ISGI-Lékié est un mécanisme de qualification territoriale. Elle permet d'identifier, d'évaluer, de qualifier, de valoriser et de conserver la mémoire des initiatives qui font vivre le territoire.
+    </div>
+    <p style="color:var(--gris); margin-top:1rem;">
+      La certification n'est pas un classement, ni une compétition entre événements. Elle est un outil de reconnaissance des initiatives locales, d'amélioration progressive de la qualité organisationnelle, de création d'une mémoire territoriale et de valorisation des acteurs.
+    </p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      <strong>Objectifs :</strong>
+    </p>
+    <ul style="margin-left:1.5rem; color:var(--gris);">
+      <li>Reconnaître les initiatives locales qui contribuent au développement du territoire</li>
+      <li>Favoriser l'amélioration progressive de la qualité organisationnelle</li>
+      <li>Créer une mémoire territoriale des événements et initiatives</li>
+      <li>Valoriser les acteurs qui font vivre la Lékié</li>
+    </ul>
+
+    <!-- DOCUMENTS DE RÉFÉRENCE -->
+    <div class="doc-links">
+      <strong style="color:var(--vert); font-size:0.85rem;">📄 Documents de référence :</strong>
+      <a href="#" class="doc-link" onclick="alert('📜 Charte de gouvernance et de déontologie — Document disponible sur demande. Contact : certification@isgi-lekie.cm')">📜 Charte de gouvernance</a>
+      <a href="#" class="doc-link" onclick="alert('📋 Règlement général de la certification — Document disponible sur demande. Contact : certification@isgi-lekie.cm')">📋 Règlement général</a>
+      <a href="#" class="doc-link" onclick="alert('📊 Référentiel d\'évaluation CISFOOTVAC — Document disponible sur demande. Contact : certification@isgi-lekie.cm')">📊 Référentiel d'évaluation</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2 : PRINCIPES -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📜 Principes de la certification</h2>
+    <p class="section-sub">La certification ISGI-Lékié repose sur six principes fondamentaux.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>⚖️ Équité</h3>
+        <p>Toute initiative répondant aux critères minimaux peut prétendre à la certification. L'accès au processus est ouvert et transparent.</p>
+      </div>
+      <div class="card">
+        <h3>🔍 Transparence</h3>
+        <p>Les critères d'évaluation sont publics. Les résultats sont publiés dans le registre des certifications. Chaque décision est motivée.</p>
+      </div>
+      <div class="card">
+        <h3>📋 Preuve</h3>
+        <p>La certification repose sur des éléments vérifiables : documents, témoignages, observations de terrain. Aucune certification sans preuve.</p>
+      </div>
+      <div class="card">
+        <h3>📏 Proportionnalité</h3>
+        <p>Le niveau d'exigence est adapté à la taille et à la nature de l'initiative. Une petite initiative locale n'est pas évaluée comme un événement international.</p>
+      </div>
+      <div class="card">
+        <h3>📈 Progression</h3>
+        <p>La certification encourage l'amélioration continue. Une initiative peut progresser d'un niveau à l'autre au fil des éditions.</p>
+      </div>
+      <div class="card">
+        <h3>🛡️ Indépendance</h3>
+        <p>L'évaluation est conduite par une commission indépendante. Aucun conflit d'intérêt n'est toléré.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 3 : DISPOSITIFS -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🏷️ Dispositifs de certification</h2>
+    <p class="section-sub">ISGI-Lékié propose plusieurs dispositifs de certification adaptés à la nature des initiatives.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>⚽ CISFOOTVAC</h3>
+        <p><strong>Certification des championnats de football de vacances</strong></p>
+        <p style="font-size:0.85rem; color:var(--gris); margin-top:0.5rem;">
+          Objet évalué : une édition déterminée d'un championnat.<br>
+          <strong>Niveaux :</strong> Bronze · Argent · Or · Excellence
+        </p>
+        <p style="font-size:0.8rem; color:var(--gris2);">Le niveau exprime un degré de maturité organisationnelle, non un classement.</p>
+        <span class="badge-statut badge-valide">Actif</span>
+        <div style="margin-top:0.5rem; font-size:0.75rem; color:var(--gris2);">
+          📄 <a href="#" onclick="alert('Référentiel CISFOOTVAC — Document disponible sur demande. Contact : certification@isgi-lekie.cm')" style="color:var(--vert);">Référentiel d'évaluation</a> ·
+          <a href="#" onclick="alert('Règlement CISFOOTVAC — Document disponible sur demande. Contact : certification@isgi-lekie.cm')" style="color:var(--vert);">Règlement général</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🎭 Certifications culturelles</h3>
+        <p><strong>À venir</strong></p>
+        <p style="font-size:0.85rem; color:var(--gris); margin-top:0.5rem;">
+          Festivals, événements culturels, manifestations artistiques et patrimoniales.
+        </p>
+        <span class="badge-statut badge-encours">En préparation</span>
+      </div>
+      <div class="card">
+        <h3>🏪 Certifications économiques</h3>
+        <p><strong>À venir</strong></p>
+        <p style="font-size:0.85rem; color:var(--gris); margin-top:0.5rem;">
+          Forums, foires, initiatives entrepreneuriales et économiques locales.
+        </p>
+        <span class="badge-statut badge-encours">En préparation</span>
+      </div>
+      <div class="card">
+        <h3>🤝 Certifications communautaires</h3>
+        <p><strong>À venir</strong></p>
+        <p style="font-size:0.85rem; color:var(--gris); margin-top:0.5rem;">
+          Initiatives citoyennes, actions solidaires, projets de développement local.
+        </p>
+        <span class="badge-statut badge-encours">En préparation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 4 : PROCESSUS -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">⚙️ Processus général de certification</h2>
+    <p class="section-sub">La certification ISGI-Lékié se déroule en six étapes.</p>
+
+    <div class="processus-step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>Candidature</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">L'organisateur soumet sa demande via le formulaire de candidature en ligne. Un dossier documentaire est constitué.</p>
+      </div>
+    </div>
+
+    <div class="processus-step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>Analyse documentaire</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">La commission examine le dossier complet : organisation, sécurité, impact, ressources, etc.</p>
+      </div>
+    </div>
+
+    <div class="processus-step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>Évaluation terrain</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">Un évaluateur ISGI-Lékié se rend sur place pour observer l'événement ou l'initiative.</p>
+      </div>
+    </div>
+
+    <div class="processus-step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>Rapport d'évaluation</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">Un rapport détaillé est rédigé, documentant les points forts et les axes d'amélioration.</p>
+      </div>
+    </div>
+
+    <div class="processus-step">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <strong>Décision de la Commission</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">La Commission de certification examine le rapport et attribue un niveau (Bronze, Argent, Or, Excellence).</p>
+      </div>
+    </div>
+
+    <div class="processus-step">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <strong>Publication</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">La certification est publiée dans le Registre public. Une fiche publique et un certificat officiel sont délivrés.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 5 : REGISTRE PUBLIC -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📋 Registre public des certifications</h2>
+    <p class="section-sub">Le registre présente les initiatives certifiées par ISGI-Lékié. Seuls le nom de l'événement, sa localisation, son année et son niveau sont affichés.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Année</th><th>Événement</th><th>Commune</th><th>Niveau</th><th>Fiche publique</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2026</td>
+            <td><a href="sport.html#tala" style="color:var(--vert);">Festi-Foot Vacances TALA</a></td>
+            <td>Monatélé</td>
+            <td><span class="badge-statut badge-encours">En cours</span></td>
+            <td><span style="color:var(--gris2);">À venir</span></td>
+          </tr>
+          <tr>
+            <td>2026</td>
+            <td><a href="sport.html#maradel" style="color:var(--vert);">Marathon MARADÉL</a></td>
+            <td>Monatélé / Ebebda</td>
+            <td><span class="badge-statut badge-encours">En cours</span></td>
+            <td><span style="color:var(--gris2);">À venir</span></td>
+          </tr>
+          <tr>
+            <td>2026</td>
+            <td><a href="sport.html#unite" style="color:var(--vert);">Tournoi de l'Unité — 5e édition</a></td>
+            <td>Monatélé</td>
+            <td><span class="badge-statut badge-encours">En cours</span></td>
+            <td><span style="color:var(--gris2);">À venir</span></td>
+          </tr>
+          <tr>
+            <td colspan="5" style="text-align:center; color:var(--gris2); padding:1rem 0;">
+              📢 Le registre est en cours d'alimentation. Les certifications seront publiées au fur et à mesure des évaluations.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="source">📌 Source : Commission de certification ISGI-Lékié · Données actualisées en temps réel</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 6 : CANDIDATURE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📝 Candidater à une certification</h2>
+    <p class="section-sub">Vous souhaitez faire certifier votre événement ou initiative par ISGI-Lékié ?</p>
+
+    <div class="card" style="text-align:center; padding:2rem;">
+      <p style="font-size:1.1rem; font-weight:600; color:var(--vert);">📋 Déposez votre candidature dès maintenant</p>
+      <p style="color:var(--gris); margin:0.5rem 0 1.5rem;">
+        Remplissez le formulaire de demande de certification en ligne. Un évaluateur ISGI-Lékié vous contactera pour la suite du processus.
+      </p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRC96ViA9I0QHSnGAbA4iTa_QMs0SonWxxqhi0TBzo4UnX9Q/viewform" target="_blank" rel="noopener noreferrer" class="btn">📝 Demander une certification →</a>
+    </div>
+
+    <div style="text-align:center; margin-top:1.5rem;">
+      <a href="plateforme.html#contribuer" class="btn btn-outline">📢 Signaler une initiative à certifier</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 28 Juillet 2026</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
+
+<script>
+  // ---- BURGER MENU ----
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+
+  // ---- BACK TO TOP ----
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>
