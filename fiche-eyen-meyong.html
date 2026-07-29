@@ -21,11 +21,47 @@
     .info-value{flex:1;color:#3a3a35;}
     .note-manquant{background:#fff8e1;border-left:4px solid #C8922A;padding:1rem;margin-top:1rem;font-size:0.85rem;}
     .btn-retour{display:inline-block;background:#1B4332;color:#e0a83e;padding:0.6rem 1.2rem;border-radius:40px;text-decoration:none;font-weight:500;margin-top:1rem;}
+    .btn-retour:hover{background:#C8922A;color:#1B4332;}
+    .btn-contribuer{background:#C8922A;color:#1B4332;}
+    .btn-contribuer:hover{background:#1B4332;color:#e0a83e;}
+    nav{background:#1b3a2d;padding:0.8rem 1.5rem;border-bottom:2px solid #c4922a;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100;}
+    .logo a{color:#e0a83e;text-decoration:none;font-size:1.5rem;font-weight:700;font-family:'Cormorant Garamond',serif;}
+    .logo span{font-size:0.7rem;display:block;color:rgba(255,255,255,0.7);}
+    .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
+    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;}
+    .nav-links a:hover{color:#e0a83e;}
+    .burger{display:none;background:none;border:none;color:#e0a83e;font-size:1.8rem;cursor:pointer;}
     footer{text-align:center;margin-top:3rem;padding-top:1rem;border-top:1px solid #e8dfd0;color:#8a8a80;font-size:0.75rem;}
-    @media (max-width:700px){.info-label{width:100%;margin-bottom:0.2rem;}}
+    .btn-group{display:flex;flex-wrap:wrap;gap:0.5rem;justify-content:center;margin-top:1.5rem;}
+    @media(max-width:700px){
+      nav{flex-direction:row;}
+      .burger{display:block;}
+      .nav-links{display:none;width:100%;flex-direction:column;align-items:center;padding-top:0.5rem;}
+      .nav-links.show{display:flex;}
+      .info-label{width:100%;margin-bottom:0.2rem;}
+      .grid-2{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="plateforme.html">Plateforme</a>
+    <a href="mon-village.html">Mon village</a>
+    <a href="mon-ecole.html">Mon école</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html">Certification</a>
+    <a href="tourisme.html">Tourisme</a>
+    <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
+  </div>
+</nav>
+
 <div class="container">
   <span class="badge-valid">✅ Données validées par la chefferie & comité d’arbitrage</span>
   <h1>Eyen-Meyong</h1>
@@ -48,7 +84,7 @@
 
   <div class="info-block">
     <h3>👥 Démographie & société</h3>
-    <div class="info-row"><div class="info-label">Population estimée</div><div class="info-value">≈ 800 habitants (source terrain)</div></div>
+    <div class="info-row"><div class="info-label">Population estimée</div><div class="info-value">≈ 800 habitants <span style="font-size:0.7rem;color:#8a8a80;">(collecte terrain ISGI-Lékié, mars 2026)</span></div></div>
     <div class="info-row"><div class="info-label">Clan principal</div><div class="info-value">Beti-Eton – Mvogkani (Mvog-bedzig)</div></div>
     <div class="info-row"><div class="info-label">Sous-lignages</div><div class="info-value">Ekan-Mvogo, Ntoud-Okok, Mvog-Onomo, Mvog-Tanguene, Mvog-Benog (rattachée)</div></div>
     <div class="info-row"><div class="info-label">Diaspora</div><div class="info-value">Nombreuses élites à l’étranger (non détaillées)</div></div>
@@ -105,13 +141,43 @@
     <strong>📋 Informations manquantes (appel à contribution) :</strong> population officielle (PCD), superficie, état électricité, numérique, détail féminin/jeunesse, conflits locaux (Niveau 2), diaspora détaillée, armoiries locales, photographies, documents administratifs.
   </div>
 
-  <div style="text-align: center; margin-top: 2rem;">
+  <div class="btn-group">
     <a href="mon-village.html" class="btn-retour">← Retour au répertoire « Mon village »</a>
-    <a href="plateforme.html#contribuer" class="btn-retour" style="background:#C8922A; color:#1B4332; margin-left:0.5rem;">📢 Contribuer à cette fiche</a>
+    <a href="plateforme.html#contribuer" class="btn-retour btn-contribuer">📢 Contribuer à cette fiche</a>
   </div>
 </div>
+
 <footer>
-  <p>ISGI-Lékié — Fiche territoriale · Données validées par la chefferie d’Eyen-Meyong et le comité d’arbitrage (03 mars 2026).<br>Mise à jour : avril 2026 · Appel à contribution pour les données manquantes.</p>
+  <p>ISGI-Lékié — Fiche territoriale · Données validées par la chefferie d'Eyen-Meyong et le comité d'arbitrage (03 mars 2026).</p>
+  <p style="margin-top:0.3rem; color:#8a8a80;">Dernière mise à jour : 28 Juillet 2026</p>
+  <p style="font-size:0.7rem; color:#8a8a80; margin-top:0.2rem;">📢 Appel à contribution pour les données manquantes.</p>
 </footer>
+
+<script>
+  // ---- BURGER MENU ----
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+</script>
 </body>
 </html>
