@@ -45,6 +45,7 @@
     .page-header h1 { color: #fff; border-left: none; padding-left: 0; font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; }
     .page-header h1 em { color: var(--or2); font-style: italic; }
     .page-header p { color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.3rem; }
 
     section { padding: 2.5rem 0; border-bottom: 1px solid var(--creme2); }
     .section-title { font-size: 1.6rem; color: var(--vert); margin-bottom: 1.5rem; border-left: 6px solid var(--or); padding-left: 1rem; font-family: 'Cormorant Garamond', serif; }
@@ -83,7 +84,6 @@
     .table-wrap tr:nth-child(even) { background: #f9f7f2; }
     .table-wrap .highlight { font-weight: 600; background: var(--creme); }
     .table-wrap .source { font-size: 0.7rem; color: var(--gris2); margin-top: 0.5rem; }
-    .table-wrap .text-right { text-align: right; }
 
     .commune-link { color: var(--vert); text-decoration: none; font-weight: 600; }
     .commune-link:hover { text-decoration: underline; }
@@ -135,20 +135,21 @@
   <div class="nav-links" id="navLinks">
     <a href="index.html">Accueil</a>
     <a href="plateforme.html">Plateforme</a>
-    <a href="observatoire.html" class="active">📊 Observatoire</a>
-    <a href="annuaire.html">📇 Annuaire</a>
-    <a href="presse.html">Presse</a>
     <a href="mon-village.html">Mon village</a>
     <a href="mon-ecole.html">Mon école</a>
-    <a href="sport.html">🏆 Sport</a>
+    <a href="observatoire.html" class="active">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html">Certification</a>
     <a href="tourisme.html">Tourisme</a>
     <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
   </div>
 </nav>
 
 <div class="page-header">
   <h1>📊 Observatoire de la <em>Lékié</em></h1>
   <p>Budget d'Investissement Public (BIP) · Profil des ménages et conditions de vie</p>
+  <p class="maj">📅 Dernière mise à jour : 28 Juillet 2026</p>
 </div>
 
 <div class="container">
@@ -198,6 +199,9 @@
         <div class="chart-wrapper">
           <canvas id="typeChart" aria-label="Graphique de répartition du BIP par type de projet"></canvas>
         </div>
+        <div style="font-size:0.7rem; color:var(--gris2); text-align:center; margin-top:0.5rem;">
+          <strong>Légende :</strong> AI = Adduction d'eau / Électrification · BEC = Bâtiments · AG = Acquisitions · SPI = Études / Maîtrise d'œuvre
+        </div>
       </div>
     </div>
 
@@ -207,22 +211,19 @@
       <table>
         <thead><tr><th scope="col">#</th><th scope="col">Commune</th><th scope="col" class="text-right">Nb marchés</th><th scope="col" class="text-right">Montant (FCFA)</th><th scope="col" class="text-right">Part (%)</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td><a href="plateforme.html#okola" class="commune-link">Okola</a></td><td class="text-right">161</td><td class="text-right">4 393 865 762</td><td class="text-right">14,18%</td></tr>
-          <tr><td>2</td><td><a href="plateforme.html#evodoula" class="commune-link">Evodoula</a></td><td class="text-right">107</td><td class="text-right">2 829 097 814</td><td class="text-right">9,13%</td></tr>
-          <tr><td>3</td><td><a href="plateforme.html#saa" class="commune-link">Sa'a</a></td><td class="text-right">131</td><td class="text-right">2 656 154 000</td><td class="text-right">8,57%</td></tr>
-          <tr><td>4</td><td><a href="plateforme.html#obala" class="commune-link">Obala</a></td><td class="text-right">139</td><td class="text-right">2 640 169 414</td><td class="text-right">8,52%</td></tr>
-          <tr><td>5</td><td><a href="plateforme.html#monatele" class="commune-link">Monatélé</a></td><td class="text-right">126</td><td class="text-right">2 614 616 914</td><td class="text-right">8,44%</td></tr>
-          <tr><td>6</td><td><a href="plateforme.html#lobo" class="commune-link">Lobo</a></td><td class="text-right">72</td><td class="text-right">2 468 559 256</td><td class="text-right">7,97%</td></tr>
-          <tr><td>7</td><td><a href="plateforme.html#elig-mfomo" class="commune-link">Elig-Mfomo</a></td><td class="text-right">109</td><td class="text-right">2 216 981 319</td><td class="text-right">7,15%</td></tr>
-          <tr><td>8</td><td><a href="plateforme.html#ebebda" class="commune-link">Ebebda</a></td><td class="text-right">95</td><td class="text-right">2 051 359 824</td><td class="text-right">6,62%</td></tr>
-          <tr><td>9</td><td><a href="plateforme.html#batchenga" class="commune-link">Batchenga</a></td><td class="text-right">79</td><td class="text-right">1 697 956 000</td><td class="text-right">5,48%</td></tr>
-          <tr class="highlight"><td>—</td><td><strong>Services déconcentrés</strong></td><td class="text-right">73</td><td class="text-right">2 767 366 000</td><td class="text-right">—</td></tr>
-          <tr style="font-weight:700; background:var(--vert); color:#fff;"><td></td><td><strong>TOTAL</strong></td><td class="text-right"><strong>1 208</strong></td><td class="text-right"><strong>30 979 131 357</strong></td><td class="text-right"><strong>100%</strong></td></tr>
+          <tr><td>1</td><td><a href="plateforme.html#okola" class="commune-link">Okola</a></td><td class="text-right">161</td><td class="text-right">4 393 865 762 FCFA</td><td class="text-right">14,18%</td></tr>
+          <tr><td>2</td><td><a href="plateforme.html#evodoula" class="commune-link">Evodoula</a></td><td class="text-right">107</td><td class="text-right">2 829 097 814 FCFA</td><td class="text-right">9,13%</td></tr>
+          <tr><td>3</td><td><a href="plateforme.html#saa" class="commune-link">Sa'a</a></td><td class="text-right">131</td><td class="text-right">2 656 154 000 FCFA</td><td class="text-right">8,57%</td></tr>
+          <tr><td>4</td><td><a href="plateforme.html#obala" class="commune-link">Obala</a></td><td class="text-right">139</td><td class="text-right">2 640 169 414 FCFA</td><td class="text-right">8,52%</td></tr>
+          <tr><td>5</td><td><a href="plateforme.html#monatele" class="commune-link">Monatélé</a></td><td class="text-right">126</td><td class="text-right">2 614 616 914 FCFA</td><td class="text-right">8,44%</td></tr>
+          <tr><td>6</td><td><a href="plateforme.html#lobo" class="commune-link">Lobo</a></td><td class="text-right">72</td><td class="text-right">2 468 559 256 FCFA</td><td class="text-right">7,97%</td></tr>
+          <tr><td>7</td><td><a href="plateforme.html#elig-mfomo" class="commune-link">Elig-Mfomo</a></td><td class="text-right">109</td><td class="text-right">2 216 981 319 FCFA</td><td class="text-right">7,15%</td></tr>
+          <tr><td>8</td><td><a href="plateforme.html#ebebda" class="commune-link">Ebebda</a></td><td class="text-right">95</td><td class="text-right">2 051 359 824 FCFA</td><td class="text-right">6,62%</td></tr>
+          <tr><td>9</td><td><a href="plateforme.html#batchenga" class="commune-link">Batchenga</a></td><td class="text-right">79</td><td class="text-right">1 697 956 000 FCFA</td><td class="text-right">5,48%</td></tr>
+          <tr class="highlight"><td>—</td><td><strong>Services déconcentrés</strong></td><td class="text-right">73</td><td class="text-right">2 767 366 000 FCFA</td><td class="text-right">—</td></tr>
+          <tr style="font-weight:700; background:var(--vert); color:#fff;"><td></td><td><strong>TOTAL</strong></td><td class="text-right"><strong>1 208</strong></td><td class="text-right"><strong>30 979 131 357 FCFA</strong></td><td class="text-right"><strong>100%</strong></td></tr>
         </tbody>
       </table>
-      <div style="margin-top:0.8rem;">
-        <a href="plateforme.html#contribuer" class="btn">📢 Signaler une erreur sur les données BIP</a>
-      </div>
     </div>
 
     <!-- TOP 10 MARCHÉS -->
@@ -272,6 +273,10 @@
       <p><strong>🔹 Tendances :</strong> Après une relative stabilité entre 2016 et 2024, l'année <strong>2025</strong> marque un bond avec <strong>4,07 milliards FCFA</strong> programmés, soit une hausse de <strong>63%</strong> par rapport à 2024.</p>
       <p><strong>🔹 Disparités territoriales :</strong> <strong>Okola</strong> concentre 14,18% des programmations (4,39 Mds), devançant largement les autres communes.</p>
       <p><strong>🔹 Priorités sectorielles :</strong> Les <strong>routes</strong> arrivent en tête avec 27,4% du BIP programmé, suivies des <strong>adductions d'eau et électrification</strong> (23,2%) et des <strong>bâtiments éducatifs et communaux</strong> (21,9%).</p>
+    </div>
+
+    <div style="margin-top:1rem;">
+      <a href="plateforme.html#contribuer" class="btn">📢 Signaler une erreur sur les données BIP</a>
     </div>
   </section>
 
@@ -409,6 +414,7 @@
             <tr><td>Ménages utilisant la lampe solaire</td><td><strong>15,8%</strong></td></tr>
             <tr><td>Ménages utilisant le bois pour la cuisine</td><td><strong>85,9%</strong></td></tr>
             <tr><td>Ménages utilisant le GPL/gaz naturel</td><td><strong>8,2%</strong></td></tr>
+            <tr><td><strong>Autres sources</strong></td><td><strong>1,8%</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -432,6 +438,7 @@
 
 <footer>
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 28 Juillet 2026</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
 
