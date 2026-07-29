@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mon village – ISGI-Lékié</title>
-  <meta name="description" content="Annuaire des villages et quartiers de la Lékié — 449 villages répartis dans 9 communes.">
+  <meta name="description" content="Annuaire des villages et quartiers de la Lékié — En cours de recensement. Données issues des PCD.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -30,12 +30,14 @@
     .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
     .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;}
     .nav-links a:hover{color:var(--or2);}
+    .nav-links a.active{color:var(--or2);border-bottom:2px solid var(--or);padding-bottom:0.2rem;}
     .burger{display:none;background:none;border:none;color:var(--or2);font-size:1.8rem;cursor:pointer;}
 
     h1{font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:1rem;border-left:6px solid var(--or);padding-left:1rem;}
     .commune-block{margin-bottom:2rem;border:1px solid var(--creme2);border-radius:16px;overflow:hidden;}
     .commune-title{background:var(--vert);color:#fff;padding:0.8rem 1.2rem;font-size:1.2rem;font-weight:600;font-family:'Cormorant Garamond',serif;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
     .commune-title .village-count{font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:400;color:rgba(255,255,255,0.7);}
+    .commune-title .groupement-count{font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:400;color:rgba(255,255,255,0.6);margin-left:0.5rem;}
     .groupement{background:var(--creme);margin:0.5rem 1rem 1rem 1rem;border-radius:12px;}
     .groupement summary{font-weight:700;padding:0.8rem;cursor:pointer;color:var(--vert);background:var(--creme);border-radius:12px;font-size:0.95rem;}
     .groupement summary:hover{background:var(--creme2);}
@@ -50,12 +52,14 @@
     .lien-fiche a{color:var(--or);text-decoration:none;}
     .lien-fiche a:hover{text-decoration:underline;}
 
-    .lien-sport{margin-left:0.5rem;font-size:0.7rem;}
-    .lien-sport a{color:var(--vert);text-decoration:none;background:#e8f5e9;padding:0.05rem 0.5rem;border-radius:12px;}
-    .lien-sport a:hover{background:var(--or);color:#fff;}
+    .lien-signaler{font-size:0.7rem;margin-left:0.3rem;}
+    .lien-signaler a{color:var(--gris2);text-decoration:none;}
+    .lien-signaler a:hover{color:var(--or);}
 
     footer{text-align:center;margin-top:3rem;padding-top:1rem;border-top:1px solid var(--creme2);font-size:0.8rem;color:var(--gris2);}
-    .note{background:#fff8e1;padding:1rem;border-left:4px solid var(--or);margin:1rem 0;border-radius:4px;}
+    .note{background:#fff8e1;padding:1rem;border-left:4px solid var(--or);margin:1rem 0;border-radius:4px;font-size:0.9rem;}
+    .note strong{color:#c62828;}
+    .note a{color:var(--vert);font-weight:600;}
     .back-to-top{position:fixed;bottom:20px;right:20px;background:var(--or);color:#1b3a2d;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:99;}
     .back-to-top.show{opacity:1;}
     .back-to-top:hover{background:var(--vert);color:var(--or2);}
@@ -69,22 +73,24 @@
       .nav-links.show{display:flex;}
       .groupement ul{margin:0.5rem 0.5rem 1rem 1.2rem;}
       .commune-title{font-size:1rem;}
+      .commune-title .village-count{font-size:0.65rem;}
+      .commune-title .groupement-count{font-size:0.6rem;}
     }
   </style>
 </head>
 <body>
 
-<nav>
+<nav aria-label="Navigation principale">
   <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
   <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
   <div class="nav-links" id="navLinks">
     <a href="index.html">Accueil</a>
     <a href="plateforme.html">Plateforme</a>
-    <a href="observatoire.html">📊 Observatoire</a>
-    <a href="annuaire.html">📇 Annuaire</a>
-    <a href="blog.html">Blog</a>
+    <a href="mon-village.html" class="active">Mon village</a>
     <a href="mon-ecole.html">Mon école</a>
-    <a href="sport.html">🏆 Sport</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html">Certification</a>
     <a href="tourisme.html">Tourisme</a>
     <a href="hommage-andre-marie-mbida.html">Hommage</a>
     <a href="presse.html">Presse</a>
@@ -93,7 +99,13 @@
 
 <div class="container">
   <h1>🏘️ Mon village</h1>
-  <p class="note">📌 Données issues des Plans Communaux de Développement (PCD) — certaines datent d'environ 10 ans. Les listes sont progressives – votre contribution est précieuse.<br>Les entités listées correspondent aux <strong>chefferies traditionnelles de 3e degré</strong> (villages / quartiers).</p>
+
+  <p class="note">
+    📌 Données issues des Plans Communaux de Développement (PCD) — certaines datent d'environ 10 ans.<br>
+    Les entités listées correspondent aux <strong>chefferies traditionnelles de 3e degré</strong> (villages et quartiers).<br>
+    Affichage : <strong>"Recensés / Total estimé PCD"</strong>. La liste est progressive.<br>
+    <a href="plateforme.html#contribuer">📢 Signalez une chefferie de 3e degré manquante</a>.
+  </p>
 
   <!-- BARRE DE RECHERCHE -->
   <div class="search-bar">
@@ -102,103 +114,161 @@
   <div id="noResults" class="no-results">Aucun village trouvé pour cette recherche.</div>
 
   <!-- MONATÉLÉ -->
-  <div class="commune-block" id="monatele">
-    <div class="commune-title">📌 MONATÉLÉ <span class="village-count" id="count-monatele">0 villages</span></div>
-    <details class="groupement" data-groupement="monatele"><summary>MVOG-NAMNYE 1 (22)</summary><ul><li>EBONDÉGUÉ</li><li>EKEKOM</li><li>LEKOUN</li><li>LÉLA</li><li>MENGONO</li><li>MGBABA 1</li><li>MGBABA 2</li><li>MONABO 1</li><li>MONABO 2</li><li>MPONG</li><li>MVOMEKAK 1</li><li>NKOLMEBEL</li><li>NKOLMELONG</li><li>NKOLNDOUP</li><li>NKOMBIBAM 1</li><li>NKOMBIBAM 2</li><li>NLONGBON 1</li><li>NLONGBON 2</li><li>NLONGBON 3</li><li>NLONGBON 4</li><li>OVANG</li><li>ZOBSILA</li></ul></details>
-    <details class="groupement" data-groupement="monatele"><summary>KOUGOUDA (16)</summary><ul><li>EBANGA</li><li>EBOLMONGO</li><li>ELON</li><li>EMANA</li><li>EZEZANG</li><li>KOUGOUDA 1</li><li>KOUGOUDA 2</li><li>MVOMEKAK 2</li><li>NGOMO</li><li>NGOMO-CENTRE</li><li>NKOG-BONG</li><li>NKOG-EKOGO</li><li>NKOLTOMO 1</li><li>NKOLTOMO 3</li><li>NKOLVE</li><li>POUPOUMA</li></ul></details>
-    <details class="groupement" data-groupement="monatele"><summary>NKOLKOSSE (6)</summary><ul><li>BIKOGO</li><li>NKANG</li><li>NKOLKOSSE</li><li>NKOLMETOLO</li><li>NKOLOSSANANGA</li><li>OKOKODO</li></ul></details>
+  <div class="commune-block" id="monatele" data-total-villages="78">
+    <div class="commune-title">
+      📌 MONATÉLÉ
+      <span>
+        <span class="village-count" id="count-monatele">0 / 78 villages/quartiers</span>
+        <span class="groupement-count" id="groupement-monatele">0 groupements</span>
+      </span>
+    </div>
+    <details class="groupement" data-groupement="monatele"><summary>MVOG-NAMNYE 1 (22)</summary><ul><li>EBONDÉGUÉ <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKEKOM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEKOUN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LÉLA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MENGONO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MGBABA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MGBABA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MONABO 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MONABO 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MPONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MVOMEKAK 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMEBEL <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMELONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNDOUP <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOMBIBAM 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOMBIBAM 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NLONGBON 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NLONGBON 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NLONGBON 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NLONGBON 4 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OVANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ZOBSILA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="monatele"><summary>KOUGOUDA (16)</summary><ul><li>EBANGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EBOLMONGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELON <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EMANA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EZEZANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KOUGOUDA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KOUGOUDA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MVOMEKAK 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGOMO-CENTRE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOG-BONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOG-EKOGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLTOMO 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLTOMO 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLVE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>POUPOUMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="monatele"><summary>NKOLKOSSE (6)</summary><ul><li>BIKOGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLKOSSE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMETOLO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLOSSANANGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OKOKODO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
     <details class="groupement" data-groupement="monatele">
       <summary>EYEN-MEYONG (9)</summary>
       <ul>
-        <li>EKOUDA</li>
-        <li>ELIG-BIKOUN</li>
-        <li>EYEN-MEYONG <span class="lien-fiche">— 📄 <a href="fiche-eyen-meyong.html">Fiche détaillée</a></span></li>
-        <li>NGAMA</li>
-        <li>NKOLFEB</li>
-        <li>NKOLNGOBO</li>
-        <li>NKOLONANA</li>
-        <li>TALA 1</li>
-        <li>TALA 2</li>
+        <li>EKOUDA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li>
+        <li>ELIG-BIKOUN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li>
+        <li>EYEN-MEYONG <span class="lien-fiche">📄 <a href="fiche-eyen-meyong.html">Fiche</a></span> <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li>
+        <li>NGAMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li>
+        <li>NKOLFEB <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li>
+        <li>NKOLNGOBO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li>
+        <li>NKOLONANA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li>
+        <li>TALA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li>
+        <li>TALA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li>
       </ul>
     </details>
-    <details class="groupement" data-groupement="monatele"><summary>EKOT (25)</summary><ul><li>ALLOGENES 1</li><li>ALLOGENES 2</li><li>ALLOGENES 3</li><li>AVOH</li><li>ETOM</li><li>LENOUCK</li><li>LEVEM</li><li>MONATELE 1</li><li>MONATELE 2</li><li>MONG</li><li>NDOUP</li><li>NKOLEVIDA</li><li>NKOLMELEN</li><li>NKOLNGAL</li><li>NKOLOWONO</li><li>NKONGMESSE 1</li><li>NKONGMESSE 2</li><li>NKONGMESSA</li><li>NTOL</li><li>OSSEBE</li><li>NKONGMEDOG</li><li>Sous-bois</li><li>Obeng</li><li>Ndoup quartier</li><li>Nyatmang</li></ul></details>
+    <details class="groupement" data-groupement="monatele"><summary>EKOT (25)</summary><ul><li>ALLOGENES 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ALLOGENES 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ALLOGENES 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>AVOH <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ETOM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LENOUCK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEVEM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MONATELE 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MONATELE 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NDOUP <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLEVIDA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMELEN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNGAL <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLOWONO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKONGMESSE 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKONGMESSE 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKONGMESSA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NTOL <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OSSEBE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKONGMEDOG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>Sous-bois <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>Obeng <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>Ndoup quartier <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>Nyatmang <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
   </div>
 
   <!-- BATCHENGA -->
-  <div class="commune-block" id="batchenga">
-    <div class="commune-title">📌 BATCHENGA <span class="village-count" id="count-batchenga">0 villages</span></div>
-    <details class="groupement" data-groupement="batchenga"><summary>BATCHENGA (15)</summary><ul><li>BALLONG 1</li><li>BALLONG 2</li><li>BIYAGA</li><li>EBANG-MINALA</li><li>ELON</li><li>EMANA</li><li>EMANA BATCHENGA</li><li>FAMENASSI</li><li>MEBASSA</li><li>NACHTIGAL</li><li>NALASSI</li><li>NDJI</li><li>NKOPKALI</li><li>OLEMBE</li><li>OTIBILI</li></ul></details>
+  <div class="commune-block" id="batchenga" data-total-villages="15">
+    <div class="commune-title">
+      📌 BATCHENGA
+      <span>
+        <span class="village-count" id="count-batchenga">0 / 15 villages/quartiers</span>
+        <span class="groupement-count" id="groupement-batchenga">0 groupements</span>
+      </span>
+    </div>
+    <details class="groupement" data-groupement="batchenga"><summary>BATCHENGA (15)</summary><ul><li>BALLONG 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>BALLONG 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>BIYAGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EBANG-MINALA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELON <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EMANA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EMANA BATCHENGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>FAMENASSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MEBASSA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NACHTIGAL <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NALASSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NDJI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOPKALI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OLEMBE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OTIBILI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
   </div>
 
   <!-- OBALA -->
-  <div class="commune-block" id="obala">
-    <div class="commune-title">📌 OBALA <span class="village-count" id="count-obala">0 villages</span></div>
-    <details class="groupement" data-groupement="obala"><summary>ENDINDING (14)</summary><ul><li>ABONO</li><li>EFOUMELESSI</li><li>EKABITA-ESSELE</li><li>ELIG-BODO</li><li>ELIG-MGOMO</li><li>ESSONG</li><li>ETONG BIDJOE</li><li>EZEZANG-ESSELE</li><li>MBAKOMO</li><li>NKOD'ABANG</li><li>NKOLTSOGO 1</li><li>NKOLTSOGO 2</li><li>ZIMA</li><li>ZOATOUBSI</li></ul></details>
-    <details class="groupement" data-groupement="obala"><summary>OBALA (26)</summary><ul><li>ABOKONO LYCEE</li><li>EBOL-AKUM</li><li>EKEKOM</li><li>EKOUMDOUMA</li><li>ELIG-BESSALA</li><li>ELOG-NGAZOUMA</li><li>ELOT 1</li><li>FOULASSI</li><li>LEBOBI</li><li>LENGOM</li><li>MBOUA 2</li><li>MEKAS</li><li>NDJONG-MEZEGUE</li><li>NKOL-EWODO</li><li>NKOLFOULOU 3</li><li>NKOL-MBENE</li><li>NKOLMELEN</li><li>NKOLNGUEM 1</li><li>NKOLNGUEM 2</li><li>NKOL-OBILI</li><li>NKOMETOU 3</li><li>OBALA ZONE 2</li><li>QUARTIER BIKOK-ASSI</li><li>QUARTIER ELOT 2</li><li>QUARTIER MBOUA 1</li><li>QUARTIER NKOLBIKOK</li></ul></details>
-    <details class="groupement" data-groupement="obala"><summary>NKOMETOU (11)</summary><ul><li>EKABITA-MENDOUM</li><li>EZEZANG-MENDOUM</li><li>MFOMAKAP</li><li>MINDJOMO</li><li>MVOG-DJIGUI</li><li>NKOLMENDOUGA</li><li>NKOL-NTARA</li><li>NKOLTIMA</li><li>NKOM-NDAMBA</li><li>YEMSOUM</li><li>YEMSOUM 2</li></ul></details>
-    <details class="groupement" data-groupement="obala"><summary>NKOLFEP (9)</summary><ul><li>ELIG-NKOUMA 1</li><li>ELIG-NKOUMA 2</li><li>ELIG-TSOGO</li><li>ETOUD-AYOS</li><li>KOUDANDENG</li><li>LEKIE-ASSI</li><li>NKOL-NDOBO</li><li>NKOM-EFOUFOUM</li><li>NTO</li></ul></details>
-    <details class="groupement" data-groupement="obala"><summary>LOUA (8)</summary><ul><li>KOMO-MVOKANI</li><li>LOUA 2</li><li>NGONGO</li><li>NKOL-EWODO</li><li>NKOLTOMO 2</li><li>YEMESSOA 1</li><li>YEMESSOA 2</li><li>YEMKOUT</li></ul></details>
-    <details class="groupement" data-groupement="obala"><summary>MINKAMA (4)</summary><ul><li>ELOMZOK</li><li>MINKAMA 3</li><li>NKOL-EKUI</li><li>VILLAGE PIONNIER</li></ul></details>
-    <details class="groupement" data-groupement="obala"><summary>EFOK (4)</summary><ul><li>MBELE 1</li><li>MBELE 2</li><li>NTSAN</li><li>TSEK</li></ul></details>
+  <div class="commune-block" id="obala" data-total-villages="76">
+    <div class="commune-title">
+      📌 OBALA
+      <span>
+        <span class="village-count" id="count-obala">0 / 76 villages/quartiers</span>
+        <span class="groupement-count" id="groupement-obala">0 groupements</span>
+      </span>
+    </div>
+    <details class="groupement" data-groupement="obala"><summary>ENDINDING (14)</summary><ul><li>ABONO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EFOUMELESSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKABITA-ESSELE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELIG-BODO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELIG-MGOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ESSONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ETONG BIDJOE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EZEZANG-ESSELE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBAKOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOD'ABANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLTSOGO 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLTSOGO 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ZIMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ZOATOUBSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>OBALA (26)</summary><ul><li>ABOKONO LYCEE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EBOL-AKUM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKEKOM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKOUMDOUMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELIG-BESSALA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELOG-NGAZOUMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELOT 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>FOULASSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEBOBI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LENGOM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBOUA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MEKAS <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NDJONG-MEZEGUE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-EWODO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLFOULOU 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-MBENE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMELEN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNGUEM 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNGUEM 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-OBILI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOMETOU 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OBALA ZONE 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER BIKOK-ASSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER ELOT 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER MBOUA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER NKOLBIKOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>NKOMETOU (11)</summary><ul><li>EKABITA-MENDOUM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EZEZANG-MENDOUM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MFOMAKAP <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MINDJOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MVOG-DJIGUI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMENDOUGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-NTARA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLTIMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOM-NDAMBA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>YEMSOUM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>YEMSOUM 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>NKOLFEP (9)</summary><ul><li>ELIG-NKOUMA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELIG-NKOUMA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELIG-TSOGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ETOUD-AYOS <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KOUDANDENG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEKIE-ASSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-NDOBO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOM-EFOUFOUM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NTO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>LOUA (8)</summary><ul><li>KOMO-MVOKANI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LOUA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGONGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-EWODO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLTOMO 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>YEMESSOA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>YEMESSOA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>YEMKOUT <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>MINKAMA (4)</summary><ul><li>ELOMZOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MINKAMA 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-EKUI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>VILLAGE PIONNIER <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="obala"><summary>EFOK (4)</summary><ul><li>MBELE 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBELE 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NTSAN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>TSEK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
   </div>
 
   <!-- SA'A -->
-  <div class="commune-block" id="saa">
-    <div class="commune-title">📌 SA'A <span class="village-count" id="count-saa">0 villages</span></div>
-    <details class="groupement" data-groupement="saa"><summary>SA'A (20)</summary><ul><li>ABEL</li><li>EBANG-MINALA</li><li>EBOGO</li><li>EKALAN-MINKOUL</li><li>EKOUM-DOUMA</li><li>ELESSOGUE</li><li>ESSOL-MEYONG</li><li>KOE</li><li>MANELON</li><li>MBAMA</li><li>MBAZOA</li><li>NKOL-MESSENG</li><li>NKOLO</li><li>NKOL-OFOUMBI</li><li>NKOLZOA 1</li><li>NKOLZOA 2</li><li>NKOLZOMO</li><li>POLO</li><li>QUARTIER BAMILEKE</li><li>QUARTIER HAOUSSA</li></ul></details>
-    <details class="groupement" data-groupement="saa"><summary>EBOMBO (12)</summary><ul><li>KOKOE</li><li>MBASSILA</li><li>MBILMANA</li><li>MENDOUGA-MOKALA</li><li>NDONG-ELANG</li><li>NDOVOLO</li><li>NKOL-EBASSIMBI</li><li>NKOL-EBOMA</li><li>NKOL-MGBANA</li><li>NKOLNDZOMO</li><li>NOLANGOUNG</li><li>NSAN-MENDOUGA</li></ul></details>
-    <details class="groupement" data-groupement="saa"><summary>ENGAB (9)</summary><ul><li>ELANG</li><li>MENGON</li><li>MOMO</li><li>NKOLANG 1</li><li>NKOLANG 2</li><li>NKOL-AWONO</li><li>NKOLBOGO 2</li><li>NKOL-ESSONO</li><li>NLONG-ZOK</li></ul></details>
-    <details class="groupement" data-groupement="saa"><summary>NKOLBOGO (10)</summary><ul><li>LEKOUBEK</li><li>MEKIMEBODO</li><li>MELIK</li><li>NKOLAYOS</li><li>NKOLBOGO 3</li><li>NKOLEVODO</li><li>NKOL-ONGUENE</li><li>ONDONDO 1</li><li>ONDONDO 2</li><li>WOMKOA</li></ul></details>
-    <details class="groupement" data-groupement="saa"><summary>LEBAMZIP (16)</summary><ul><li>EBANG</li><li>EKEKOM</li><li>EKOUM-ONDOM</li><li>LEBAMZIP 1</li><li>LEBAMZIP 2</li><li>LEPOPOMO</li><li>MENGAMA</li><li>NKOL-EBAE</li><li>NKOLKAÏ</li><li>NKOLMELOK</li><li>NKOLMEYOS</li><li>NKOLNDOGO</li><li>NKOLNGOK</li><li>NLONG-ONAMBELE</li><li>NTOBO</li><li>NTSA-EKANG</li></ul></details>
-    <details class="groupement" data-groupement="saa"><summary>NKOL-MVAK (13)</summary><ul><li>EDZEN</li><li>MBAN</li><li>MELIK</li><li>NKOLBIBAK</li><li>NKOL-EKONO</li><li>NKOLMEFON</li><li>NKOLMEKI</li><li>NKOL-MVAK</li><li>NKOLNDZAMA 1</li><li>NKOLNDZAMA 2</li><li>NKOLNTSA</li><li>NKOLVE</li><li>NKOLZOMO</li></ul></details>
+  <div class="commune-block" id="saa" data-total-villages="80">
+    <div class="commune-title">
+      📌 SA'A
+      <span>
+        <span class="village-count" id="count-saa">0 / 80 villages/quartiers</span>
+        <span class="groupement-count" id="groupement-saa">0 groupements</span>
+      </span>
+    </div>
+    <details class="groupement" data-groupement="saa"><summary>SA'A (20)</summary><ul><li>ABEL <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EBANG-MINALA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EBOGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKALAN-MINKOUL <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKOUM-DOUMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELESSOGUE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ESSOL-MEYONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KOE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MANELON <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBAMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBAZOA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-MESSENG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-OFOUMBI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLZOA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLZOA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLZOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>POLO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER BAMILEKE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER HAOUSSA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="saa"><summary>EBOMBO (12)</summary><ul><li>KOKOE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBASSILA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBILMANA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MENDOUGA-MOKALA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NDONG-ELANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NDOVOLO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-EBASSIMBI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-EBOMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-MGBANA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNDZOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NOLANGOUNG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NSAN-MENDOUGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="saa"><summary>ENGAB (9)</summary><ul><li>ELANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MENGON <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLANG 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLANG 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-AWONO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLBOGO 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-ESSONO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NLONG-ZOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="saa"><summary>NKOLBOGO (10)</summary><ul><li>LEKOUBEK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MEKIMEBODO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MELIK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLAYOS <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLBOGO 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLEVODO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-ONGUENE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ONDONDO 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ONDONDO 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>WOMKOA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="saa"><summary>LEBAMZIP (16)</summary><ul><li>EBANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKEKOM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKOUM-ONDOM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEBAMZIP 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEBAMZIP 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEPOPOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MENGAMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-EBAE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLKAÏ <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMELOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMEYOS <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNDOGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNGOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NLONG-ONAMBELE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NTOBO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NTSA-EKANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="saa"><summary>NKOL-MVAK (13)</summary><ul><li>EDZEN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBAN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MELIK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLBIBAK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-EKONO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMEFON <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMEKI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-MVAK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNDZAMA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNDZAMA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNTSA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLVE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLZOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
   </div>
 
   <!-- OKOLA -->
-  <div class="commune-block" id="okola">
-    <div class="commune-title">📌 OKOLA <span class="village-count" id="count-okola">0 villages</span></div>
-    <details class="groupement" data-groupement="okola"><summary>ETON-BETI (22)</summary><ul><li>BILONO 1</li><li>BILONO 2</li><li>EBOD</li><li>EKABITA TOM</li><li>EKONG</li><li>ETOUD</li><li>LEBOUDI 1</li><li>LEBOUDI 2</li><li>METAK</li><li>MINTOTOMO</li><li>MVOUA</li><li>NGOYA 1</li><li>NGOYA 2</li><li>NGOYA 3</li><li>NKOLBEGA</li><li>NKOLESSONG</li><li>NKOLONDOM</li><li>NKONG</li><li>NOUMA</li><li>OBAK</li><li>OKOUKOUDA</li><li>YEGUE-ASSI</li></ul></details>
-    <details class="groupement" data-groupement="okola"><summary>MVOG NAMA 2 (31)</summary><ul><li>AYOS</li><li>ELIG-NDOUM</li><li>ELIG-YEN</li><li>EVIAN</li><li>FEGMIMBANG</li><li>LEBOTH</li><li>LENDOM 1</li><li>LENGON</li><li>MEKAK</li><li>MINSOA 1</li><li>MINSOA 2</li><li>MVA'A 1</li><li>MVA'A 2</li><li>NGOBO-ASSI</li><li>NKODASSA</li><li>NKOLDJOBE</li><li>NKOLEKOTSING</li><li>NKOLFEB</li><li>NKOLFEM</li><li>NKOLMEKOUMA</li><li>NKOLMEVANIZE</li><li>NKOLNYADA</li><li>NKOLPOBLO</li><li>NKOLTSIBA</li><li>NKOLZIBI</li><li>NTUISSONG</li><li>NYEMEYONG</li><li>QUARTIER HAOUSSA</li><li>SONG-ONANA</li><li>VOA 1</li><li>VOA 2</li></ul></details>
-    <details class="groupement" data-groupement="okola"><summary>MVOG-NAMNYE 3 (20)</summary><ul><li>BISSOGO</li><li>BITSINGDA</li><li>EBANGA</li><li>EBOUGSI</li><li>EKEKAM 1</li><li>EKEKAM 2</li><li>KONABENG</li><li>LENDOM 2</li><li>LOUMA</li><li>MBELEKIE</li><li>MPONG 2</li><li>NDANGUENG</li><li>NGONG</li><li>NKOLANGOUNG</li><li>NKOLTOMO</li><li>NKONGZOK</li><li>NTSAMA</li><li>OBAN 1</li><li>OBAN 2</li><li>OYAMA</li></ul></details>
+  <div class="commune-block" id="okola" data-total-villages="73">
+    <div class="commune-title">
+      📌 OKOLA
+      <span>
+        <span class="village-count" id="count-okola">0 / 73 villages/quartiers</span>
+        <span class="groupement-count" id="groupement-okola">0 groupements</span>
+      </span>
+    </div>
+    <details class="groupement" data-groupement="okola"><summary>ETON-BETI (22)</summary><ul><li>BILONO 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>BILONO 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EBOD <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKABITA TOM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ETOUD <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEBOUDI 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEBOUDI 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>METAK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MINTOTOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MVOUA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGOYA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGOYA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGOYA 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLBEGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLESSONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLONDOM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NOUMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OBAK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OKOUKOUDA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>YEGUE-ASSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="okola"><summary>MVOG NAMA 2 (31)</summary><ul><li>AYOS <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELIG-NDOUM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELIG-YEN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EVIAN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>FEGMIMBANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEBOTH <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LENDOM 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LENGON <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MEKAK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MINSOA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MINSOA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MVA'A 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MVA'A 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGOBO-ASSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKODASSA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLDJOBE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLEKOTSING <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLFEB <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLFEM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMEKOUMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMEVANIZE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNYADA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLPOBLO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLTSIBA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLZIBI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NTUISSONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NYEMEYONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER HAOUSSA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>SONG-ONANA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>VOA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>VOA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="okola"><summary>MVOG-NAMNYE 3 (20)</summary><ul><li>BISSOGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>BITSINGDA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EBANGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EBOUGSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKEKAM 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKEKAM 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KONABENG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LENDOM 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LOUMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBELEKIE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MPONG 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NDANGUENG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLANGOUNG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLTOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKONGZOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NTSAMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OBAN 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OBAN 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OYAMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
   </div>
 
   <!-- ELIG-MFOMO -->
-  <div class="commune-block" id="elig-mfomo">
-    <div class="commune-title">📌 ELIG-MFOMO <span class="village-count" id="count-elig-mfomo">0 villages</span></div>
-    <details class="groupement" data-groupement="elig-mfomo"><summary>ESSELE 1 et 2 (20 villages documentés, liste en cours pour les 5 restants)</summary><ul><li>AAKAK</li><li>BIKOGO</li><li>BODO</li><li>ELIG-MFOMO</li><li>ELIG-ONANA</li><li>ELOT KOS</li><li>ENDAMA 1</li><li>ENDAMA 2</li><li>KOMO-ESSELE</li><li>LEKOUKOUA</li><li>MBANEDOUMA 1</li><li>MBANEDOUMA 2</li><li>MEBOMO</li><li>NKENGUE</li><li>NKOL MBA</li><li>NKOL OBANG 1</li><li>NKOL OBANG 2</li><li>NKOLBIKOK</li><li>NKOLOSSAN</li><li>OKOK ESSELE</li></ul></details>
-    <details class="groupement" data-groupement="elig-mfomo"><summary>MVOG-KANI (5)</summary><ul><li>ENOBITA</li><li>KOKODO 1</li><li>KOKODO 2</li><li>LEKIE</li><li>NIGA</li></ul></details>
+  <div class="commune-block" id="elig-mfomo" data-total-villages="25">
+    <div class="commune-title">
+      📌 ELIG-MFOMO
+      <span>
+        <span class="village-count" id="count-elig-mfomo">0 / 25 villages/quartiers</span>
+        <span class="groupement-count" id="groupement-elig-mfomo">0 groupements</span>
+      </span>
+    </div>
+    <details class="groupement" data-groupement="elig-mfomo"><summary>ESSELE 1 et 2 (20 villages documentés, liste en cours pour les 5 restants)</summary><ul><li>AAKAK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>BIKOGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>BODO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELIG-MFOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELIG-ONANA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELOT KOS <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ENDAMA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ENDAMA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KOMO-ESSELE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEKOUKOUA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBANEDOUMA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBANEDOUMA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MEBOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKENGUE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL MBA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL OBANG 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL OBANG 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLBIKOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLOSSAN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OKOK ESSELE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="elig-mfomo"><summary>MVOG-KANI (5)</summary><ul><li>ENOBITA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KOKODO 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KOKODO 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEKIE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NIGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
   </div>
 
   <!-- EBEBDA -->
-  <div class="commune-block" id="ebebda">
-    <div class="commune-title">📌 EBEBDA <span class="village-count" id="count-ebebda">0 villages</span></div>
-    <details class="groupement" data-groupement="ebebda"><summary>BENYABEGA (9)</summary><ul><li>EBEBDA 1</li><li>EBEBDA 2</li><li>ETAM-KOUMA</li><li>EYENE</li><li>NKANG-EFOK</li><li>NKOM 1</li><li>NKOM 2</li><li>NLONG-ZOK</li><li>TSANG</li></ul></details>
-    <details class="groupement" data-groupement="ebebda"><summary>ABAM (6)</summary><ul><li>EBONG</li><li>EKOME</li><li>ENDOUM</li><li>KOAN</li><li>NGOKSA</li><li>ZOKOGO</li></ul></details>
-    <details class="groupement" data-groupement="ebebda"><summary>ABAM-NGOE (5)</summary><ul><li>ABANG-NANG</li><li>LENDONG</li><li>MELEN</li><li>NEGA</li><li>OLONG</li></ul></details>
-    <details class="groupement" data-groupement="ebebda"><summary>SA'A (6)</summary><ul><li>BIKOGO</li><li>DJOUNYAT</li><li>EBOMZOUT</li><li>MBENEGA</li><li>NDOUNDA</li><li>NKOL-ELOUGA</li></ul></details>
-    <details class="groupement" data-groupement="ebebda"><summary>NKOLKOSSE (6)</summary><ul><li>BILIG-BINDIK</li><li>LEKA</li><li>NKOG-EDZEN</li><li>NKOLOSSANG</li><li>POLO 1</li><li>POLO 2</li></ul></details>
+  <div class="commune-block" id="ebebda" data-total-villages="32">
+    <div class="commune-title">
+      📌 EBEBDA
+      <span>
+        <span class="village-count" id="count-ebebda">0 / 32 villages/quartiers</span>
+        <span class="groupement-count" id="groupement-ebebda">0 groupements</span>
+      </span>
+    </div>
+    <details class="groupement" data-groupement="ebebda"><summary>BENYABEGA (9)</summary><ul><li>EBEBDA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EBEBDA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ETAM-KOUMA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EYENE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKANG-EFOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOM 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOM 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NLONG-ZOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>TSANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="ebebda"><summary>ABAM (6)</summary><ul><li>EBONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKOME <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ENDOUM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KOAN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGOKSA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ZOKOGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="ebebda"><summary>ABAM-NGOE (5)</summary><ul><li>ABANG-NANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LENDONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MELEN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NEGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OLONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="ebebda"><summary>SA'A (6)</summary><ul><li>BIKOGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>DJOUNYAT <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EBOMZOUT <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBENEGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NDOUNDA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOL-ELOUGA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="ebebda"><summary>NKOLKOSSE (6)</summary><ul><li>BILIG-BINDIK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LEKA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOG-EDZEN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLOSSANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>POLO 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>POLO 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
   </div>
 
   <!-- EVODOULA -->
-  <div class="commune-block" id="evodoula">
-    <div class="commune-title">📌 EVODOULA <span class="village-count" id="count-evodoula">0 villages</span></div>
-    <details class="groupement" data-groupement="evodoula"><summary>NTSAS ENDO (23)</summary><ul><li>ELAH</li><li>ELIG-ZOGO</li><li>ENOH</li><li>EYEN MEYONG</li><li>KALNGAHA</li><li>KOMO</li><li>MEYOS</li><li>MGBABANG 1</li><li>MGBABANG 2</li><li>MGBABANG 3</li><li>NGOBO</li><li>NGUESSE</li><li>NKOLASSA 1</li><li>NKOLASSA 2</li><li>NKOLMEYOS 1</li><li>NKOLMEYOS 2</li><li>NKOLNGUELE</li><li>NLOUDOU</li><li>NTOUDA CENTRE</li><li>NTOUDA SUD</li><li>OKOK 1</li><li>OKOK 2</li><li>PONGSOLO</li></ul></details>
-    <details class="groupement" data-groupement="evodoula"><summary>MVOG-NAMNYE 2 (21)</summary><ul><li>EKOL</li><li>ETOK</li><li>EVODOULA VILLAGE</li><li>MBELBIKOL</li><li>MINWOHO-CENTRE</li><li>MINWOHO-SUD</li><li>NKODABEL</li><li>NKOLABANG</li><li>NKOLAKOK</li><li>NKOLKOUGDA 1</li><li>NKOLKOUGDA 2</li><li>NKOLOHANDJA</li><li>NKOLSENG 1</li><li>NKOLSENG 2</li><li>NLONG-MENANG</li><li>POBO</li><li>QUARTIER ACCUEIL</li><li>QUARTIER AYISSI</li><li>QUARTIER DOUMASSI</li><li>QUARTIER HAOUSSA</li><li>QUARTIER MISSION CATHOLIQUE</li></ul></details>
+  <div class="commune-block" id="evodoula" data-total-villages="44">
+    <div class="commune-title">
+      📌 EVODOULA
+      <span>
+        <span class="village-count" id="count-evodoula">0 / 44 villages/quartiers</span>
+        <span class="groupement-count" id="groupement-evodoula">0 groupements</span>
+      </span>
+    </div>
+    <details class="groupement" data-groupement="evodoula"><summary>NTSAS ENDO (23)</summary><ul><li>ELAH <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ELIG-ZOGO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ENOH <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EYEN MEYONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KALNGAHA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KOMO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MEYOS <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MGBABANG 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MGBABANG 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MGBABANG 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGOBO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGUESSE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLASSA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLASSA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMEYOS 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMEYOS 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNGUELE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NLOUDOU <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NTOUDA CENTRE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NTOUDA SUD <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OKOK 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OKOK 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>PONGSOLO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
+    <details class="groupement" data-groupement="evodoula"><summary>MVOG-NAMNYE 2 (21)</summary><ul><li>EKOL <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>ETOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EVODOULA VILLAGE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MBELBIKOL <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MINWOHO-CENTRE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MINWOHO-SUD <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKODABEL <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLABANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLAKOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLKOUGDA 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLKOUGDA 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLOHANDJA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLSENG 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLSENG 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NLONG-MENANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>POBO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER ACCUEIL <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER AYISSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER DOUMASSI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER HAOUSSA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>QUARTIER MISSION CATHOLIQUE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
   </div>
 
   <!-- LOBO -->
-  <div class="commune-block" id="lobo">
-    <div class="commune-title">📌 LOBO <span class="village-count" id="count-lobo">0 villages</span></div>
-    <details class="groupement" data-groupement="lobo"><summary>MVOG NAMA 1 (26)</summary><ul><li>ADZAB</li><li>AKOK</li><li>EKEKAM 3</li><li>EKOUMTIK</li><li>EYANG</li><li>KELLE</li><li>KOUDI</li><li>LOBO</li><li>MENGUEK 1</li><li>MENGUEK 2</li><li>MINKOA</li><li>NGOAS</li><li>NGOULMEKONG</li><li>NKOLMELEN</li><li>NKOLMEYANG</li><li>NKOLNGUET</li><li>NKOLYEM</li><li>NKONG-MESSA</li><li>NLONG</li><li>OVANG</li><li>OZOM 1</li><li>OZOM 2</li><li>OZOM 3</li><li>TIKONG</li><li>TSEK</li><li>VOA 3</li></ul></details>
+  <div class="commune-block" id="lobo" data-total-villages="26">
+    <div class="commune-title">
+      📌 LOBO
+      <span>
+        <span class="village-count" id="count-lobo">0 / 26 villages/quartiers</span>
+        <span class="groupement-count" id="groupement-lobo">0 groupements</span>
+      </span>
+    </div>
+    <details class="groupement" data-groupement="lobo"><summary>MVOG NAMA 1 (26)</summary><ul><li>ADZAB <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>AKOK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKEKAM 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EKOUMTIK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>EYANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KELLE <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>KOUDI <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>LOBO <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MENGUEK 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MENGUEK 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>MINKOA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGOAS <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NGOULMEKONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMELEN <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLMEYANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLNGUET <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKOLYEM <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NKONG-MESSA <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>NLONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OVANG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OZOM 1 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OZOM 2 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>OZOM 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>TIKONG <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>TSEK <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li><li>VOA 3 <span class="lien-signaler">✏️ <a href="plateforme.html#contribuer">Signaler</a></span></li></ul></details>
   </div>
 
 </div>
 
 <footer>
   <p>ISGI-Lékié — Données issues des PCD · En cours de collecte et d’actualisation. Appel à contribution.</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 28 Juillet 2026</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+  <p style="font-size:0.7rem; margin-top:0.5rem; color:var(--gris2);">
+    🗺️ Données cartographiques <a href="https://www.openstreetmap.org" target="_blank" rel="noopener noreferrer" style="color:var(--gris2);">OpenStreetMap</a> — Contribuez à améliorer la carte de votre territoire
+  </p>
 </footer>
 
-<a href="#" id="backToTop" class="back-to-top" title="Retour en haut">↑</a>
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
 
 <script>
   // ---- BURGER MENU ----
@@ -238,25 +308,37 @@
     });
   }
 
-  // ---- COMPTEUR DE VILLAGES ----
-  function countVillages() {
-    const communes = document.querySelectorAll('.commune-block');
-    communes.forEach(function(commune) {
-      const groupements = commune.querySelectorAll('.groupement ul');
-      let total = 0;
-      groupements.forEach(function(ul) {
-        total += ul.querySelectorAll('li').length;
-      });
-      const countSpan = commune.querySelector('.village-count');
-      if (countSpan) {
-        countSpan.textContent = total + ' villages';
-      }
-    });
-  }
-
   // ---- NORMALISATION DES ACCENTS ----
   function normalize(str) {
     return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  }
+
+  // ---- COMPTEUR DE VILLAGES ET GROUPEMENTS ----
+  function countVillagesAndGroupements() {
+    const communes = document.querySelectorAll('.commune-block');
+    communes.forEach(function(commune) {
+      const groupements = commune.querySelectorAll('.groupement');
+      let totalRecenses = 0;
+      let totalReel = parseInt(commune.dataset.totalVillages) || '?';
+      let totalGroupements = groupements.length;
+
+      groupements.forEach(function(group) {
+        const ul = group.querySelector('ul');
+        if (ul) {
+          totalRecenses += ul.querySelectorAll('li').length;
+        }
+      });
+
+      const countSpan = commune.querySelector('.village-count');
+      if (countSpan) {
+        countSpan.textContent = `${totalRecenses} / ${totalReel} villages/quartiers`;
+      }
+
+      const groupCountSpan = commune.querySelector('.groupement-count');
+      if (groupCountSpan) {
+        groupCountSpan.textContent = `${totalGroupements} groupements`;
+      }
+    });
   }
 
   // ---- RECHERCHE DE VILLAGES ----
@@ -274,7 +356,6 @@
         const match = text.includes(query);
         li.style.display = match ? 'list-item' : 'none';
 
-        // Ouvre automatiquement le <details> parent si un résultat est trouvé
         if (match) {
           const details = li.closest('details');
           if (details) {
@@ -284,19 +365,16 @@
         }
       });
 
-      // Si la recherche est vide, referme tous les details
       if (query.length === 0) {
         document.querySelectorAll('.groupement').forEach(function(details) {
           details.removeAttribute('open');
         });
       }
 
-      // Affiche ou cache le message "Aucun village trouvé"
       if (noResults) {
         noResults.style.display = (query.length > 0 && found === 0) ? 'block' : 'none';
       }
 
-      // Cache les groupements vides
       document.querySelectorAll('.groupement').forEach(function(group) {
         const visibleItems = group.querySelectorAll('li[style*="display: list-item"], li:not([style*="display: none"])');
         const hasVisible = Array.from(visibleItems).some(function(li) {
@@ -309,9 +387,8 @@
 
   // ---- INITIALISATION ----
   document.addEventListener('DOMContentLoaded', function() {
-    countVillages();
+    countVillagesAndGroupements();
 
-    // Scroll vers la commune si # dans l'URL
     if (window.location.hash) {
       const target = document.querySelector(window.location.hash);
       if (target) {
