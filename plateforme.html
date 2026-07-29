@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>ISGI-Lékié — Plateforme territoriale de la Lékié</title>
-  <meta name="description" content="Plateforme territoriale de la Lékié — données, cartographie, autorités, santé, éducation, chefferies et mémoire du département.">
+  <title>ISGI-Lékié — Plateforme d'Intelligence Territoriale de la Lékié</title>
+  <meta name="description" content="Plateforme d'Intelligence Territoriale de la Lékié — données, cartographie, autorités, santé, éducation, chefferies et mémoire du département.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "GovernmentOrganization",
       "name": "ISGI-Lékié",
-      "description": "Plateforme territoriale de la Lékié — données, cartographie, autorités, santé, éducation, chefferies et mémoire du département.",
-      "url": "https://isgi-lekie.cm",
+      "description": "Plateforme d'Intelligence Territoriale de la Lékié — données, cartographie, autorités, santé, éducation, chefferies et mémoire du département.",
+      "url": "https://isgi-lekie.cm/plateforme.html",
       "sameAs": [
         "https://isgi-lekie.cm/plateforme.html",
         "https://isgi-lekie.cm/observatoire.html"
@@ -24,9 +25,8 @@
     }
   </script>
   <style>
-    /* --- STYLES GÉNÉRAUX --- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #f8f6f0; color: #3a3a35; line-height: 1.5; }
+    body { font-family: 'Inter', sans-serif; background: #fefcf8; color: #3a3a35; line-height: 1.5; }
     h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
 
@@ -44,34 +44,45 @@
     .burger { display: none; background: none; border: none; color: #e0a83e; font-size: 1.8rem; cursor: pointer; }
 
     section { padding: 3rem 0; border-bottom: 1px solid #e8dfd0; }
-    section:nth-child(even) { background: #faf8f4; padding: 3rem 0; border-radius: 8px; }
     .section-title { font-size: 1.8rem; color: #1b3a2d; margin-bottom: 1.5rem; border-left: 6px solid #c4922a; padding-left: 1rem; }
     .section-note { font-size: 0.8rem; color: #8a8a80; font-style: italic; margin-bottom: 1.2rem; }
 
     .grid-2, .grid-3 { display: grid; gap: 2rem; margin-top: 1.5rem; }
     .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
     .grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .card { background: #ffffff; border: 1px solid #e8dfd0; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: box-shadow 0.2s ease, transform 0.2s ease; display: flex; flex-direction: column; }
-    .card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.06); transform: translateY(-2px); }
+    .card { background: white; border-radius: 20px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e8dfd0; }
     .card h3 { font-size: 1.2rem; color: #1b3a2d; margin-bottom: 0.5rem; }
     .card p { color: #5a5a50; font-size: 0.85rem; margin-top: 0.5rem; }
-    .card h4 { font-size: 1rem; color: #1b3a2d; margin-top: 0.8rem; margin-bottom: 0.3rem; }
-    .card .badge-statut { margin-top: 0.5rem; align-self: flex-start; }
-
-    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.2rem 0.6rem; border-radius: 20px; font-weight: 600; margin-left: 0.4rem; vertical-align: middle; }
+    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; margin-left: 0.4rem; vertical-align: middle; }
     .badge-valide { background: #e8f5e9; color: #2e7d32; }
     .badge-encours { background: #fff8e1; color: #856404; }
     .badge-contributif { background: #e8dfd0; color: #5a5a50; }
+    .badge-recherche { background: #ffebee; color: #c62828; }
     .badge-urgent { background: #ffebee; color: #c62828; }
-    .btn { background: #c4922a; color: #1b3a2d; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 0.5rem; }
+    .btn { background: #c4922a; color: #1b3a2d; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 0.5rem; border: none; cursor: pointer; font-size: 0.85rem; }
 
     .map-wrapper { margin: 1rem 0 2rem; border-radius: 20px; overflow: hidden; border: 1px solid #e8dfd0; }
     #map { height: 400px; width: 100%; }
     .map-fallback { display: none; background: #f4efe6; height: 400px; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: #8a8a80; font-size: 0.9rem; text-align: center; padding: 2rem; }
+    .map-osm-mention { font-size: 0.7rem; color: #94a3b8; text-align: center; margin-top: 0.3rem; }
+    .map-osm-mention a { color: #1b3a2d; font-weight: 500; }
+
+    .dashboard { background: white; border: 1px solid #e8dfd0; border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    .dashboard h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: #1b3a2d; margin-bottom: 1rem; border-left: 4px solid #c4922a; padding-left: 0.8rem; }
+    .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+    .dash-item { background: #f4efe6; padding: 1rem; border-radius: 16px; text-align: center; }
+    .dash-item .dash-label { font-size: 0.75rem; color: #5a5a50; font-weight: 500; }
+    .dash-item .dash-value { font-size: 1.8rem; font-weight: 700; color: #1b3a2d; font-family: 'Cormorant Garamond', serif; }
+    .dash-item .dash-source { font-size: 0.6rem; color: #94a3b8; margin-top: 0.2rem; }
+
+    .export-btn { background: #1b3a2d; color: #e0a83e; border: 1px solid #e0a83e; }
+    .export-btn:hover { background: #e0a83e; color: #1b3a2d; }
 
     .filtres-bar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin: 1.5rem 0 1rem; }
     .search-input { flex: 1; padding: 0.7rem 1rem; border: 1px solid #e8dfd0; border-radius: 40px; font-family: 'Inter', sans-serif; }
     .compteur { font-size: 0.8rem; background: #f4efe6; padding: 0.3rem 1rem; border-radius: 30px; }
+    .filter-btn { padding: 0.3rem 1rem; border: 1.5px solid #e8dfd0; border-radius: 30px; background: #fff; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; cursor: pointer; transition: all 0.2s; color: #3a3a35; }
+    .filter-btn:hover, .filter-btn.active { background: #1b3a2d; color: #fff; border-color: #1b3a2d; }
 
     .communes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
     .fiche-commune { background: white; border: 1px solid #e8dfd0; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; height: 100%; }
@@ -83,6 +94,9 @@
     .stat-row .label { font-weight: 500; color: #1b3a2d; }
     .stat-row .value { text-align: right; flex: 1; }
     .village-tag { display: inline-block; background: #e8dfd0; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; margin: 0.2rem; }
+    .projet-item { font-size: 0.8rem; background: #eef6fb; padding: 0.3rem 0.6rem; border-radius: 8px; margin: 0.2rem 0; }
+    .projet-item .projet-nom { font-weight: 600; color: #1b3a2d; }
+    .projet-item .projet-detail { color: #64748b; font-size: 0.7rem; }
     .btn-fiche { background: #1b3a2d; color: #e0a83e; border: none; width: 100%; padding: 0.8rem; font-weight: 600; cursor: pointer; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.85rem; margin-top: 0.5rem; transition: background 0.2s; }
     .btn-fiche:hover { background: #c4922a; color: #1b3a2d; }
     .table-scroll { overflow-x: auto; }
@@ -109,19 +123,15 @@
 
     .chronique-full { background: white; border: 1px solid #e8dfd0; border-radius: 16px; padding: 1.5rem; margin: 1rem 0; }
     .chronique-full h4 { font-family: 'Cormorant Garamond', serif; color: #1b3a2d; font-size: 1.2rem; margin: 1.5rem 0 0.5rem; }
-    .chronique-full h4:first-child { margin-top: 0; }
     .chronique-full p { color: #3a3a35; margin-bottom: 0.6rem; }
     .chronique-full .auteur { font-style: italic; color: #64748b; margin-bottom: 1rem; }
     .chronique-full .contact { background: #f4efe6; padding: 0.8rem 1rem; border-radius: 12px; margin-top: 1rem; font-weight: 500; }
     .chronique-full ul { margin-left: 1.5rem; margin-bottom: 0.8rem; }
     .chronique-full ul li { margin-bottom: 0.3rem; }
-
     .chronique-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
     .chronique-table th { background: #1b3a2d; color: white; padding: 0.5rem; text-align: left; }
     .chronique-table td { padding: 0.4rem 0.5rem; border-bottom: 1px solid #e8dfd0; }
     .chronique-table tr:nth-child(even) { background: #f9f7f2; }
-
-    .a-completer { background: #fff8e1; color: #856404; padding: 0.1rem 0.5rem; border-radius: 12px; font-size: 0.7rem; font-style: italic; }
 
     footer { background: #0f2c21; color: rgba(255,255,255,0.6); text-align: center; padding: 2rem 1rem; font-size: 0.8rem; margin-top: 2rem; }
     footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
@@ -130,7 +140,36 @@
     .back-to-top.show { opacity: 1; }
     .back-to-top:hover { background: #1b3a2d; color: #e0a83e; }
 
-    @media (max-width: 700px) { .navbar { flex-direction: row; } .burger { display: block; } .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; } .nav-links.show { display: flex; } .section-title { font-size: 1.5rem; } .grid-3 { grid-template-columns: 1fr; } .form-grid { grid-template-columns: 1fr; } .communes-grid { grid-template-columns: 1fr; } .stat-row { flex-direction: column; align-items: flex-start; } .stat-row .value { text-align: left; width: 100%; } }
+    .sticky-contrib-btn { position: fixed; bottom: 80px; right: 20px; z-index: 99; background: #c4922a; color: #1b3a2d; padding: 0.8rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 16px rgba(0,0,0,0.15); transition: transform 0.2s; }
+    .sticky-contrib-btn:hover { transform: scale(1.05); background: #1b3a2d; color: #e0a83e; }
+
+    @media (max-width: 700px) {
+      .navbar { flex-direction: row; }
+      .burger { display: block; }
+      .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; }
+      .nav-links.show { display: flex; }
+      .section-title { font-size: 1.5rem; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .communes-grid { grid-template-columns: 1fr; }
+      .stat-row { flex-direction: column; align-items: flex-start; }
+      .stat-row .value { text-align: left; width: 100%; }
+      .dashboard-grid { grid-template-columns: 1fr 1fr; }
+      .sticky-contrib-btn { bottom: 70px; right: 10px; padding: 0.6rem 1rem; font-size: 0.75rem; }
+    }
+
+    /* STYLES POUR L'EXPORT PDF */
+    #pdfContent { background: #fff; padding: 2rem; font-family: 'Inter', sans-serif; }
+    #pdfContent h2 { font-family: 'Cormorant Garamond', serif; color: #1b3a2d; border-left: 4px solid #c4922a; padding-left: 1rem; }
+    #pdfContent table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    #pdfContent th { background: #1b3a2d; color: #fff; padding: 0.5rem; text-align: left; }
+    #pdfContent td { padding: 0.4rem; border-bottom: 1px solid #e8dfd0; }
+    #pdfContent .pdf-badge { display: inline-block; font-size: 0.6rem; padding: 0.1rem 0.4rem; border-radius: 12px; font-weight: 600; }
+    .pdf-badge-vert { background: #e8f5e9; color: #2e7d32; }
+    .pdf-badge-orange { background: #fff8e1; color: #856404; }
+    .pdf-badge-rouge { background: #ffebee; color: #c62828; }
+    .pdf-badge-encours { background: #fff8e1; color: #856404; }
+    .projet-pdf { font-size: 0.7rem; color: #64748b; margin: 0.1rem 0; }
   </style>
 </head>
 <body>
@@ -140,38 +179,81 @@
 
 <div class="navbar">
   <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
-  <button class="burger" id="burgerBtn" aria-label="Menu de navigation">☰</button>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
   <div class="nav-links" id="navLinks">
     <a href="index.html">Accueil</a>
-    <a href="observatoire.html">📊 Observatoire</a>
-    <a href="annuaire.html">📇 Annuaire</a>
-    <a href="hommage-andre-marie-mbida.html">Hommage</a>
-    <a href="presse.html">Presse</a>
+    <a href="plateforme.html" class="active">Plateforme</a>
     <a href="mon-village.html">Mon village</a>
     <a href="mon-ecole.html">Mon école</a>
-    <a href="sport.html">🏆 Sport</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html">Certification</a>
     <a href="tourisme.html">Tourisme</a>
-    <a href="#communes">Communes</a>
-    <a href="#sante">Santé</a>
-    <a href="#sport">Sport</a>
-    <a href="#autorites">Autorités</a>
-    <a href="#education">Éducation</a>
-    <a href="#chefferies">Chefferies</a>
-    <a href="#demographie">Démographie</a>
-    <a href="#histoire">Histoire</a>
-    <a href="#alertes">Alertes</a>
-    <a href="#contribuer">Contribuer</a>
+    <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
   </div>
 </div>
 
 <div class="container">
 
   <!-- ============================================================ -->
-  <!-- CARTE -->
+  <!-- CARTE AVEC TABLEAU DE BORD -->
   <!-- ============================================================ -->
   <section id="carte">
-    <h2 class="section-title">Carte interactive du territoire</h2>
+
+    <!-- TITRE MODIFIÉ -->
+    <h2 class="section-title" style="font-size:2rem; margin-bottom:0.5rem;">Plateforme d'Intelligence Territoriale de la Lékié</h2>
+
+    <!-- PARAGRAPHE AJOUTÉ -->
+    <p style="color:#5a5a50; font-size:0.95rem; margin-bottom:1.5rem; max-width:800px;">
+      ISGI-Lékié est la plateforme d'intelligence territoriale du département de la Lékié. Elle documente, organise et valorise les connaissances, les institutions, les territoires et les initiatives afin de produire une mémoire collective utile au développement.
+    </p>
+
+    <!-- TABLEAU DE BORD -->
+    <div class="dashboard" id="dashboardSection">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+        <h3>📊 Tableau de bord territorial — Lékié 2025</h3>
+        <button onclick="exportPDF()" class="btn export-btn" style="font-size:0.75rem; padding:0.3rem 1rem;">📄 Exporter en PDF</button>
+      </div>
+      <div class="dashboard-grid">
+        <div class="dash-item">
+          <div class="dash-label">👥 Population totale</div>
+          <div class="dash-value" id="dashPopulation">...</div>
+          <div class="dash-source">Estimations ISGI-Lékié</div>
+        </div>
+        <div class="dash-item">
+          <div class="dash-label">📚 Établissements scolaires</div>
+          <div class="dash-value" id="dashEcoles">...</div>
+          <div class="dash-source">MINEDUB / PCD</div>
+        </div>
+        <div class="dash-item">
+          <div class="dash-label">🏥 Formations sanitaires</div>
+          <div class="dash-value" id="dashSante">...</div>
+          <div class="dash-source">MINSANTE / PCD</div>
+        </div>
+        <div class="dash-item">
+          <div class="dash-label">🏛️ Communes</div>
+          <div class="dash-value" id="dashCommunes">9</div>
+          <div class="dash-source">Département de la Lékié</div>
+        </div>
+        <div class="dash-item">
+          <div class="dash-label">💰 Investissements</div>
+          <div class="dash-value" id="dashInvestissement">...</div>
+          <div class="dash-source">Projets documentés ISGI</div>
+        </div>
+      </div>
+      <div style="font-size:0.65rem; color:#94a3b8; margin-top:0.8rem; text-align:center;">
+        Source : Collecte terrain ISGI-Lékié + INS + MINEDUB + MINSANTE.
+        <span class="badge-statut badge-valide">Validé</span>
+        <span class="badge-statut badge-encours">En cours</span>
+        <span class="badge-statut badge-recherche">Donnée recherchée</span>
+      </div>
+    </div>
+
     <div class="map-wrapper"><div id="map"></div><div id="mapFallback" class="map-fallback"><span>🗺️</span><span>Carte temporairement indisponible</span><span>Les fiches communes restent accessibles ci-dessous.</span></div></div>
+    <div class="map-osm-mention">
+      🗺️ Carte OpenStreetMap — <a href="https://www.openstreetmap.org" target="_blank" rel="noopener noreferrer">Contribuez à améliorer la carte de votre territoire</a>
+    </div>
   </section>
 
   <!-- ============================================================ -->
@@ -179,8 +261,13 @@
   <!-- ============================================================ -->
   <section id="communes">
     <h2 class="section-title">Les 9 communes de la Lékié</h2>
-    <p class="section-note">Données issues des Plans Communaux de Développement (PCD) — en enrichissement continu. <span class="badge-statut badge-valide">Validé</span> <span class="badge-statut badge-encours">En cours</span> <span class="badge-statut badge-contributif">Contributif</span></p>
-    <div class="filtres-bar"><input type="text" id="searchCommune" class="search-input" placeholder="🔍 Rechercher une commune..."><span class="compteur" id="compteur">9 communes</span></div>
+    <p class="section-note">Données issues de la collecte terrain ISGI-Lékié — en enrichissement continu. <span class="badge-statut badge-valide">Validé</span> <span class="badge-statut badge-encours">En cours</span> <span class="badge-statut badge-contributif">Contributif</span> <span class="badge-statut badge-recherche">Donnée recherchée</span></p>
+    <div class="filtres-bar">
+      <button class="filter-btn active" id="filterAll" data-filter="all">Toutes</button>
+      <button class="filter-btn" id="filterAlert" data-filter="alert">⚠️ Alertes</button>
+      <input type="text" id="searchCommune" class="search-input" placeholder="🔍 Rechercher une commune...">
+      <span class="compteur" id="compteur">9 communes</span>
+    </div>
     <div id="communesGrid" class="communes-grid"></div>
   </section>
 
@@ -189,18 +276,18 @@
   <!-- ============================================================ -->
   <section id="sante">
     <h2 class="section-title">Établissements de santé</h2>
-    <p class="section-note">Données issues des PCD et de la collecte terrain ISGI-Lékié.</p>
+    <p class="section-note">Données issues du Ministère de la Santé Publique et de la collecte terrain ISGI-Lékié.</p>
 
     <div class="grid-2">
-      <div class="card"><h3>🏥 Obala</h3><p>Hôpital de district : <strong>2</strong> (dont réhabilitation 2021)<br>CSI : <strong>13</strong><br>Privé : <strong>4</strong><br>Taux de couverture : ~80% · Vaccinal : ~90%</p><span class="badge-statut badge-encours">En cours</span></div>
-      <div class="card"><h3>🏥 Monatélé</h3><p>Hôpital de district : <strong>1</strong><br>CSI : <strong>11</strong><br>Privé : <strong>12</strong></p><span class="badge-statut badge-encours">En cours</span></div>
-      <div class="card"><h3>🏥 Okola</h3><p>Hôpital de district : <strong>1</strong><br>CSI : <strong>21</strong><br>CMA : <strong>1</strong><br>Privé : <strong>4</strong></p><span class="badge-statut badge-valide">Validé</span></div>
-      <div class="card"><h3>🏥 Sa'a</h3><p>Hôpital de district : <strong>1</strong><br>CSI : <strong>19</strong><br>Privé laïc : <strong>5</strong><br>Privé confessionnel : <strong>5</strong></p><span class="badge-statut badge-valide">Validé</span></div>
-      <div class="card"><h3>🏥 Ebebda</h3><p>Hôpital de district : <strong>1</strong> (Djounyat)<br>CSI publics : <strong>5</strong><br>CSI catholique : <strong>1</strong><br>CSI privé laïc : <strong>5</strong></p><span class="badge-statut badge-valide">Validé</span></div>
-      <div class="card"><h3>🏥 Evodoula</h3><p>Hôpital de district : <strong>1</strong><br>CSI : <strong>12</strong></p><span class="badge-statut badge-encours">En cours</span></div>
-      <div class="card"><h3>🏥 Elig-Mfomo</h3><p>Hôpital de district : <strong>0</strong><br>CMA : <strong>1</strong><br>CSI : <strong>6</strong><br>Dispensaire : <strong>1</strong></p><span class="badge-statut badge-valide">Validé</span></div>
-      <div class="card"><h3>🏥 Batchenga</h3><p>Hôpital de district : <strong>0</strong><br>CMA : <strong>1</strong><br>CSI : <strong>2</strong></p><span class="badge-statut badge-encours">En cours</span></div>
-      <div class="card"><h3>🏥 Lobo</h3><p>Hôpital de district : <strong>0</strong><br>CMA : <strong>1</strong><br>CSI publics : <strong>5</strong><br>CSI catholique : <strong>1</strong><br>CSI privé : <strong>2</strong></p><span class="badge-statut badge-valide">Validé</span></div>
+      <div class="card"><h3>🏥 Obala</h3><p>Hôpital de district : <strong>2</strong> (dont réhabilitation 2021)<br>CSI : <strong>13</strong><br>Privé : <strong>4</strong><br>Taux de couverture : ~80% · Vaccinal : ~90%</p></div>
+      <div class="card"><h3>🏥 Monatélé</h3><p>Hôpital de district : <strong>1</strong><br>CSI : <strong>11</strong><br>Privé : <strong>12</strong></p></div>
+      <div class="card"><h3>🏥 Okola</h3><p>Hôpital de district : <strong>1</strong><br>CSI : <strong>4</strong> (Nkolbega, Nkoldjobe, Nkolfem, Nkoltsiba)<br>Privé : <strong>1</strong> (Mvog-Nama II)</p></div>
+      <div class="card"><h3>🏥 Sa'a</h3><p>Hôpital de district : <strong>0</strong><br>CSI : <strong>3</strong> (Lebamzip, Nkolbogo, Nkol-Mvak)<br>Privé : <strong>2</strong> (CEGTI Saint Jérôme de Nkolve, Collège Agricole Bullier)</p></div>
+      <div class="card"><h3>🏥 Ebebda</h3><p>Hôpital de district : <strong>1</strong> (Djounyat)<br>CSI : Leka, Ngoksa'a, Nkang-Efok, Nkol Elouga, Nkom I<br>Privé catholique : Etam-Kouma<br>Privé laïc : 5 centres</p></div>
+      <div class="card"><h3>🏥 Evodoula</h3><p>Hôpital de district : <strong>1</strong><br>CSI : 12 (Nkolassa I, Nkolossa II, Nloudou, Kalngaha, Evodoula, Nkolkougda I, Nkolabang, Nkol Meyos II, Nkol Meyos I, Nkol Ohandja, Mgbabang II, Pongsol)</p></div>
+      <div class="card"><h3>🏥 Elig-Mfomo</h3><p>Hôpital de district : <strong>0</strong><br>CSI : <strong>5</strong> (Elig-Mfomo, Essélé, Nkolmbam, Nkolossan, Okok-Essélé)<br>Privé : <strong>1</strong> (Endama)</p></div>
+      <div class="card"><h3>🏥 Batchenga</h3><p>Hôpital de district : <strong>0</strong><br>CSI : <strong>2</strong> (Batchenga, Elon)<br>Privé : [À COMPLÉTER]</p></div>
+      <div class="card"><h3>🏥 Lobo</h3><p>Hôpital de district : <strong>0</strong><br>CSI : <strong>3</strong> (Lobo, Nlong, Ozom)<br>Privé : [À COMPLÉTER]</p></div>
     </div>
 
     <p style="font-size:0.8rem; color:#8a8a80; margin-top:1rem;">📌 <strong>Contribuez à enrichir ces données :</strong> Si vous avez des informations sur les CSI, centres de santé ou structures privées, partagez-les via le formulaire "Contribuer à la plateforme".</p>
@@ -216,6 +303,9 @@
       <div class="card"><h3>🏆 Championnats de vacances</h3><p>Certification ouverte.</p><a href="sport.html" class="btn" style="margin-top:0.5rem;">En savoir plus sur le sport →</a></div>
       <div class="card"><h3>🎭 Événements culturels</h3><p>Certification ouverte.</p></div>
       <div class="card"><h3>🏪 Forums & foires</h3><p>Certification ouverte.</p></div>
+    </div>
+    <div style="text-align:center; margin-top:1rem;">
+      <a href="certification.html" class="btn">🏅 Découvrir la certification ISGI-Lékié →</a>
     </div>
   </section>
 
@@ -487,14 +577,14 @@
       <div class="form-grid">
         <div class="form-col">
           <h4>📝 Construire</h4>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScaCGKHAOUDOWqXFKcTf2WSBkhme6mTCgkrHm7a-TPv85ETYA/viewform" target="_blank" class="form-btn">📝 Contribuer</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmB9F306JTUAsAp57Y6-fE5RjLINTBJ11OoL5B318qPGSBdg/viewform" target="_blank" class="form-btn">👔 Annuaire professionnel</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRC96ViA9I0QHSnGAbA4iTa_QMs0SonWxxqhi0TBzo4UnX9Q/viewform" target="_blank" class="form-btn">🏅 Demande de certification</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScaCGKHAOUDOWqXFKcTf2WSBkhme6mTCgkrHm7a-TPv85ETYA/viewform" target="_blank" rel="noopener noreferrer" class="form-btn">📝 Contribuer</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmB9F306JTUAsAp57Y6-fE5RjLINTBJ11OoL5B318qPGSBdg/viewform" target="_blank" rel="noopener noreferrer" class="form-btn">👔 Annuaire professionnel</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRC96ViA9I0QHSnGAbA4iTa_QMs0SonWxxqhi0TBzo4UnX9Q/viewform" target="_blank" rel="noopener noreferrer" class="form-btn">🏅 Demande de certification</a>
         </div>
         <div class="form-col">
           <h4>⚡ Agir</h4>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd_Tt1z9QbVRZtlnRr3V3PTTV4Onk1ppz5DViiYO73Izt-x4g/viewform" target="_blank" class="form-btn agir">📢 Signaler une alerte</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScuv_rVQXVOjv6mxNFU0yA0BqTYrHLYNzzxqBY7DM4u2xEQnA/viewform" target="_blank" class="form-btn agir">📩 Contact / Partenariat</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd_Tt1z9QbVRZtlnRr3V3PTTV4Onk1ppz5DViiYO73Izt-x4g/viewform" target="_blank" rel="noopener noreferrer" class="form-btn agir">📢 Signaler une alerte</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScuv_rVQXVOjv6mxNFU0yA0BqTYrHLYNzzxqBY7DM4u2xEQnA/viewform" target="_blank" rel="noopener noreferrer" class="form-btn agir">📩 Contact / Partenariat</a>
         </div>
       </div>
     </div>
@@ -502,12 +592,16 @@
 
 </div>
 
+<!-- BOUTON STICKY CONTRIBUER -->
+<a href="#contribuer" class="sticky-contrib-btn">📢 Contribuer</a>
+
 <footer>
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 28 Juillet 2026</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
 
-<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retourner en haut de la page">↑</a>
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
 
 <script>
   // ---- BURGER MENU ----
@@ -515,18 +609,21 @@
   const navLinks = document.getElementById('navLinks');
   if (burger && navLinks) {
     burger.addEventListener('click', function() {
-      navLinks.classList.toggle('show');
-      burger.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
     });
     navLinks.querySelectorAll('a').forEach(function(link) {
       link.addEventListener('click', function() {
         navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
         burger.textContent = '☰';
       });
     });
     document.addEventListener('click', function(e) {
       if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
         navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
         burger.textContent = '☰';
       }
     });
@@ -544,80 +641,438 @@
     });
   }
 
-  // ---- CARTE ----
+  // ---- BASE DE DONNÉES DES COMMUNES AVEC PROJETS ----
+  const communesDetail = [
+    { 
+      nom: "Monatélé", id: "monatele", chefLieu: true, lat: 4.1875, lng: 11.2525,
+      maire: "Prosper Parfait Mbassi Bessala", superficie: "375 km²", population: 61700,
+      groupements: ["Ekot", "Eyen-Meyong", "Kougouda", "Mvog-Onan-menye", "Nkolkosse"],
+      ecoles: { publiques: 31, privees: 4, maternelles: 24, total: 59 },
+      sante: { csi: 11, hopital: 1, prive: 12, total: 24 },
+      projets: [
+        { nom: "Adduction d'eau Monatélé phase 2", annee: 2023, montant: "180000000", porteur: "MINEE" },
+        { nom: "Hôtel de Ville d'Evodoula", annee: 2025, montant: "282000000", porteur: "FEICOM" }
+      ],
+      color: "#e41a1c",
+      statut: "valide"
+    },
+    { 
+      nom: "Obala", id: "obala", chefLieu: false, lat: 4.1589, lng: 11.5339,
+      maire: "Francis Gaël Touna", superficie: "475 km²", population: 133014,
+      groupements: ["Endinding", "Obala", "Nkolfep", "Efok", "Loua", "Mendum", "Nkol Edouma"],
+      ecoles: { publiques: 19, privees: 12, maternelles: 5, total: 36 },
+      sante: { csi: 13, hopital: 2, prive: 4, total: 19 },
+      projets: [
+        { nom: "Réhabilitation piste rurale Obala – Sa'a", annee: 2025, montant: "175000000", porteur: "FEICOM" },
+        { nom: "Construction école publique", annee: 2024, montant: "195000000", porteur: "MINEDUB" }
+      ],
+      color: "#377eb8",
+      statut: "valide"
+    },
+    { 
+      nom: "Sa'a", id: "saa", chefLieu: false, lat: 4.117, lng: 11.417,
+      maire: "M. Jean Blaise Messina Noah", superficie: "583,9 km²", population: 93113,
+      groupements: ["Engab", "Kouna-Odzolo", "Lebamzip", "Nkolbogo", "Nkolmvack", "Ebombo", "Sa'a"],
+      ecoles: { publiques: 47, privees: 12, maternelles: 32, total: 91 },
+      sante: { csi: 19, hopital: 1, prive: 10, total: 30 },
+      projets: [
+        { nom: "Construction bloc pédagogique", annee: 2022, montant: "155000000", porteur: "MINEDUB" }
+      ],
+      color: "#4daf4a",
+      statut: "valide"
+    },
+    { 
+      nom: "Okola", id: "okola", chefLieu: false, lat: 4.0167, lng: 11.3833,
+      maire: "M. Vincent De Paul Noa", superficie: "605 km²", population: 91736,
+      groupements: ["Mvog-Namnye III", "Eton-Beti", "Mvog-Nama II"],
+      ecoles: { publiques: 62, privees: 2, maternelles: 43, total: 107 },
+      sante: { csi: 21, hopital: 1, prive: 4, total: 26 },
+      projets: [
+        { nom: "Cité municipale d'Okola", annee: 2024, montant: "285000000", porteur: "FEICOM" }
+      ],
+      color: "#ffff33",
+      statut: "valide"
+    },
+    { 
+      nom: "Evodoula", id: "evodoula", chefLieu: false, lat: 4.083, lng: 11.2,
+      maire: "M. Armand Joachim Ongolo Eloundou", superficie: "250 km²", population: 31600,
+      groupements: ["Ntsas Endo", "Mvog-Namnye II"],
+      ecoles: { publiques: 21, privees: 0, maternelles: 9, total: 30 },
+      sante: { csi: 12, hopital: 1, prive: 0, total: 13 },
+      projets: [],
+      color: "#984ea3",
+      statut: "valide"
+    },
+    { 
+      nom: "Ebebda", id: "ebebda", chefLieu: false, lat: 4.35, lng: 11.2,
+      maire: "M. Manga Bessala", superficie: "250 km²", population: 50000,
+      groupements: ["Abam-Ngoe", "Nkolkosse", "Abam", "Benyabega", "Sa'a"],
+      ecoles: { publiques: 28, privees: 2, maternelles: 19, total: 49 },
+      sante: { csi: 11, hopital: 1, prive: 6, total: 18 },
+      projets: [
+        { nom: "Hôtel de Ville d'Ebebda (clôture)", annee: 2025, montant: "230000000", porteur: "FEICOM" }
+      ],
+      color: "#ff7f00",
+      statut: "valide"
+    },
+    { 
+      nom: "Elig-Mfomo", id: "elig-mfomo", chefLieu: false, lat: 4.1, lng: 11.1,
+      maire: "M. Stanislas Ayissi", superficie: "144 km²", population: 30785,
+      groupements: ["Villages (25)"],
+      ecoles: { publiques: 19, privees: 0, maternelles: 9, total: 28 },
+      sante: { csi: 6, hopital: 0, prive: 1, total: 7 },
+      projets: [
+        { nom: "Électrification rurale", annee: 2023, montant: "162000000", porteur: "MINEE" }
+      ],
+      color: "#f781bf",
+      statut: "encours"
+    },
+    { 
+      nom: "Batchenga", id: "batchenga", chefLieu: false, lat: 4.2333, lng: 11.6833,
+      maire: "M. Anatole Souga", superficie: "216 km²", population: 14989,
+      groupements: ["Benyagda", "Batchenga", "Mvog Namnyé"],
+      ecoles: { publiques: 7, privees: 3, maternelles: 1, total: 11 },
+      sante: { csi: 2, hopital: 0, prive: 0, total: 2 },
+      projets: [
+        { nom: "Construction école publique", annee: 2024, montant: "195000000", porteur: "MINEDUB" }
+      ],
+      color: "#a65628",
+      statut: "encours"
+    },
+    { 
+      nom: "Lobo", id: "lobo", chefLieu: false, lat: 3.9833, lng: 11.4,
+      maire: "M. Serge Bertin Obono Onguene", superficie: "260 km²", population: 30121,
+      groupements: ["Eton (chef supérieur)"],
+      ecoles: { publiques: 19, privees: 0, maternelles: 3, total: 22 },
+      sante: { csi: 8, hopital: 0, prive: 2, total: 10 },
+      projets: [
+        { nom: "Reconstruction pont définitif Ngoko", annee: 2026, montant: "300000000", porteur: "MINTP" }
+      ],
+      color: "#999999",
+      statut: "valide"
+    }
+  ];
+
+  // ---- CALCUL DES TOTAUX ----
+  let totalEcoles = 0;
+  let totalSante = 0;
+  let totalPopulation = 0;
+  let totalInvestissement = 0;
+
+  communesDetail.forEach(function(c) {
+    totalEcoles += c.ecoles.total || 0;
+    totalSante += c.sante.total || 0;
+    totalPopulation += c.population || 0;
+    if (c.projets) {
+      c.projets.forEach(function(p) {
+        totalInvestissement += parseInt(p.montant) || 0;
+      });
+    }
+  });
+
+  document.getElementById('dashEcoles').textContent = totalEcoles;
+  document.getElementById('dashSante').textContent = totalSante;
+  document.getElementById('dashPopulation').textContent = totalPopulation.toLocaleString();
+  document.getElementById('dashInvestissement').textContent = totalInvestissement.toLocaleString() + ' FCFA';
+
+  // ---- MOYENNES DÉPARTEMENTALES ----
+  const moyenneEcoles = (totalEcoles / totalPopulation * 1000).toFixed(1);
+  const moyenneSante = (totalSante / totalPopulation * 1000).toFixed(1);
+
+  // ---- FORMATAGE DES MONTANTS ----
+  function formatMontant(montant) {
+    return parseInt(montant).toLocaleString() + ' FCFA';
+  }
+
+  // ---- CARTE LEAFLET ----
   try {
     const map = L.map('map').setView([4.15, 11.4], 9.2);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd' }).addTo(map);
 
-    const communesData = [
-      { nom: "Monatélé", chefLieu: true, lat: 4.1875, lng: 11.2525, maire: "Prosper Parfait Mbassi Bessala", color: "#e41a1c" },
-      { nom: "Obala", chefLieu: false, lat: 4.1589, lng: 11.5339, maire: "Francis Gaël Touna", color: "#377eb8" },
-      { nom: "Sa'a", chefLieu: false, lat: 4.117, lng: 11.417, maire: "M. Jean Blaise Messina Noah", color: "#4daf4a" },
-      { nom: "Evodoula", chefLieu: false, lat: 4.083, lng: 11.2, maire: "M. Armand Joachim Ongolo Eloundou", color: "#984ea3" },
-      { nom: "Ebebda", chefLieu: false, lat: 4.35, lng: 11.2, maire: "M. Manga Bessala", color: "#ff7f00" },
-      { nom: "Okola", chefLieu: false, lat: 4.0167, lng: 11.3833, maire: "M. Vincent De Paul Noa", color: "#ffff33" },
-      { nom: "Batchenga", chefLieu: false, lat: 4.2333, lng: 11.6833, maire: "M. Anatole Souga", color: "#a65628" },
-      { nom: "Elig-Mfomo", chefLieu: false, lat: 4.1, lng: 11.1, maire: "M. Stanislas Ayissi", color: "#f781bf" },
-      { nom: "Lobo", chefLieu: false, lat: 3.9833, lng: 11.4, maire: "M. Serge Bertin Obono Onguene", color: "#999999" }
-    ];
+    communesDetail.forEach(function(c) {
+      const ratioEcoles = ((c.ecoles.total / c.population) * 1000).toFixed(1);
+      const ratioSante = ((c.sante.total / c.population) * 1000).toFixed(1);
 
-    communesData.forEach(function(c) {
+      let color = "#377eb8";
+      if (ratioSante >= moyenneSante) {
+        color = "#2e7d32";
+      } else if (ratioSante >= moyenneSante * 0.5) {
+        color = "#f57c00";
+      } else {
+        color = "#c62828";
+      }
+
+      let projetsHtml = '';
+      if (c.projets && c.projets.length > 0) {
+        projetsHtml = '<div style="margin-top:0.3rem; padding-top:0.3rem; border-top:1px solid #ede5d8;"><div style="font-weight:600; font-size:0.75rem;">📌 Projets :</div>';
+        c.projets.forEach(function(p) {
+          projetsHtml += `<div style="font-size:0.7rem; color:#3a3a35;">• ${p.nom} — ${p.porteur} (${p.annee}) — ${formatMontant(p.montant)}</div>`;
+        });
+        projetsHtml += '</div>';
+      }
+
+      const popupContent = `
+        <div style="font-family: 'Inter', sans-serif; max-width: 340px;">
+          <strong style="font-size:1.1rem; color:#1b3a2d;">${c.nom}</strong>
+          ${c.chefLieu ? '<span style="background:#c4922a;color:#fff;padding:0.1rem 0.5rem;border-radius:12px;font-size:0.6rem;font-weight:600;">Chef-lieu</span>' : ''}
+          <span style="background:#e8f5e9;color:#2e7d32;padding:0.1rem 0.5rem;border-radius:12px;font-size:0.6rem;font-weight:600;margin-left:0.3rem;">✅ Validé</span>
+          <hr style="border:0.5px solid #ede5d8; margin:0.3rem 0;">
+          <div style="font-size:0.8rem; color:#3a3a35;">
+            <div><strong>Maire :</strong> ${c.maire}</div>
+            <div><strong>Population :</strong> ${c.population.toLocaleString()}</div>
+            <div style="margin-top:0.3rem; padding-top:0.3rem; border-top:1px solid #ede5d8;">
+              <div><strong>📚 Écoles :</strong> ${c.ecoles.total} total</div>
+              <div><strong>🏥 Santé :</strong> ${c.sante.total} total</div>
+            </div>
+            <div style="margin-top:0.3rem; padding-top:0.3rem; border-top:1px solid #ede5d8; background:#f9f7f2; padding:0.5rem; border-radius:8px;">
+              <div style="font-weight:600; margin-bottom:0.2rem;">📊 Indicateurs / 1000 habitants</div>
+              <div>📚 ${ratioEcoles} écoles ${ratioEcoles >= moyenneEcoles ? '✅' : '⚠️'} <span style="color:#64748b;">Moy. dép: ${moyenneEcoles}</span></div>
+              <div>🏥 ${ratioSante} structures ${ratioSante >= moyenneSante ? '✅' : '⚠️'} <span style="color:#64748b;">Moy. dép: ${moyenneSante}</span></div>
+              <div style="font-size:0.65rem; color:#94a3b8; margin-top:0.3rem; border-top:1px dashed #e8dfd0; padding-top:0.2rem;">
+                📌 Réf. OMS : 2,3 médecins / 1000 hab. (ici: nb de structures)
+              </div>
+            </div>
+            ${projetsHtml}
+          </div>
+          <a href="#${c.id}" class="popup-link" style="display:inline-block; margin-top:0.5rem; background:#1b3a2d; color:#e0a83e; padding:0.3rem 0.8rem; border-radius:20px; text-decoration:none; font-size:0.7rem; font-weight:600;">📌 Voir la fiche complète</a>
+        </div>
+      `;
+
       L.circleMarker([c.lat, c.lng], {
         radius: 10,
-        fillColor: c.color,
+        fillColor: color,
         color: '#fff',
         weight: 2,
         fillOpacity: 0.8
-      }).addTo(map).bindPopup('<b>' + c.nom + '</b>' + (c.chefLieu ? ' — Chef-lieu' : '') + '<br>Maire : ' + c.maire);
+      }).addTo(map).bindPopup(popupContent);
     });
+
+    map.on('popupopen', function(e) {
+      const link = e.popup._contentNode?.querySelector('.popup-link');
+      if (link) {
+        link.onclick = function(ev) {
+          ev.preventDefault();
+          const targetId = this.getAttribute('href');
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        };
+      }
+    });
+
+    // Légende
+    const legend = L.control({ position: 'bottomright' });
+    legend.onAdd = function() {
+      const div = L.DomUtil.create('div', 'legend');
+      div.style.background = 'white';
+      div.style.padding = '8px';
+      div.style.borderRadius = '12px';
+      div.style.fontSize = '0.7rem';
+      div.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+      div.innerHTML = `
+        <strong style="font-size:0.75rem;">🏥 Accès Santé / 1000 hab</strong><br>
+        <span style="color:#2e7d32;">●</span> ≥ Moyenne dép (${moyenneSante})<br>
+        <span style="color:#f57c00;">●</span> 50% à 100% de la moyenne<br>
+        <span style="color:#c62828;">●</span> < 50% de la moyenne<br>
+        <hr style="border:0.5px solid #ede5d8; margin:0.3rem 0;">
+        <span style="background:#e8f5e9;color:#2e7d32;padding:0.1rem 0.3rem;border-radius:8px;font-size:0.6rem;">✅ Validé</span>
+        <span style="background:#fff8e1;color:#856404;padding:0.1rem 0.3rem;border-radius:8px;font-size:0.6rem;">⏳ En cours</span>
+        <span style="background:#ffebee;color:#c62828;padding:0.1rem 0.3rem;border-radius:8px;font-size:0.6rem;">🔴 Donnée recherchée</span>
+      `;
+      return div;
+    };
+    legend.addTo(map);
+
   } catch(e) {
     document.getElementById('map').style.display = 'none';
     document.getElementById('mapFallback').style.display = 'flex';
   }
 
-  // ---- COMMUNES ----
-  const communesDetail = [
-    { nom: "Monatélé", chefLieu: true, creation: "20 juin 1964", superficie: "375 km²", population: "~61 700", groupements: ["Ekot", "Eyen-Meyong", "Kougouda", "Mvog-Onan-menye", "Nkolkosse"], maire: "Prosper Parfait Mbassi Bessala", statut: "valide" },
-    { nom: "Obala", chefLieu: false, creation: "27 juin 1955", superficie: "475 km²", population: "~133 014", groupements: ["Endinding", "Obala", "Nkolfep", "Efok", "Loua", "Mendum", "Nkol Edouma"], maire: "Francis Gaël Touna", statut: "valide" },
-    { nom: "Sa'a", chefLieu: false, creation: "17 août 1952", superficie: "583,9 km²", population: "93 113", groupements: ["Engab", "Kouna-Odzolo", "Lebamzip", "Nkolbogo", "Nkolmvack", "Ebombo", "Sa'a"], maire: "M. Jean Blaise Messina Noah", statut: "valide" },
-    { nom: "Okola", chefLieu: false, creation: "21 avril 1952", superficie: "605 km²", population: "91 736", groupements: ["Mvog-Namnye III", "Eton-Beti", "Mvog-Nama II"], maire: "M. Vincent De Paul Noa", statut: "valide" },
-    { nom: "Evodoula", chefLieu: false, creation: "11 décembre 1964", superficie: "250 km²", population: "~31 600", groupements: ["Ntsas Endo", "Mvog-Namnye II"], maire: "M. Armand Joachim Ongolo Eloundou", statut: "encours" },
-    { nom: "Ebebda", chefLieu: false, creation: "25 novembre 1993", superficie: "250 km²", population: "~50 000", groupements: ["Abam-Ngoe", "Nkolkosse", "Abam", "Benyabega", "Sa'a"], maire: "M. Manga Bessala", statut: "valide" },
-    { nom: "Elig-Mfomo", chefLieu: false, creation: "25 novembre 1993", superficie: "144 km²", population: "~30 785", groupements: ["Villages (25)"], maire: "M. Stanislas Ayissi", statut: "encours" },
-    { nom: "Batchenga", chefLieu: false, creation: "24 avril 1995", superficie: "216 km²", population: "~14 989", groupements: ["Benyagda", "Batchenga", "Mvog Namnyé"], maire: "M. Anatole Souga", statut: "encours" },
-    { nom: "Lobo", chefLieu: false, creation: "District: 24 avril 1995 · Arrondissement: 16 juin 2010", superficie: "260 km²", population: "~30 121", groupements: ["Eton (chef supérieur)"], maire: "M. Serge Bertin Obono Onguene", statut: "valide" }
-  ];
-
-  const statutLabels = { valide: "Validé", encours: "En cours", contributif: "Contributif" };
-
-  function renderCommunes(filter) {
+  // ---- FILTRES ----
+  function renderCommunes(filter, alertFilter) {
     filter = filter || "";
+    alertFilter = alertFilter || "all";
     const grid = document.getElementById("communesGrid");
-    const filtered = communesDetail.filter(function(c) {
+    let filtered = communesDetail.filter(function(c) {
       return c.nom.toLowerCase().includes(filter.toLowerCase());
     });
+    if (alertFilter === "alert") {
+      filtered = filtered.filter(function(c) {
+        const ratioSante = ((c.sante.total / c.population) * 1000);
+        return ratioSante < moyenneSante * 0.5;
+      });
+    }
     document.getElementById("compteur").innerText = filtered.length + " / 9 communes";
     grid.innerHTML = "";
     filtered.forEach(function(c) {
       const card = document.createElement("div");
       card.className = "fiche-commune";
+      card.id = c.id;
+      const statutLabels = { valide: "Validé", encours: "En cours", contributif: "Contributif" };
+      const creationDisplay = c.creation || "À vérifier";
+
+      let projetsHtml = '';
+      if (c.projets && c.projets.length > 0) {
+        projetsHtml = '<div style="margin-top:0.5rem; padding-top:0.3rem; border-top:1px solid #ede5d8;"><strong>📌 Projets</strong><br>';
+        c.projets.forEach(function(p) {
+          projetsHtml += `<div class="projet-item"><span class="projet-nom">${p.nom}</span><br><span class="projet-detail">${p.porteur} — ${formatMontant(p.montant)} (${p.annee})</span></div>`;
+        });
+        projetsHtml += '</div>';
+      }
+
       card.innerHTML =
         '<div class="fiche-entete"><h3>' + c.nom + (c.chefLieu ? ' <span class="badge-cheflieu">Chef-lieu</span>' : '') + '<span class="badge-statut badge-' + c.statut + '">' + statutLabels[c.statut] + '</span></h3></div>' +
         '<div class="fiche-body">' +
-        '<div class="stat-row"><span class="label">Création</span><span class="value">' + c.creation + ' <span class="badge-statut badge-encours">À vérifier</span></span></div>' +
+        '<div class="stat-row"><span class="label">Création</span><span class="value">' + creationDisplay + ' <span class="badge-statut badge-encours">À vérifier</span></span></div>' +
         '<div class="stat-row"><span class="label">Superficie</span><span class="value">' + c.superficie + '</span></div>' +
-        '<div class="stat-row"><span class="label">Population (est.)</span><span class="value">' + c.population + ' <span class="badge-statut badge-encours">ISGI-Lékié</span></span></div>' +
-        '<div style="margin-bottom:0.8rem;"><strong>Groupements</strong><br>' + c.groupements.map(function(g) { return '<span class="village-tag">' + g + '</span>'; }).join('') + '</div>' +
+        '<div class="stat-row"><span class="label">Population (est.)</span><span class="value">' + c.population.toLocaleString() + ' <span class="badge-statut badge-encours">ISGI-Lékié</span></span></div>' +
+        '<div style="margin-bottom:0.4rem;"><strong>Groupements</strong><br>' + c.groupements.map(function(g) { return '<span class="village-tag">' + g + '</span>'; }).join('') + '</div>' +
         '<div><strong>Maire</strong><br>' + c.maire + '</div>' +
+        projetsHtml +
         '</div>' +
         '<button class="btn-fiche" onclick="alert(\'Fiche détaillée bientôt disponible.\')">📌 Voir fiche détaillée</button>';
       grid.appendChild(card);
     });
   }
 
+  // ---- RECHERCHE ET FILTRES ----
+  let currentFilter = "all";
   document.getElementById("searchCommune").addEventListener("input", function(e) {
-    renderCommunes(e.target.value);
+    renderCommunes(e.target.value, currentFilter);
   });
+  document.getElementById("filterAll").addEventListener("click", function() {
+    currentFilter = "all";
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    renderCommunes(document.getElementById("searchCommune").value, "all");
+  });
+  document.getElementById("filterAlert").addEventListener("click", function() {
+    currentFilter = "alert";
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+    renderCommunes(document.getElementById("searchCommune").value, "alert");
+  });
+
+  // ---- EXPORT PDF AVEC PROJETS ET FORMATAGE ----
+  function exportPDF() {
+    const element = document.getElementById('dashboardSection');
+    if (!element) return;
+
+    let tableRows = '';
+    communesDetail.forEach(function(c) {
+      const ratioSante = ((c.sante.total / c.population) * 1000).toFixed(1);
+      let badgeColor = '';
+      if (ratioSante >= moyenneSante) badgeColor = 'pdf-badge-vert';
+      else if (ratioSante >= moyenneSante * 0.5) badgeColor = 'pdf-badge-orange';
+      else badgeColor = 'pdf-badge-rouge';
+
+      let projetsPdf = '';
+      if (c.projets && c.projets.length > 0) {
+        c.projets.forEach(function(p) {
+          projetsPdf += `<div class="projet-pdf">• ${p.nom} — ${p.porteur} (${p.annee}) — ${formatMontant(p.montant)}</div>`;
+        });
+      } else {
+        projetsPdf = '<div class="projet-pdf" style="color:#94a3b8;">Aucun projet documenté</div>';
+      }
+
+      tableRows += `
+        <tr>
+          <td><strong>${c.nom}</strong></td>
+          <td>${c.population.toLocaleString()}</td>
+          <td>${c.ecoles.total}</td>
+          <td>${c.sante.total}</td>
+          <td>${ratioSante}</td>
+          <td><span class="pdf-badge ${badgeColor}">${ratioSante >= moyenneSante ? '✅ Bon' : ratioSante >= moyenneSante * 0.5 ? '⚠️ Moyen' : '🔴 Alerte'}</span></td>
+          <td>${projetsPdf}</td>
+        </tr>
+      `;
+    });
+
+    const today = new Date().toLocaleDateString('fr-CM', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    const pdfContent = `
+      <div id="pdfContent" style="background:#fff; padding:2rem; font-family:'Inter',sans-serif;">
+        <h1 style="font-family:'Cormorant Garamond',serif; color:#1b3a2d; font-size:2rem; border-left:4px solid #c4922a; padding-left:1rem;">ISGI-Lékié</h1>
+        <p style="color:#64748b; margin-bottom:0.5rem;">Diagnostic territorial — Département de la Lékié</p>
+        <hr style="border:0.5px solid #e8dfd0; margin:1rem 0;">
+
+        <h2 style="font-family:'Cormorant Garamond',serif; color:#1b3a2d; border-left:4px solid #c4922a; padding-left:1rem; font-size:1.5rem;">📊 Tableau de bord</h2>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:1rem 0;">
+          <div style="background:#f4efe6; padding:1rem; border-radius:12px; text-align:center;">
+            <div style="font-size:0.75rem; color:#5a5a50;">Population totale</div>
+            <div style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">${totalPopulation.toLocaleString()}</div>
+          </div>
+          <div style="background:#f4efe6; padding:1rem; border-radius:12px; text-align:center;">
+            <div style="font-size:0.75rem; color:#5a5a50;">📚 Écoles</div>
+            <div style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">${totalEcoles}</div>
+          </div>
+          <div style="background:#f4efe6; padding:1rem; border-radius:12px; text-align:center;">
+            <div style="font-size:0.75rem; color:#5a5a50;">🏥 Santé</div>
+            <div style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">${totalSante}</div>
+          </div>
+          <div style="background:#f4efe6; padding:1rem; border-radius:12px; text-align:center;">
+            <div style="font-size:0.75rem; color:#5a5a50;">💰 Investissements</div>
+            <div style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">${totalInvestissement.toLocaleString()} FCFA</div>
+          </div>
+        </div>
+
+        <h2 style="font-family:'Cormorant Garamond',serif; color:#1b3a2d; border-left:4px solid #c4922a; padding-left:1rem; font-size:1.5rem;">📋 Détail par commune</h2>
+        <table style="width:100%; border-collapse:collapse; font-size:0.75rem; margin-top:0.5rem;">
+          <thead>
+            <tr style="background:#1b3a2d; color:#fff;">
+              <th style="padding:0.3rem; text-align:left;">Commune</th>
+              <th style="padding:0.3rem; text-align:right;">Population</th>
+              <th style="padding:0.3rem; text-align:right;">Écoles</th>
+              <th style="padding:0.3rem; text-align:right;">Santé</th>
+              <th style="padding:0.3rem; text-align:right;">Ratio santé / 1000 hab</th>
+              <th style="padding:0.3rem; text-align:center;">Statut</th>
+              <th style="padding:0.3rem; text-align:left;">Projets</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${tableRows}
+          </tbody>
+        </table>
+
+        <div style="margin-top:1rem; font-size:0.7rem; color:#94a3b8; border-top:1px solid #e8dfd0; padding-top:0.5rem;">
+          📌 Source : Collecte terrain ISGI-Lékié + INS + MINEDUB + MINSANTE.<br>
+          ⚠️ Données estimées 2025 — En cours d'actualisation.<br>
+          📌 Réf. OMS : 2,3 médecins / 1000 hab. (ici: nb de structures)
+        </div>
+        <div style="margin-top:0.5rem; font-size:0.6rem; color:#94a3b8; text-align:center;">
+          Document généré le ${today} par ISGI-Lékié — <span style="font-weight:600;">isgi-lekie.cm</span>
+        </div>
+      </div>
+    `;
+
+    const opt = {
+      margin: 0.5,
+      filename: 'Diagnostic_ISGI_Lekie_2025.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true, allowTaint: true },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
+    };
+
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = pdfContent;
+    document.body.appendChild(tempDiv);
+    const content = tempDiv.querySelector('#pdfContent') || tempDiv;
+
+    html2pdf()
+      .set(opt)
+      .from(content)
+      .save()
+      .then(() => {
+        document.body.removeChild(tempDiv);
+      })
+      .catch(() => {
+        document.body.removeChild(tempDiv);
+        alert('Erreur lors de la génération du PDF. Veuillez réessayer.');
+      });
+  }
+
+  // ---- INITIALISATION ----
   renderCommunes();
 </script>
 </body>
