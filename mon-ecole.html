@@ -7,16 +7,6 @@
   <meta name="description" content="Annuaire des écoles primaires, secondaires et centres de formation du département de la Lékié. Données issues des PCD, MINESEC et FEICOM/INS.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "GovernmentOrganization",
-      "name": "ISGI-Lékié - Annuaire des écoles",
-      "description": "Annuaire des écoles primaires, secondaires et centres de formation du département de la Lékié.",
-      "areaServed": "Département de la Lékié, Cameroun",
-      "url": "https://isgi-lekie.cm/mon-ecole.html"
-    }
-  </script>
   <style>
     :root {
       --vert: #1b3a2d;
@@ -43,8 +33,6 @@
     .nav-links a.active{color:var(--or2);border-bottom:2px solid var(--or);padding-bottom:0.2rem;}
     .burger{display:none;background:none;border:none;color:var(--or2);font-size:1.8rem;cursor:pointer;}
 
-    main.container{max-width:1100px;margin:0 auto;padding:2rem;}
-
     h1{font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:1rem;border-left:6px solid var(--or);padding-left:1rem;}
 
     .search-bar{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:1rem;align-items:center;}
@@ -64,8 +52,8 @@
     .ecole-section ul{margin:0.2rem 0 0.2rem 1.5rem;padding:0;}
     .ecole-section li{margin:0.2rem 0;font-size:0.9rem;}
     .badge-statut{display:inline-block;font-size:0.62rem;padding:0.15rem 0.5rem;border-radius:20px;font-weight:600;margin-left:0.4rem;}
-    .badge-valide{background:#e8f5e9;color:#2e7d32;}
     .badge-encours{background:#fff8e1;color:#856404;}
+    .badge-valide{background:#e8f5e9;color:#2e7d32;}
     .badge-contributif{background:#e8dfd0;color:#5a5a50;}
 
     .btn-contribuer{display:inline-block;margin-top:0.5rem;font-size:0.75rem;color:var(--or);text-decoration:none;}
@@ -84,8 +72,7 @@
     .tableau-recap th{background:var(--vert);color:#fff;padding:0.4rem;text-align:left;}
     .tableau-recap td{padding:0.4rem;border-bottom:1px solid var(--creme2);}
     .tableau-recap tr:nth-child(even){background:#f9f7f2;}
-    .tableau-recap .commune-link{color:var(--vert);text-decoration:none;font-weight:600;}
-    .tableau-recap .commune-link:hover{text-decoration:underline;}
+    .tableau-recap .total-row{font-weight:700;background:var(--vert);color:#fff;}
 
     .stats-block{background:var(--creme);border-radius:16px;padding:1.5rem;margin:1.5rem 0;border:1px solid var(--creme2);}
     .stats-block h4{font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:0.8rem;}
@@ -98,9 +85,6 @@
     .sticky-cta{position:sticky;bottom:0;z-index:99;background:var(--or);color:var(--vert);padding:0.6rem;text-align:center;font-weight:600;font-size:0.9rem;border-top:2px solid var(--vert);transition:opacity 0.3s;}
     .sticky-cta a{color:var(--vert);text-decoration:underline;}
 
-    .carte-ecoles{margin:1.5rem 0;border-radius:16px;overflow:hidden;border:1px solid var(--creme2);}
-    #schoolMap{height:350px;width:100%;background:var(--creme2);}
-
     footer{text-align:center;margin-top:3rem;padding-top:1rem;border-top:1px solid var(--creme2);font-size:0.8rem;color:var(--gris2);}
     .note{background:#fff8e1;padding:1rem;border-left:4px solid var(--or);margin:1rem 0;border-radius:4px;}
     .note strong{color:#c62828;}
@@ -109,7 +93,6 @@
     .back-to-top:hover{background:var(--vert);color:var(--or2);}
 
     .no-results{display:none;text-align:center;padding:2rem;color:var(--gris2);font-style:italic;}
-    .highlight{background:var(--or);color:#fff;padding:0.05rem 0.2rem;border-radius:3px;}
 
     @media(max-width:700px){
       nav{flex-direction:row;}
@@ -121,7 +104,6 @@
       .tableau-recap{font-size:0.7rem;}
       .panorama-block table,.stats-block table{font-size:0.7rem;}
       .back-to-top{bottom:65px;}
-      #schoolMap{height:250px;}
     }
   </style>
 </head>
@@ -133,12 +115,11 @@
   <div class="nav-links" id="navLinks">
     <a href="index.html">Accueil</a>
     <a href="plateforme.html">Plateforme</a>
-    <a href="observatoire.html">📊 Observatoire</a>
-    <a href="annuaire.html">📇 Annuaire</a>
-    <a href="blog.html">Blog</a>
     <a href="mon-village.html">Mon village</a>
-    <a href="mon-ecole.html" class="active" aria-current="page">Mon école</a>
-    <a href="sport.html">🏆 Sport</a>
+    <a href="mon-ecole.html" class="active">Mon école</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html">Certification</a>
     <a href="tourisme.html">Tourisme</a>
     <a href="hommage-andre-marie-mbida.html">Hommage</a>
     <a href="presse.html">Presse</a>
@@ -208,26 +189,20 @@
         <tr><th scope="col">Commune</th><th scope="col">Maternelles</th><th scope="col">Primaires</th><th scope="col">Secondaires</th><th scope="col">Professionnel</th><th scope="col">Total</th></tr>
       </thead>
       <tbody>
-        <tr><td><a href="#obala" class="commune-link">Obala</a></td><td>5</td><td>31</td><td>20</td><td>0</td><td>56</td></tr>
-        <tr><td><a href="#monatele" class="commune-link">Monatélé</a></td><td>24</td><td>40</td><td>8</td><td>1</td><td>73</td></tr>
-        <tr><td><a href="#evodoula" class="commune-link">Evodoula</a></td><td>9</td><td>21</td><td>9</td><td>2</td><td>41</td></tr>
-        <tr><td><a href="#ebebda" class="commune-link">Ebebda</a></td><td>19</td><td>28</td><td>6</td><td>0</td><td>53</td></tr>
-        <tr><td><a href="#elig-mfomo" class="commune-link">Elig-Mfomo</a></td><td>9</td><td>19</td><td>6</td><td>0</td><td>34</td></tr>
-        <tr><td><a href="#saa" class="commune-link">Sa'a</a></td><td>44</td><td>59</td><td>14</td><td>2</td><td>119</td></tr>
-        <tr><td><a href="#okola" class="commune-link">Okola</a></td><td>43</td><td>62</td><td>19</td><td>3</td><td>127</td></tr>
-        <tr><td><a href="#batchenga" class="commune-link">Batchenga</a></td><td>1</td><td>10</td><td>3</td><td>0</td><td>14</td></tr>
-        <tr><td><a href="#lobo" class="commune-link">Lobo</a></td><td>3</td><td>19</td><td>5</td><td>0</td><td>27</td></tr>
-        <tr style="font-weight:700;background:var(--vert);color:#fff;"><td>TOTAL</td><td>157</td><td>289</td><td>90</td><td>8</td><td>544</td></tr>
+        <tr><td><a href="mon-village.html#obala" style="color:var(--vert);text-decoration:none;font-weight:600;">Obala</a></td><td>5</td><td>31</td><td>20</td><td>0</td><td>56</td></tr>
+        <tr><td><a href="mon-village.html#monatele" style="color:var(--vert);text-decoration:none;font-weight:600;">Monatélé</a></td><td>24</td><td>40</td><td>8</td><td>1</td><td>73</td></tr>
+        <tr><td><a href="mon-village.html#evodoula" style="color:var(--vert);text-decoration:none;font-weight:600;">Evodoula</a></td><td>9</td><td>21</td><td>9</td><td>2</td><td>41</td></tr>
+        <tr><td><a href="mon-village.html#ebebda" style="color:var(--vert);text-decoration:none;font-weight:600;">Ebebda</a></td><td>19</td><td>28</td><td>6</td><td>0</td><td>53</td></tr>
+        <tr><td><a href="mon-village.html#elig-mfomo" style="color:var(--vert);text-decoration:none;font-weight:600;">Elig-Mfomo</a></td><td>9</td><td>19</td><td>6</td><td>0</td><td>34</td></tr>
+        <tr><td><a href="mon-village.html#saa" style="color:var(--vert);text-decoration:none;font-weight:600;">Sa'a</a></td><td>44</td><td>59</td><td>14</td><td>2</td><td>119</td></tr>
+        <tr><td><a href="mon-village.html#okola" style="color:var(--vert);text-decoration:none;font-weight:600;">Okola</a></td><td>43</td><td>62</td><td>19</td><td>3</td><td>127</td></tr>
+        <tr><td><a href="mon-village.html#batchenga" style="color:var(--vert);text-decoration:none;font-weight:600;">Batchenga</a></td><td>1</td><td>10</td><td>3</td><td>0</td><td>14</td></tr>
+        <tr><td><a href="mon-village.html#lobo" style="color:var(--vert);text-decoration:none;font-weight:600;">Lobo</a></td><td>3</td><td>19</td><td>5</td><td>0</td><td>27</td></tr>
+        <tr class="total-row" id="totalRow"><td>TOTAL</td><td id="totalMaternelles">0</td><td id="totalPrimaires">0</td><td id="totalSecondaires">0</td><td id="totalProfessionnel">0</td><td id="totalGlobal">0</td></tr>
       </tbody>
     </table>
-  </div>
-
-  <!-- CARTE DES ÉCOLES (structure prête) -->
-  <div class="carte-ecoles">
-    <div id="schoolMap" style="display:flex;align-items:center;justify-content:center;color:var(--gris2);font-style:italic;flex-direction:column;gap:0.5rem;">
-      <span>🗺️</span>
-      <span>Carte des écoles en cours de construction</span>
-      <span style="font-size:0.75rem;">Les coordonnées seront ajoutées à partir des contributions</span>
+    <div style="margin-top:0.5rem; font-size:0.7rem; color:var(--gris2);">
+      📌 <strong>Taux de réussite CEPRO / BEPC / Probac</strong> : <span class="badge-statut badge-contributif">Donnée recherchée — Contribuez</span>
     </div>
   </div>
 
@@ -257,7 +232,7 @@
   <!-- OBALA -->
   <!-- ============================================================ -->
   <div class="commune-block" id="obala">
-    <div class="commune-title">📌 OBALA <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="commune-title">📌 OBALA <span class="badge-statut badge-encours">En cours</span></div>
     <div class="ecole-section">
       <h4>🏫 Enseignement maternel et primaire</h4>
       <ul>
@@ -279,7 +254,7 @@
 
   <!-- MONATÉLÉ -->
   <div class="commune-block" id="monatele">
-    <div class="commune-title">📌 MONATÉLÉ <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="commune-title">📌 MONATÉLÉ <span class="badge-statut badge-encours">En cours</span></div>
     <div class="ecole-section">
       <h4>🏫 Enseignement maternel et primaire</h4>
       <ul>
@@ -319,7 +294,7 @@
 
   <!-- EVODOULA -->
   <div class="commune-block" id="evodoula">
-    <div class="commune-title">📌 EVODOULA <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="commune-title">📌 EVODOULA <span class="badge-statut badge-encours">En cours</span></div>
     <div class="ecole-section">
       <h4>🏫 Enseignement maternel et primaire</h4>
       <ul>
@@ -355,7 +330,7 @@
 
   <!-- EBEBDA -->
   <div class="commune-block" id="ebebda">
-    <div class="commune-title">📌 EBEBDA <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="commune-title">📌 EBEBDA <span class="badge-statut badge-encours">En cours</span></div>
     <div class="ecole-section">
       <h4>🏫 Enseignement maternel</h4>
       <ul>
@@ -389,7 +364,7 @@
 
   <!-- ELIG-MFOMO -->
   <div class="commune-block" id="elig-mfomo">
-    <div class="commune-title">📌 ELIG-MFOMO <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="commune-title">📌 ELIG-MFOMO <span class="badge-statut badge-encours">En cours</span></div>
     <div class="ecole-section">
       <h4>🏫 Enseignement maternel et primaire</h4>
       <ul>
@@ -475,7 +450,7 @@
 
   <!-- BATCHENGA -->
   <div class="commune-block" id="batchenga">
-    <div class="commune-title">📌 BATCHENGA <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="commune-title">📌 BATCHENGA <span class="badge-statut badge-encours">En cours</span></div>
     <div class="ecole-section">
       <h4>🏫 Enseignement maternel et primaire</h4>
       <ul>
@@ -498,7 +473,7 @@
 
   <!-- LOBO -->
   <div class="commune-block" id="lobo">
-    <div class="commune-title">📌 LOBO <span class="badge-statut badge-valide">Validé</span></div>
+    <div class="commune-title">📌 LOBO <span class="badge-statut badge-encours">En cours</span></div>
     <div class="ecole-section">
       <h4>🏫 Enseignement maternel et primaire</h4>
       <ul>
@@ -528,7 +503,8 @@
 </div>
 
 <footer>
-  <p>ISGI-Lékié — Données issues des PCD et MINESEC (2015/2016) · En cours d’actualisation.</p>
+  <p>ISGI-Lékié — Données issues des PCD et MINESEC (2015/2016) · En cours d'actualisation.</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 28 Juillet 2026</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
 
@@ -572,80 +548,61 @@
     });
   }
 
-  // ---- MASQUER STICKY CTA EN BAS DE PAGE ----
-  const stickyCta = document.getElementById('stickyCta');
-  if (stickyCta) {
-    window.addEventListener('scroll', function() {
-      const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
-      stickyCta.style.opacity = isBottom ? '0' : '1';
-      stickyCta.style.pointerEvents = isBottom ? 'none' : 'auto';
+  // ---- CALCUL DES TOTAUX DYNAMIQUES ----
+  function calculateTotals() {
+    const rows = document.querySelectorAll('#recap tbody tr:not(.total-row)');
+    let totalMaternelles = 0, totalPrimaires = 0, totalSecondaires = 0, totalProfessionnel = 0, totalGlobal = 0;
+
+    rows.forEach(function(row) {
+      const cells = row.querySelectorAll('td');
+      if (cells.length >= 6) {
+        totalMaternelles += parseInt(cells[1].textContent) || 0;
+        totalPrimaires += parseInt(cells[2].textContent) || 0;
+        totalSecondaires += parseInt(cells[3].textContent) || 0;
+        totalProfessionnel += parseInt(cells[4].textContent) || 0;
+        totalGlobal += parseInt(cells[5].textContent) || 0;
+      }
     });
+
+    document.getElementById('totalMaternelles').textContent = totalMaternelles;
+    document.getElementById('totalPrimaires').textContent = totalPrimaires;
+    document.getElementById('totalSecondaires').textContent = totalSecondaires;
+    document.getElementById('totalProfessionnel').textContent = totalProfessionnel;
+    document.getElementById('totalGlobal').textContent = totalGlobal;
   }
 
-  // ---- RECHERCHE + SURlIGNAGE AVEC DEBOUNCE ----
+  // ---- RECHERCHE D'ÉCOLES ----
   const searchEcole = document.getElementById('searchEcole');
   const noResults = document.getElementById('noResults');
   const compteurEcoles = document.getElementById('compteurEcoles');
-  let searchTimeout = null;
-
-  function highlightText(element, query) {
-    const text = element.textContent;
-    if (!query || query.length < 2) return text;
-    const regex = new RegExp('(' + query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
-    return text.replace(regex, '<span class="highlight">$1</span>');
-  }
-
-  function applyHighlight(query) {
-    const allLi = document.querySelectorAll('.ecole-section li');
-    allLi.forEach(function(li) {
-      const original = li.getAttribute('data-original') || li.textContent;
-      if (!li.getAttribute('data-original')) {
-        li.setAttribute('data-original', li.textContent);
-      }
-      if (query.length >= 2) {
-        li.innerHTML = highlightText(li, query);
-      } else {
-        li.innerHTML = li.getAttribute('data-original');
-      }
-    });
-  }
-
-  function performSearch(query) {
-    const allCommunes = document.querySelectorAll('.commune-block');
-    let found = 0;
-
-    applyHighlight(query);
-
-    allCommunes.forEach(function(commune) {
-      const text = commune.textContent.toLowerCase();
-      const match = !query || text.includes(query.toLowerCase());
-      commune.style.display = match ? 'block' : 'none';
-      if (match) found++;
-    });
-
-    if (found > 0 && query.length > 2) {
-      const firstVisible = document.querySelector('.commune-block[style*="block"]');
-      if (firstVisible) {
-        firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    if (noResults) {
-      noResults.style.display = (query.length > 0 && found === 0) ? 'block' : 'none';
-    }
-
-    if (compteurEcoles) {
-      compteurEcoles.textContent = found + ' commune' + (found > 1 ? 's' : '') + ' trouvée' + (found > 1 ? 's' : '');
-    }
-  }
 
   if (searchEcole) {
     searchEcole.addEventListener('input', function(e) {
-      const query = e.target.value.trim();
-      clearTimeout(searchTimeout);
-      searchTimeout = setTimeout(function() {
-        performSearch(query);
-      }, 200);
+      const query = e.target.value.toLowerCase().trim();
+      const allCommunes = document.querySelectorAll('.commune-block');
+      let found = 0;
+
+      allCommunes.forEach(function(commune) {
+        const text = commune.textContent.toLowerCase();
+        const match = text.includes(query);
+        commune.style.display = match ? 'block' : 'none';
+        if (match) found++;
+      });
+
+      if (found > 0 && query.length > 2) {
+        const firstVisible = document.querySelector('.commune-block[style*="block"]');
+        if (firstVisible) {
+          firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      if (noResults) {
+        noResults.style.display = (query.length > 0 && found === 0) ? 'block' : 'none';
+      }
+
+      if (compteurEcoles) {
+        compteurEcoles.textContent = found + ' commune' + (found > 1 ? 's' : '') + ' trouvée' + (found > 1 ? 's' : '');
+      }
     });
   }
 
@@ -659,37 +616,27 @@
       filtreBtns.forEach(function(b) { b.classList.remove('active'); });
       this.classList.add('active');
 
-      const allCommunes = document.querySelectorAll('.commune-block');
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
 
-      if (id === 'all') {
-        allCommunes.forEach(function(commune) {
-          commune.style.display = 'block';
-        });
-        if (searchEcole) {
-          searchEcole.value = '';
-          clearTimeout(searchTimeout);
-          performSearch('');
-        }
-        if (compteurEcoles) {
-          compteurEcoles.textContent = '9 communes trouvées';
-        }
-        if (noResults) {
-          noResults.style.display = 'none';
-        }
-        applyHighlight('');
-      } else {
-        const target = document.getElementById(id);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        if (searchEcole) {
-          searchEcole.value = '';
-          clearTimeout(searchTimeout);
-          performSearch('');
-        }
+      if (searchEcole) {
+        searchEcole.value = '';
+        searchEcole.dispatchEvent(new Event('input'));
       }
     });
   });
+
+  // ---- MASQUER STICKY CTA EN BAS DE PAGE ----
+  const stickyCta = document.getElementById('stickyCta');
+  if (stickyCta) {
+    window.addEventListener('scroll', function() {
+      const isBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 50;
+      stickyCta.style.opacity = isBottom ? '0' : '1';
+      stickyCta.style.pointerEvents = isBottom ? 'none' : 'auto';
+    });
+  }
 
   // ---- SCROLL VERS LA COMMUNE ----
   if (window.location.hash) {
@@ -700,6 +647,11 @@
       }, 300);
     }
   }
+
+  // ---- INITIALISATION ----
+  document.addEventListener('DOMContentLoaded', function() {
+    calculateTotals();
+  });
 </script>
 </body>
 </html>
