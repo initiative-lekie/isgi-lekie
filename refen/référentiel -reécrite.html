@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Référentiel d'évaluation – CISFOOTVAC – ISGI-Lékié</title>
+  <meta name="description" content="Référentiel d'évaluation CISFOOTVAC — Certification des championnats de football de vacances. 8 axes, niveaux et preuves.">
+  <meta name="keywords" content="référentiel, évaluation, cisfootvac, certification, axes, niveaux, preuves, isgi lekie">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vert: #1b3a2d;
+      --vert2: #2a5a44;
+      --or: #c4922a;
+      --or2: #e0a83e;
+      --creme: #f4efe6;
+      --creme2: #ede5d8;
+      --blanc: #fefcf8;
+      --texte: #2c2c28;
+      --gris: #5a5a50;
+      --gris2: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--blanc); color: var(--texte); line-height: 1.6; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+
+    nav { background: var(--vert); padding: 0.8rem 1.5rem; border-bottom: 2px solid var(--or); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; z-index: 100; }
+    .logo a { color: var(--or2); text-decoration: none; font-size: 1.5rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
+    .logo span { font-size: 0.7rem; display: block; color: rgba(255,255,255,0.7); }
+    .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.8rem; font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--or2); }
+    .nav-links a.active { border-bottom: 2px solid var(--or); padding-bottom: 0.2rem; }
+    .burger { display: none; background: none; border: none; color: var(--or2); font-size: 1.8rem; cursor: pointer; }
+
+    .page-header { background: var(--vert); padding: 2rem 1.5rem; border-bottom: 4px solid var(--or); text-align: center; }
+    .page-header h1 { color: #fff; border-left: none; padding-left: 0; font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; }
+    .page-header h1 em { color: var(--or2); font-style: italic; }
+    .page-header .sous-titre { color: rgba(255,255,255,0.75); margin-top: 0.3rem; font-size: 0.9rem; }
+    .page-header .badge-document { display: inline-block; background: var(--or2); color: var(--vert); padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.65rem; font-weight: 600; margin-top: 0.5rem; }
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.5rem; }
+
+    section { padding: 2rem 0; border-bottom: 1px solid var(--creme2); }
+    .section-title { font-size: 1.6rem; color: var(--vert); margin-bottom: 1.5rem; border-left: 6px solid var(--or); padding-left: 1rem; font-family: 'Cormorant Garamond', serif; }
+    .section-sub { color: var(--gris2); margin-bottom: 1rem; }
+
+    .btn { display: inline-block; background: var(--or); color: #1b3a2d; padding: 0.5rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; margin-top: 0.5rem; border: none; cursor: pointer; font-size: 0.85rem; }
+    .btn:hover { background: var(--vert); color: var(--or2); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--vert); color: var(--vert); }
+    .btn-outline:hover { background: var(--vert); color: #fff; }
+
+    .axe { margin-bottom: 2rem; padding: 1rem 1.5rem; background: var(--creme); border-radius: 16px; border-left: 6px solid var(--or); }
+    .axe-titre { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--vert); margin-bottom: 0.3rem; }
+    .axe-info { font-size: 0.8rem; color: var(--gris2); margin-bottom: 0.8rem; }
+    .sous-critere { margin-left: 1rem; margin-bottom: 1rem; }
+    .sous-critere-num { font-weight: 700; color: var(--or); }
+    .sous-critere-titre { font-weight: 600; color: var(--vert); }
+    .sous-critere-points { font-size: 0.8rem; color: var(--gris2); }
+    .niveau-item { margin-left: 1.5rem; font-size: 0.85rem; padding: 0.2rem 0; border-bottom: 1px solid var(--creme2); display: flex; justify-content: space-between; flex-wrap: wrap; }
+    .niveau-item:last-child { border-bottom: none; }
+    .niveau-label { font-weight: 600; color: var(--vert); min-width: 80px; }
+    .niveau-desc { flex: 1; color: var(--gris); }
+    .niveau-points { font-weight: 700; color: var(--or); min-width: 40px; text-align: right; }
+
+    .table-axes { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 1rem; }
+    .table-axes th { background: var(--vert); color: #fff; padding: 0.5rem; text-align: left; }
+    .table-axes td { padding: 0.4rem; border-bottom: 1px solid var(--creme2); }
+    .table-axes tr:nth-child(even) { background: #f9f7f2; }
+
+    .back-to-top { position: fixed; bottom: 20px; right: 20px; background: var(--or); color: #1b3a2d; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.5rem; font-weight: bold; opacity: 0; transition: opacity 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 99; }
+    .back-to-top.show { opacity: 1; }
+    .back-to-top:hover { background: var(--vert); color: var(--or2); }
+
+    .toolbar { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background: var(--creme); border-radius: 16px; align-items: center; justify-content: space-between; }
+    .toolbar .btn-print { background: var(--vert); color: var(--or2); }
+    .toolbar .btn-print:hover { background: var(--or2); color: var(--vert); }
+    .toolbar .btn-retour { background: transparent; border: 1.5px solid var(--vert); color: var(--vert); }
+    .toolbar .btn-retour:hover { background: var(--vert); color: #fff; }
+
+    footer { background: #0f2c21; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.8rem; margin-top: 2rem; }
+    footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
+
+    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; }
+    .badge-public { background: #e8f5e9; color: #2e7d32; }
+
+    @media (max-width: 700px) { 
+      nav { flex-direction: row; } 
+      .burger { display: block; } 
+      .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; padding-top: 0.5rem; } 
+      .nav-links.show { display: flex; } 
+      .container { padding: 0 1rem; } 
+      .page-header h1 { font-size: 1.6rem; } 
+      .toolbar { flex-direction: column; align-items: stretch; text-align: center; }
+      .niveau-item { flex-direction: column; }
+      .niveau-points { text-align: left; }
+    }
+
+    @media print {
+      nav, .toolbar, .back-to-top, footer .boussole { display: none; }
+      .page-header { background: #1b3a2d !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page-header h1 { color: #fff !important; }
+      .page-header .badge-document { background: #e0a83e !important; color: #1b3a2d !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; }
+      .container { max-width: 100%; }
+      footer { background: #0f2c21 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .axe { background: #f4efe6 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="plateforme.html">Plateforme</a>
+    <a href="mon-village.html">Mon village</a>
+    <a href="mon-ecole.html">Mon école</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html" class="active">Certification</a>
+    <a href="tourisme.html">Tourisme</a>
+    <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>📊 Référentiel d'évaluation <em>CISFOOTVAC</em></h1>
+  <p class="sous-titre">8 axes — Niveaux — Preuves attendues</p>
+  <span class="badge-document">📂 Document public</span>
+  <p class="maj">📅 Version stabilisée — Juillet 2026</p>
+</div>
+
+<div class="container">
+
+  <div class="toolbar">
+    <div>
+      <span class="badge-statut badge-public">✅ Document public — Consultation libre</span>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+      <a href="certification.html" class="btn btn-retour" style="font-size:0.75rem;">← Retour à la certification</a>
+      <button onclick="window.print()" class="btn btn-print" style="font-size:0.75rem;">📥 Télécharger en PDF</button>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- INTRODUCTION MÉTHODOLOGIQUE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Introduction méthodologique</h2>
+    <p style="color:var(--gris);">
+      Le présent référentiel définit ce qui est évalué dans le cadre de la certification CISFOOTVAC, en cohérence avec la Charte de gouvernance et de déontologie et le Règlement général de la certification.
+    </p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      <strong>Trois affirmations structurent l'ensemble du référentiel :</strong>
+    </p>
+    <ul style="margin-left:1.5rem; color:var(--gris); margin-top:0.5rem;">
+      <li>Les exigences minimales obligatoires ne sont pas notées sur 100 points. Elles sont appréciées selon une échelle conforme / conforme avec réserve / non conforme, indépendante du score global.</li>
+      <li>Le score mesure une maturité organisationnelle, pas une puissance financière.</li>
+      <li>La certification reconnaît une qualité d'organisation et de contribution territoriale, pas uniquement une performance sportive.</li>
+    </ul>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PONDÉRATION GÉNÉRALE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Pondération générale</h2>
+    <p style="color:var(--gris); margin-bottom:1rem;">Le score global est établi sur 100 points, répartis entre huit axes regroupés en deux familles.</p>
+
+    <table class="table-axes">
+      <thead>
+        <tr><th>Axe</th><th>Points</th><th>Famille</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1. Gouvernance et organisation du comité</td><td>15</td><td>Qualité opérationnelle</td></tr>
+        <tr><td>2. Organisation sportive</td><td>15</td><td>Qualité opérationnelle</td></tr>
+        <tr><td>3. Logistique et infrastructures</td><td>10</td><td>Qualité opérationnelle</td></tr>
+        <tr><td>4. Communication et visibilité</td><td>8</td><td>Qualité opérationnelle</td></tr>
+        <tr><td>5. Partenariats et gestion financière</td><td>8</td><td>Qualité opérationnelle</td></tr>
+        <tr><td>6. Participation communautaire et inclusion</td><td>15</td><td>Valeur territoriale</td></tr>
+        <tr><td>7. Impacts social, culturel et économique</td><td>14</td><td>Valeur territoriale</td></tr>
+        <tr><td>8. Mémoire, documentation et transmission</td><td>15</td><td>Valeur territoriale</td></tr>
+        <tr style="background:var(--vert); color:#fff; font-weight:700;"><td><strong>TOTAL</strong></td><td><strong>100</strong></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <p style="color:var(--gris2); font-size:0.8rem; margin-top:0.5rem;">
+      📌 Les axes 4 (Communication) et 5 (Partenariats) sont plafonnés à 8 points chacun pour éviter que les moyens financiers ne deviennent un facteur déterminant.
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- AXE 1 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Axe 1 — Gouvernance et organisation du comité</h2>
+    <p style="color:var(--gris2); font-size:0.85rem;">15 points — Famille : Qualité opérationnelle</p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      <strong>Objectif :</strong> Évaluer la solidité institutionnelle du comité d'organisation : sa capacité à se structurer, à répartir les responsabilités, à prendre des décisions collectives, à rendre compte de son action et à capitaliser son expérience.
+    </p>
+
+    <div class="axe">
+      <div class="sous-critere">
+        <div class="sous-critere-num">1.1</div>
+        <div class="sous-critere-titre">Structure et rôles <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Pas de structure identifiable ; une personne décide de tout</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Un responsable identifié, mais les rôles des autres sont flous</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Des rôles sont attribués mais certains restent théoriques</span></div>
+        <div class="niveau-item"><span class="niveau-label">3</span><span class="niveau-desc">Répartition claire et connue de tous ; chaque responsable assume effectivement</span></div>
+        <div class="niveau-item"><span class="niveau-label">4-5</span><span class="niveau-desc">Organigramme formalisé, responsabilités écrites, suppléance prévue</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">1.2</div>
+        <div class="sous-critere-titre">Processus décisionnel <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Décisions unilatérales sans consultation</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Réunions irrégulières sans trace</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Réunions régulières ; décisions communiquées oralement</span></div>
+        <div class="niveau-item"><span class="niveau-label">3-4</span><span class="niveau-desc">Décisions collectives ; réunions programmées ; comptes rendus sommaires</span></div>
+        <div class="niveau-item"><span class="niveau-label">5</span><span class="niveau-desc">Processus formalisé : ordre du jour, comptes rendus écrits, décisions traçables</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">1.3</div>
+        <div class="sous-critere-titre">Transparence et reddition <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Aucun compte rendu</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Communication orale en fin d'édition</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Bilan interne et partiel</span></div>
+        <div class="niveau-item"><span class="niveau-label">3-4</span><span class="niveau-desc">Bilan partagé avec les parties prenantes</span></div>
+        <div class="niveau-item"><span class="niveau-label">5</span><span class="niveau-desc">Reddition systématique : bilan écrit, communication publique, archives</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- AXE 2 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Axe 2 — Organisation sportive</h2>
+    <p style="color:var(--gris2); font-size:0.85rem;">15 points — Famille : Qualité opérationnelle</p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      <strong>Objectif :</strong> Évaluer la qualité technique et sportive de l'organisation du championnat : solidité du règlement, fiabilité du calendrier, qualité de l'arbitrage, capacité à gérer les contestations.
+    </p>
+
+    <div class="axe">
+      <div class="sous-critere">
+        <div class="sous-critere-num">2.1</div>
+        <div class="sous-critere-titre">Règlement et calendrier <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Pas de règlement écrit ; règles improvisées</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Règlement incomplet, peu connu ou non respecté</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Règlement établi ; calendrier fixé mais peut subir des modifications</span></div>
+        <div class="niveau-item"><span class="niveau-label">3-4</span><span class="niveau-desc">Règlement complet ; calendrier respecté ; modifications justifiées</span></div>
+        <div class="niveau-item"><span class="niveau-label">5</span><span class="niveau-desc">Règlement formalisé et diffusé ; calendrier précis ; matchs de rattrapage planifiés</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">2.2</div>
+        <div class="sous-critere-titre">Arbitrage et encadrement sportif <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Arbitrage improvisé ou partial</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Arbitres désignés mais non formés ou impartialité douteuse</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Arbitres identifiés et généralement acceptés</span></div>
+        <div class="niveau-item"><span class="niveau-label">3-4</span><span class="niveau-desc">Arbitres reconnus pour leur compétence et neutralité</span></div>
+        <div class="niveau-item"><span class="niveau-label">5</span><span class="niveau-desc">Encadrement structuré : désignation formelle, briefing, commission identifiable</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">2.3</div>
+        <div class="sous-critere-titre">Discipline et gestion des contestations <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Aucune gestion des conflits</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Gestion informelle par l'organisateur seul</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Règles de discipline existent mais application irrégulière</span></div>
+        <div class="niveau-item"><span class="niveau-label">3-4</span><span class="niveau-desc">Responsable identifié traite les litiges ; décisions communiquées</span></div>
+        <div class="niveau-item"><span class="niveau-label">5</span><span class="niveau-desc">Discipline structurée : règlement écrit, commission indépendante, procédure claire</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- AXE 3 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Axe 3 — Logistique et infrastructures</h2>
+    <p style="color:var(--gris2); font-size:0.85rem;">10 points — Famille : Qualité opérationnelle</p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      <strong>Objectif :</strong> Évaluer la capacité matérielle à accueillir le championnat : qualité des terrains, équipements disponibles, confort des participants, gestion des flux.
+    </p>
+
+    <div class="axe">
+      <div class="sous-critere">
+        <div class="sous-critere-num">3.1</div>
+        <div class="sous-critere-titre">Terrains et équipements sportifs <span class="sous-critere-points">(4 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Terrain impraticable, équipements défectueux</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Terrain praticable mais sans entretien</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Terrain correct, balisé ; équipements suffisants</span></div>
+        <div class="niveau-item"><span class="niveau-label">3</span><span class="niveau-desc">Terrain entretenu ; équipements en bon état</span></div>
+        <div class="niveau-item"><span class="niveau-label">4</span><span class="niveau-desc">Terrain de qualité, entretien régulier, équipements de réserve</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">3.2</div>
+        <div class="sous-critere-titre">Accueil et confort <span class="sous-critere-points">(3 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Aucun aménagement</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Espaces identifiés mais sans confort</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Espace équipes et public distincts ; commodités basiques</span></div>
+        <div class="niveau-item"><span class="niveau-label">3</span><span class="niveau-desc">Bonne organisation : signalétique, espaces dédiés, eau et ravitaillement</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">3.3</div>
+        <div class="sous-critere-titre">Gestion des flux et sécurité matérielle <span class="sous-critere-points">(3 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Absence de gestion ; cohue permanente</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Tentative visible mais insuffisante</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Entrées/sorties gérées ; spectateurs canalisés</span></div>
+        <div class="niveau-item"><span class="niveau-label">3</span><span class="niveau-desc">Gestion efficace : zones séparées, circulation fluide, surveillance</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- AXE 4 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Axe 4 — Communication et visibilité</h2>
+    <p style="color:var(--gris2); font-size:0.85rem;">8 points — Famille : Qualité opérationnelle</p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      <strong>Objectif :</strong> Évaluer la capacité du comité à informer, mobiliser et donner de la visibilité à son championnat.
+    </p>
+
+    <div class="axe">
+      <div class="sous-critere">
+        <div class="sous-critere-num">4.1</div>
+        <div class="sous-critere-titre">Annonce et promotion de l'événement <span class="sous-critere-points">(4 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Aucune annonce</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Annonce orale ou affichage sommaire</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Communication organisée : affiches dans lieux stratégiques</span></div>
+        <div class="niveau-item"><span class="niveau-label">3</span><span class="niveau-desc">Communication diversifiée : affiches, bouche-à-oreille organisé</span></div>
+        <div class="niveau-item"><span class="niveau-label">4</span><span class="niveau-desc">Communication structurée : affiches de qualité, réseaux sociaux, relais locaux</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">4.2</div>
+        <div class="sous-critere-titre">Suivi et diffusion des résultats <span class="sous-critere-points">(4 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Aucun suivi</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Résultats annoncés oralement, irrégulièrement</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Tableau des scores affiché (même manuscrit)</span></div>
+        <div class="niveau-item"><span class="niveau-label">3</span><span class="niveau-desc">Suivi organisé : tableau régulièrement mis à jour, résultats diffusés</span></div>
+        <div class="niveau-item"><span class="niveau-label">4</span><span class="niveau-desc">Suivi systématique et transparent : résultats quotidiens, classement actualisé, archivage</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- AXE 5 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Axe 5 — Partenariats et gestion financière</h2>
+    <p style="color:var(--gris2); font-size:0.85rem;">8 points — Famille : Qualité opérationnelle</p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      <strong>Objectif :</strong> Évaluer la capacité à mobiliser des ressources et à les gérer avec rigueur, sans que le volume financier ne devienne un critère de valorisation.
+    </p>
+
+    <div class="axe">
+      <div class="sous-critere">
+        <div class="sous-critere-num">5.1</div>
+        <div class="sous-critere-titre">Mobilisation des ressources <span class="sous-critere-points">(4 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Financé uniquement par une personne</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Quelques contributeurs ponctuels</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Diversité de contributeurs : commerçants, autorités, particuliers</span></div>
+        <div class="niveau-item"><span class="niveau-label">3</span><span class="niveau-desc">Mobilisation organisée : partenaires engagés, contributions formalisées</span></div>
+        <div class="niveau-item"><span class="niveau-label">4</span><span class="niveau-desc">Mobilisation structurée : partenariats annuels, contribution des collectivités</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">5.2</div>
+        <div class="sous-critere-titre">Gestion budgétaire et rigueur <span class="sous-critere-points">(4 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Aucune gestion</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Gestion orale ou informelle</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Traces sommaires (liste des dépenses, entrées)</span></div>
+        <div class="niveau-item"><span class="niveau-label">3</span><span class="niveau-desc">Budget établi ; dépenses tracées ; bilan oral ou écrit</span></div>
+        <div class="niveau-item"><span class="niveau-label">4</span><span class="niveau-desc">Gestion rigoureuse et transparente : budget prévisionnel, suivi, bilan communiqué</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- AXE 6 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Axe 6 — Participation communautaire et inclusion</h2>
+    <p style="color:var(--gris2); font-size:0.85rem;">15 points — Famille : Valeur territoriale</p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      <strong>Objectif :</strong> Évaluer l'ancrage territorial du championnat : sa capacité à mobiliser la communauté, à impliquer les acteurs locaux, à favoriser l'accès de tous.
+    </p>
+
+    <div class="axe">
+      <div class="sous-critere">
+        <div class="sous-critere-num">6.1</div>
+        <div class="sous-critere-titre">Implication des acteurs locaux <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Organisé par une personne seule</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Quelques acteurs soutiennent, sans engagement</span></div>
+        <div class="niveau-item"><span class="niveau-label">2-3</span><span class="niveau-desc">Diversité d'acteurs impliqués : autorités, élus, chefs de quartier</span></div>
+        <div class="niveau-item"><span class="niveau-label">4-5</span><span class="niveau-desc">Acteurs locaux participent activement ; contribution reconnue</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">6.2</div>
+        <div class="sous-critere-titre">Accessibilité et inclusion <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Réservé à une catégorie exclusive</span></div>
+        <div class="niveau-item"><span class="niveau-label">1-2</span><span class="niveau-desc">Plusieurs catégories mais limitées</span></div>
+        <div class="niveau-item"><span class="niveau-label">3-4</span><span class="niveau-desc">Catégories inclusives : féminine, jeunes, vétérans</span></div>
+        <div class="niveau-item"><span class="niveau-label">5</span><span class="niveau-desc">Inclusion politique : valorisation de la diversité, encouragements aux groupes marginalisés</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">6.3</div>
+        <div class="sous-critere-titre">Appropriation populaire <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Indifférence de la communauté</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Spectateurs viennent sans enthousiasme</span></div>
+        <div class="niveau-item"><span class="niveau-label">2-3</span><span class="niveau-desc">Affluence régulière ; le championnat est évoqué dans la communauté</span></div>
+        <div class="niveau-item"><span class="niveau-label">4-5</span><span class="niveau-desc">Événement attendu, discuté ; ferveur populaire visible</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- AXE 7 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Axe 7 — Impacts social, culturel et économique</h2>
+    <p style="color:var(--gris2); font-size:0.85rem;">14 points — Famille : Valeur territoriale</p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      <strong>Objectif :</strong> Évaluer ce que le championnat produit dans son territoire au-delà du sport : effets sur la vie sociale, la culture locale, l'économie informelle.
+    </p>
+
+    <div class="axe">
+      <div class="sous-critere">
+        <div class="sous-critere-num">7.1</div>
+        <div class="sous-critere-titre">Retombées économiques locales <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Aucun impact visible</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Quelques commerçants bénéficient marginalement</span></div>
+        <div class="niveau-item"><span class="niveau-label">2-3</span><span class="niveau-desc">Activité économique visible : vendeurs, transporteurs, artisans</span></div>
+        <div class="niveau-item"><span class="niveau-label">4-5</span><span class="niveau-desc">Moteur économique local reconnu</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">7.2</div>
+        <div class="sous-critere-titre">Cohésion sociale <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Source de tensions ou excluant</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Pas de tensions mais pas de lien créé</span></div>
+        <div class="niveau-item"><span class="niveau-label">2-3</span><span class="niveau-desc">Rencontres entre communautés ; liens créés ou renforcés</span></div>
+        <div class="niveau-item"><span class="niveau-label">4-5</span><span class="niveau-desc">Instrument reconnu de cohésion : tensions apaisées, alliances nouées</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">7.3</div>
+        <div class="sous-critere-titre">Rayonnement culturel <span class="sous-critere-points">(4 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Aucune dimension culturelle</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Éléments culturels ponctuels</span></div>
+        <div class="niveau-item"><span class="niveau-label">2-3</span><span class="niveau-desc">Culture locale régulièrement mise en avant : danses, musiques, tenues, symboles</span></div>
+        <div class="niveau-item"><span class="niveau-label">4</span><span class="niveau-desc">Espace de valorisation culturelle reconnu</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- AXE 8 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Axe 8 — Mémoire, documentation et transmission</h2>
+    <p style="color:var(--gris2); font-size:0.85rem;">15 points — Famille : Valeur territoriale</p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      <strong>Objectif :</strong> Évaluer la capacité du championnat à produire et conserver des traces de son existence, à tirer des enseignements et à transmettre son expérience.
+    </p>
+
+    <div class="axe">
+      <div class="sous-critere">
+        <div class="sous-critere-num">8.1</div>
+        <div class="sous-critere-titre">Archives et résultats <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Aucune trace</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Souvenirs oraux uniquement</span></div>
+        <div class="niveau-item"><span class="niveau-label">2</span><span class="niveau-desc">Quelques traces : photos, palmarès partiel</span></div>
+        <div class="niveau-item"><span class="niveau-label">3-4</span><span class="niveau-desc">Archives constituées : palmarès, photos, résultats majeurs</span></div>
+        <div class="niveau-item"><span class="niveau-label">5</span><span class="niveau-desc">Archives complètes et accessibles : palmarès, photos, données statistiques</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">8.2</div>
+        <div class="sous-critere-titre">Retour d'expérience et amélioration <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Aucun bilan ; erreurs reproduites</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Bilan oral sans mise en œuvre</span></div>
+        <div class="niveau-item"><span class="niveau-label">2-3</span><span class="niveau-desc">Leçons tirées ; ajustements d'une édition à l'autre</span></div>
+        <div class="niveau-item"><span class="niveau-label">4-5</span><span class="niveau-desc">Démarche d'amélioration continue : documentée, visible</span></div>
+      </div>
+      <div class="sous-critere">
+        <div class="sous-critere-num">8.3</div>
+        <div class="sous-critere-titre">Continuité et transmission <span class="sous-critere-points">(5 points)</span></div>
+        <div class="niveau-item"><span class="niveau-label">0</span><span class="niveau-desc">Dépend entièrement d'une personne</span></div>
+        <div class="niveau-item"><span class="niveau-label">1</span><span class="niveau-desc">Plusieurs impliqués mais pérennité non pensée</span></div>
+        <div class="niveau-item"><span class="niveau-label">2-3</span><span class="niveau-desc">Rotation organisée ou jeunes formés</span></div>
+        <div class="niveau-item"><span class="niveau-label">4-5</span><span class="niveau-desc">Transmission structurée : documents, successeurs formés, événement conçu pour durer</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- RÉCAPITULATIF -->
+  <!-- ============================================================ -->
+  <section style="border-bottom: none;">
+    <h2 class="section-title">Récapitulatif des huit axes</h2>
+    <table class="table-axes">
+      <thead>
+        <tr><th>Axe</th><th>Points</th><th>Famille</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1. Gouvernance et organisation du comité</td><td>15</td><td>Qualité opérationnelle</td></tr>
+        <tr><td>2. Organisation sportive</td><td>15</td><td>Qualité opérationnelle</td></tr>
+        <tr><td>3. Logistique et infrastructures</td><td>10</td><td>Qualité opérationnelle</td></tr>
+        <tr><td>4. Communication et visibilité</td><td>8</td><td>Qualité opérationnelle</td></tr>
+        <tr><td>5. Partenariats et gestion financière</td><td>8</td><td>Qualité opérationnelle</td></tr>
+        <tr><td>6. Participation communautaire et inclusion</td><td>15</td><td>Valeur territoriale</td></tr>
+        <tr><td>7. Impacts social, culturel et économique</td><td>14</td><td>Valeur territoriale</td></tr>
+        <tr><td>8. Mémoire, documentation et transmission</td><td>15</td><td>Valeur territoriale</td></tr>
+        <tr style="background:var(--vert); color:#fff; font-weight:700;"><td><strong>TOTAL</strong></td><td><strong>100</strong></td><td></td></tr>
+      </tbody>
+    </table>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; color: var(--vert); margin-top: 2rem; font-size: 1.2rem;">Synthèse des principes transversaux</h3>
+    <ul style="margin-left:1.5rem; color:var(--gris); margin-top:0.5rem;">
+      <li><strong>Pas de compensation financière :</strong> Les axes 4 et 5 sont plafonnés ; le reste valorise l'organisation et l'ancrage territorial.</li>
+      <li><strong>Valorisation des organisations modestes :</strong> Un championnat villageois peut progresser par sa gouvernance, son organisation sportive, sa participation communautaire et sa mémoire.</li>
+      <li><strong>Pas de seuil automatique par axe :</strong> Un axe totalement absent est traité par appréciation motivée de la Commission.</li>
+      <li><strong>Bienveillance contextuelle :</strong> Chaque sous-critère invite l'évaluateur à s'adapter au contexte réel du championnat.</li>
+      <li><strong>Neutralité vis-à-vis de l'ancienneté :</strong> Les sous-critères relatifs à la mémoire sont formulés pour ne pas pénaliser une première édition.</li>
+    </ul>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PIED DE PAGE DOCUMENT -->
+  <!-- ============================================================ -->
+  <div style="margin: 2rem 0 1rem; padding-top: 1rem; border-top: 2px solid var(--or); text-align: center; font-size: 0.8rem; color: var(--gris2);">
+    <p><strong>ISGI-Lékié — Initiative Stratégique Globale et Inclusive — Lékié</strong></p>
+    <p>Référentiel d'évaluation CISFOOTVAC — Version stabilisée — Juillet 2026</p>
+    <p style="margin-top: 0.3rem;">📄 Document public — Consultation libre</p>
+    <p style="margin-top: 0.3rem;">
+      <a href="certification.html" style="color:var(--vert); font-weight:600;">← Retour à la certification ISGI-Lékié</a>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 31 Juillet 2026</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
+
+<script>
+  // ---- BURGER MENU ----
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+
+  // ---- BACK TO TOP ----
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>
