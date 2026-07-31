@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Règlement général – CISFOOTVAC – ISGI-Lékié</title>
+  <meta name="description" content="Règlement général de la certification CISFOOTVAC — Certification des championnats de football de vacances.">
+  <meta name="keywords" content="règlement, certification, cisfootvac, championnat vacances, isgi lekie">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vert: #1b3a2d;
+      --vert2: #2a5a44;
+      --or: #c4922a;
+      --or2: #e0a83e;
+      --creme: #f4efe6;
+      --creme2: #ede5d8;
+      --blanc: #fefcf8;
+      --texte: #2c2c28;
+      --gris: #5a5a50;
+      --gris2: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--blanc); color: var(--texte); line-height: 1.6; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+
+    nav { background: var(--vert); padding: 0.8rem 1.5rem; border-bottom: 2px solid var(--or); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; z-index: 100; }
+    .logo a { color: var(--or2); text-decoration: none; font-size: 1.5rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
+    .logo span { font-size: 0.7rem; display: block; color: rgba(255,255,255,0.7); }
+    .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.8rem; font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--or2); }
+    .nav-links a.active { border-bottom: 2px solid var(--or); padding-bottom: 0.2rem; }
+    .burger { display: none; background: none; border: none; color: var(--or2); font-size: 1.8rem; cursor: pointer; }
+
+    .page-header { background: var(--vert); padding: 2rem 1.5rem; border-bottom: 4px solid var(--or); text-align: center; }
+    .page-header h1 { color: #fff; border-left: none; padding-left: 0; font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; }
+    .page-header h1 em { color: var(--or2); font-style: italic; }
+    .page-header .sous-titre { color: rgba(255,255,255,0.75); margin-top: 0.3rem; font-size: 0.9rem; }
+    .page-header .badge-document { display: inline-block; background: var(--or2); color: var(--vert); padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.65rem; font-weight: 600; margin-top: 0.5rem; }
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.5rem; }
+
+    section { padding: 2rem 0; border-bottom: 1px solid var(--creme2); }
+    .section-title { font-size: 1.6rem; color: var(--vert); margin-bottom: 1.5rem; border-left: 6px solid var(--or); padding-left: 1rem; font-family: 'Cormorant Garamond', serif; }
+    .section-sub { color: var(--gris2); margin-bottom: 1rem; }
+
+    .btn { display: inline-block; background: var(--or); color: #1b3a2d; padding: 0.5rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; margin-top: 0.5rem; border: none; cursor: pointer; font-size: 0.85rem; }
+    .btn:hover { background: var(--vert); color: var(--or2); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--vert); color: var(--vert); }
+    .btn-outline:hover { background: var(--vert); color: #fff; }
+
+    .article { margin-bottom: 1.5rem; }
+    .article-num { font-weight: 700; color: var(--or); font-size: 1.1rem; }
+    .article-titre { font-weight: 700; color: var(--vert); }
+    .article-contenu { color: var(--gris); margin-top: 0.2rem; padding-left: 0.5rem; border-left: 3px solid var(--creme2); }
+
+    .chapitre { margin-top: 2rem; }
+    .chapitre-titre { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--vert); border-bottom: 2px solid var(--or); padding-bottom: 0.3rem; margin-bottom: 1.5rem; }
+
+    .back-to-top { position: fixed; bottom: 20px; right: 20px; background: var(--or); color: #1b3a2d; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.5rem; font-weight: bold; opacity: 0; transition: opacity 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 99; }
+    .back-to-top.show { opacity: 1; }
+    .back-to-top:hover { background: var(--vert); color: var(--or2); }
+
+    .toolbar { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background: var(--creme); border-radius: 16px; align-items: center; justify-content: space-between; }
+    .toolbar .btn-print { background: var(--vert); color: var(--or2); }
+    .toolbar .btn-print:hover { background: var(--or2); color: var(--vert); }
+    .toolbar .btn-retour { background: transparent; border: 1.5px solid var(--vert); color: var(--vert); }
+    .toolbar .btn-retour:hover { background: var(--vert); color: #fff; }
+
+    footer { background: #0f2c21; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.8rem; margin-top: 2rem; }
+    footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
+
+    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; }
+    .badge-public { background: #e8f5e9; color: #2e7d32; }
+
+    @media (max-width: 700px) { 
+      nav { flex-direction: row; } 
+      .burger { display: block; } 
+      .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; padding-top: 0.5rem; } 
+      .nav-links.show { display: flex; } 
+      .container { padding: 0 1rem; } 
+      .page-header h1 { font-size: 1.6rem; } 
+      .toolbar { flex-direction: column; align-items: stretch; text-align: center; }
+    }
+
+    @media print {
+      nav, .toolbar, .back-to-top, footer .boussole { display: none; }
+      .page-header { background: #1b3a2d !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page-header h1 { color: #fff !important; }
+      .page-header .badge-document { background: #e0a83e !important; color: #1b3a2d !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; }
+      .container { max-width: 100%; }
+      footer { background: #0f2c21 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .article-contenu { border-left-color: #ede5d8; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="plateforme.html">Plateforme</a>
+    <a href="mon-village.html">Mon village</a>
+    <a href="mon-ecole.html">Mon école</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html" class="active">Certification</a>
+    <a href="tourisme.html">Tourisme</a>
+    <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>📋 Règlement général <em>de la certification</em></h1>
+  <p class="sous-titre">CISFOOTVAC — Certification ISGI-Lékié des championnats de football de vacances</p>
+  <span class="badge-document">📂 Document public</span>
+  <p class="maj">📅 Version stabilisée — Juillet 2026</p>
+</div>
+
+<div class="container">
+
+  <div class="toolbar">
+    <div>
+      <span class="badge-statut badge-public">✅ Document public — Consultation libre</span>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+      <a href="certification.html" class="btn btn-retour" style="font-size:0.75rem;">← Retour à la certification</a>
+      <button onclick="window.print()" class="btn btn-print" style="font-size:0.75rem;">📥 Télécharger en PDF</button>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CHAPITRE 1 -->
+  <!-- ============================================================ -->
+  <div class="chapitre">
+    <h2 class="chapitre-titre">Chapitre 1 — Principes généraux</h2>
+
+    <div class="article">
+      <div class="article-num">Article 1.1</div>
+      <div class="article-contenu"><strong>Objet du Règlement.</strong> Le présent Règlement définit les conditions et les modalités selon lesquelles un championnat de football de vacances peut obtenir la certification CISFOOTVAC (Certificat ISGI-Lékié Sport Football Vacances). Il précise notamment les conditions d'éligibilité, le déroulement du processus de certification, les conditions d'attribution et les modalités d'usage du certificat.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 1.2</div>
+      <div class="article-contenu"><strong>Nature de la certification.</strong> Le CISFOOTVAC atteste que l'organisation d'une édition déterminée d'un championnat de football de vacances répond à des standards de qualité définis par le référentiel d'évaluation CISFOOTVAC. Le CISFOOTVAC certifie la qualité organisationnelle d'une édition déterminée d'un événement sportif. Il ne constitue pas une homologation permanente de l'organisateur.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 1.3</div>
+      <div class="article-contenu"><strong>Caractère volontaire.</strong> Le CISFOOTVAC ne repose sur aucune obligation réglementaire et ne constitue en aucun cas une autorisation administrative. La candidature à la certification procède d'une démarche volontaire de l'organisateur.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 1.4</div>
+      <div class="article-contenu"><strong>Principes directeurs.</strong> Le processus de certification est conduit dans le respect des principes suivants : transparence, équité, traçabilité, amélioration continue.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CHAPITRE 2 -->
+  <!-- ============================================================ -->
+  <div class="chapitre">
+    <h2 class="chapitre-titre">Chapitre 2 — Conditions d'éligibilité</h2>
+
+    <div class="article">
+      <div class="article-num">Article 2.1</div>
+      <div class="article-contenu"><strong>Événements concernés.</strong> En phase pilote, le périmètre territorial est celui défini par ISGI-Lékié. Sont éligibles à la certification CISFOOTVAC les championnats de football de vacances : organisés sur ce périmètre territorial ; disposant d'un format de compétition défini (nombre d'équipes, calendrier, catégories) ; portés par une structure ou un organisateur identifiable.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 2.2</div>
+      <div class="article-contenu"><strong>Organisateurs éligibles.</strong> Peut candidater à la certification tout organisateur — comité d'organisation, association, structure informelle dotée d'un responsable identifié — en charge de la conception et de la conduite du championnat concerné. Aucune ancienneté minimale du championnat n'est exigée.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 2.3</div>
+      <div class="article-contenu"><strong>Conditions minimales de recevabilité.</strong> Pour que sa candidature soit recevable, l'organisateur doit : désigner un responsable identifié ; disposer d'une structure ou d'un comité d'organisation constitué ; s'engager formellement à respecter le processus de certification ; accepter les conditions générales de la certification.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CHAPITRE 3 -->
+  <!-- ============================================================ -->
+  <div class="chapitre">
+    <h2 class="chapitre-titre">Chapitre 3 — Processus de certification</h2>
+    <p style="color:var(--gris); margin-bottom:1rem;">Le processus de certification comprend sept étapes, réparties selon quatre sources d'évaluation complémentaires.</p>
+
+    <div class="article">
+      <div class="article-num">3.1</div>
+      <div class="article-contenu"><strong>Candidature.</strong> L'organisateur dépose son dossier de candidature auprès du Secrétariat de certification.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">3.2</div>
+      <div class="article-contenu"><strong>Évaluation documentaire — avant l'événement.</strong> L'Équipe d'évaluation examine les pièces du dossier : règlement, calendrier, organisation, budget, sécurité, partenariats.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">3.3</div>
+      <div class="article-contenu"><strong>Admission au processus.</strong> Après vérification de la recevabilité, l'organisateur acquiert le statut de candidat.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">3.4</div>
+      <div class="article-contenu"><strong>Évaluation in situ.</strong> L'Équipe d'évaluation procède à une observation directe du déroulement du championnat : organisation, sécurité, discipline, expérience des participants.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">3.5</div>
+      <div class="article-contenu"><strong>Évaluation documentaire — pendant l'événement.</strong> Recueil des preuves produites au fil du championnat : feuilles de match, incidents, décisions disciplinaires.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">3.6</div>
+      <div class="article-contenu"><strong>Évaluation documentaire — après l'événement.</strong> Analyse du bilan transmis par l'organisateur : rapport final, palmarès, bilan financier, archives.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">3.7</div>
+      <div class="article-contenu"><strong>Délibération et décision.</strong> La Commission de certification délibère sur la base du rapport d'évaluation et statue sur l'attribution, l'ajournement ou la non-attribution de la certification.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CHAPITRE 4 -->
+  <!-- ============================================================ -->
+  <div class="chapitre">
+    <h2 class="chapitre-titre">Chapitre 4 — Conditions d'attribution de la certification</h2>
+
+    <div class="article">
+      <div class="article-num">Article 4.1</div>
+      <div class="article-contenu"><strong>Principe général d'attribution.</strong> L'attribution du certificat CISFOOTVAC repose sur deux conditions cumulatives : l'atteinte d'un score global minimal et le respect des exigences minimales obligatoires.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 4.2</div>
+      <div class="article-contenu"><strong>Domaines critiques et exigences minimales obligatoires.</strong> Trois domaines sont retenus comme critiques : <strong>Sécurité et protection des participants</strong> (responsable sécurité identifié, dispositif défini, prise en charge des incidents, présence médicale adaptée) ; <strong>Conformité administrative et institutionnelle</strong> (organisateur identifié, cadre déclaré, autorisations nécessaires) ; <strong>Éthique sportive</strong> (règlement établi, dispositif de gestion des contestations, principes de fair-play affichés). Ces exigences ne relèvent pas de la notation globale sur 100 points. Elles constituent des conditions de confiance, distinctes et non compensables par un score élevé sur d'autres domaines.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 4.3</div>
+      <div class="article-contenu"><strong>Non-conformité détectée avant le début du championnat.</strong> La Commission peut prononcer un ajournement pour mise en conformité. Si la correction n'est pas apportée, la certification n'est pas attribuée pour le cycle concerné.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 4.4</div>
+      <div class="article-contenu"><strong>Non-conformité détectée pendant le championnat.</strong> L'Équipe d'évaluation établit un constat motivé. La Commission apprécie si la situation a été corrigée ou si la défaillance fait obstacle à l'attribution du certificat.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 4.5</div>
+      <div class="article-contenu"><strong>Portée des éléments transmis après l'événement.</strong> Les éléments de bilan transmis après la clôture peuvent compléter l'évaluation finale et alimenter le score global. Ils ne peuvent servir à compenser une défaillance majeure constatée pendant le déroulement de l'événement.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 4.6</div>
+      <div class="article-contenu"><strong>Issue en cas de non-conformité persistante.</strong> La non-satisfaction d'une exigence minimale obligatoire entraîne la non-attribution de la certification pour le cycle concerné. Elle ne fait pas obstacle à une nouvelle candidature lors d'un cycle ultérieur.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CHAPITRE 5 -->
+  <!-- ============================================================ -->
+  <div class="chapitre">
+    <h2 class="chapitre-titre">Chapitre 5 — Niveaux, validité et usage du certificat</h2>
+
+    <div class="article">
+      <div class="article-num">Article 5.1</div>
+      <div class="article-contenu"><strong>Échelle des niveaux de certification.</strong> Le niveau de certification obtenu est déterminé par le score global atteint sur l'échelle de notation du référentiel d'évaluation CISFOOTVAC, notée sur 100 points. Quatre niveaux : <strong>Bronze</strong> (40-59) : les fondamentaux de l'organisation sont maîtrisés ; <strong>Argent</strong> (60-74) : la qualité de l'organisation est confirmée ; <strong>Or</strong> (75-89) : l'organisation constitue une référence ; <strong>Excellence</strong> (90-100) : l'organisation constitue un modèle territorial.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 5.2</div>
+      <div class="article-contenu"><strong>Portée du niveau attribué.</strong> Le niveau attribué exprime un degré de maturité organisationnelle constaté pour l'édition évaluée. Il ne constitue ni un classement entre championnats, ni une appréciation du niveau sportif de la compétition.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 5.3</div>
+      <div class="article-contenu"><strong>Durée de validité du certificat.</strong> Le certificat CISFOOTVAC est attaché à l'édition évaluée. Sa validité court à compter de la décision de la Commission de certification jusqu'à la clôture du cycle de candidature suivant. Le certificat ne se reconduit pas automatiquement.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 5.4</div>
+      <div class="article-contenu"><strong>Renouvellement.</strong> Un organisateur souhaitant obtenir la certification pour une édition ultérieure présente une nouvelle candidature. ISGI-Lékié conserve, pour chaque championnat ayant candidaté au moins une fois, un dossier historique retraçant les éditions successivement évaluées.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 5.5</div>
+      <div class="article-contenu"><strong>Droit d'usage de la mention CISFOOTVAC.</strong> L'organisateur d'un championnat certifié est autorisé à faire mention de la certification obtenue et à communiquer sur le niveau CISFOOTVAC correspondant, exclusivement pour désigner l'édition certifiée et pendant la durée de validité du certificat.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 5.6</div>
+      <div class="article-contenu"><strong>Retrait de la certification.</strong> En cas d'usage non conforme de la mention CISFOOTVAC, ou en cas de manquement grave porté à la connaissance d'ISGI-Lékié après attribution de la certification, la Commission de certification peut prononcer le retrait de la certification.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CHAPITRE 6 -->
+  <!-- ============================================================ -->
+  <div class="chapitre">
+    <h2 class="chapitre-titre">Chapitre 6 — Dispositions finales</h2>
+
+    <div class="article">
+      <div class="article-num">Article 6.1</div>
+      <div class="article-contenu"><strong>Articulation avec les autres documents du dispositif.</strong> Le présent Règlement s'applique en cohérence avec la Charte de gouvernance et de déontologie du CISFOOTVAC, le référentiel d'évaluation CISFOOTVAC, le manuel opérationnel des évaluateurs et les documents opérationnels du dispositif.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 6.2</div>
+      <div class="article-contenu"><strong>Interprétation.</strong> Toute question d'interprétation du présent Règlement non expressément tranchée par ses dispositions est soumise à la Commission de certification, qui statue dans le respect des principes directeurs énoncés à l'article 1.4.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 6.3</div>
+      <div class="article-contenu"><strong>Évolution du Règlement.</strong> Le présent Règlement peut évoluer à la lumière des retours d'expérience issus des cycles successifs de certification. Toute évolution est effectuée dans le respect des principes fondateurs de la Charte de gouvernance et de déontologie.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">Article 6.4</div>
+      <div class="article-contenu"><strong>Entrée en vigueur.</strong> Le présent Règlement entre en vigueur à la date de sa publication par ISGI-Lékié et s'applique à la phase pilote de la certification CISFOOTVAC.</div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PIED DE PAGE DOCUMENT -->
+  <!-- ============================================================ -->
+  <div style="margin: 2rem 0 1rem; padding-top: 1rem; border-top: 2px solid var(--or); text-align: center; font-size: 0.8rem; color: var(--gris2);">
+    <p><strong>ISGI-Lékié — Initiative Stratégique Globale et Inclusive — Lékié</strong></p>
+    <p>Règlement général de la certification CISFOOTVAC — Version stabilisée — Juillet 2026</p>
+    <p style="margin-top: 0.3rem;">📄 Document public — Consultation libre</p>
+    <p style="margin-top: 0.3rem;">
+      <a href="certification.html" style="color:var(--vert); font-weight:600;">← Retour à la certification ISGI-Lékié</a>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 31 Juillet 2026</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
+
+<script>
+  // ---- BURGER MENU ----
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+
+  // ---- BACK TO TOP ----
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>
