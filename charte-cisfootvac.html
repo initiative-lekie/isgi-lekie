@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charte de gouvernance – CISFOOTVAC – ISGI-Lékié</title>
+  <meta name="description" content="Charte de gouvernance et de déontologie du CISFOOTVAC — Certification des championnats de football de vacances.">
+  <meta name="keywords" content="charte, gouvernance, déontologie, cisfootvac, certification, isgi lekie">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --vert: #1b3a2d;
+      --vert2: #2a5a44;
+      --or: #c4922a;
+      --or2: #e0a83e;
+      --creme: #f4efe6;
+      --creme2: #ede5d8;
+      --blanc: #fefcf8;
+      --texte: #2c2c28;
+      --gris: #5a5a50;
+      --gris2: #94a3b8;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--blanc); color: var(--texte); line-height: 1.6; }
+
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+
+    nav { background: var(--vert); padding: 0.8rem 1.5rem; border-bottom: 2px solid var(--or); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; z-index: 100; }
+    .logo a { color: var(--or2); text-decoration: none; font-size: 1.5rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
+    .logo span { font-size: 0.7rem; display: block; color: rgba(255,255,255,0.7); }
+    .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.8rem; font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--or2); }
+    .nav-links a.active { border-bottom: 2px solid var(--or); padding-bottom: 0.2rem; }
+    .burger { display: none; background: none; border: none; color: var(--or2); font-size: 1.8rem; cursor: pointer; }
+
+    .page-header { background: var(--vert); padding: 2rem 1.5rem; border-bottom: 4px solid var(--or); text-align: center; }
+    .page-header h1 { color: #fff; border-left: none; padding-left: 0; font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; }
+    .page-header h1 em { color: var(--or2); font-style: italic; }
+    .page-header .sous-titre { color: rgba(255,255,255,0.75); margin-top: 0.3rem; font-size: 0.9rem; }
+    .page-header .badge-document { display: inline-block; background: var(--or2); color: var(--vert); padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.65rem; font-weight: 600; margin-top: 0.5rem; }
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.5rem; }
+
+    section { padding: 2rem 0; border-bottom: 1px solid var(--creme2); }
+    .section-title { font-size: 1.6rem; color: var(--vert); margin-bottom: 1.5rem; border-left: 6px solid var(--or); padding-left: 1rem; font-family: 'Cormorant Garamond', serif; }
+    .section-sub { color: var(--gris2); margin-bottom: 1rem; }
+
+    .btn { display: inline-block; background: var(--or); color: #1b3a2d; padding: 0.5rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; margin-top: 0.5rem; border: none; cursor: pointer; font-size: 0.85rem; }
+    .btn:hover { background: var(--vert); color: var(--or2); }
+    .btn-outline { background: transparent; border: 1.5px solid var(--vert); color: var(--vert); }
+    .btn-outline:hover { background: var(--vert); color: #fff; }
+
+    .article { margin-bottom: 1.5rem; }
+    .article-num { font-weight: 700; color: var(--or); font-size: 1.1rem; }
+    .article-titre { font-weight: 700; color: var(--vert); }
+    .article-contenu { color: var(--gris); margin-top: 0.2rem; padding-left: 0.5rem; border-left: 3px solid var(--creme2); }
+
+    .back-to-top { position: fixed; bottom: 20px; right: 20px; background: var(--or); color: #1b3a2d; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.5rem; font-weight: bold; opacity: 0; transition: opacity 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 99; }
+    .back-to-top.show { opacity: 1; }
+    .back-to-top:hover { background: var(--vert); color: var(--or2); }
+
+    .toolbar { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; padding: 1rem; background: var(--creme); border-radius: 16px; align-items: center; justify-content: space-between; }
+    .toolbar .btn-print { background: var(--vert); color: var(--or2); }
+    .toolbar .btn-print:hover { background: var(--or2); color: var(--vert); }
+    .toolbar .btn-retour { background: transparent; border: 1.5px solid var(--vert); color: var(--vert); }
+    .toolbar .btn-retour:hover { background: var(--vert); color: #fff; }
+
+    footer { background: #0f2c21; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.8rem; margin-top: 2rem; }
+    footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
+
+    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; }
+    .badge-public { background: #e8f5e9; color: #2e7d32; }
+
+    @media (max-width: 700px) { 
+      nav { flex-direction: row; } 
+      .burger { display: block; } 
+      .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; padding-top: 0.5rem; } 
+      .nav-links.show { display: flex; } 
+      .container { padding: 0 1rem; } 
+      .page-header h1 { font-size: 1.6rem; } 
+      .toolbar { flex-direction: column; align-items: stretch; text-align: center; }
+    }
+
+    @media print {
+      nav, .toolbar, .back-to-top, footer .boussole { display: none; }
+      .page-header { background: #1b3a2d !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page-header h1 { color: #fff !important; }
+      .page-header .badge-document { background: #e0a83e !important; color: #1b3a2d !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: #fff; }
+      .container { max-width: 100%; }
+      footer { background: #0f2c21 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .article-contenu { border-left-color: #ede5d8; }
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="plateforme.html">Plateforme</a>
+    <a href="mon-village.html">Mon village</a>
+    <a href="mon-ecole.html">Mon école</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html" class="active">Certification</a>
+    <a href="tourisme.html">Tourisme</a>
+    <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>📜 Charte de gouvernance <em>et de déontologie</em></h1>
+  <p class="sous-titre">CISFOOTVAC — Certification ISGI-Lékié des championnats de football de vacances</p>
+  <span class="badge-document">📂 Document public</span>
+  <p class="maj">📅 Version stabilisée — Juillet 2026</p>
+</div>
+
+<div class="container">
+
+  <div class="toolbar">
+    <div>
+      <span class="badge-statut badge-public">✅ Document public — Consultation libre</span>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+      <a href="certification.html" class="btn btn-retour" style="font-size:0.75rem;">← Retour à la certification</a>
+      <button onclick="window.print()" class="btn btn-print" style="font-size:0.75rem;">📥 Télécharger en PDF</button>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PRÉAMBULE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Préambule</h2>
+    <p style="color:var(--gris);">
+      Le CISFOOTVAC (Certificat ISGI-Lékié Sport Football Vacances) est un dispositif de certification développé par ISGI-Lékié pour reconnaître et valoriser la qualité de l'organisation des championnats de football de vacances.
+    </p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      Le CISFOOTVAC ne classe pas les événements entre eux et ne juge ni le niveau sportif ni le prestige d'une compétition. Il repose sur une conviction simple : ce qui est observable peut être documenté ; ce qui est documenté peut être évalué ; ce qui est évalué selon des règles transparentes peut être reconnu.
+    </p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      La présente Charte ne définit pas ce qui est évalué — cet objet relève du Référentiel d'évaluation. Elle définit comment l'évaluation est conduite, par qui, et selon quelles garanties. Elle constitue le socle de confiance sur lequel repose l'ensemble du dispositif.
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARTICLE 1 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Article 1 — Objet de la Charte</h2>
+    <p style="color:var(--gris);">
+      La présente Charte a pour objet de définir les principes, les règles et les responsabilités garantissant que la certification CISFOOTVAC est conduite avec impartialité, transparence, indépendance, traçabilité et équité de traitement entre tous les candidats.
+    </p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      Elle s'impose à toute personne intervenant, à quelque titre que ce soit, dans le processus de certification.
+    </p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      Le CISFOOTVAC ne repose sur aucune obligation réglementaire et ne constitue en aucun cas une autorisation administrative. Il procède d'une démarche volontaire de l'organisateur, fondée sur la valeur ajoutée que représente la reconnaissance de la qualité de son organisation.
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARTICLE 2 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Article 2 — Principes directeurs</h2>
+
+    <div class="article">
+      <div class="article-num">2.1</div>
+      <div class="article-contenu"><strong>Proportionnalité.</strong> La gouvernance du dispositif est proportionnée à son objet : suffisamment robuste pour garantir l'impartialité des décisions, suffisamment légère pour rester opérationnelle.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">2.2</div>
+      <div class="article-contenu"><strong>Séparation des fonctions.</strong> Nulle personne ni organe ne cumule, sur un même dossier, une fonction de réception administrative, une fonction d'évaluation technique et une fonction de décision.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">2.3</div>
+      <div class="article-contenu"><strong>Impartialité.</strong> Toute personne intervenant dans le processus déclare spontanément toute situation susceptible d'affecter ou de faire naître un doute raisonnable sur son impartialité. Une apparence de conflit d'intérêts est traitée avec la même rigueur qu'un conflit avéré.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">2.4</div>
+      <div class="article-contenu"><strong>Traçabilité des décisions.</strong> Toute décision prise dans le cadre du CISFOOTVAC est formalisée, datée, motivée et archivée.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">2.5</div>
+      <div class="article-contenu"><strong>Égalité de traitement.</strong> Tous les candidats sont évalués selon les mêmes critères, la même procédure et les mêmes délais de référence.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">2.6</div>
+      <div class="article-contenu"><strong>Confidentialité.</strong> Les échanges internes de délibération demeurent confidentiels, afin de préserver la liberté et la sincérité des discussions entre évaluateurs et commissaires.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">2.7</div>
+      <div class="article-contenu"><strong>Amélioration continue.</strong> Le dispositif intègre les enseignements de chaque cycle de certification pour améliorer sa méthode, sans jamais transiger sur ses principes fondateurs.</div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARTICLE 3 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Article 3 — Organisation de la gouvernance</h2>
+    <p style="color:var(--gris); margin-bottom:1rem;">La gouvernance du CISFOOTVAC repose sur trois organes aux missions strictement séparées.</p>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.2rem; margin-top: 1.5rem;">3.1 Le Secrétariat de certification</h3>
+    <div style="padding-left:0.5rem; border-left:3px solid var(--creme2);">
+      <p style="color:var(--gris);"><strong>Composition.</strong> Le Secrétariat comprend une ou plusieurs personnes. En phase pilote, il fonctionne selon un principe de double regard, garantissant la séparation des fonctions et la traçabilité des opérations, quel que soit son effectif.</p>
+      <p style="color:var(--gris); margin-top:0.5rem;"><strong>Mission.</strong> Le Secrétariat : reçoit les candidatures et en accuse réception ; vérifie leur recevabilité administrative au moyen d'une check-list préétablie ; sollicite, le cas échéant, les pièces manquantes ; organise la désignation des évaluateurs et le calendrier des évaluations ; assure l'archivage de l'ensemble du dossier.</p>
+      <p style="color:var(--gris); margin-top:0.5rem;"><strong>Principe.</strong> Le Secrétariat ne porte aucune appréciation qualitative sur le contenu d'un dossier. Le passage de « dossier reçu » à « dossier recevable » repose exclusivement sur la vérification de sa complétude formelle.</p>
+    </div>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.2rem; margin-top: 1.5rem;">3.2 L'Équipe d'évaluation</h3>
+    <div style="padding-left:0.5rem; border-left:3px solid var(--creme2);">
+      <p style="color:var(--gris);"><strong>Composition.</strong> Chaque dossier est examiné par au moins deux évaluateurs. Aucune évaluation n'est réalisée par un évaluateur unique.</p>
+      <p style="color:var(--gris); margin-top:0.5rem;"><strong>Mission.</strong> L'Équipe d'évaluation : analyse les pièces du dossier ; procède à une observation indépendante de l'événement ; recueille les preuves produites durant l'événement ; examine le bilan et les éléments de mémoire transmis après l'événement ; rédige un rapport d'évaluation motivé et propose un score.</p>
+      <p style="color:var(--gris); margin-top:0.5rem;"><strong>Règles d'impartialité.</strong> Tout évaluateur déclare, avant le début de sa mission, tout lien de nature à affecter son indépendance à l'égard de l'organisateur évalué. En cas de doute raisonnable, il se récuse ou est récusé ; son remplacement est consigné.</p>
+      <p style="color:var(--gris); margin-top:0.5rem;"><strong>Principe.</strong> L'Équipe d'évaluation ne certifie pas. Elle transmet un rapport et une proposition à la Commission de certification, qui seule décide.</p>
+    </div>
+
+    <h3 style="font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.2rem; margin-top: 1.5rem;">3.3 La Commission de certification</h3>
+    <div style="padding-left:0.5rem; border-left:3px solid var(--creme2);">
+      <p style="color:var(--gris);"><strong>Composition.</strong> La Commission de certification comprend de trois à cinq membres. Elle est présidée par le Président de la Commission, fonction distincte de la personne qui l'exerce.</p>
+      <p style="color:var(--gris); margin-top:0.5rem;"><strong>Mission.</strong> La Commission : examine le rapport transmis par l'Équipe d'évaluation ; peut demander des compléments d'information ; délibère collégialement ; attribue, ajourne ou refuse la certification ; statue, en première instance, sur toute question relative au dossier.</p>
+      <p style="color:var(--gris); margin-top:0.5rem;"><strong>Règles d'impartialité.</strong> Un membre de la Commission concerné, directement ou indirectement, par un dossier examiné ne participe ni aux débats ni au vote relatifs à ce dossier. Cette abstention est consignée au procès-verbal de la séance.</p>
+      <p style="color:var(--gris); margin-top:0.5rem;"><strong>Principe.</strong> La Commission est seule habilitée à engager ISGI-Lékié dans l'attribution d'une certification. Elle est indépendante de l'Équipe d'évaluation, dont elle peut ne pas suivre les conclusions, à condition de motiver son écart.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARTICLE 4 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Article 4 — Déontologie des acteurs</h2>
+    <p style="color:var(--gris);">
+      Toute personne intervenant dans le processus de certification, quel que soit l'organe auquel elle appartient, s'engage à :
+    </p>
+    <ul style="margin-left:1.5rem; color:var(--gris); margin-top:0.5rem;">
+      <li>signaler sans délai toute situation de conflit d'intérêts, réel ou apparent ;</li>
+      <li>observer une obligation de réserve sur les dossiers dont elle a connaissance ;</li>
+      <li>adopter un comportement professionnel, courtois et respectueux à l'égard des candidats ;</li>
+      <li>ne tirer aucun avantage personnel, direct ou indirect, de sa participation au dispositif.</li>
+    </ul>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARTICLE 5 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Article 5 — Traçabilité et conservation des données</h2>
+    <p style="color:var(--gris);">
+      Chaque étape du processus de certification fait l'objet d'un enregistrement daté, associé à un responsable identifié et, lorsque pertinent, à une pièce justificative. Sont notamment tracés : l'accusé de réception, la décision de recevabilité, la désignation des évaluateurs, le rapport d'évaluation, la décision de la Commission, la notification au candidat et, le cas échéant, la procédure de recours.
+    </p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      Cette exigence de traçabilité s'inscrit dans la vocation d'ISGI-Lékié à constituer une mémoire territoriale documentée. Elle permet à toute décision d'être relue, comprise et, si nécessaire, réexaminée.
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARTICLE 6 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Article 6 — Information du candidat</h2>
+    <p style="color:var(--gris);">
+      Le candidat reçoit, à l'issue du processus, la décision motivée le concernant, le détail de ses résultats par axe d'évaluation, ainsi que des recommandations d'amélioration lorsque cela est pertinent.
+    </p>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      Les échanges internes de délibération de l'Équipe d'évaluation et de la Commission de certification restent confidentiels et ne sont pas communiqués au candidat, afin de préserver la liberté des discussions internes.
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARTICLE 7 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Article 7 — Procédure de recours</h2>
+
+    <div class="article">
+      <div class="article-num">7.1</div>
+      <div class="article-contenu"><strong>Nature du droit.</strong> Tout candidat dispose d'un droit de recours contre une décision de la Commission de certification. Ce droit est procédural : il vise à garantir l'équité du dispositif, non à présumer une erreur de la Commission.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">7.2</div>
+      <div class="article-contenu"><strong>Objet du recours.</strong> Le recours distingue la contestation de la procédure (pièce non prise en compte, protocole d'observation non respecté, conflit d'intérêts non déclaré, erreur matérielle affectant le score) de la contestation de l'appréciation technique portée par la Commission. Un recours fondé sur le seul désaccord avec le niveau attribué, sans élément nouveau ni vice identifié, ne donne pas lieu à une nouvelle évaluation complète du dossier.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">7.3</div>
+      <div class="article-contenu"><strong>Instance de recours.</strong> Le recours est examiné par une Commission de réexamen, distincte de la Commission de certification ayant statué en première instance. Elle comprend trois membres : une personne n'ayant participé à aucune étape du dossier concerné ; un évaluateur senior n'ayant pas traité ce dossier ; un membre de la gouvernance d'ISGI-Lékié.</div>
+    </div>
+
+    <div class="article">
+      <div class="article-num">7.4</div>
+      <div class="article-contenu"><strong>Portée de l'examen.</strong> La Commission de réexamen ne recommence pas l'ensemble de la certification. Elle répond à la question suivante : la procédure a-t-elle été correctement appliquée, et la décision est-elle suffisamment motivée au regard du référentiel ? Si la réponse est positive, la décision initiale est confirmée. Si la réponse est négative, le dossier est renvoyé, en tout ou partie, à une nouvelle évaluation.</div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARTICLE 8 -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">Article 8 — Évolution du dispositif</h2>
+    <p style="color:var(--gris);">
+      La présente Charte peut évoluer à la lumière des retours d'expérience issus des cycles successifs de certification. Toute évolution respecte les principes fondateurs énoncés à l'Article 2, en particulier la séparation des fonctions et l'impartialité, qui constituent le socle non négociable du dispositif.
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PIED DE PAGE DOCUMENT -->
+  <!-- ============================================================ -->
+  <div style="margin: 2rem 0 1rem; padding-top: 1rem; border-top: 2px solid var(--or); text-align: center; font-size: 0.8rem; color: var(--gris2);">
+    <p><strong>ISGI-Lékié — Initiative Stratégique Globale et Inclusive — Lékié</strong></p>
+    <p>Charte de gouvernance et de déontologie du CISFOOTVAC — Version stabilisée — Juillet 2026</p>
+    <p style="margin-top: 0.3rem;">📄 Document public — Consultation libre</p>
+    <p style="margin-top: 0.3rem;">
+      <a href="certification.html" style="color:var(--vert); font-weight:600;">← Retour à la certification ISGI-Lékié</a>
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 31 Juillet 2026</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
+
+<script>
+  // ---- BURGER MENU ----
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+
+  // ---- BACK TO TOP ----
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>
