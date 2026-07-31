@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Certification – ISGI-Lékié</title>
-  <meta name="description" content="Certification ISGI-Lékié — Qualifier et valoriser les initiatives territoriales. CISFOOTVAC, certifications culturelles et économiques.">
+  <meta name="description" content="Certification ISGI-Lékié — Valoriser les initiatives du territoire. Premier dispositif actif : CISFOOTVAC, certification des championnats de football de vacances.">
+  <meta name="keywords" content="certification lekie, championnat vacances, cisfootvac, isgi lekie, certification sportive, obala, monatele">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
   <style>
@@ -37,8 +38,9 @@
     .page-header { background: var(--vert); padding: 2.5rem 1.5rem; border-bottom: 4px solid var(--or); text-align: center; }
     .page-header h1 { color: #fff; border-left: none; padding-left: 0; font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; }
     .page-header h1 em { color: var(--or2); font-style: italic; }
-    .page-header p { color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
-    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.3rem; }
+    .page-header .sous-titre { color: rgba(255,255,255,0.75); margin-top: 0.3rem; font-size: 1rem; }
+    .page-header .dispositif-actif { display: inline-block; background: var(--or2); color: var(--vert); padding: 0.2rem 1rem; border-radius: 30px; font-size: 0.7rem; font-weight: 600; margin-top: 0.5rem; }
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.5rem; }
 
     section { padding: 2.5rem 0; border-bottom: 1px solid var(--creme2); }
     .section-title { font-size: 1.6rem; color: var(--vert); margin-bottom: 1.5rem; border-left: 6px solid var(--or); padding-left: 1rem; font-family: 'Cormorant Garamond', serif; }
@@ -50,16 +52,23 @@
     .card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
     .card h3 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.2rem; margin-bottom: 0.5rem; }
     .card p { color: var(--gris); font-size: 0.9rem; margin-top: 0.3rem; }
+    .card .badge-statut { margin-top: 0.5rem; }
 
-    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; margin-top: 0.5rem; }
+    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; }
     .badge-valide { background: #e8f5e9; color: #2e7d32; }
     .badge-encours { background: #fff8e1; color: #856404; }
     .badge-contributif { background: #e8dfd0; color: #5a5a50; }
+    .badge-accord { background: #e3f2fd; color: #0d47a1; }
+    .badge-instruction { background: #fff3e0; color: #e65100; }
+    .badge-mission { background: #f3e5f5; color: #6a1b9a; }
+    .badge-certifie { background: #e8f5e9; color: #1b5e20; }
 
     .btn { display: inline-block; background: var(--or); color: #1b3a2d; padding: 0.5rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; margin-top: 0.5rem; border: none; cursor: pointer; font-size: 0.85rem; }
     .btn:hover { background: var(--vert); color: var(--or2); }
     .btn-outline { background: transparent; border: 1.5px solid var(--vert); color: var(--vert); }
     .btn-outline:hover { background: var(--vert); color: #fff; }
+    .btn-vert { background: var(--vert); color: #fff; }
+    .btn-vert:hover { background: var(--or2); color: var(--vert); }
 
     .processus-step { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1rem; padding: 0.5rem 0; border-bottom: 1px solid var(--creme2); }
     .processus-step:last-child { border-bottom: none; }
@@ -67,7 +76,7 @@
     .processus-step .step-content { flex: 1; }
     .processus-step .step-content strong { color: var(--vert); }
 
-    .table-wrap { background: #fff; border-radius: 16px; padding: 1.5rem; border: 1px solid var(--creme2); margin: 2rem 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-wrap { background: #fff; border-radius: 16px; padding: 1.5rem; border: 1px solid var(--creme2); margin: 1.5rem 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 400px; }
     .table-wrap th { background: var(--vert); color: #fff; padding: 0.5rem; text-align: left; }
     .table-wrap td { padding: 0.4rem; border-bottom: 1px solid var(--creme2); }
@@ -75,20 +84,54 @@
     .table-wrap .source { font-size: 0.7rem; color: var(--gris2); margin-top: 0.5rem; }
 
     .note { background: #fff8e1; padding: 1rem; border-left: 4px solid var(--or); margin: 1rem 0; border-radius: 4px; font-size: 0.9rem; }
+    .note strong { color: var(--vert); }
 
     .doc-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
     .doc-link { display: inline-block; padding: 0.4rem 1rem; border: 1.5px solid var(--creme2); border-radius: 30px; font-size: 0.8rem; color: var(--vert); text-decoration: none; transition: all 0.2s; }
     .doc-link:hover { background: var(--vert); color: #fff; border-color: var(--vert); }
 
+    .declaration-extrait { background: var(--creme); border-radius: 16px; padding: 1.5rem 2rem; margin: 1rem 0; border-left: 6px solid var(--or); font-style: italic; }
+    .declaration-extrait .auteur { font-style: normal; font-weight: 600; color: var(--vert); margin-top: 0.5rem; }
+
+    .faq-item { border-bottom: 1px solid var(--creme2); padding: 0.8rem 0; }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item .question { font-weight: 600; color: var(--vert); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item .question .icone { color: var(--or); font-weight: 700; }
+    .faq-item .reponse { padding-top: 0.5rem; color: var(--gris); display: none; }
+    .faq-item.open .reponse { display: block; }
+
+    .actu-item { display: flex; gap: 0.8rem; padding: 0.6rem 0; border-bottom: 1px solid var(--creme2); align-items: flex-start; }
+    .actu-item:last-child { border-bottom: none; }
+    .actu-item .actu-date { font-weight: 600; color: var(--or); min-width: 70px; font-size: 0.75rem; }
+    .actu-item .actu-contenu { font-size: 0.9rem; color: var(--gris); }
+    .actu-item .actu-contenu strong { color: var(--vert); }
+
+    .cta-block { background: var(--vert); color: white; text-align: center; padding: 2.5rem 1.5rem; border-radius: 24px; margin: 2rem 0; }
+    .cta-block h2 { color: var(--or2); margin-bottom: 0.5rem; font-family: 'Cormorant Garamond', serif; }
+    .cta-block p { color: rgba(255,255,255,0.75); font-size: 0.95rem; max-width: 560px; margin: 0 auto; }
+    .cta-block .btn { background: var(--or2); color: var(--vert); margin-top: 1rem; }
+    .cta-block .btn:hover { background: #fff; color: var(--vert); }
+
     footer { background: #0f2c21; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.8rem; margin-top: 2rem; }
     footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
-    footer .maj { font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 0.3rem; }
 
     .back-to-top { position: fixed; bottom: 20px; right: 20px; background: var(--or); color: #1b3a2d; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.5rem; font-weight: bold; opacity: 0; transition: opacity 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 99; }
     .back-to-top.show { opacity: 1; }
     .back-to-top:hover { background: var(--vert); color: var(--or2); }
 
-    @media (max-width: 700px) { nav { flex-direction: row; } .burger { display: block; } .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; padding-top: 0.5rem; } .nav-links.show { display: flex; } .container { padding: 0 1rem; } .page-header h1 { font-size: 1.8rem; } .grid-2 { grid-template-columns: 1fr; } }
+    .btn-lire-suite { background: transparent; border: none; color: var(--or); font-weight: 600; cursor: pointer; font-size: 0.9rem; margin-top: 0.5rem; }
+    .btn-lire-suite:hover { text-decoration: underline; }
+
+    @media (max-width: 700px) { 
+      nav { flex-direction: row; } 
+      .burger { display: block; } 
+      .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; padding-top: 0.5rem; } 
+      .nav-links.show { display: flex; } 
+      .container { padding: 0 1rem; } 
+      .page-header h1 { font-size: 1.8rem; } 
+      .grid-2 { grid-template-columns: 1fr; }
+      .declaration-extrait { padding: 1rem; }
+    }
   </style>
 </head>
 <body>
@@ -112,26 +155,62 @@
 
 <div class="page-header">
   <h1>🏅 Certification <em>ISGI-Lékié</em></h1>
-  <p>Qualifier, valoriser et mémoriser les initiatives territoriales</p>
-  <p class="maj">📅 Dernière mise à jour : 28 Juillet 2026</p>
+  <p class="sous-titre">Valoriser les initiatives du territoire</p>
+  <span class="dispositif-actif">⚽ Premier dispositif actif : CISFOOTVAC</span>
+  <p class="maj">📅 Dernière mise à jour : 31 Juillet 2026</p>
 </div>
 
 <div class="container">
 
   <!-- ============================================================ -->
-  <!-- SECTION 1 : VISION -->
+  <!-- SECTION 1 : DÉCLARATION FONDATRICE -->
   <!-- ============================================================ -->
   <section>
-    <h2 class="section-title">📌 Vision de la certification territoriale</h2>
+    <div class="declaration-extrait" id="declaration">
+      <p style="font-style: italic; font-size: 1.05rem;">
+        "Les championnats de football de vacances constituent, depuis plusieurs décennies, l'une des expressions les plus vivantes de la vie collective dans la Lékié. Ils rassemblent les générations, mobilisent les communautés, révèlent des talents, créent des liens sociaux, soutiennent des activités économiques locales et offrent à des milliers de jeunes un espace d'engagement, de responsabilité et de citoyenneté."
+      </p>
+      <p style="font-style: italic; font-size: 1.05rem; margin-top: 0.5rem;">
+        "Bien plus que de simples compétitions sportives, ils sont devenus un patrimoine territorial dont la valeur dépasse largement le cadre du football."
+      </p>
+      <div class="auteur">— Déclaration pour la reconnaissance des championnats de vacances de la Lékié, juillet 2026</div>
+      <button class="btn-lire-suite" onclick="document.getElementById('declarationComplete').style.display='block'; this.style.display='none';">📖 Lire l'intégralité du texte</button>
+      <div id="declarationComplete" style="display: none; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--creme2); font-style: italic; font-size: 0.95rem; color: var(--texte);">
+        <p><strong>Préambule</strong></p>
+        <p>Les championnats de football de vacances constituent, depuis plusieurs décennies, l'une des expressions les plus vivantes de la vie collective dans la Lékié.</p>
+        <p>Ils rassemblent les générations, mobilisent les communautés, révèlent des talents, créent des liens sociaux, soutiennent des activités économiques locales et offrent à des milliers de jeunes un espace d'engagement, de responsabilité et de citoyenneté.</p>
+        <p>Bien plus que de simples compétitions sportives, ils sont devenus un patrimoine territorial dont la valeur dépasse largement le cadre du football.</p>
+        <p>Pourtant, cette contribution demeure encore insuffisamment reconnue, documentée et valorisée.</p>
+        <p>Convaincus que les championnats de vacances participent au développement humain, à la cohésion sociale et à la vitalité de nos territoires, nous affirmons les principes suivants.</p>
+        <p style="margin-top: 0.5rem;"><strong>Nos principes</strong></p>
+        <p><strong>Article 1 – Patrimoine territorial.</strong> Les championnats de vacances constituent un patrimoine sportif, social, culturel et territorial de la Lékié. Ils méritent d'être préservés, encouragés et transmis.</p>
+        <p><strong>Article 2 – Reconnaissance des organisateurs.</strong> Les organisateurs, bénévoles, arbitres, encadreurs, partenaires et toutes les personnes qui contribuent à la réussite de ces compétitions accomplissent une mission d'intérêt collectif qui mérite reconnaissance et respect.</p>
+        <p><strong>Article 3 – Culture de la qualité.</strong> La qualité d'un championnat repose sur une organisation responsable, transparente, équitable et respectueuse des règles. Cette qualité peut être observée, documentée et reconnue selon des critères partagés.</p>
+        <p><strong>Article 4 – Amélioration continue.</strong> Chaque championnat, quelle que soit sa taille ou son ancienneté, peut progresser. La recherche de la qualité est une démarche continue fondée sur l'expérience, l'échange et le partage des bonnes pratiques.</p>
+        <p><strong>Article 5 – Transmission des savoir-faire.</strong> Les expériences réussies doivent être conservées, documentées et mises à la disposition des autres organisateurs afin que chaque territoire bénéficie des acquis des autres.</p>
+        <p><strong>Article 6 – Éthique et équité.</strong> Les championnats de vacances doivent promouvoir le respect des règles, l'intégrité sportive, le fair-play, la transparence des décisions et l'égalité de traitement de tous les participants.</p>
+        <p><strong>Article 7 – Développement territorial.</strong> Les championnats de vacances contribuent au dynamisme économique, à la cohésion sociale, à la valorisation des talents et au rayonnement des territoires de la Lékié.</p>
+        <p><strong>Article 8 – Engagement collectif.</strong> La reconnaissance des championnats de vacances repose sur l'engagement volontaire des organisateurs, des collectivités, des autorités traditionnelles, des partenaires, des associations, des entreprises et de l'ensemble des citoyens attachés à leur développement.</p>
+        <p style="margin-top: 0.5rem;"><strong>Notre engagement</strong></p>
+        <p>Parce que les championnats de vacances ne fabriquent pas seulement des vainqueurs. Ils forment des citoyens, renforcent les communautés et participent, année après année, à la construction de l'avenir de la Lékié.</p>
+        <p style="margin-top: 0.5rem; font-weight: 600; color: var(--vert);">Monatélé, juillet 2026 — ISGI-Lékié</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 2 : QU'EST-CE QUE LA CERTIFICATION ISGI-LÉKIÉ ? -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📌 Qu'est-ce que la certification ISGI-Lékié ?</h2>
     <div class="note">
-      La certification ISGI-Lékié est un mécanisme de qualification territoriale. Elle permet d'identifier, d'évaluer, de qualifier, de valoriser et de conserver la mémoire des initiatives qui font vivre le territoire.
+      <strong>La certification ISGI-Lékié</strong> est un mécanisme de qualification territoriale. Elle permet d'identifier, d'évaluer, de qualifier, de valoriser et de conserver la mémoire des initiatives qui font vivre le territoire.
     </div>
     <p style="color:var(--gris); margin-top:1rem;">
       La certification n'est pas un classement, ni une compétition entre événements. Elle est un outil de reconnaissance des initiatives locales, d'amélioration progressive de la qualité organisationnelle, de création d'une mémoire territoriale et de valorisation des acteurs.
     </p>
-    <p style="color:var(--gris); margin-top:0.5rem;">
-      <strong>Objectifs :</strong>
-    </p>
+
+    <h4 style="font-family: 'Cormorant Garamond', serif; color: var(--vert); margin-top: 1.5rem; font-size: 1.1rem;">🎯 Objectifs</h4>
     <ul style="margin-left:1.5rem; color:var(--gris);">
       <li>Reconnaître les initiatives locales qui contribuent au développement du territoire</li>
       <li>Favoriser l'amélioration progressive de la qualité organisationnelle</li>
@@ -139,72 +218,68 @@
       <li>Valoriser les acteurs qui font vivre la Lékié</li>
     </ul>
 
-    <!-- DOCUMENTS DE RÉFÉRENCE -->
-    <div class="doc-links">
-      <strong style="color:var(--vert); font-size:0.85rem;">📄 Documents de référence :</strong>
-      <a href="#" class="doc-link" onclick="alert('📜 Charte de gouvernance et de déontologie — Document disponible sur demande. Contact : certification@isgi-lekie.cm')">📜 Charte de gouvernance</a>
-      <a href="#" class="doc-link" onclick="alert('📋 Règlement général de la certification — Document disponible sur demande. Contact : certification@isgi-lekie.cm')">📋 Règlement général</a>
-      <a href="#" class="doc-link" onclick="alert('📊 Référentiel d\'évaluation CISFOOTVAC — Document disponible sur demande. Contact : certification@isgi-lekie.cm')">📊 Référentiel d'évaluation</a>
+    <h4 style="font-family: 'Cormorant Garamond', serif; color: var(--vert); margin-top: 1.5rem; font-size: 1.1rem;">📜 Principes</h4>
+    <div class="grid-2">
+      <div class="card"><h3>⚖️ Équité</h3><p>Toute initiative répondant aux critères minimaux peut prétendre à la certification. L'accès au processus est ouvert et transparent.</p></div>
+      <div class="card"><h3>🔍 Transparence</h3><p>Les critères d'évaluation sont publics. Les résultats sont publiés dans le registre des certifications. Chaque décision est motivée.</p></div>
+      <div class="card"><h3>📋 Preuve</h3><p>La certification repose sur des éléments vérifiables : documents, témoignages, observations de terrain. Aucune certification sans preuve.</p></div>
+      <div class="card"><h3>📏 Proportionnalité</h3><p>Le niveau d'exigence est adapté à la taille et à la nature de l'initiative. Une petite initiative locale n'est pas évaluée comme un événement international.</p></div>
+      <div class="card"><h3>📈 Progression</h3><p>La certification encourage l'amélioration continue. Une initiative peut progresser d'un niveau à l'autre au fil des éditions.</p></div>
+      <div class="card"><h3>🛡️ Indépendance</h3><p>L'évaluation est conduite par une commission indépendante. Aucun conflit d'intérêt n'est toléré.</p></div>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- SECTION 2 : PRINCIPES -->
+  <!-- SECTION 3 : POURQUOI CERTIFIER ? -->
   <!-- ============================================================ -->
   <section>
-    <h2 class="section-title">📜 Principes de la certification</h2>
-    <p class="section-sub">La certification ISGI-Lékié repose sur six principes fondamentaux.</p>
+    <h2 class="section-title">❓ Pourquoi certifier ?</h2>
+    <p class="section-sub">La certification ISGI-Lékié apporte une reconnaissance concrète aux organisateurs et à leurs initiatives.</p>
 
     <div class="grid-2">
       <div class="card">
-        <h3>⚖️ Équité</h3>
-        <p>Toute initiative répondant aux critères minimaux peut prétendre à la certification. L'accès au processus est ouvert et transparent.</p>
+        <h3>👏 Reconnaître le travail des organisateurs</h3>
+        <p>Les organisateurs, bénévoles, arbitres et encadreurs accomplissent une mission d'intérêt collectif. La certification rend visible et valorise leur engagement.</p>
       </div>
       <div class="card">
-        <h3>🔍 Transparence</h3>
-        <p>Les critères d'évaluation sont publics. Les résultats sont publiés dans le registre des certifications. Chaque décision est motivée.</p>
+        <h3>📈 Améliorer la qualité des championnats</h3>
+        <p>Le processus d'évaluation permet d'identifier les points forts et les axes d'amélioration. Chaque édition peut progresser.</p>
       </div>
       <div class="card">
-        <h3>📋 Preuve</h3>
-        <p>La certification repose sur des éléments vérifiables : documents, témoignages, observations de terrain. Aucune certification sans preuve.</p>
+        <h3>📖 Constituer une mémoire durable</h3>
+        <p>Les championnats certifiés sont documentés, archivés et inscrits dans l'histoire du territoire. Leur mémoire est préservée.</p>
       </div>
       <div class="card">
-        <h3>📏 Proportionnalité</h3>
-        <p>Le niveau d'exigence est adapté à la taille et à la nature de l'initiative. Une petite initiative locale n'est pas évaluée comme un événement international.</p>
-      </div>
-      <div class="card">
-        <h3>📈 Progression</h3>
-        <p>La certification encourage l'amélioration continue. Une initiative peut progresser d'un niveau à l'autre au fil des éditions.</p>
-      </div>
-      <div class="card">
-        <h3>🛡️ Indépendance</h3>
-        <p>L'évaluation est conduite par une commission indépendante. Aucun conflit d'intérêt n'est toléré.</p>
+        <h3>🌟 Promouvoir les meilleures pratiques</h3>
+        <p>Les championnats certifiés deviennent des références. Leurs bonnes pratiques sont partagées et inspirent d'autres organisateurs.</p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- SECTION 3 : DISPOSITIFS -->
+  <!-- SECTION 4 : DISPOSITIFS DE CERTIFICATION -->
   <!-- ============================================================ -->
   <section>
     <h2 class="section-title">🏷️ Dispositifs de certification</h2>
     <p class="section-sub">ISGI-Lékié propose plusieurs dispositifs de certification adaptés à la nature des initiatives.</p>
 
     <div class="grid-2">
-      <div class="card">
-        <h3>⚽ CISFOOTVAC</h3>
+      <div class="card" style="border-left: 4px solid var(--or);">
+        <h3>⚽ CISFOOTVAC <span class="badge-statut badge-valide" style="margin-left: 0.5rem;">Actif</span></h3>
         <p><strong>Certification des championnats de football de vacances</strong></p>
         <p style="font-size:0.85rem; color:var(--gris); margin-top:0.5rem;">
           Objet évalué : une édition déterminée d'un championnat.<br>
           <strong>Niveaux :</strong> Bronze · Argent · Or · Excellence
         </p>
         <p style="font-size:0.8rem; color:var(--gris2);">Le niveau exprime un degré de maturité organisationnelle, non un classement.</p>
-        <span class="badge-statut badge-valide">Actif</span>
-        <div style="margin-top:0.5rem; font-size:0.75rem; color:var(--gris2);">
-          📄 <a href="#" onclick="alert('Référentiel CISFOOTVAC — Document disponible sur demande. Contact : certification@isgi-lekie.cm')" style="color:var(--vert);">Référentiel d'évaluation</a> ·
-          <a href="#" onclick="alert('Règlement CISFOOTVAC — Document disponible sur demande. Contact : certification@isgi-lekie.cm')" style="color:var(--vert);">Règlement général</a>
+        <div style="margin-top:0.8rem; font-size:0.8rem;">
+          📄 <a href="charte-cisfootvac.html" style="color:var(--vert); font-weight:600;">Charte</a> ·
+          <a href="reglement-cisfootvac.html" style="color:var(--vert); font-weight:600;">Règlement</a> ·
+          <a href="referentiel-cisfootvac.html" style="color:var(--vert); font-weight:600;">Référentiel</a>
         </div>
+        <a href="#processus" class="btn" style="margin-top:0.8rem; font-size:0.75rem;">Voir le processus →</a>
       </div>
+
       <div class="card">
         <h3>🎭 Certifications culturelles</h3>
         <p><strong>À venir</strong></p>
@@ -213,6 +288,7 @@
         </p>
         <span class="badge-statut badge-encours">En préparation</span>
       </div>
+
       <div class="card">
         <h3>🏪 Certifications économiques</h3>
         <p><strong>À venir</strong></p>
@@ -221,6 +297,7 @@
         </p>
         <span class="badge-statut badge-encours">En préparation</span>
       </div>
+
       <div class="card">
         <h3>🤝 Certifications communautaires</h3>
         <p><strong>À venir</strong></p>
@@ -233,123 +310,368 @@
   </section>
 
   <!-- ============================================================ -->
-  <!-- SECTION 4 : PROCESSUS -->
+  <!-- SECTION 5 : CAMPAGNE 2026 -->
   <!-- ============================================================ -->
   <section>
-    <h2 class="section-title">⚙️ Processus général de certification</h2>
-    <p class="section-sub">La certification ISGI-Lékié se déroule en six étapes.</p>
+    <h2 class="section-title">🚀 Campagne 2026 — Saison inaugurale</h2>
+    <div class="note">
+      <strong>📅 Saison inaugurale 2026</strong><br>
+      Le dispositif CISFOOTVAC est déployé pour la première fois dans la Lékié.<br>
+      <strong>Les candidatures sont ouvertes</strong> pour les championnats de football de vacances.
+    </div>
+    <p style="color:var(--gris); margin-top:0.5rem;">
+      Nous accompagnons les organisateurs qui souhaitent entrer dans la démarche. Les premiers championnats engagés bénéficient d'un accompagnement personnalisé.
+    </p>
+    <div style="margin-top:1rem; display:flex; flex-wrap:wrap; gap:1rem;">
+      <a href="#documents" class="btn">📄 Voir les documents officiels</a>
+      <a href="mailto:cisfootvac@isgi-lekie.cm" class="btn btn-outline">📝 Déposer une candidature</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 6 : DOCUMENTS OFFICIELS -->
+  <!-- ============================================================ -->
+  <section id="documents">
+    <h2 class="section-title">📄 Documents officiels</h2>
+    <p class="section-sub">Les documents fondateurs de la certification ISGI-Lékié et du dispositif CISFOOTVAC.</p>
+
+    <h4 style="font-family: 'Cormorant Garamond', serif; color: var(--vert); margin-top: 0.5rem; font-size: 1.1rem;">📂 Documents publics</h4>
+    <p style="font-size:0.85rem; color:var(--gris2); margin-bottom:0.8rem;">Consultation libre — ces documents fondent la crédibilité du dispositif.</p>
+    <div class="doc-links">
+      <a href="charte-cisfootvac.html" class="doc-link">📜 Charte de gouvernance</a>
+      <a href="reglement-cisfootvac.html" class="doc-link">📋 Règlement général</a>
+      <a href="referentiel-cisfootvac.html" class="doc-link">📊 Référentiel d'évaluation</a>
+    </div>
+
+    <h4 style="font-family: 'Cormorant Garamond', serif; color: var(--vert); margin-top: 2rem; font-size: 1.1rem;">📩 Espace candidats</h4>
+    <p style="font-size:0.85rem; color:var(--gris2); margin-bottom:0.8rem;">Documents accessibles sur demande aux organisateurs qui déposent un dossier.</p>
+    <ul style="margin-left:1.5rem; color:var(--gris); font-size:0.9rem;">
+      <li>Procédure de réexamen et de recours</li>
+      <li>Dossier de candidature (Formulaire)</li>
+      <li>Calendrier de la campagne</li>
+      <li>Documents pratiques</li>
+    </ul>
+    <div style="margin-top:0.8rem;">
+      <a href="mailto:cisfootvac@isgi-lekie.cm" class="btn" style="font-size:0.8rem;">📧 Demander les documents — cisfootvac@isgi-lekie.cm</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 7 : PROCESSUS -->
+  <!-- ============================================================ -->
+  <section id="processus">
+    <h2 class="section-title">⚙️ Processus de certification</h2>
+    <p class="section-sub">La certification ISGI-Lékié se déroule en sept étapes, réparties en quatre phases d'évaluation.</p>
+
+    <div style="background:var(--creme); border-radius:16px; padding:1rem 1.5rem; margin-bottom:1.5rem; display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center; font-size:0.75rem; font-weight:600; color:var(--gris2);">
+      <span>📄 Évaluation documentaire (avant)</span>
+      <span>→</span>
+      <span>👀 Observation in situ</span>
+      <span>→</span>
+      <span>📄 Évaluation documentaire (pendant)</span>
+      <span>→</span>
+      <span>📄 Évaluation documentaire (après)</span>
+    </div>
 
     <div class="processus-step">
       <div class="step-num">1</div>
       <div class="step-content">
         <strong>Candidature</strong>
-        <p style="color:var(--gris); font-size:0.9rem;">L'organisateur soumet sa demande via le formulaire de candidature en ligne. Un dossier documentaire est constitué.</p>
+        <p style="color:var(--gris); font-size:0.9rem;">L'organisateur dépose son dossier de candidature auprès du Secrétariat de certification.</p>
       </div>
     </div>
 
     <div class="processus-step">
       <div class="step-num">2</div>
       <div class="step-content">
-        <strong>Analyse documentaire</strong>
-        <p style="color:var(--gris); font-size:0.9rem;">La commission examine le dossier complet : organisation, sécurité, impact, ressources, etc.</p>
+        <strong>Évaluation documentaire — avant l'événement</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">L'Équipe d'évaluation examine les pièces du dossier : règlement, calendrier, organisation, budget, sécurité, partenariats.</p>
       </div>
     </div>
 
     <div class="processus-step">
       <div class="step-num">3</div>
       <div class="step-content">
-        <strong>Évaluation terrain</strong>
-        <p style="color:var(--gris); font-size:0.9rem;">Un évaluateur ISGI-Lékié se rend sur place pour observer l'événement ou l'initiative.</p>
+        <strong>Admission au processus</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">Le dossier est déclaré recevable. L'organisateur acquiert le statut de candidat.</p>
       </div>
     </div>
 
     <div class="processus-step">
       <div class="step-num">4</div>
       <div class="step-content">
-        <strong>Rapport d'évaluation</strong>
-        <p style="color:var(--gris); font-size:0.9rem;">Un rapport détaillé est rédigé, documentant les points forts et les axes d'amélioration.</p>
+        <strong>Évaluation in situ</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">Un évaluateur observe le déroulement du championnat sur le terrain : organisation, sécurité, discipline, ambiance.</p>
       </div>
     </div>
 
     <div class="processus-step">
       <div class="step-num">5</div>
       <div class="step-content">
-        <strong>Décision de la Commission</strong>
-        <p style="color:var(--gris); font-size:0.9rem;">La Commission de certification examine le rapport et attribue un niveau (Bronze, Argent, Or, Excellence).</p>
+        <strong>Évaluation documentaire — pendant l'événement</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">Recueil des preuves produites au fil du championnat : feuilles de match, incidents, décisions disciplinaires.</p>
       </div>
     </div>
 
     <div class="processus-step">
       <div class="step-num">6</div>
       <div class="step-content">
-        <strong>Publication</strong>
-        <p style="color:var(--gris); font-size:0.9rem;">La certification est publiée dans le Registre public. Une fiche publique et un certificat officiel sont délivrés.</p>
+        <strong>Évaluation documentaire — après l'événement</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">Analyse du bilan transmis par l'organisateur : rapport final, palmarès, bilan financier, archives.</p>
       </div>
+    </div>
+
+    <div class="processus-step">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <strong>Délibération et décision</strong>
+        <p style="color:var(--gris); font-size:0.9rem;">La Commission de certification délibère sur la base du rapport d'évaluation et attribue, ajourne ou refuse la certification.</p>
+      </div>
+    </div>
+
+    <div class="note" style="margin-top:1rem;">
+      <strong>📌 Exigences minimales obligatoires</strong><br>
+      Trois domaines sont évalués séparément, indépendamment du score global : <strong>Sécurité</strong>, <strong>Conformité administrative</strong> et <strong>Éthique sportive</strong>. Ils sont des conditions d'accès à la certification.
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- SECTION 5 : REGISTRE PUBLIC -->
+  <!-- SECTION 8 : REGISTRE PUBLIC -->
   <!-- ============================================================ -->
   <section>
     <h2 class="section-title">📋 Registre public des certifications</h2>
-    <p class="section-sub">Le registre présente les initiatives certifiées par ISGI-Lékié. Seuls le nom de l'événement, sa localisation, son année et son niveau sont affichés.</p>
+    <p class="section-sub">Le registre présente les championnats engagés dans le processus de certification, avec leur statut.</p>
 
     <div class="table-wrap">
       <table>
         <thead>
-          <tr><th>Année</th><th>Événement</th><th>Commune</th><th>Niveau</th><th>Fiche publique</th></tr>
+          <tr><th>Championnat</th><th>Commune</th><th>Statut</th><th>Fiche</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>2026</td>
-            <td><a href="sport.html#tala" style="color:var(--vert);">Festi-Foot Vacances TALA</a></td>
+            <td>Super Coupe Jacques EKANI Nkolotomo II 2026</td>
+            <td>Obala</td>
+            <td><span class="badge-statut badge-accord">🤝 Accord de principe</span></td>
+            <td><span style="color:var(--gris2);">À venir</span></td>
+          </tr>
+          <tr>
+            <td>Tournoi de l'Unité — 5e édition</td>
             <td>Monatélé</td>
-            <td><span class="badge-statut badge-encours">En cours</span></td>
+            <td><span class="badge-statut badge-accord">🤝 Accord de principe</span></td>
             <td><span style="color:var(--gris2);">À venir</span></td>
           </tr>
           <tr>
-            <td>2026</td>
-            <td><a href="sport.html#maradel" style="color:var(--vert);">Marathon MARADÉL</a></td>
-            <td>Monatélé / Ebebda</td>
-            <td><span class="badge-statut badge-encours">En cours</span></td>
+            <td>Tournoi de la Fraternité NKOLKOSSE 2026</td>
+            <td>Nkolkosse</td>
+            <td><span class="badge-statut badge-accord">🤝 Accord de principe</span></td>
             <td><span style="color:var(--gris2);">À venir</span></td>
           </tr>
           <tr>
-            <td>2026</td>
-            <td><a href="sport.html#unite" style="color:var(--vert);">Tournoi de l'Unité — 5e édition</a></td>
-            <td>Monatélé</td>
-            <td><span class="badge-statut badge-encours">En cours</span></td>
+            <td>Festi-Foot Vacances TALA 2026</td>
+            <td>Tala (Monatélé)</td>
+            <td><span class="badge-statut badge-accord">🤝 Accord de principe</span></td>
             <td><span style="color:var(--gris2);">À venir</span></td>
           </tr>
           <tr>
-            <td colspan="5" style="text-align:center; color:var(--gris2); padding:1rem 0;">
-              📢 Le registre est en cours d'alimentation. Les certifications seront publiées au fur et à mesure des évaluations.
+            <td>Obala Foot Vacances 2026</td>
+            <td>Obala</td>
+            <td><span class="badge-statut badge-accord">🤝 Accord de principe</span></td>
+            <td><span style="color:var(--gris2);">À venir</span></td>
+          </tr>
+          <tr>
+            <td>Super Coupe de l'Espérance NDONGO ESSOMBA</td>
+            <td>Stade CES</td>
+            <td><span class="badge-statut badge-accord">🤝 Accord de principe</span></td>
+            <td><span style="color:var(--gris2);">À venir</span></td>
+          </tr>
+          <tr>
+            <td colspan="4" style="text-align:center; color:var(--gris2); padding:1rem 0;">
+              📢 Le registre est en cours d'alimentation. Les statuts évolueront au fur et à mesure des missions.
             </td>
           </tr>
         </tbody>
       </table>
-      <p class="source">📌 Source : Commission de certification ISGI-Lékié · Données actualisées en temps réel</p>
+      <p class="source">📌 Source : Secrétariat de certification ISGI-Lékié · Données actualisées en temps réel</p>
+    </div>
+
+    <div style="font-size:0.8rem; color:var(--gris2); margin-top:0.5rem;">
+      <strong>Légende des statuts :</strong>
+      <span class="badge-statut badge-accord" style="margin:0 0.3rem;">🤝 Accord de principe</span>
+      <span class="badge-statut badge-instruction">📋 En instruction</span>
+      <span class="badge-statut badge-mission">🔍 Mission engagée</span>
+      <span class="badge-statut badge-certifie">✅ Certifié</span>
+    </div>
+
+    <p style="font-size:0.8rem; color:var(--gris); margin-top:1rem;">
+      📌 Pour faire évoluer le statut de votre championnat, contactez le secrétariat : <a href="mailto:cisfootvac@isgi-lekie.cm" style="color:var(--vert); font-weight:600;">cisfootvac@isgi-lekie.cm</a>
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 9 : CHAMPIONNATS ENGAGÉS -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🏆 Championnats engagés</h2>
+    <p class="section-sub">Les championnats qui ont donné un accord de principe pour la certification CISFOOTVAC.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>Super Coupe Jacques EKANI Nkolotomo II 2026</h3>
+        <p><strong>Commune :</strong> Obala</p>
+        <p><strong>Promoteur :</strong> Jacques EKANI</p>
+        <p><strong>Dates :</strong> 18 juillet – 16 août 2026</p>
+        <p><strong>Équipes :</strong> 16</p>
+        <p style="font-size:0.8rem;color:var(--gris2);">🏆 Trophée Lucien METOMO · Sponsor : SCH</p>
+        <span class="badge-statut badge-accord">🤝 Accord de principe</span>
+      </div>
+
+      <div class="card">
+        <h3>Tournoi de l'Unité — 5e édition</h3>
+        <p><strong>Commune :</strong> Monatélé</p>
+        <p><strong>Organisateur :</strong> Mairie de Monatélé</p>
+        <p><strong>Dates :</strong> 19 juillet – 10 août 2026</p>
+        <span class="badge-statut badge-accord">🤝 Accord de principe</span>
+      </div>
+
+      <div class="card">
+        <h3>Tournoi de la Fraternité NKOLKOSSE 2026</h3>
+        <p><strong>Commune :</strong> Nkolkosse</p>
+        <p><strong>Organisateur :</strong> MVOGO MINKOULOU Bienvenu</p>
+        <p><strong>Dates :</strong> 28 juin – 09 août 2026</p>
+        <p><strong>Équipes :</strong> 3 poules (A, B, C)</p>
+        <span class="badge-statut badge-accord">🤝 Accord de principe</span>
+      </div>
+
+      <div class="card">
+        <h3>Festi-Foot Vacances TALA 2026</h3>
+        <p><strong>Commune :</strong> Tala (Monatélé)</p>
+        <p><strong>Promoteurs :</strong> ETOUNDI MEVO Rene, MVILONGO Boris, MBILONGO Serge</p>
+        <p><strong>Dates :</strong> 12 juillet – 30 août 2026</p>
+        <span class="badge-statut badge-accord">🤝 Accord de principe</span>
+      </div>
+
+      <div class="card">
+        <h3>Obala Foot Vacances 2026</h3>
+        <p><strong>Commune :</strong> Obala</p>
+        <p><strong>Organisateur :</strong> Mairie d'Obala</p>
+        <p><strong>Dates :</strong> 26 juillet – 30 août 2026</p>
+        <span class="badge-statut badge-accord">🤝 Accord de principe</span>
+      </div>
+
+      <div class="card">
+        <h3>Super Coupe de l'Espérance NDONGO ESSOMBA</h3>
+        <p><strong>Commune :</strong> Stade CES</p>
+        <p><strong>Promoteur :</strong> Hon. Jean Bernard NDONGO ESSALA</p>
+        <p><strong>Dates :</strong> 19 juillet – 10 août 2026</p>
+        <p style="font-size:0.8rem;color:var(--gris2);">"Unis par le sport, portés par l'espérance"</p>
+        <span class="badge-statut badge-accord">🤝 Accord de principe</span>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:1.5rem;">
+      <a href="sport.html" class="btn btn-outline">⚽ Découvrir tous les championnats →</a>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- SECTION 6 : CANDIDATURE -->
+  <!-- SECTION 10 : FAQ -->
   <!-- ============================================================ -->
   <section>
-    <h2 class="section-title">📝 Candidater à une certification</h2>
-    <p class="section-sub">Vous souhaitez faire certifier votre événement ou initiative par ISGI-Lékié ?</p>
+    <h2 class="section-title">❓ Questions fréquentes</h2>
 
-    <div class="card" style="text-align:center; padding:2rem;">
-      <p style="font-size:1.1rem; font-weight:600; color:var(--vert);">📋 Déposez votre candidature dès maintenant</p>
-      <p style="color:var(--gris); margin:0.5rem 0 1.5rem;">
-        Remplissez le formulaire de demande de certification en ligne. Un évaluateur ISGI-Lékié vous contactera pour la suite du processus.
-      </p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRC96ViA9I0QHSnGAbA4iTa_QMs0SonWxxqhi0TBzo4UnX9Q/viewform" target="_blank" rel="noopener noreferrer" class="btn">📝 Demander une certification →</a>
+    <div class="faq-item">
+      <div class="question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+        La certification est-elle payante ?
+        <span class="icone">+</span>
+      </div>
+      <div class="reponse">La certification ISGI-Lékié est gratuite pour les organisateurs pendant la saison inaugurale 2026. Les modalités pour les éditions ultérieures seront définies en fonction des retours d'expérience.</div>
     </div>
 
-    <div style="text-align:center; margin-top:1.5rem;">
-      <a href="plateforme.html#contribuer" class="btn btn-outline">📢 Signaler une initiative à certifier</a>
+    <div class="faq-item">
+      <div class="question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+        Qui peut candidater ?
+        <span class="icone">+</span>
+      </div>
+      <div class="reponse">Tout organisateur — comité d'organisation, association, structure informelle dotée d'un responsable identifié — en charge d'un championnat de football de vacances dans la Lékié.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+        Quand intervient l'évaluation ?
+        <span class="icone">+</span>
+      </div>
+      <div class="reponse">L'évaluation se déroule en plusieurs temps : avant l'événement (analyse du dossier), pendant (observation sur le terrain) et après (analyse du bilan).</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+        Qui décide de la certification ?
+        <span class="icone">+</span>
+      </div>
+      <div class="reponse">Une Commission de certification indépendante délibère sur la base du rapport d'évaluation. Elle seule attribue, ajourne ou refuse la certification.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+        Peut-on contester une décision ?
+        <span class="icone">+</span>
+      </div>
+      <div class="reponse">Oui. Une procédure de réexamen et de recours est prévue. Toute demande recevable est examinée par une Commission de réexamen indépendante.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+        Quelle est la durée de validité de la certification ?
+        <span class="icone">+</span>
+      </div>
+      <div class="reponse">La certification est attachée à l'édition évaluée. Elle ne se reconduit pas automatiquement. Chaque édition fait l'objet d'une nouvelle évaluation.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="question" onclick="this.parentElement.classList.toggle('open')" aria-expanded="false">
+        Qu'est-ce que le Trophée Lucien METOMO ?
+        <span class="icone">+</span>
+      </div>
+      <div class="reponse">Le Trophée Lucien METOMO est le trophée de la Super Coupe Jacques EKANI Nkolotomo II, baptisé en hommage à l'ancien Lion Indomptable originaire de la Lékié. Il symbolise la transmission et l'excellence sportive.</div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 11 : DEVENIR PARTENAIRE -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="cta-block" id="partenaires">
+      <h2>🤝 Devenir partenaire</h2>
+      <p>La certification ISGI-Lékié s'adresse aux communes, aux promoteurs, aux entreprises, aux médias et aux associations qui souhaitent contribuer à la reconnaissance et à la valorisation des initiatives du territoire.</p>
+      <p style="margin-top:0.8rem; font-size:0.9rem;">
+        <strong>Rejoignez la saison inaugurale 2026.</strong>
+      </p>
+      <a href="mailto:contact@isgi-lekie.cm" class="btn">📧 Devenir partenaire fondateur — contact@isgi-lekie.cm</a>
+      <br>
+      <a href="mailto:cisfootvac@isgi-lekie.cm" style="color:rgba(255,255,255,0.6); font-size:0.8rem; display:inline-block; margin-top:0.5rem;">cisfootvac@isgi-lekie.cm</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SECTION 12 : ACTUALITÉS -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📰 Actualités</h2>
+    <p class="section-sub">Les dernières nouvelles de la certification ISGI-Lékié.</p>
+
+    <div class="actu-item">
+      <span class="actu-date">31 juillet 2026</span>
+      <span class="actu-contenu"><strong>Lancement de la saison inaugurale 2026</strong> — Les candidatures sont ouvertes pour les championnats de football de vacances. Six accords de principe ont déjà été signés.</span>
+    </div>
+
+    <div class="actu-item">
+      <span class="actu-date">31 juillet 2026</span>
+      <span class="actu-contenu"><strong>Premier championnat engagé : Super Coupe Jacques EKANI</strong> — Le championnat de Nkolotomo II est le premier à avoir signé un accord de principe. Le trophée est baptisé au nom de Lucien METOMO.</span>
+    </div>
+
+    <div class="actu-item">
+      <span class="actu-date">31 juillet 2026</span>
+      <span class="actu-contenu"><strong>Les documents officiels sont disponibles</strong> — La Charte, le Règlement général et le Référentiel d'évaluation CISFOOTVAC sont consultables dans la rubrique <a href="#documents" style="color:var(--vert); font-weight:600;">Documents officiels</a>.</span>
     </div>
   </section>
 
@@ -357,7 +679,7 @@
 
 <footer>
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
-  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 28 Juillet 2026</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 31 Juillet 2026</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
 
@@ -400,6 +722,26 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // ---- FAQ ----
+  document.querySelectorAll('.faq-item .question').forEach(function(q) {
+    q.addEventListener('click', function() {
+      const item = this.parentElement;
+      const isOpen = item.classList.contains('open');
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      
+      // Fermer les autres
+      document.querySelectorAll('.faq-item').forEach(function(other) {
+        other.classList.remove('open');
+        other.querySelector('.question').setAttribute('aria-expanded', 'false');
+      });
+      
+      if (!isOpen) {
+        item.classList.add('open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
 </script>
 </body>
 </html>
