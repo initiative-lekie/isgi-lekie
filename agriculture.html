@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agriculture – ISGI-Lékié</title>
+  <meta name="description" content="Intelligence Agricole Territoriale — Département de la Lékié. Données agricoles, filières, marchés et enjeux.">
+  <meta name="keywords" content="agriculture lekie, cacao, vivrier, maraichage, intelligence territoriale, isgi lekie">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <style>
+    :root {
+      --vert: #1b3a2d;
+      --vert2: #2a5a44;
+      --or: #c4922a;
+      --or2: #e0a83e;
+      --creme: #f4efe6;
+      --creme2: #ede5d8;
+      --blanc: #fefcf8;
+      --texte: #2c2c28;
+      --gris: #5a5a50;
+      --gris2: #94a3b8;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--blanc);color:var(--texte);line-height:1.6;}
+    .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
+
+    nav{background:var(--vert);padding:0.8rem 1.5rem;border-bottom:2px solid var(--or);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100;}
+    .logo a{color:var(--or2);text-decoration:none;font-size:1.5rem;font-weight:700;font-family:'Cormorant Garamond',serif;}
+    .logo span{font-size:0.7rem;display:block;color:rgba(255,255,255,0.7);}
+    .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
+    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;}
+    .nav-links a:hover{color:var(--or2);}
+    .nav-links a.active{color:var(--or2);border-bottom:2px solid var(--or);padding-bottom:0.2rem;}
+    .burger{display:none;background:none;border:none;color:var(--or2);font-size:1.8rem;cursor:pointer;}
+
+    .page-header{background:var(--vert);padding:2.5rem 1.5rem;border-bottom:4px solid var(--or);text-align:center;}
+    .page-header h1{color:#fff;border-left:none;padding-left:0;font-size:2.5rem;font-family:'Cormorant Garamond',serif;}
+    .page-header h1 em{color:var(--or2);font-style:italic;}
+    .page-header p{color:rgba(255,255,255,0.75);margin-top:0.5rem;}
+    .page-header .maj{font-size:0.7rem;color:var(--or2);margin-top:0.5rem;}
+
+    section{padding:2.5rem 0;border-bottom:1px solid var(--creme2);}
+    .section-title{font-size:1.6rem;color:var(--vert);margin-bottom:1.5rem;border-left:6px solid var(--or);padding-left:1rem;font-family:'Cormorant Garamond',serif;}
+    .section-sub{color:var(--gris2);margin-bottom:1.5rem;}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:1rem;}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:1rem;}
+    .card{background:#fff;border:1px solid var(--creme2);border-radius:16px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s;}
+    .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.06);}
+    .card h3{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin-bottom:0.5rem;}
+    .card p{color:var(--gris);font-size:0.9rem;margin-top:0.3rem;}
+    .card ul{margin-left:1.2rem;color:var(--gris);font-size:0.9rem;margin-top:0.3rem;}
+    .card ul li{margin-bottom:0.2rem;}
+
+    .badge-statut{display:inline-block;font-size:0.62rem;padding:0.15rem 0.5rem;border-radius:20px;font-weight:600;margin-top:0.5rem;}
+    .badge-valide{background:#e8f5e9;color:#2e7d32;}
+    .badge-encours{background:#fff8e1;color:#856404;}
+    .badge-contributif{background:#e8dfd0;color:#5a5a50;}
+
+    .btn{display:inline-block;background:var(--or);color:#1b3a2d;padding:0.5rem 1.2rem;border-radius:40px;text-decoration:none;font-weight:600;margin-top:0.5rem;border:none;cursor:pointer;font-size:0.85rem;}
+    .btn:hover{background:var(--vert);color:var(--or2);}
+    .btn-outline{background:transparent;border:1.5px solid var(--vert);color:var(--vert);}
+    .btn-outline:hover{background:var(--vert);color:#fff;}
+
+    .btn-or {
+      background: var(--or);
+      color: #1b3a2d;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .btn-or:hover {
+      background: var(--or2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(196,146,42,0.3);
+    }
+
+    .map-wrapper{margin:1.5rem 0;border-radius:16px;overflow:hidden;border:1px solid var(--creme2);}
+    #agricultureMap{height:350px;width:100%;}
+
+    .note{background:#fff8e1;padding:1rem;border-left:4px solid var(--or);margin:1rem 0;border-radius:4px;font-size:0.9rem;}
+    .note strong{color:var(--vert);}
+
+    .indicateur-item{display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid var(--creme2);font-size:0.9rem;}
+    .indicateur-item .ind-label{font-weight:500;color:var(--vert);}
+    .indicateur-item .ind-value{color:var(--gris);}
+    .indicateur-item .ind-status{font-size:0.7rem;color:var(--gris2);}
+
+    .encadre-vert{background:var(--vert);color:#fff;border-radius:16px;padding:1.5rem 2rem;margin:1.5rem 0;}
+    .encadre-vert h3{color:var(--or2);font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:0.5rem;}
+    .encadre-vert p{color:rgba(255,255,255,0.85);}
+    .encadre-vert ul{margin-left:1.2rem;color:rgba(255,255,255,0.85);margin-top:0.5rem;}
+    .encadre-vert ul li{margin-bottom:0.2rem;}
+
+    footer{background:#0f2c21;color:rgba(255,255,255,0.5);text-align:center;padding:2rem;font-size:0.8rem;margin-top:2rem;}
+    footer .boussole{font-style:italic;color:rgba(255,255,255,0.3);margin-top:0.4rem;}
+
+    .back-to-top{position:fixed;bottom:20px;right:20px;background:var(--or);color:#1b3a2d;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:99;}
+    .back-to-top.show{opacity:1;}
+    .back-to-top:hover{background:var(--vert);color:var(--or2);}
+
+    .table-data{width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:0.5rem;}
+    .table-data th{background:var(--vert);color:#fff;padding:0.5rem;text-align:left;}
+    .table-data td{padding:0.4rem;border-bottom:1px solid var(--creme2);}
+    .table-data tr:nth-child(even){background:#f9f7f2;}
+
+    @media(max-width:700px){
+      nav{flex-direction:row;}
+      .burger{display:block;}
+      .nav-links{display:none;width:100%;flex-direction:column;align-items:center;padding-top:0.5rem;}
+      .nav-links.show{display:flex;}
+      .page-header h1{font-size:1.8rem;}
+      .grid-2{grid-template-columns:1fr;}
+      .encadre-vert{padding:1rem;}
+      .indicateur-item{flex-direction:column;}
+      .table-data{font-size:0.75rem;}
+    }
+  </style>
+</head>
+<body>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="plateforme.html">Plateforme</a>
+    <a href="mon-village.html">Mon village</a>
+    <a href="mon-ecole.html">Mon école</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html">Certification</a>
+    <a href="agriculture.html" class="active">🌾 Agriculture</a>
+    <a href="elevage.html">🐄 Élevage</a>
+    <a href="tourisme.html">Tourisme</a>
+    <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>🌾 Intelligence Agricole <em>Territoriale</em></h1>
+  <p>Département de la Lékié — Diagnostic à l'action collective</p>
+  <p class="maj">📅 Dernière mise à jour : 04 Août 2026</p>
+  <a href="#contribuer" class="btn-or" style="margin-top:1rem;">🤝 Je contribue</a>
+</div>
+
+<div class="container">
+
+  <!-- ============================================================ -->
+  <!-- 1. PORTRAIT TERRITORIAL RAPIDE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📌 Portrait territorial</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>🌍 Géographie</h3>
+        <ul>
+          <li><strong>Superficie :</strong> environ 2 989 km²</li>
+          <li><strong>Chef-lieu :</strong> Monatélé</li>
+          <li><strong>Arrondissements :</strong> 9</li>
+          <li><strong>Climat :</strong> équatorial à quatre saisons</li>
+          <li><strong>Précipitations :</strong> 1 300–1 500 mm/an</li>
+          <li><strong>Altitude :</strong> ~35 m (Sanaga) à ~640 m</li>
+        </ul>
+        <span class="badge-statut badge-valide">Données stabilisées</span>
+      </div>
+      <div class="card">
+        <h3>👥 Population & vocation</h3>
+        <ul>
+          <li><strong>Population :</strong> ~500 000 – 1 million (estimations)</li>
+          <li><strong>Ethnies :</strong> Eton (>80 %), Manguissa, Batchenga</li>
+          <li><strong>Vocation :</strong> département rural et péri-urbain</li>
+          <li><strong>Rôle :</strong> grenier alimentaire de Yaoundé (60-70 % des vivres)</li>
+          <li><strong>Activité dominante :</strong> agriculture</li>
+        </ul>
+        <span class="badge-statut badge-encours">Données en consolidation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 2. CADRE AGRICOLE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🌱 Cadre agricole</h2>
+    <p class="section-sub">Cultures, élevage et systèmes de production dans la Lékié.</p>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>🌿 Cultures de rente</h3>
+        <ul>
+          <li><strong>Cacao :</strong> 2ᵉ bassin national (après Mbam). Plantations âgées, rendements variables.</li>
+          <li><strong>Palmier à huile :</strong> présence locale</li>
+          <li><strong>Canne à sucre :</strong> présence d'usines historiques</li>
+          <li><strong>Agrumes :</strong> en agroforêts</li>
+        </ul>
+        <span class="badge-statut badge-encours">Données MINADER à actualiser</span>
+      </div>
+      <div class="card">
+        <h3>🌽 Cultures vivrières et maraîchères</h3>
+        <ul>
+          <li><strong>Manioc :</strong> aliment de base</li>
+          <li><strong>Banane plantain</strong></li>
+          <li><strong>Maïs</strong></li>
+          <li><strong>Igname, macabo/taro</strong></li>
+          <li><strong>Maraîchage :</strong> tomate, légumes feuilles, oignon (très dynamique)</li>
+          <li><strong>Ananas, arachide</strong></li>
+          <li><strong>Estimation maraîchage :</strong> forte dynamique à Obala, Okola, Monatélé</li>
+          <li><strong>Circuits :</strong> 60-70% de la production approvisionne Yaoundé</li>
+        </ul>
+        <span class="badge-statut badge-encours">Enrichissement en cours</span>
+      </div>
+      <div class="card">
+        <h3>🐄 Élevage</h3>
+        <ul>
+          <li><strong>Petit bétail</strong></li>
+          <li><strong>Volailles</strong></li>
+          <li><strong>Données quantitatives :</strong> rares et anciennes</li>
+        </ul>
+        <span class="badge-statut badge-encours">Donnée recherchée</span>
+      </div>
+      <div class="card">
+        <h3>🧑‍🌾 Systèmes agricoles</h3>
+        <ul>
+          <li><strong>Agriculture familiale</strong> dominante</li>
+          <li><strong>Parcelles :</strong> souvent petites</li>
+          <li><strong>Association :</strong> cacao + vivriers + fruitiers (agroforêts)</li>
+          <li><strong>Femmes :</strong> très actives dans le maraîchage et les vivriers</li>
+          <li><strong>Forte pression foncière</strong> (densité élevée)</li>
+        </ul>
+        <span class="badge-statut badge-valide">Structure validée</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3. CADRE NATUREL ET ENVIRONNEMENTAL -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🌍 Cadre naturel et environnemental</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>🌱 Sols et ressources</h3>
+        <ul>
+          <li><strong>Sols ferralitiques</strong> (rouges/jaunes), fertiles</li>
+          <li>Menacés par l'<strong>érosion</strong> et l'<strong>appauvrissement</strong> sous pression démographique</li>
+          <li><strong>Déforestation</strong> progressive au profit des cacaoyères et champs vivriers</li>
+        </ul>
+        <span class="badge-statut badge-encours">À approfondir</span>
+      </div>
+      <div class="card">
+        <h3>💧 Eau et hydrographie</h3>
+        <ul>
+          <li><strong>Rivière Lékié</strong></li>
+          <li><strong>Fleuve Sanaga</strong> (nord)</li>
+          <li><strong>Opportunités :</strong> irrigation, pêche</li>
+          <li><strong>Risques :</strong> inondations</li>
+          <li><strong>Savane post-forestière</strong> au nord (Batchenga)</li>
+        </ul>
+        <span class="badge-statut badge-encours">Données à consolider</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 4. CADRE D'INFRASTRUCTURE ET DE MARCHÉ -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🚛 Cadre d'infrastructure et de marché</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>🛣️ Infrastructures</h3>
+        <ul>
+          <li><strong>Proximité de Yaoundé :</strong> débouché majeur</li>
+          <li><strong>Axes routiers :</strong> importance des routes vers la capitale</li>
+          <li><strong>Pistes rurales :</strong> état variable — goulot d'étranglement logistique</li>
+          <li><strong>Peu d'agro-industries</strong> locales structurées</li>
+        </ul>
+        <span class="badge-statut badge-encours">À documenter par commune</span>
+      </div>
+      <div class="card">
+        <h3>🏪 Marchés</h3>
+        <ul>
+          <li><strong>Marché de Yaoundé</strong> : principal débouché</li>
+          <li><strong>Marchés locaux :</strong> Obala, Monatélé, Sa'a, etc.</li>
+          <li><strong>Opportunités :</strong> traçabilité, circuits courts, labellisation locale</li>
+        </ul>
+        <span class="badge-statut badge-contributif">Appel à contribution</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 5. DONNÉES CACAO — RENDEMENTS ET PRODUCTION -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📊 Données cacao — Rendements et production</h2>
+    <p class="section-sub">Données issues d'études de terrain et de sources officielles (2013-2025).</p>
+
+    <div class="card">
+      <h3>🌿 Rendements moyens dans la Lékié</h3>
+      <div style="overflow-x:auto;">
+        <table class="table-data">
+          <thead>
+            <tr>
+              <th>Source</th>
+              <th>Période</th>
+              <th>Rendement</th>
+              <th>Précisions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rainforest Alliance / Meo Consult</td>
+              <td>2022</td>
+              <td><strong>≈ 1 000 kg/ha</strong></td>
+              <td>Lékié et Mbam-et-Inoubou</td>
+            </tr>
+            <tr>
+              <td>Youbi et al. (académique)</td>
+              <td>2012-2015</td>
+              <td><strong>784 kg/ha</strong> (locale)<br><strong>2 519 kg/ha</strong> (hybride)</td>
+              <td>Mesures en agroforêts (Obala, Okola, Batchenga, Sa'a)</td>
+            </tr>
+            <tr>
+              <td>Étude d'efficacité technique</td>
+              <td>2017</td>
+              <td><strong>643 kg/ha</strong></td>
+              <td>Enquête ~40 exploitations (Obala, Monatélé, Evodoula, Ebebda, Okola)</td>
+            </tr>
+            <tr>
+              <td>Producteurs formés (UTZ/FBS)</td>
+              <td>2013-2016</td>
+              <td><strong>621-622 kg/ha</strong></td>
+              <td>Vs non formés (~414 kg/ha)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.8rem;color:var(--gris2);margin-top:0.5rem;">
+        📌 Synthèse : 600–1 000 kg/ha (traditionnel) · 1 500–2 500 kg/ha (bonnes pratiques / hybrides)
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>📦 Production et revenus</h3>
+        <ul>
+          <li><strong>Production commercialisée (2014-2015) :</strong> ≈ 18 000 tonnes</li>
+          <li><strong>Revenus des producteurs (2024-2025) :</strong> 230 milliards FCFA</li>
+          <li><strong>Production nationale record :</strong> 309 518 tonnes (+13 %)</li>
+          <li><strong>Prix au kg :</strong> 2 100 – 5 400 FCFA</li>
+        </ul>
+        <span class="badge-statut badge-valide">Sources ONCC / Ministère du Commerce</span>
+      </div>
+      <div class="card">
+        <h3>🧪 Facteurs de variation</h3>
+        <ul>
+          <li>Âge des plantations (cacaoyères anciennes)</li>
+          <li>Densité et remplacement des plants</li>
+          <li>Niveau d'ombrage (agroforêts)</li>
+          <li>Pratiques culturales (taille, fertilisation, lutte phytosanitaire)</li>
+          <li>Variété (hybrides SNK vs locales)</li>
+          <li>Accès à la formation et aux intrants</li>
+        </ul>
+        <span class="badge-statut badge-encours">À approfondir</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6. TRANSFORMATION DES VIVRIERS -->
+  <!-- ============================================================ -->
+  <section id="transformation">
+    <h2 class="section-title">🔄 Transformation des vivriers</h2>
+    <p class="section-sub">Valorisation locale du manioc, plantain et autres produits.</p>
+
+    <div class="card">
+      <h3>🛠️ Produits transformés</h3>
+      <div style="overflow-x:auto;">
+        <table class="table-data">
+          <thead>
+            <tr>
+              <th>Produit</th>
+              <th>Description</th>
+              <th>Conservation</th>
+              <th>Valeur ajoutée (indicatif)</th>
+              <th>Marché</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Bâton (bobolo / miondo)</strong></td>
+              <td>Pâte fermentée cuite en feuilles</td>
+              <td>Quelques jours</td>
+              <td>Racine ≈ 150 FCFA/kg → Bâton 400–550 FCFA/kg</td>
+              <td>Quotidien (Yaoundé + local)</td>
+            </tr>
+            <tr>
+              <td><strong>Gari</strong></td>
+              <td>Semoule sèche fermentée et torréfiée</td>
+              <td>Plusieurs mois</td>
+              <td>Racine ≈ 150 FCFA/kg → Gari 450–700 FCFA/kg</td>
+              <td>Sous-région + urbain</td>
+            </tr>
+            <tr>
+              <td><strong>Cossettes / Farine</strong></td>
+              <td>Tranches séchées puis moulues</td>
+              <td>Longue</td>
+              <td>Valeur intermédiaire + conservation</td>
+              <td>Farine, fufu, boulangerie</td>
+            </tr>
+            <tr>
+              <td><strong>Amidon</strong></td>
+              <td>Extrait pur</td>
+              <td>Longue</td>
+              <td>Plus rémunérateur (marché B2B)</td>
+              <td>Industrie alimentaire</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 7. ANALYSE DES COÛTS DE TRANSFORMATION -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">💰 Analyse des coûts de transformation</h2>
+    <p class="section-sub">
+      Investissement, charges et rentabilité indicative pour la Lékié (données 2025-2026).
+    </p>
+
+    <div class="card">
+      <h3>🛠️ Niveaux d’investissement</h3>
+      <div style="overflow-x:auto;">
+        <table class="table-data">
+          <thead>
+            <tr>
+              <th>Niveau</th>
+              <th>Équipement principal</th>
+              <th>Coût approximatif</th>
+              <th>Capacité</th>
+              <th>Public cible</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Artisanal</strong></td>
+              <td>Râpe manuelle, presse simple, tamis, plaque</td>
+              <td><strong>130 000 – 300 000 FCFA</strong></td>
+              <td>Famille / petit GIC</td>
+              <td>Femmes, ménages</td>
+            </tr>
+            <tr>
+              <td><strong>Semi-mécanisé</strong></td>
+              <td>Râpeuse motorisée + presse à vis/cric</td>
+              <td><strong>500 000 – 800 000 FCFA</strong></td>
+              <td>≈ 1 t racines / semaine</td>
+              <td>GIC, petites unités</td>
+            </tr>
+            <tr>
+              <td><strong>Semi-industriel</strong></td>
+              <td>Râpeuse haute capacité + presse hydraulique + torréfacteur</td>
+              <td><strong>1,5 – 5 millions FCFA</strong></td>
+              <td>Plusieurs t / semaine</td>
+              <td>Coopératives, entrepreneurs</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>📊 Exemple de rentabilité (1 ha)</h3>
+        <ul>
+          <li><strong>Production :</strong> 30–50 tonnes de racines</li>
+          <li><strong>Vente brute :</strong> 500 000 – 1 500 000 FCFA</li>
+          <li><strong>Transformé (gari + tapioca) :</strong> ≈ 1 255 000 FCFA de ventes</li>
+          <li><strong>Charges :</strong> ≈ 712 500 FCFA</li>
+          <li><strong>Bénéfice net :</strong> ≈ <strong>542 500 FCFA / ha</strong></li>
+        </ul>
+        <span class="badge-statut badge-valide">Marge 40–60 %</span>
+      </div>
+
+      <div class="card">
+        <h3>📈 Atelier semi-mécanisé</h3>
+        <ul>
+          <li><strong>Capacité :</strong> ≈ 1 tonne de racines / semaine</li>
+          <li><strong>Bénéfice estimé :</strong> 200 000 – 400 000 FCFA / mois</li>
+          <li><strong>Rendement technique :</strong> 100 kg racines → 20–30 kg gari</li>
+          <li><strong>Prix indicatif :</strong> Racine 100–150 FCFA/kg → Gari 450–700 FCFA/kg</li>
+        </ul>
+        <span class="badge-statut badge-encours">Fort potentiel de revenu</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🧾 Structure des charges (ordre de grandeur)</h3>
+      <div class="indicateur-item">
+        <span class="ind-label">Achat racines + transport</span>
+        <span class="ind-value">60–75 %</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Main-d’œuvre (épluchage, râpage, pressage…)</span>
+        <span class="ind-value">10–20 %</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Énergie (bois, électricité, carburant)</span>
+        <span class="ind-value">5–10 %</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Emballages + divers</span>
+        <span class="ind-value">5–10 %</span>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>📌 Points de vigilance :</strong>
+      La rentabilité dépend fortement du <strong>prix d’achat des racines</strong> 
+      (seuil critique ≈ 140–150 FCFA/kg) et de la qualité du produit final. 
+      Les programmes d’appui (PEA-Jeunes, ACEFA, PNDP…) financent volontiers l’équipement.
+    </div>
+
+    <div style="text-align:center; margin-top:1.2rem;">
+      <a href="plateforme.html#contribuer" class="btn-or">📢 J’ai une unité / Je connais les coûts réels</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 8. BANANE PLANTAIN -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🍌 Banane plantain</h2>
+    <p class="section-sub">
+      Aliment de base et culture de rente dans la Lékié. 
+      Production encore extensive, fort potentiel d’intensification et de transformation.
+    </p>
+
+    <div class="card">
+      <h3>📊 Rendements et production</h3>
+      <div style="overflow-x:auto;">
+        <table class="table-data">
+          <thead>
+            <tr>
+              <th>Contexte</th>
+              <th>Rendement</th>
+              <th>Observations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Milieu paysan (association)</strong></td>
+              <td><strong>4–7 t/ha</strong></td>
+              <td>Système dominant dans la Lékié</td>
+            </tr>
+            <tr>
+              <td><strong>Bonnes pratiques / intensifié</strong></td>
+              <td><strong>20–30 t/ha</strong></td>
+              <td>Densité + fertilisation + matériel sain</td>
+            </tr>
+            <tr>
+              <td><strong>Potentiel station / hybrides</strong></td>
+              <td>Jusqu’à 25–40 t/ha</td>
+              <td>Variétés améliorées (CRBP, etc.)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.8rem;color:var(--gris2);margin-top:0.5rem;">
+        📌 Poids moyen d’un régime en milieu paysan : ≈ 11–12 kg. Seule une partie des plants produit chaque année.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>🌱 Variétés courantes</h3>
+        <ul>
+          <li><strong>Batard</strong> : régimes gros, plusieurs mains</li>
+          <li><strong>Big Ebanga</strong> : doigts longs et gros, très demandé (chips, braise)</li>
+          <li><strong>Essong / French Clair</strong> : variétés géantes ou moyennes</li>
+          <li><strong>Hybrides</strong> (CRBP 39, etc.) : plus productifs et résistants</li>
+        </ul>
+        <span class="badge-statut badge-valide">Batard & Big Ebanga dominants</span>
+      </div>
+
+      <div class="card">
+        <h3>🚜 Systèmes de production</h3>
+        <ul>
+          <li>Association fréquente avec cacao, manioc, macabo, fruitiers</li>
+          <li>Densité paysanne : 800–1 700 plants/ha (moyenne ≈ 1 200)</li>
+          <li>Densité recommandée intensive : 1 600–2 500 plants/ha</li>
+          <li>Cycle : 9–15 mois selon variété et conduite</li>
+          <li>Matériel végétal : rejets, PIF, vitroplants (encore limité)</li>
+        </ul>
+        <span class="badge-statut badge-encours">Potentiel d’intensification élevé</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🔄 Transformation et valeur ajoutée</h3>
+      <div style="overflow-x:auto;">
+        <table class="table-data">
+          <thead>
+            <tr>
+              <th>Produit</th>
+              <th>Taux de conversion</th>
+              <th>Valeur ajoutée</th>
+              <th>Marché</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Chips</strong></td>
+              <td>≈ 25–26 % (1 t régimes → 250–260 kg chips)</td>
+              <td>Forte (snack, restauration)</td>
+              <td>Yaoundé, Douala, routes</td>
+            </tr>
+            <tr>
+              <td><strong>Farine</strong></td>
+              <td>≈ 14–15 % (6,5–7 t régimes → 1 t farine)</td>
+              <td>Élevée (pâtisserie, infantile)</td>
+              <td>Urbain + substitution blé</td>
+            </tr>
+            <tr>
+              <td><strong>Consommation fraîche</strong></td>
+              <td>—</td>
+              <td>Base</td>
+              <td>Marchés locaux + Yaoundé</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.85rem;margin-top:0.6rem;">
+        Acteurs identifiés : Bikoan (Batchenga), Fiesta, Chips d’Eden, etc. 
+        Activité souvent féminine et artisanale.
+      </p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>✅ Forces & Opportunités</h3>
+        <ul>
+          <li>Aliment de base très demandé (déficit national)</li>
+          <li>Bonne association avec cacao et vivriers</li>
+          <li>Transformation (chips, farine) très rentable</li>
+          <li>Proximité Yaoundé = débouché immédiat</li>
+          <li>Possibilité d’intensification (densité + matériel sain)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>⚠️ Faiblesses & Risques</h3>
+        <ul>
+          <li>Rendements encore faibles (4–7 t/ha)</li>
+          <li>Matériel végétal de qualité limité</li>
+          <li>Pertes post-récolte et conservation difficile</li>
+          <li>Pression des maladies et ravageurs</li>
+          <li>Structuration de la filière encore faible</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>📌 Synthèse Lékié :</strong> 
+      Le plantain est une culture stratégique (sécurité alimentaire + revenu). 
+      Le principal levier est l’intensification raisonnée (densité, matériel végétal sain, fertilisation) 
+      et le développement de la transformation locale (chips et farine).
+      <br>
+      <span style="font-size:0.85rem;margin-top:0.5rem;display:block;">
+        Voir aussi : <a href="#transformation" style="color:var(--vert);font-weight:600;">Section Transformation du manioc</a> pour les équipements mutualisables.
+      </span>
+      <br>
+      <span class="badge-statut badge-contributif" style="margin-top:0.5rem;">Données à enrichir</span>
+    </div>
+
+    <div style="text-align:center; margin-top:1.2rem; display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center;">
+      <a href="plateforme.html#contribuer" class="btn-or">📢 Signaler une donnée plantain</a>
+      <a href="#contribuer" class="btn-outline" style="text-decoration:none;padding:0.6rem 1.4rem;border-radius:40px;font-weight:600;display:inline-block;">⬆ Retour contribution</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 9. MARAÎCHAGE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🥬 Maraîchage</h2>
+    <p class="section-sub">
+      Activité dynamique et génératrice de revenus rapides dans la Lékié, 
+      portée en grande partie par les femmes et tournée vers les marchés de Yaoundé.
+    </p>
+
+    <div class="card">
+      <h3>🌿 Principales cultures maraîchères</h3>
+      <div style="overflow-x:auto;">
+        <table class="table-data">
+          <thead>
+            <tr>
+              <th>Culture</th>
+              <th>Rôle</th>
+              <th>Cycle</th>
+              <th>Rendements indicatifs</th>
+              <th>Observations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Tomate</strong></td>
+              <td>Produit phare, fort revenu</td>
+              <td>3–5 mois</td>
+              <td>10–25 t/ha (paysan)<br>Jusqu’à 40–50 t/ha bien conduit</td>
+              <td>Très sensible aux maladies et à l’eau</td>
+            </tr>
+            <tr>
+              <td><strong>Oignon</strong></td>
+              <td>Culture de rente</td>
+              <td>4–6 mois</td>
+              <td>8–15 t/ha (paysan)</td>
+              <td>Surtout en contre-saison</td>
+            </tr>
+            <tr>
+              <td><strong>Légumes-feuilles</strong><br>(amarante, keleng-keleng, morelle noire…)</td>
+              <td>Consommation + revenu rapide</td>
+              <td>4–8 semaines</td>
+              <td>7–13 t/ha (feuilles)</td>
+              <td>Idéal petites surfaces</td>
+            </tr>
+            <tr>
+              <td><strong>Piment, gombo, aubergine, poivron</strong></td>
+              <td>Diversification</td>
+              <td>Variable</td>
+              <td>Variable</td>
+              <td>Demande urbaine stable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>🚜 Systèmes de production</h3>
+        <ul>
+          <li>Petites surfaces (souvent &lt; 0,5 ha)</li>
+          <li>Bas-fonds et zones irrigables privilégiés</li>
+          <li>Irrigation manuelle ou semi-améliorée</li>
+          <li>Forte utilisation d’intrants (engrais + pesticides)</li>
+          <li>Main-d’œuvre familiale + salariée ponctuelle</li>
+          <li>Forte participation des femmes</li>
+        </ul>
+        <span class="badge-statut badge-valide">Structure dominante</span>
+      </div>
+
+      <div class="card">
+        <h3>💰 Économie et rentabilité</h3>
+        <ul>
+          <li><strong>Tomate</strong> : la plus rémunératrice (surtout hors saison et fêtes)</li>
+          <li><strong>Légumes-feuilles</strong> : cycles courts → trésorerie rapide</li>
+          <li><strong>Oignon</strong> : bonnes marges en contre-saison</li>
+          <li><strong>Prix volatile :</strong> Tomate 300–1 200 FCFA/kg selon saison</li>
+          <li>Charges principales : semences, engrais, pesticides, transport</li>
+          <li>Risque élevé de volatilité des prix et de pertes post-récolte</li>
+        </ul>
+        <span class="badge-statut badge-encours">Fort potentiel de revenu</span>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h3>✅ Forces & Opportunités</h3>
+        <ul>
+          <li>Proximité de Yaoundé (débouché assuré)</li>
+          <li>Disponibilité relative d’eau (bas-fonds)</li>
+          <li>Savoir-faire local et dynamisme des femmes</li>
+          <li>Circuits courts et labellisation possible</li>
+          <li>Transformation légère (séchage, conserves)</li>
+          <li>Agriculture sous abri / serres (émergente)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>⚠️ Faiblesses & Risques</h3>
+        <ul>
+          <li>Pression foncière élevée</li>
+          <li>Accès limité à l’irrigation moderne</li>
+          <li>Volatilité des prix (surtout tomate)</li>
+          <li>Pertes post-récolte importantes</li>
+          <li>Dépendance aux pesticides</li>
+          <li>Structuration encore faible des groupements</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>📌 Synthèse Lékié :</strong> 
+      Le maraîchage est l’un des leviers les plus rapides de génération de revenus dans le département. 
+      La tomate et les légumes-feuilles dominent. 
+      L’enjeu principal reste la sécurisation de l’eau, la réduction des pertes post-récolte et une meilleure organisation des producteurs.
+      <br>
+      <span class="badge-statut badge-contributif" style="margin-top:0.5rem;">Données à enrichir</span>
+    </div>
+
+    <div style="text-align:center; margin-top:1.2rem; display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center;">
+      <a href="plateforme.html#contribuer" class="btn-or">📢 Signaler une donnée maraîchère</a>
+      <a href="#contribuer" class="btn-outline" style="text-decoration:none;padding:0.6rem 1.4rem;border-radius:40px;font-weight:600;display:inline-block;">⬆ Retour contribution</a>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 10. POURQUOI L'INTELLIGENCE AGRICOLE TERRITORIALE ? -->
+  <!-- ============================================================ -->
+  <div class="encadre-vert">
+    <h3>🧠 Pourquoi l'Intelligence Agricole Territoriale de la Lékié ?</h3>
+    <p>
+      L'Intelligence Agricole Territoriale (IAT) est une brique de l'intelligence territoriale.
+      Elle organise et croise les données des cinq cadres — <strong>naturel, agraire, agricole, d'infrastructure, socio-économique</strong> —
+      pour produire des analyses multi-échelles au service des décisions publiques et privées.
+    </p>
+    <p style="margin-top:0.5rem;">
+      Dans la Lékié, où l'agriculture est centrale, <strong>l'Intelligence Agricole Territoriale de la Lékié</strong> vise à :
+    </p>
+    <ul>
+      <li><strong>📍 Documenter</strong> les réalités agricoles du territoire</li>
+      <li><strong>📊 Analyser</strong> les dynamiques et les blocages</li>
+      <li><strong>🤝 Connecter</strong> les acteurs (producteurs, transformateurs, acheteurs, décideurs)</li>
+      <li><strong>🚀 Agir</strong> pour renforcer la résilience alimentaire et économique</li>
+    </ul>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 11. CARTE INTERACTIVE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🗺️ Carte des arrondissements</h2>
+    <p class="section-sub">Localisation des 9 arrondissements de la Lékié et leurs spéculations dominantes.</p>
+
+    <div class="map-wrapper">
+      <div id="agricultureMap"></div>
+    </div>
+    <p style="font-size:0.7rem; color:var(--gris2); text-align:center; margin-top:0.3rem;">
+      🗺️ Carte OpenStreetMap — Données indicatives
+    </p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 12. INDICATEURS DE DÉPART -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📊 Indicateurs de départ</h2>
+    <p class="section-sub">Indicateurs clés pour le diagnostic agricole de la Lékié.</p>
+
+    <div class="card">
+      <div class="indicateur-item">
+        <span class="ind-label">Part des vivriers dans le revenu des ménages</span>
+        <span class="ind-value">Donnée recherchée</span>
+        <span class="ind-status">🔍 À collecter</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Âge moyen des cacaoyères</span>
+        <span class="ind-value">Donnée recherchée</span>
+        <span class="ind-status">🔍 À collecter</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Distance moyenne aux marchés de Yaoundé</span>
+        <span class="ind-value">≈ 40–80 km</span>
+        <span class="ind-status">📌 Estimation</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Taux d'accès à l'information agricole / intrants</span>
+        <span class="ind-value">Donnée recherchée</span>
+        <span class="ind-status">🔍 À collecter</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Superficie moyenne des exploitations</span>
+        <span class="ind-value">Donnée recherchée</span>
+        <span class="ind-status">🔍 À collecter</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Présence de systèmes agroforestiers (cacao-agrumes-plantain)</span>
+        <span class="ind-value">Fréquente</span>
+        <span class="ind-status">📌 Observation terrain</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>📢 Ces indicateurs sont en cours de consolidation.</strong>
+      Si vous disposez de données, contribuez via le formulaire ci-dessous.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 13. CONTRIBUTION -->
+  <!-- ============================================================ -->
+  <section id="contribuer">
+    <h2 class="section-title">📢 Contribuer à la page Agriculture</h2>
+    <div class="note">
+      <p>
+        <strong>Vous avez des données agricoles ?</strong> Connaissez-vous des coopératives, des groupements,
+        des filières spécifiques ou des enjeux locaux ?
+      </p>
+      <p style="margin-top:0.3rem;">
+        <a href="plateforme.html#contribuer" style="color:var(--vert); font-weight:600;">📝 Contribuez via le formulaire dédié</a>
+      </p>
+    </div>
+    <div style="text-align:center; margin-top:1rem; display:flex; flex-wrap:wrap; gap:0.8rem; justify-content:center;">
+      <a href="plateforme.html#contribuer" class="btn-or">📢 Signaler une donnée agricole</a>
+      <a href="#top" class="btn-outline" style="text-decoration:none;padding:0.6rem 1.4rem;border-radius:40px;font-weight:600;display:inline-block;">⬆ Retour en haut</a>
+    </div>
+    <p style="text-align:center; margin-top:0.8rem; font-size:0.8rem; color:var(--gris2);">
+      📌 Le diagnostic PDF est en préparation
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 04 Août 2026</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
+
+<script>
+  // ---- BURGER MENU ----
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+
+  // ---- BACK TO TOP ----
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ---- CARTE LEAFLET ----
+  try {
+    const map = L.map('agricultureMap').setView([4.15, 11.4], 9.2);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd' }).addTo(map);
+
+    const arrondissements = [
+      { nom: "Batchenga", lat: 4.2333, lng: 11.6833, spec: "Vivriers, maïs, plantain, transformation (Bikoan)" },
+      { nom: "Ebebda", lat: 4.35, lng: 11.2, spec: "Vivriers, cacao, maraîchage" },
+      { nom: "Elig-Mfomo", lat: 4.1, lng: 11.1, spec: "Vivriers, maraîchage" },
+      { nom: "Evodoula", lat: 4.083, lng: 11.2, spec: "Vivriers, cacao, maraîchage" },
+      { nom: "Lobo", lat: 3.9833, lng: 11.4, spec: "Vivriers, cacao" },
+      { nom: "Monatélé", lat: 4.1875, lng: 11.2525, spec: "Vivriers, maraîchage, transformation manioc" },
+      { nom: "Obala", lat: 4.1589, lng: 11.5339, spec: "Vivriers, cacao, maraîchage, plantain, transformation manioc" },
+      { nom: "Okola", lat: 4.0167, lng: 11.3833, spec: "Vivriers, maraîchage, plantain, transformation manioc" },
+      { nom: "Sa'a", lat: 4.117, lng: 11.417, spec: "Cacao, vivriers, plantain, maraîchage" }
+    ];
+
+    arrondissements.forEach(function(a) {
+      L.marker([a.lat, a.lng])
+        .addTo(map)
+        .bindPopup('<strong>' + a.nom + '</strong><br>Spéculations : ' + a.spec);
+    });
+
+  } catch(e) {
+    // Fallback silencieux
+  }
+</script>
+</body>
+</html>
