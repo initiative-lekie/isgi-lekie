@@ -4,32 +4,509 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tourisme – ISGI-Lékié</title>
+  <meta name="description" content="Intelligence Territoriale — Tourisme dans le département de la Lékié. Patrimoine culturel, sites naturels, hébergements, carte interactive.">
+  <meta name="keywords" content="tourisme lekie, patrimoine culturel, sites naturels, hébergements, agrotourisme, isgi lekie">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
+    :root {
+      --vert: #1b3a2d;
+      --vert2: #2a5a44;
+      --or: #c4922a;
+      --or2: #e0a83e;
+      --creme: #f4efe6;
+      --creme2: #ede5d8;
+      --blanc: #fefcf8;
+      --texte: #2c2c28;
+      --gris: #5a5a50;
+      --gris2: #94a3b8;
+    }
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Inter',sans-serif;background:#FEFCF8;color:#2c2c28;line-height:1.6;}
-    .container{max-width:1000px;margin:0 auto;padding:2rem;}
-    .navbar{background:#1B4332;padding:1rem;border-bottom:2px solid #C8922A;text-align:center;}
-    .navbar a{color:#FEFCF8;margin:0 1rem;text-decoration:none;}
-    h1{font-family:'Cormorant Garamond',serif;color:#1B4332;}
-    .card{background:#F5F0E8;padding:1rem;margin:1rem 0;border-radius:12px;}
-    footer{text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid #ddd;font-size:0.8rem;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--blanc);color:var(--texte);line-height:1.6;}
+    .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
+
+    nav{background:var(--vert);padding:0.8rem 1.5rem;border-bottom:2px solid var(--or);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100;}
+    .logo a{color:var(--or2);text-decoration:none;font-size:1.5rem;font-weight:700;font-family:'Cormorant Garamond',serif;}
+    .logo span{font-size:0.7rem;display:block;color:rgba(255,255,255,0.7);}
+    .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
+    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;}
+    .nav-links a:hover{color:var(--or2);}
+    .nav-links a.active{color:var(--or2);border-bottom:2px solid var(--or);padding-bottom:0.2rem;}
+    .burger{display:none;background:none;border:none;color:var(--or2);font-size:1.8rem;cursor:pointer;}
+
+    .page-header{background:var(--vert);padding:2.5rem 1.5rem;border-bottom:4px solid var(--or);text-align:center;}
+    .page-header h1{color:#fff;border-left:none;padding-left:0;font-size:2.5rem;font-family:'Cormorant Garamond',serif;}
+    .page-header h1 em{color:var(--or2);font-style:italic;}
+    .page-header p{color:rgba(255,255,255,0.75);margin-top:0.5rem;}
+    .page-header .maj{font-size:0.7rem;color:var(--or2);margin-top:0.5rem;}
+
+    section{padding:2.5rem 0;border-bottom:1px solid var(--creme2);}
+    .section-title{font-size:1.6rem;color:var(--vert);margin-bottom:1.5rem;border-left:6px solid var(--or);padding-left:1rem;font-family:'Cormorant Garamond',serif;}
+    .section-sub{color:var(--gris2);margin-bottom:1.5rem;}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:1rem;}
+    .card{background:#fff;border:1px solid var(--creme2);border-radius:16px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s;}
+    .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.06);}
+    .card h3{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin-bottom:0.5rem;}
+    .card ul{margin-left:1.2rem;color:var(--gris);font-size:0.9rem;margin-top:0.3rem;}
+    .card ul li{margin-bottom:0.2rem;}
+    .card p{color:var(--gris);font-size:0.9rem;margin-top:0.3rem;}
+
+    .badge-statut{display:inline-block;font-size:0.62rem;padding:0.15rem 0.5rem;border-radius:20px;font-weight:600;margin-top:0.5rem;}
+    .badge-valide{background:#e8f5e9;color:#2e7d32;}
+    .badge-encours{background:#fff8e1;color:#856404;}
+    .badge-contributif{background:#e8dfd0;color:#5a5a50;}
+    .badge-niveau2{background:#ffebee;color:#c62828;}
+
+    .btn-or {
+      background: var(--or);
+      color: #1b3a2d;
+      padding: 0.6rem 1.4rem;
+      border-radius: 40px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+      border: none;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .btn-or:hover {
+      background: var(--or2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(196,146,42,0.3);
+    }
+    .btn-outline{background:transparent;border:1.5px solid var(--vert);color:var(--vert);padding:0.6rem 1.4rem;border-radius:40px;font-weight:600;text-decoration:none;display:inline-block;}
+    .btn-outline:hover{background:var(--vert);color:#fff;}
+
+    .note{background:#fff8e1;padding:1rem;border-left:4px solid var(--or);margin:1rem 0;border-radius:4px;font-size:0.9rem;}
+    .note strong{color:var(--vert);}
+
+    .table-data{width:100%;border-collapse:collapse;font-size:0.85rem;margin-top:0.5rem;}
+    .table-data th{background:var(--vert);color:#fff;padding:0.5rem;text-align:left;}
+    .table-data td{padding:0.4rem;border-bottom:1px solid var(--creme2);}
+    .table-data tr:nth-child(even){background:#f9f7f2;}
+
+    .map-wrapper{margin:1.5rem 0;border-radius:16px;overflow:hidden;border:1px solid var(--creme2);}
+    #map{height:380px;width:100%;}
+
+    .indicateur-item{display:flex;justify-content:space-between;padding:0.5rem 0;border-bottom:1px solid var(--creme2);font-size:0.9rem;}
+    .indicateur-item .ind-label{font-weight:500;color:var(--vert);}
+    .indicateur-item .ind-value{color:var(--gris);}
+    .indicateur-item .ind-status{font-size:0.7rem;color:var(--gris2);}
+
+    footer{background:#0f2c21;color:rgba(255,255,255,0.5);text-align:center;padding:2rem;font-size:0.8rem;margin-top:2rem;}
+    footer .boussole{font-style:italic;color:rgba(255,255,255,0.3);margin-top:0.4rem;}
+
+    .back-to-top{position:fixed;bottom:20px;right:20px;background:var(--or);color:#1b3a2d;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:99;}
+    .back-to-top.show{opacity:1;}
+    .back-to-top:hover{background:var(--vert);color:var(--or2);}
+
+    @media(max-width:700px){
+      nav{flex-direction:row;}
+      .burger{display:block;}
+      .nav-links{display:none;width:100%;flex-direction:column;align-items:center;padding-top:0.5rem;}
+      .nav-links.show{display:flex;}
+      .page-header h1{font-size:1.8rem;}
+      .grid-2{grid-template-columns:1fr;}
+      .table-data{font-size:0.75rem;}
+      .indicateur-item{flex-direction:column;}
+    }
   </style>
 </head>
 <body>
-<div class="navbar">
-  <a href="index.html">Accueil</a>
-  <a href="plateforme.html">Plateforme</a>
-  <a href="blog.html">Blog</a>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="plateforme.html">Plateforme</a>
+    <a href="mon-village.html">Mon village</a>
+    <a href="mon-ecole.html">Mon école</a>
+    <a href="observatoire.html">Observatoire</a>
+    <a href="sport.html">Sport</a>
+    <a href="certification.html">Certification</a>
+    <a href="agriculture.html">🌾 Agriculture</a>
+    <a href="elevage.html">🐄 Élevage</a>
+    <a href="tourisme.html" class="active">🏛️ Tourisme</a>
+    <a href="hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="presse.html">Presse</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>🏛️ Intelligence <em>Tourisme</em></h1>
+  <p>Département de la Lékié — Patrimoine culturel, sites naturels et hébergements</p>
+  <p class="maj">📅 Dernière mise à jour : 04 Août 2026</p>
+  <a href="#contribuer" class="btn-or" style="margin-top:1rem;">🤝 Je contribue</a>
 </div>
+
 <div class="container">
-  <h1>🏞️ Tourisme & découverte</h1>
-  <p>Valorisation des sites, hébergements et événements de la Lékié.</p>
-  <div class="card"><strong>Chefferie d’Endinding (Obala)</strong><br>Site historique et culturel</div>
-  <div class="card"><strong>Les chutes d’Evodoula</strong><br>Patrimoine naturel</div>
-  <div class="card"><strong>Marché de Monatélé</strong><br>Artisanat, rencontres, produits locaux</div>
-  <p>📢 <a href="plateforme.html#contribuer">Suggérer un lieu ou un événement</a></p>
+
+  <!-- ============================================================ -->
+  <!-- 1. PORTRAIT -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📌 Portrait touristique de la Lékié</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Situation générale</h3>
+        <ul>
+          <li>Fort potentiel culturel et naturel encore sous-exploité</li>
+          <li>Peuples Éton, Menguissa et Batchenga</li>
+          <li>Proximité immédiate de Yaoundé</li>
+          <li>Tourisme encore émergent et peu structuré</li>
+        </ul>
+        <span class="badge-statut badge-encours">Données en consolidation</span>
+      </div>
+      <div class="card">
+        <h3>Enjeux principaux</h3>
+        <ul>
+          <li>Inventaire et valorisation du patrimoine</li>
+          <li>Amélioration des infrastructures d'accueil</li>
+          <li>Promotion et circuits touristiques</li>
+          <li>Implication des communautés locales</li>
+        </ul>
+        <span class="badge-statut badge-contributif">Appel à contribution</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 2. PATRIMOINE CULTUREL -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🏛️ Patrimoine culturel</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Éléments identifiés</h3>
+        <ul>
+          <li><strong>Chefferie d'Endinding (Obala)</strong> — Site historique et culturel</li>
+          <li><strong>Chefferies traditionnelles</strong> (1er et 2e degré)</li>
+          <li><strong>Architecture coloniale</strong></li>
+          <li><strong>Rites et cérémonies</strong> (Essani, etc.)</li>
+          <li><strong>Art culinaire</strong> (kpwem, escargots…)</li>
+          <li><strong>Forêts sacrées</strong> — accès souvent codifié</li>
+          <li><strong>André Marie Mbida :</strong> <a href="hommage-andre-marie-mbida.html" style="color:var(--vert);font-weight:600;">Maison natale, village et héritage</a> — levier de tourisme mémoriel</li>
+        </ul>
+        <span class="badge-statut badge-valide">Richesse culturelle</span>
+      </div>
+      <div class="card">
+        <h3>Observations</h3>
+        <ul>
+          <li>Patrimoine souvent peu inventorié</li>
+          <li>Risque d'érosion culturelle</li>
+          <li>Fort potentiel pour le tourisme mémoriel et culturel</li>
+        </ul>
+        <span class="badge-statut badge-encours">À documenter</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3. SITES + HEBERGEMENTS + CARTE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🌿 Sites naturels, paysages & hébergements</h2>
+
+    <!-- Tableau sites -->
+    <div class="card">
+      <h3>Sites identifiés</h3>
+      <div style="overflow-x:auto;">
+        <table class="table-data">
+          <thead>
+            <tr>
+              <th>Site / Élément</th>
+              <th>Localisation</th>
+              <th>Coordonnées approx.</th>
+              <th>Type</th>
+              <th>Observations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Chute / site de Poupouma</strong></td>
+              <td>Monatélé (Poupouma)</td>
+              <td>4.2333, 11.3167</td>
+              <td>Chute / paysage</td>
+              <td>Potentiel paysager fort</td>
+            </tr>
+            <tr>
+              <td><strong>Sablières de la Sanaga</strong></td>
+              <td>Monatélé / Ebebda</td>
+              <td>≈ 4.35, 11.20</td>
+              <td>Paysage fluvial</td>
+              <td>Intérêt paysager + économique</td>
+            </tr>
+            <tr>
+              <td><strong>Lacs coloniaux</strong></td>
+              <td>Batchenga</td>
+              <td>≈ 4.2333, 11.6833</td>
+              <td>Plan d'eau</td>
+              <td>Peu aménagés</td>
+            </tr>
+            <tr>
+              <td><strong>Chutes d'Evodoula</strong></td>
+              <td>Evodoula</td>
+              <td>≈ 4.083, 11.2</td>
+              <td>Chute / paysage</td>
+              <td>Patrimoine naturel</td>
+            </tr>
+            <tr>
+              <td><strong>Grottes & hautes terres</strong></td>
+              <td>Monatélé, Okola, Obala, Batchenga</td>
+              <td>—</td>
+              <td>Relief / culturel</td>
+              <td>Caractère sacré possible <span class="badge-statut badge-niveau2" style="margin-left:0.5rem;">🔒 Niveau 2 — données non publiées</span></td>
+            </tr>
+            <tr>
+              <td><strong>Forêts sacrées</strong></td>
+              <td>Plusieurs arrondissements</td>
+              <td>—</td>
+              <td>Patrimoine immatériel</td>
+              <td>Accès souvent codifié <span class="badge-statut badge-niveau2" style="margin-left:0.5rem;">🔒 Niveau 2 — données non publiées</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Hébergements -->
+    <div class="card" style="margin-top:1.5rem;">
+      <h3>🛏️ Hébergements locaux (données partielles)</h3>
+      <p style="font-size:0.9rem;color:var(--gris);margin-bottom:0.8rem;">
+        Les données d'hébergement restent très incomplètes. Voici ce qui a pu être identifié, principalement à Obala :
+      </p>
+      <div style="overflow-x:auto;">
+        <table class="table-data">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Localisation</th>
+              <th>Type</th>
+              <th>Observations</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Pacific City Hotel</strong></td>
+              <td>Obala (montée mairie)</td>
+              <td>Hôtel (1★ signalé)</td>
+              <td>Un des rares hôtels classés identifiés</td>
+            </tr>
+            <tr>
+              <td><strong>Fini Hotel</strong></td>
+              <td>Obala centre</td>
+              <td>Hôtel</td>
+              <td>Non classé</td>
+            </tr>
+            <tr>
+              <td><strong>Reference Hotel</strong></td>
+              <td>Obala centre</td>
+              <td>Hôtel</td>
+              <td>Non classé</td>
+            </tr>
+            <tr>
+              <td><strong>Auberge Bellavie / Zene / Oke Double / autres</strong></td>
+              <td>Obala (plusieurs quartiers)</td>
+              <td>Auberges</td>
+              <td>Offre d'accueil de base présente</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.8rem;color:var(--gris2);margin-top:0.6rem;">
+        📌 Monatélé, Sa'a, Okola et les autres arrondissements : données d'hébergement encore très lacunaires.  
+        Contribution citoyenne fortement encouragée.
+      </p>
+      <span class="badge-statut badge-contributif">Données à enrichir</span>
+    </div>
+
+    <!-- Carte -->
+    <div class="card" style="margin-top:1.5rem;">
+      <h3>🗺️ Carte des sites touristiques</h3>
+      <div class="map-wrapper">
+        <div id="map"></div>
+      </div>
+      <p style="font-size:0.8rem;color:var(--gris2);margin-top:0.5rem;">
+        Points indicatifs. <span style="color:var(--vert)">📍 Vert = Site</span> | <span style="color:var(--or)">🛏️ Or = Hébergement</span>. 
+        À compléter avec des contributions terrain : GPS précis, photos, état d'accès.
+      </p>
+    </div>
+
+    <div class="note" style="margin-top:1rem;">
+      <strong>📌 Lien avec Agriculture & Élevage :</strong> Possibilité de développer l'agrotourisme autour du cacao, plantain, maraîchage et des fermes piscicoles.
+      <br><br>
+      <strong>📌 Marché de Monatélé :</strong> Artisanat, rencontres, produits locaux — un atout pour le tourisme de proximité.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 4. FORCES & FAIBLESSES -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">✅ Forces & ⚠️ Faiblesses</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Forces & Opportunités</h3>
+        <ul>
+          <li>Proximité de Yaoundé</li>
+          <li>Patrimoine culturel diversifié</li>
+          <li>Paysages naturels intéressants</li>
+          <li>Possibilité d'agrotourisme (cacao, plantain, maraîchage)</li>
+          <li>Tourisme de proximité et culturel</li>
+          <li>Tourisme mémoriel (André Marie Mbida)</li>
+        </ul>
+        <span class="badge-statut badge-valide">Potentiel réel</span>
+      </div>
+      <div class="card">
+        <h3>Faiblesses & Risques</h3>
+        <ul>
+          <li>Infrastructures d'accueil limitées</li>
+          <li>Patrimoine peu mis en valeur</li>
+          <li>Réseau routier encore difficile par endroits</li>
+          <li>Données de fréquentation quasi inexistantes</li>
+          <li>Faible structuration des acteurs</li>
+        </ul>
+        <span class="badge-statut badge-encours">À structurer</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 5. INDICATEURS -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📊 Indicateurs de départ</h2>
+    <div class="card">
+      <div class="indicateur-item">
+        <span class="ind-label">Nombre d'hébergements recensés</span>
+        <span class="ind-value">Donnée recherchée</span>
+        <span class="ind-status">🔍 À collecter</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Fréquentation touristique annuelle</span>
+        <span class="ind-value">Donnée recherchée</span>
+        <span class="ind-status">🔍 À collecter</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Sites aménagés / balisés</span>
+        <span class="ind-value">Très limités</span>
+        <span class="ind-status">📌 Observation</span>
+      </div>
+      <div class="indicateur-item">
+        <span class="ind-label">Circuits touristiques organisés</span>
+        <span class="ind-value">Quasi inexistants</span>
+        <span class="ind-status">📌 Observation</span>
+      </div>
+    </div>
+    <div class="note">
+      <strong>📌 Synthèse :</strong> La Lékié dispose d'un potentiel touristique réel (culturel + naturel + proximité Yaoundé), mais encore très peu valorisé. L'enjeu principal est l'inventaire, la mise en valeur et la structuration des acteurs locaux.
+      <br>
+      <span class="badge-statut badge-contributif" style="margin-top:0.5rem;">Données à enrichir</span>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6. CONTRIBUTION -->
+  <!-- ============================================================ -->
+  <section id="contribuer">
+    <h2 class="section-title">📢 Contribuer à la page Tourisme</h2>
+    <div class="note">
+      <p><strong>Vous connaissez un site, une chefferie, un hébergement ou une initiative touristique dans la Lékié ?</strong></p>
+    </div>
+    <div style="text-align:center;margin-top:1rem;display:flex;flex-wrap:wrap;gap:0.8rem;justify-content:center;">
+      <a href="plateforme.html#contribuer" class="btn-or">📢 Signaler une donnée touristique</a>
+      <a href="#top" class="btn-outline">⬆ Retour en haut</a>
+    </div>
+  </section>
+
 </div>
-<footer>ISGI-Lékié — Valorisation du territoire</footer>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top:0.3rem;color:rgba(255,255,255,0.35);">Dernière mise à jour : 04 Août 2026</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut">↑</a>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // ---- BURGER MENU ----
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+
+  // ---- BACK TO TOP ----
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ---- CARTE LEAFLET ----
+  try {
+    const map = L.map('map').setView([4.20, 11.35], 10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    const sitesTouristiques = [
+      { nom: "Chute / site de Poupouma", lat: 4.2333, lng: 11.3167, type: "Chute / paysage — Monatélé", cat: "site" },
+      { nom: "Lacs coloniaux", lat: 4.2333, lng: 11.6833, type: "Plan d'eau — Batchenga", cat: "site" },
+      { nom: "Sablières Sanaga", lat: 4.35, lng: 11.20, type: "Paysage fluvial", cat: "site" },
+      { nom: "Chutes d'Evodoula", lat: 4.083, lng: 11.2, type: "Chute / paysage — Evodoula", cat: "site" },
+      { nom: "Obala (pôle d'accueil)", lat: 4.1589, lng: 11.5339, type: "Hébergements + patrimoine", cat: "hebergement" },
+      { nom: "Sa'a", lat: 4.117, lng: 11.417, type: "Patrimoine & chefferies", cat: "site" },
+      { nom: "Monatélé (chef-lieu)", lat: 4.1875, lng: 11.2525, type: "Chef-lieu + accès Sanaga", cat: "site" },
+      { nom: "Chefferie d'Endinding", lat: 4.15, lng: 11.52, type: "Site historique — Obala", cat: "site" },
+      { nom: "Marché de Monatélé", lat: 4.1875, lng: 11.255, type: "Artisanat, rencontres, produits locaux", cat: "site" }
+    ];
+
+    sitesTouristiques.forEach(function(site) {
+      const isHebergement = site.cat === "hebergement";
+      const icon = L.divIcon({
+        className: 'custom-icon',
+        html: `<div style="background:${isHebergement ? '#c4922a' : '#1b3a2d'};color:white;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 2px 6px rgba(0,0,0,0.2);">${isHebergement ? '🛏️' : '📍'}</div>`,
+        iconSize: [26,26]
+      });
+      
+      L.marker([site.lat, site.lng], {icon}).addTo(map)
+        .bindPopup('<strong>' + site.nom + '</strong><br>' + site.type);
+    });
+
+  } catch(e) {
+    // Fallback silencieux
+  }
+</script>
 </body>
 </html>
