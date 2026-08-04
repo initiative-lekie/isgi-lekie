@@ -1,0 +1,16 @@
+# Redirections pour les erreurs de frappe (URL avec accents)
+/mon-école /mon-ecole.html 301
+/mon-village /mon-village.html 301
+/observatoire /observatoire.html 301
+/plateforme /plateforme.html 301
+/certification /certification.html 301
+/sport /sport.html 301
+/tourisme /tourisme.html 301
+/presse /presse.html 301
+/elevage /elevage.html 301
+/agriculture /agriculture.html 301
+/hommage /hommage-andre-marie-mbida.html 301
+/administrateurs /administrateurs-territoriaux.html 301
+
+# Gestion des erreurs 404
+/* /404.html 404
