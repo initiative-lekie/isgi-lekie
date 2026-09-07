@@ -30,8 +30,7 @@
     h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 600; }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
 
-    .status-banner { background: #1b3a2d; color: rgba(255,255,255,0.85); padding: 0.55rem 1.5rem; text-align: center; font-size: 0.75rem; border-bottom: 2px solid #c4922a; }
-    .status-banner em { color: #e0a83e; font-style: normal; font-weight: 600; }
+    .status-banner { background: #e0a83e; font-style: normal; font-weight: 600; }
     .lekie-en-premier { background: #1b3a2d; color: #e0a83e; text-align: center; padding: 0.4rem; font-size: 0.8rem; font-style: italic; }
 
     .navbar { background: #1b3a2d; padding: 0.8rem 1.5rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #c4922a; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
@@ -133,6 +132,10 @@
     .chronique-table td { padding: 0.4rem 0.5rem; border-bottom: 1px solid #e8dfd0; }
     .chronique-table tr:nth-child(even) { background: #f9f7f2; }
 
+    .grid-3-elites { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem 1rem; font-size: 0.85rem; margin-top: 0.5rem; }
+    .elite-item { padding: 0.2rem 0; border-bottom: 1px solid #f4efe6; }
+    .elite-item strong { color: #1b3a2d; }
+
     footer { background: #0f2c21; color: rgba(255,255,255,0.6); text-align: center; padding: 2rem 1rem; font-size: 0.8rem; margin-top: 2rem; }
     footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
 
@@ -156,6 +159,7 @@
       .stat-row .value { text-align: left; width: 100%; }
       .dashboard-grid { grid-template-columns: 1fr 1fr; }
       .sticky-contrib-btn { bottom: 70px; right: 10px; padding: 0.6rem 1rem; font-size: 0.75rem; }
+      .grid-3-elites { grid-template-columns: 1fr; }
     }
 
     /* STYLES POUR L'EXPORT PDF */
@@ -188,6 +192,8 @@
     <a href="observatoire.html">Observatoire</a>
     <a href="sport.html">Sport</a>
     <a href="certification.html">Certification</a>
+    <a href="agriculture.html">🌾 Agriculture</a>
+    <a href="elevage.html">🐄 Élevage</a>
     <a href="tourisme.html">Tourisme</a>
     <a href="hommage-andre-marie-mbida.html">Hommage</a>
     <a href="presse.html">Presse</a>
@@ -201,15 +207,12 @@
   <!-- ============================================================ -->
   <section id="carte">
 
-    <!-- TITRE MODIFIÉ -->
     <h2 class="section-title" style="font-size:2rem; margin-bottom:0.5rem;">Plateforme d'Intelligence Territoriale de la Lékié</h2>
 
-    <!-- PARAGRAPHE AJOUTÉ -->
     <p style="color:#5a5a50; font-size:0.95rem; margin-bottom:1.5rem; max-width:800px;">
       ISGI-Lékié est la plateforme d'intelligence territoriale du département de la Lékié. Elle documente, organise et valorise les connaissances, les institutions, les territoires et les initiatives afin de produire une mémoire collective utile au développement.
     </p>
 
-    <!-- TABLEAU DE BORD -->
     <div class="dashboard" id="dashboardSection">
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
         <h3>📊 Tableau de bord territorial — Lékié 2025</h3>
@@ -319,7 +322,11 @@
     <!-- PRÉFET -->
     <div class="grid-2" style="margin-bottom:1.5rem;">
       <div class="card"><h3>Préfet de la Lékié</h3><p><strong>Patrick Simou Kamsu</strong></p><p style="font-size:0.8rem; color:#64748b;">Préfet depuis 2010</p><span class="badge-statut badge-valide">Validé</span></div>
-      <div class="card"><h3>Adjoints au Préfet</h3><p><strong>[À COMPLÉTER]</strong> — 1er adjoint</p><p><strong>[À COMPLÉTER]</strong> — 2e adjoint</p><span class="badge-statut badge-encours">En cours</span></div>
+      <div class="card"><h3>Adjoints au Préfet</h3>
+        <p><strong>Mme AMINATA TOURE</strong> — 1er Adjoint Préfectoral de Monatélé (nommée le 30 juillet 2026)</p>
+        <p><strong>[À COMPLÉTER]</strong> — 2e adjoint</p>
+        <span class="badge-statut badge-encours">En cours</span>
+      </div>
     </div>
 
     <!-- SOUS-PRÉFETS -->
@@ -375,8 +382,39 @@
 
     <!-- FORCES DE L'ORDRE -->
     <div class="grid-2" style="margin-bottom:1.5rem;">
-      <div class="card"><h3>👮 Gendarmerie — Compagnie de Monatélé</h3><p>La Lékié est couverte par la <strong>Compagnie de Gendarmerie de Monatélé</strong>, dont l'État-Major est basé à Monatélé.</p><p><strong>Brigades territoriales (9) :</strong> Monatélé, Obala, Sa'a, Okola, Elig-Mfomo, Evodoula, Ebebda, Lobo, Batchenga</p><p><strong>Postes de Gendarmerie (3) :</strong> Nkolve, Ngoksa, Ekabita-Medum</p><p style="font-size:0.8rem; color:#64748b; margin-top:0.5rem;">📌 <strong>Contribuez :</strong> Commandant, numéros d'urgence, adresses — partagez via le formulaire "Contribuer".</p><span class="badge-statut badge-valide">Validé</span></div>
-      <div class="card"><h3>⚖️ Justice</h3><p><strong>Tribunal de grande instance</strong> : Monatélé</p><p><strong>Tribunal de première instance</strong> : Monatélé</p><p><strong>Tribunaux coutumiers</strong> : Présence dans certaines communes (informations en cours de collecte)</p><p style="font-size:0.8rem; color:#64748b; margin-top:0.5rem;">📌 <strong>Contribuez :</strong> Informations sur les tribunaux coutumiers, prisons, notaires, huissiers — partagez via le formulaire "Contribuer".</p><span class="badge-statut badge-encours">En cours</span></div>
+      <div class="card"><h3>👮 Gendarmerie — Compagnie de Monatélé</h3>
+        <p><strong>Commandant :</strong> Baourou Lamine (2025)</p>
+        <p>La Lékié est couverte par la <strong>Compagnie de Gendarmerie de Monatélé</strong>, dont l'État-Major est basé à Monatélé.</p>
+        <p><strong>Brigades territoriales (9) :</strong> Monatélé, Obala, Sa'a, Okola, Elig-Mfomo, Evodoula, Ebebda, Lobo, Batchenga</p>
+        <p><strong>Postes de Gendarmerie (3) :</strong> Nkolve, Ngoksa, Ekabita-Medum</p>
+        <p style="font-size:0.8rem; color:#64748b; margin-top:0.5rem;">📌 <strong>Contribuez :</strong> numéros d'urgence, adresses — partagez via le formulaire "Contribuer".</p>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+      <div class="card"><h3>👮 Police Nationale</h3>
+        <p><strong>Commissariat Spécial de Batchenga</strong> : Commissaire Spécial ATEBA ENGUENO Philippe</p>
+        <p><strong>Adjoint</strong> : ONGONO ENAMA Philémon, Officier de Police 2ᵉ grade</p>
+        <p><strong>Commissariat Spécial d'Obala</strong> : Commissaire Spécial MBO Moïse Deschanel</p>
+        <p><strong>Commissariat de Sécurité Publique</strong> : Monatélé</p>
+        <p style="font-size:0.8rem; color:#64748b; margin-top:0.5rem;">📌 <strong>Contribuez :</strong> Autres commissariats, numéros d'urgence — partagez via le formulaire "Contribuer".</p>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+    </div>
+
+    <!-- MAIRES -->
+    <div class="card" style="margin-bottom:1.5rem;">
+      <h3>Maires</h3>
+      <div class="grid-2" style="margin-top:0.5rem;">
+        <div><strong>Monatélé</strong> : Prosper Parfait Mbassi Bessala</div>
+        <div><strong>Obala</strong> : Francis Gaël Touna</div>
+        <div><strong>Sa'a</strong> : M. Jean Blaise Messina Noah</div>
+        <div><strong>Okola</strong> : M. Vincent De Paul Noa</div>
+        <div><strong>Evodoula</strong> : M. Armand Joachim Ongolo Eloundou</div>
+        <div><strong>Ebebda</strong> : M. Manga Bessala</div>
+        <div><strong>Elig-Mfomo</strong> : M. Stanislas Ayissi</div>
+        <div><strong>Batchenga</strong> : M. Anatole Souga</div>
+        <div><strong>Lobo</strong> : M. Serge Bertin Obono Onguene</div>
+      </div>
+      <span class="badge-statut badge-valide" style="margin-top:0.5rem;">Validé</span>
     </div>
 
     <!-- PARLEMENTAIRES -->
@@ -388,12 +426,6 @@
       <p><strong>Lékié Est :</strong> Ndongo Essomba †, Ndongo Eteme Edgard, Ngaba Zogo Salomé</p>
       <p><strong>Lékié Ouest :</strong> Koa Songo, Tassi Evelyne</p>
       <span class="badge-statut badge-valide" style="margin-top:0.5rem;">Validé</span>
-    </div>
-
-    <!-- GOUVERNEMENT -->
-    <div class="grid-2" style="margin-bottom:1.5rem;">
-      <div class="card"><h3>Membres du gouvernement</h3><p>Henri Eyebe Ayissi (MINDCAF), Galax Etoga (SED), Benoît Ndong Soumhet (PR)</p><span class="badge-statut badge-valide">Validé</span></div>
-      <div class="card"><h3>Autres hautes responsabilités</h3><p><strong>Vice-Président de la Commission de la CEMAC</strong> : Charles Assamba Ongodo</p><p><strong>Directeur Général de la CAA</strong> : Adolphe Noah Ndongo</p><p><strong>Président du PCA de l'Hôpital Général de Yaoundé</strong> : Essomba Auguste</p><p><strong>Directeur National de la BEAC</strong> : Pierre Emmanuel Nkoa Ayissi</p><p><strong>PCA SOCADEL</strong> : Antoine Ntsimi</p><p><strong>Ambassadeur du Cameroun au Japon</strong> : Pierre Ndzengue</p><p><strong>Général Donatien Melingui Nouma</strong> — Inspecteur des forces</p><p><strong>Général Tobie Gabriel Ngolo Ngomba</strong> — Commandant 2e RMIA</p><span class="badge-statut badge-valide">Validé</span></div>
     </div>
 
     <!-- CONSEIL RÉGIONAL -->
@@ -411,10 +443,33 @@
       <span class="badge-statut badge-valide">Validé</span>
     </div>
 
-    <!-- MAIRES -->
+    <!-- GOUVERNEMENT -->
+    <div class="grid-2" style="margin-bottom:1.5rem;">
+      <div class="card"><h3>Membres du gouvernement</h3>
+        <p>Henri Eyebe Ayissi (MINDCAF), Galax Etoga (SED), Benoît Ndong Soumhet (PR)</p>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+      <div class="card"><h3>Autres hautes responsabilités</h3>
+        <p><strong>Vice-Président de la Commission de la CEMAC</strong> : Charles Assamba Ongodo</p>
+        <p><strong>Directeur Général de la CAA</strong> : Adolphe Noah Ndongo</p>
+        <p><strong>Président du PCA de l'Hôpital Général de Yaoundé</strong> : Essomba Auguste</p>
+        <p><strong>Directeur National de la BEAC</strong> : Pierre Emmanuel Nkoa Ayissi</p>
+        <p><strong>PCA SOCADEL</strong> : Antoine Ntsimi</p>
+        <p><strong>Ambassadeur du Cameroun au Japon</strong> : Pierre Ndzengue</p>
+        <p><strong>Général de Brigade Donatien Melingui Nouma</strong> — Commandant de la 1ère Région Militaire Interarmées (nommé le 03 août 2026)</p>
+        <p><strong>Général de Brigade Valère Nka</strong> — Commandant des Écoles et Centres d'Instruction Interarmées (nommé le 03 août 2026)</p>
+        <p><strong>Général Tobie Gabriel Ngolo Ngomba</strong> — Commandant 2e RMIA</p>
+        <span class="badge-statut badge-valide">Validé</span>
+      </div>
+    </div>
+
+    <!-- ANCIENS MEMBRES DU GOUVERNEMENT -->
     <div class="card" style="margin-bottom:1.5rem;">
-      <h3>Maires</h3>
-      <p>Liste dans les fiches communes ci-dessous.</p>
+      <h3>Anciens membres du gouvernement</h3>
+      <p><strong>ELOUNDOU MANI Pierre</strong> — Ancien ministre</p>
+      <p><strong>OLANGUENA AWONO</strong> — Ancien ministre</p>
+      <p><strong>ESSIMI MENYE Lazare</strong> — Ancien ministre</p>
+      <p><strong>Prof. AYINA OHANDJA Max</strong> — Ancien secrétaire d'État</p>
       <span class="badge-statut badge-valide">Validé</span>
     </div>
 
@@ -426,15 +481,231 @@
       <a href="administrateurs-territoriaux.html" style="color:#1b3a2d; text-decoration:none; border:1px solid #c4922a; padding:0.3rem 1rem; border-radius:20px; display:inline-block; margin-top:0.5rem; font-size:0.8rem;">📋 Voir la liste →</a>
     </div>
 
-    <!-- ANCIENS MEMBRES DU GOUVERNEMENT -->
-    <div class="card">
-      <h3>Anciens membres du gouvernement</h3>
-      <p><strong>ELOUNDOU MANI Pierre</strong> — Ancien ministre</p>
-      <p><strong>OLANGUENA AWONO</strong> — Ancien ministre</p>
-      <p><strong>ESSIMI MENYE Lazare</strong> — Ancien ministre</p>
-      <p><strong>Prof. AYINA OHANDJA Max</strong> — Ancien secrétaire d'État</p>
-      <span class="badge-statut badge-valide">Validé</span>
-    </div>
+    <!-- ÉLITES ET PERSONNALITÉS -->
+    <section id="elites" style="padding:0; margin-top:2rem;">
+      <h3 style="font-family:'Cormorant Garamond',serif; color:#1b3a2d; font-size:1.3rem; margin-bottom:0.5rem;">👤 Élites et personnalités de la Lékié</h3>
+      <p class="section-note">⚠️ Compilation en cours — Liste des enfants du terroir occupant des fonctions stratégiques.</p>
+
+      <!-- GROUPEMENT EKOT -->
+      <div class="card" style="margin-bottom:1.5rem;">
+        <h3>Groupement EKOT</h3>
+        <div class="grid-3-elites">
+          <div class="elite-item"><strong>ELOUNDOU MANI Pierre</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Ancien Ministre</div>
+          <div class="elite-item"><strong>NDJAGA Jules Marcelin</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Questeur/Région du Centre</div>
+          <div class="elite-item"><strong>NOAH ALIMA Beauregard</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Opérateur économique</div>
+          <div class="elite-item"><strong>OMENGUE MESSANGA Eric</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Chef de division/Consupe</div>
+          <div class="elite-item"><strong>Pr. EBELE ONANA Désiré</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Universitaire</div>
+          <div class="elite-item"><strong>EVENGA ONANA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Diaspora</div>
+          <div class="elite-item"><strong>BEDZIGUI Jules</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Commissaire retraité</div>
+          <div class="elite-item"><strong>BELOBO Jean Pierre</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKONGMESSE</span><br>Enseignant/Banquier</div>
+          <div class="elite-item"><strong>ABENA Sosthène Nicaise</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKONGMESSE</span><br>Diaspora</div>
+          <div class="elite-item"><strong>MILANGA ALIMA Nathalie</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre/CNPS</div>
+          <div class="elite-item"><strong>NDJANA Yves Bertrand</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKONGMENDOK</span><br>Préfet du Moungo</div>
+          <div class="elite-item"><strong>Mme EYEBE Marcelle</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Enseignante retraitée</div>
+          <div class="elite-item"><strong>Dr Vanessa IPALA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Universitaire</div>
+          <div class="elite-item"><strong>MENUNGA Médard</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller municipal</div>
+          <div class="elite-item"><strong>BILANA Denis</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller municipal</div>
+          <div class="elite-item"><strong>Dr BINDZI Henriette</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseillère municipale</div>
+          <div class="elite-item"><strong>NGAH OBIAGA Jérôme</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Mintourl</div>
+          <div class="elite-item"><strong>MOLO Lydiane</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Inspecteur des Douanes</div>
+          <div class="elite-item"><strong>MENYE Placide</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Contrôleur du Trésor</div>
+          <div class="elite-item"><strong>TSALA François</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Avocat</div>
+          <div class="elite-item"><strong>ELOUNDOU MVOGO</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Avocat</div>
+          <div class="elite-item"><strong>NOMO Henri</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre Minfof</div>
+          <div class="elite-item"><strong>Rév. ONANA KOA Didier</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Pasteur EPC</div>
+          <div class="elite-item"><strong>MBASSI Alexandre</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Enseignant</div>
+          <div class="elite-item"><strong>SM NTEDE NDJOMO Michel</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Chef 2è degré</div>
+          <div class="elite-item"><strong>Pr EDOUMA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Enseignant/Univ-Ebolowa</div>
+          <div class="elite-item"><strong>NOAH ELOUNDOU Fabrice</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Sous-préfet de FIFINDA</div>
+          <div class="elite-item"><strong>NGAH KOA Roland</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Sous-préfet Mouanko</div>
+          <div class="elite-item"><strong>MESSINA Ernest</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre MINFI</div>
+          <div class="elite-item"><strong>AWONO Daniel</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Journaliste</div>
+          <div class="elite-item"><strong>OLINGA ONANA Jean</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller Municipal</div>
+          <div class="elite-item"><strong>SM ASSOMO NGONO Fabrice Achylle</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Chef traditionnel</div>
+          <div class="elite-item"><strong>NGA NGONO Yvette Béatrice</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre Contractuel d'Administration</div>
+          <div class="elite-item"><strong>METOUGA NGONO Benjamin</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Délégué Régional MINFOF</div>
+          <div class="elite-item"><strong>MOLE MESSOLO Roger</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>AWONO MBASSI Casimir</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Dir/SAR.SM</div>
+          <div class="elite-item"><strong>TSALA François Xavier</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Avocat</div>
+          <div class="elite-item"><strong>BELIBI Constantin</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Mintrans/Edéa</div>
+          <div class="elite-item"><strong>BELA ZOMO Christian</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre/Minsanté</div>
+        </div>
+      </div>
+
+      <!-- GROUPEMENT MVOG NAMNYIE I -->
+      <div class="card" style="margin-bottom:1.5rem;">
+        <h3>Groupement MVOG NAMNYIE I</h3>
+        <div class="grid-3-elites">
+          <div class="elite-item"><strong>TSALA ELOUNDOU Théophile</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>CT2/Minmap</div>
+          <div class="elite-item"><strong>MESSANGA MANI Pascal</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Procureur du Moungo</div>
+          <div class="elite-item"><strong>SM ETOGA Paul Longin</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre/DGI</div>
+          <div class="elite-item"><strong>NKANGA Benjamin</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>SG Commune de Bafia</div>
+          <div class="elite-item"><strong>AWONGO Etienne</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Opérateur économique</div>
+          <div class="elite-item"><strong>EBO Léopold</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Informaticien</div>
+          <div class="elite-item"><strong>MOLO OMBOLO Gustave</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>A2 Commune Monatélé</div>
+          <div class="elite-item"><strong>Denis Emilien ATANGANA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Pdt FDC</div>
+          <div class="elite-item"><strong>Dr Hugues François ONANA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller municipal</div>
+          <div class="elite-item"><strong>ALIMA NGAH Roger</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Douanier retraité</div>
+          <div class="elite-item"><strong>OMBEDE Raphael</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Inspecteur des Douanes</div>
+          <div class="elite-item"><strong>LOMOBILOA Ange</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Pdt CNJC/Monatélé</div>
+          <div class="elite-item"><strong>Némé Nem'Appo</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Diplômé Ens. Supérieur</div>
+          <div class="elite-item"><strong>ABENGUE Souga</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller municipal</div>
+          <div class="elite-item"><strong>Mme AWONO Félicité</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseillère municipale</div>
+          <div class="elite-item"><strong>NGONO Eugène</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Inspecteur des Impôts</div>
+          <div class="elite-item"><strong>ONANANGAH Ambroise</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Minfi</div>
+          <div class="elite-item"><strong>ESSIMI Régis</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Consupe</div>
+          <div class="elite-item"><strong>ELOUNA Paul</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Magistrat/Bafoussam</div>
+          <div class="elite-item"><strong>ELOUNDOU Alphonse</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : ZOBSILA</span><br>Journaliste / DP Anagsama International</div>
+          <div class="elite-item"><strong>Dr ENAMA MBATSOGO</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Gynécologue</div>
+          <div class="elite-item"><strong>EKANI Joseph</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Militaire retraité</div>
+          <div class="elite-item"><strong>Colonel MVIENA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Retraité</div>
+          <div class="elite-item"><strong>NGA Timothée</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Président de Sous-section</div>
+          <div class="elite-item"><strong>Hon NGONO Guy Parfait</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Ancien Député</div>
+          <div class="elite-item"><strong>Hon MVOGO Luc</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Ancien Député</div>
+          <div class="elite-item"><strong>ELOUNDOU ANDEGUE Marie Robert</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Journaliste / DP Essingan</div>
+          <div class="elite-item"><strong>COL. NKE Thomas</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Retraité</div>
+          <div class="elite-item"><strong>TSALA Philippe</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite Extérieure</div>
+          <div class="elite-item"><strong>MBAZOMO Jacques</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite extérieure</div>
+          <div class="elite-item"><strong>NFONO MODO Fabrice</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Sous-préfet Loum</div>
+          <div class="elite-item"><strong>ONGUNE Vincent</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Adjoint sous-préfet Dla 5è</div>
+          <div class="elite-item"><strong>EBOLO Jean Claude</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Diplomate retraité</div>
+          <div class="elite-item"><strong>ONAMBELE Luc</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+        </div>
+      </div>
+
+      <!-- GROUPEMENT NKOLKOSSE -->
+      <div class="card" style="margin-bottom:1.5rem;">
+        <h3>Groupement NKOLKOSSE</h3>
+        <div class="grid-3-elites">
+          <div class="elite-item"><strong>SM MBASSI BESSALA Prosper</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Maire</div>
+          <div class="elite-item"><strong>SM ZAMBO Jean Berthelot</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOKOSSE</span><br>Conseiller Régional</div>
+          <div class="elite-item"><strong>Pr. AWONO ONANA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOKOSSE</span><br>Universitaire</div>
+          <div class="elite-item"><strong>Pr. ELE PIERRE</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOKOSSE</span><br>Universitaire</div>
+          <div class="elite-item"><strong>NGA OSSONGO Antoine</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOKOSSE</span><br>Universitaire</div>
+          <div class="elite-item"><strong>MBILONGO NOGO Joachim</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>—</div>
+          <div class="elite-item"><strong>ME ETEME ETEME Simon-Pierre</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>Traducteur international</div>
+          <div class="elite-item"><strong>NDJIE ETEME</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>SG Section RDPC Lékié-Ouest I</div>
+          <div class="elite-item"><strong>LEMA NGONO Blandine</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>Avocat</div>
+          <div class="elite-item"><strong>Laure ATANGANA MENOUNGA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>Ingénieur</div>
+          <div class="elite-item"><strong>CAPITAINE NDOUGA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>Cadre Enam retraité</div>
+          <div class="elite-item"><strong>MBASSI ANDRE</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>Cadre Unicef</div>
+          <div class="elite-item"><strong>AKOLO ABE MAURICE</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLMEYOS</span><br>Ingénieur projet</div>
+          <div class="elite-item"><strong>NOAH EKASSI</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>Armée</div>
+          <div class="elite-item"><strong>OSSONGO Faustin</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>Conseiller municipal</div>
+          <div class="elite-item"><strong>OMBOUDOU PIERRE</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>Pdt OJRDPC</div>
+          <div class="elite-item"><strong>Me NGOLO Désiré</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>Elite</div>
+          <div class="elite-item"><strong>ABBE NGAH NOGO Jean Aimé</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Pdt S/S OJRDPC</div>
+          <div class="elite-item"><strong>ONANA ONANA Sylvestre</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Avocat</div>
+          <div class="elite-item"><strong>ANDELA NDONGO Joseph</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Prêtre</div>
+          <div class="elite-item"><strong>OBAMA NYAGA Joël</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Diplomate</div>
+          <div class="elite-item"><strong>SM MAGNAN AWONO</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre/Mindcaf</div>
+          <div class="elite-item"><strong>CPP ZOGO ONANA André</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : NKOLOSSANAGA</span><br>Médecin</div>
+          <div class="elite-item"><strong>OHANDJA Clément</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Chef de village</div>
+          <div class="elite-item"><strong>MBIA ONANA Bernadin</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>Me ONANA ONANA Léandre</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>NGONO Christophe</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>MODO Pascal Jérémie</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Huissier de justice</div>
+          <div class="elite-item"><strong>Col. AWONO Louis Thadée</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Gardien de prison</div>
+          <div class="elite-item"><strong>MOLO BEYINA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Retraité</div>
+          <div class="elite-item"><strong>NTSAMA Pascal</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>MINDEF</div>
+          <div class="elite-item"><strong>TABESING Martial</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Opérateur économique</div>
+          <div class="elite-item"><strong>OMBOUDOU Innocent</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Universitaire</div>
+          <div class="elite-item"><strong>NDEME AWONO Léonard</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre Mtn/Dla</div>
+          <div class="elite-item"><strong>BELIBI Alexandre</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>ONANA Chantal</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre BICEC</div>
+          <div class="elite-item"><strong>LT NGOLO Boris Joachim</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Retraité</div>
+          <div class="elite-item"><strong>MBASSI MVOGO</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre/MINEDUB</div>
+          <div class="elite-item"><strong>NTEDE ABINA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>MINDEF</div>
+          <div class="elite-item"><strong>ZINGUI Grégoire</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>ONAMBELE Cyprien</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Econome CETIC</div>
+        </div>
+      </div>
+
+      <!-- GROUPEMENT KOUGOUDA -->
+      <div class="card" style="margin-bottom:1.5rem;">
+        <h3>Groupement KOUGOUDA</h3>
+        <div class="grid-3-elites">
+          <div class="elite-item"><strong>BILEGE André Marie</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Pdt Section/Conseiller municipal</div>
+          <div class="elite-item"><strong>Dr BIDJOGO ATANGANA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>ADG/Fondation Ad Lucem</div>
+          <div class="elite-item"><strong>Pr AYINA OHANDJA Louis-Max</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Ancien SETAT/MINTP</div>
+          <div class="elite-item"><strong>Colonel NDZANA MVONDO C.</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre de l'Armée</div>
+          <div class="elite-item"><strong>ELOUNDOU MVONDO Théophile</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>DG/Minmap</div>
+          <div class="elite-item"><strong>Dr AYINA NGOA Jean Paul</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Diplomate</div>
+          <div class="elite-item"><strong>MISSANGA OHANDJA B.</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller Municipal</div>
+          <div class="elite-item"><strong>SM AWONO Norbert</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Opérateur économique</div>
+          <div class="elite-item"><strong>ESSAMA Louis Marie</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Retraité</div>
+          <div class="elite-item"><strong>NGA Victor</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Régisseur/Gare routière</div>
+          <div class="elite-item"><strong>ONANA Magloire</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>—</div>
+          <div class="elite-item"><strong>Colonel EYEBE Didier</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Retraité</div>
+          <div class="elite-item"><strong>Mgr Damase ZINGA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Evêque de Kribi</div>
+          <div class="elite-item"><strong>NGONO Christophe</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Inspecteur des impôts</div>
+          <div class="elite-item"><strong>OKALA Lazare</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller municipal</div>
+          <div class="elite-item"><strong>Mme BINELI Rosalie</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller municipal</div>
+          <div class="elite-item"><strong>AZZAH ESSO Edmond</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Opérateur économique</div>
+          <div class="elite-item"><strong>MVOGO NDZANA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>—</div>
+          <div class="elite-item"><strong>Anne Féconde BILOA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Vice-présidente Pcrn</div>
+          <div class="elite-item"><strong>OLOMO Dieudonné</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre Elecam/Lékié</div>
+          <div class="elite-item"><strong>SM NGAH MESSOBO Francis</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>CPP. ATEBA Pierre</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>AWONO EBANGA Edgard</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Magistrat</div>
+          <div class="elite-item"><strong>COM-DIV ONANA ATANGANA Théophile</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>COM-DIV NYEBE SIMON</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>COM-DIV OSSONG Rémy</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>Dr NDEMBA GISELE</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>BELA MANGA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>MVONDO ELOUNDOU</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+          <div class="elite-item"><strong>MANGA François</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Sous-préfet à la retraite</div>
+          <div class="elite-item"><strong>MIFOUMOU Emmanuel</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Infirmier/HGY</div>
+          <div class="elite-item"><strong>NGABE ATANGANA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>DDES à la retraite</div>
+          <div class="elite-item"><strong>SM MVOGO ETOTOGO</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Chef 2è degré</div>
+          <div class="elite-item"><strong>MINALA Barthelemy</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Expert-comptable</div>
+          <div class="elite-item"><strong>TSANGA Achille</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadastre</div>
+          <div class="elite-item"><strong>BILIGUI TSANGA Christophe</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller municipal</div>
+          <div class="elite-item"><strong>BESSALA Jacques</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+        </div>
+      </div>
+
+      <!-- GROUPEMENT EYEN MEYONG -->
+      <div class="card" style="margin-bottom:1.5rem;">
+        <h3>Groupement EYEN MEYONG</h3>
+        <div class="grid-3-elites">
+          <div class="elite-item"><strong>Hon. TASSI Evelyne</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Député à l'Assemblée Nationale</div>
+          <div class="elite-item"><strong>Mgr AMBASSA NDJODO</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Archevêque de Garoua</div>
+          <div class="elite-item"><strong>SM Célestin Bedzigui</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>A1/Commune de Monatélé</div>
+          <div class="elite-item"><strong>Pr François-Marc MODZOM</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : ELIG BIKOUN</span><br>Directeur ESSTIC</div>
+          <div class="elite-item"><strong>Colonel AFANA Jean Paul</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Retraité</div>
+          <div class="elite-item"><strong>NDZANA Armand Kisito</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Magistrat/CA Littoral</div>
+          <div class="elite-item"><strong>AMBOMO Rachel</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Colonel armée Douala</div>
+          <div class="elite-item"><strong>Dr NGONO Valérie</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Médecin chef CMA AHALA</div>
+          <div class="elite-item"><strong>MBILONGO Daniel Boris</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>DG LABEL COMMUNICATION</div>
+          <div class="elite-item"><strong>Me AFANA Galbert</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller municipal</div>
+          <div class="elite-item"><strong>BODO Tobie</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Sous-préfet à la retraite</div>
+          <div class="elite-item"><strong>ETOUNDI MEVO René</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cabinet Civil/PRC</div>
+          <div class="elite-item"><strong>AYISSI Nicaise</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Ingénieur</div>
+          <div class="elite-item"><strong>NDZANA Armand</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Premier vice-Président à la Cour d'Appel du Littoral</div>
+          <div class="elite-item"><strong>BIFOUNA NDONGO</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Magistrat PT/CA/SU</div>
+          <div class="elite-item"><strong>Abbé Akpa Jean Louis Mélanie</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Prêtre</div>
+          <div class="elite-item"><strong>NGONO BIKOUN Bienvenu</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre aux Impôts</div>
+          <div class="elite-item"><strong>ESSOMBA EWODO Alexis</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>DAG Neptune</div>
+          <div class="elite-item"><strong>TSIMI NDZOMO</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Conseiller municipal</div>
+          <div class="elite-item"><strong>ELOUNDOU Martin</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>—</div>
+          <div class="elite-item"><strong>ELOBO Patrick</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>—</div>
+          <div class="elite-item"><strong>NDJODO Bikoung</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Cadre/Hôpital Général Yaoundé</div>
+          <div class="elite-item"><strong>AMBASSA Bikoun</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Sopecam</div>
+          <div class="elite-item"><strong>MBILONGO Junior Daniel Boris</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Opérateur économique</div>
+          <div class="elite-item"><strong>BIKOUN ENAMA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Avocat</div>
+          <div class="elite-item"><strong>SM ETOGO ETOGO</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Chef 2è degré</div>
+          <div class="elite-item"><strong>SM MEVO EDENE Thomas</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Chef traditionnel</div>
+          <div class="elite-item"><strong>Me NOMO BEYALA</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite/Avocat</div>
+          <div class="elite-item"><strong>Mme AFANA Nicole</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>CONSUPE</div>
+          <div class="elite-item"><strong>Me NDJODO BIKOUN</strong><br><span style="font-size:0.75rem;color:var(--gris2);">Village : À renseigner</span><br>Elite</div>
+        </div>
+      </div>
+      <div style="font-size:0.7rem; color:var(--gris2); margin-top:0.5rem;">
+        📌 Source : Contribution citoyenne — Compilation en cours
+      </div>
+    </section>
+
   </section>
 
   <!-- ============================================================ -->
@@ -643,8 +914,9 @@
 
   // ---- BASE DE DONNÉES DES COMMUNES AVEC PROJETS ----
   const communesDetail = [
-    { 
+    {
       nom: "Monatélé", id: "monatele", chefLieu: true, lat: 4.1875, lng: 11.2525,
+      creation: "1964 (source à confirmer)",
       maire: "Prosper Parfait Mbassi Bessala", superficie: "375 km²", population: 61700,
       groupements: ["Ekot", "Eyen-Meyong", "Kougouda", "Mvog-Onan-menye", "Nkolkosse"],
       ecoles: { publiques: 31, privees: 4, maternelles: 24, total: 59 },
@@ -656,8 +928,9 @@
       color: "#e41a1c",
       statut: "valide"
     },
-    { 
+    {
       nom: "Obala", id: "obala", chefLieu: false, lat: 4.1589, lng: 11.5339,
+      creation: "1955 (source à confirmer)",
       maire: "Francis Gaël Touna", superficie: "475 km²", population: 133014,
       groupements: ["Endinding", "Obala", "Nkolfep", "Efok", "Loua", "Mendum", "Nkol Edouma"],
       ecoles: { publiques: 19, privees: 12, maternelles: 5, total: 36 },
@@ -669,8 +942,9 @@
       color: "#377eb8",
       statut: "valide"
     },
-    { 
+    {
       nom: "Sa'a", id: "saa", chefLieu: false, lat: 4.117, lng: 11.417,
+      creation: "17 août 1952 (Arrêté n°537)",
       maire: "M. Jean Blaise Messina Noah", superficie: "583,9 km²", population: 93113,
       groupements: ["Engab", "Kouna-Odzolo", "Lebamzip", "Nkolbogo", "Nkolmvack", "Ebombo", "Sa'a"],
       ecoles: { publiques: 47, privees: 12, maternelles: 32, total: 91 },
@@ -681,8 +955,9 @@
       color: "#4daf4a",
       statut: "valide"
     },
-    { 
+    {
       nom: "Okola", id: "okola", chefLieu: false, lat: 4.0167, lng: 11.3833,
+      creation: "21 août 1952 (Arrêté n°537)",
       maire: "M. Vincent De Paul Noa", superficie: "605 km²", population: 91736,
       groupements: ["Mvog-Namnye III", "Eton-Beti", "Mvog-Nama II"],
       ecoles: { publiques: 62, privees: 2, maternelles: 43, total: 107 },
@@ -693,8 +968,9 @@
       color: "#ffff33",
       statut: "valide"
     },
-    { 
+    {
       nom: "Evodoula", id: "evodoula", chefLieu: false, lat: 4.083, lng: 11.2,
+      creation: "À vérifier (avant 1951)",
       maire: "M. Armand Joachim Ongolo Eloundou", superficie: "250 km²", population: 31600,
       groupements: ["Ntsas Endo", "Mvog-Namnye II"],
       ecoles: { publiques: 21, privees: 0, maternelles: 9, total: 30 },
@@ -703,8 +979,9 @@
       color: "#984ea3",
       statut: "valide"
     },
-    { 
+    {
       nom: "Ebebda", id: "ebebda", chefLieu: false, lat: 4.35, lng: 11.2,
+      creation: "25 novembre 1993",
       maire: "M. Manga Bessala", superficie: "250 km²", population: 50000,
       groupements: ["Abam-Ngoe", "Nkolkosse", "Abam", "Benyabega", "Sa'a"],
       ecoles: { publiques: 28, privees: 2, maternelles: 19, total: 49 },
@@ -715,8 +992,9 @@
       color: "#ff7f00",
       statut: "valide"
     },
-    { 
+    {
       nom: "Elig-Mfomo", id: "elig-mfomo", chefLieu: false, lat: 4.1, lng: 11.1,
+      creation: "1993 (date exacte à confirmer)",
       maire: "M. Stanislas Ayissi", superficie: "144 km²", population: 30785,
       groupements: ["Villages (25)"],
       ecoles: { publiques: 19, privees: 0, maternelles: 9, total: 28 },
@@ -727,8 +1005,9 @@
       color: "#f781bf",
       statut: "encours"
     },
-    { 
+    {
       nom: "Batchenga", id: "batchenga", chefLieu: false, lat: 4.2333, lng: 11.6833,
+      creation: "24 avril 1995 (district rattaché à Monatélé)",
       maire: "M. Anatole Souga", superficie: "216 km²", population: 14989,
       groupements: ["Benyagda", "Batchenga", "Mvog Namnyé"],
       ecoles: { publiques: 7, privees: 3, maternelles: 1, total: 11 },
@@ -739,8 +1018,9 @@
       color: "#a65628",
       statut: "encours"
     },
-    { 
+    {
       nom: "Lobo", id: "lobo", chefLieu: false, lat: 3.9833, lng: 11.4,
+      creation: "24 avril 1995 (district rattaché à Okola)",
       maire: "M. Serge Bertin Obono Onguene", superficie: "260 km²", population: 30121,
       groupements: ["Eton (chef supérieur)"],
       ecoles: { publiques: 19, privees: 0, maternelles: 3, total: 22 },
