@@ -72,10 +72,7 @@
     .btn-contribuer{display:inline-block;margin-top:0.5rem;font-size:0.75rem;color:var(--or);text-decoration:none;}
     .btn-contribuer:hover{text-decoration:underline;}
 
-    .signal-box{background:#fff8e1;border-left:4px solid var(--or);padding:0.8rem 1rem;border-radius:8px;margin:0.8rem 1rem;font-size:0.8rem;}
-    .signal-box strong{color:var(--vert);}
-    .signal-box.alerte{background:#ffebee;border-left-color:#c62828;}
-    .signal-box.succes{background:#e8f5e9;border-left-color:#2e7d32;}
+    .statut-block{background:#fff8e1;border-left:4px solid var(--or);padding:0.6rem 1rem;border-radius:6px;margin:0.6rem 1rem;font-size:0.78rem;color:var(--gris);}
 
     .panorama-block{background:var(--creme);border-radius:16px;padding:1.5rem;margin:1.5rem 0;border:1px solid var(--creme2);}
     .panorama-block table{width:100%;border-collapse:collapse;font-size:0.85rem;}
@@ -86,14 +83,13 @@
     .panorama-block .source{font-size:0.7rem;color:var(--gris2);margin-top:0.5rem;}
 
     .tableau-recap{background:var(--creme);border-radius:16px;padding:1rem;margin-bottom:1.5rem;border:1px solid var(--creme2);overflow-x:auto;-webkit-overflow-scrolling:touch;}
-    .tableau-recap table{width:100%;border-collapse:collapse;font-size:0.8rem;min-width:600px;}
+    .tableau-recap table{width:100%;border-collapse:collapse;font-size:0.8rem;min-width:640px;}
     .tableau-recap th{background:var(--vert);color:#fff;padding:0.4rem;text-align:left;}
     .tableau-recap td{padding:0.4rem;border-bottom:1px solid var(--creme2);}
     .tableau-recap tr:nth-child(even){background:#f9f7f2;}
     .tableau-recap .total-row{font-weight:700;background:var(--vert);color:#fff;}
-    .tableau-recap .ecart-pos{color:#2e7d32;font-weight:600;}
-    .tableau-recap .ecart-neg{color:#c62828;font-weight:600;}
-    .tableau-recap .ecart-eq{color:var(--gris2);}
+    .tableau-recap a{color:var(--vert);text-decoration:none;font-weight:600;}
+    .tableau-recap a:hover{text-decoration:underline;}
 
     .stats-block{background:var(--creme);border-radius:16px;padding:1.5rem;margin:1.5rem 0;border:1px solid var(--creme2);}
     .stats-block h4{font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:0.8rem;}
@@ -106,11 +102,11 @@
     .sticky-cta{position:sticky;bottom:0;z-index:99;background:var(--or);color:var(--vert);padding:0.6rem;text-align:center;font-weight:600;font-size:0.9rem;border-top:2px solid var(--vert);transition:opacity 0.3s;}
     .sticky-cta a{color:var(--vert);text-decoration:underline;}
 
-    footer{text-align:center;margin-top:3rem;padding:2rem 1rem;border-top:1px solid var(--creme2);font-size:0.8rem;background:var(--vert);color:rgba(255,255,255,0.7);}
+    footer{text-align:center;margin-top:3rem;padding:2rem 1rem;background:var(--vert);font-size:0.8rem;color:rgba(255,255,255,0.7);}
     footer p{margin-bottom:0.3rem;}
-    footer .boussole{font-style:italic;color:rgba(255,255,255,0.35);}
+    footer .boussole{font-style:italic;color:rgba(255,255,255,0.4);margin-top:0.5rem;}
 
-    .note{background:#fff8e1;padding:1rem;border-left:4px solid var(--or);margin:1rem 0;border-radius:4px;}
+    .note{background:#fff8e1;padding:1rem;border-left:4px solid var(--or);margin:1rem 0;border-radius:4px;font-size:0.9rem;}
     .note strong{color:#c62828;}
 
     .back-to-top{position:fixed;bottom:70px;right:20px;background:var(--or);color:#1b3a2d;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:98;}
@@ -122,10 +118,9 @@
     .ecole-par-village{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0.5rem 1rem;font-size:0.85rem;margin-top:0.5rem;}
     .ecole-par-village .village-item{background:#fff;padding:0.4rem 0.6rem;border-radius:8px;border:1px solid var(--creme2);}
     .ecole-par-village .village-item strong{color:var(--vert);display:block;font-size:0.85rem;}
-    .ecole-par-village .village-item .localisation-note{font-size:0.7rem;color:var(--or);font-style:italic;display:block;margin-top:0.2rem;}
 
     .etab-list{list-style:none;margin:0;padding:0;}
-    .etab-list li{padding:0.3rem 0;border-bottom:1px dashed var(--creme2);font-size:0.85rem;}
+    .etab-list li{padding:0.3rem 0;border-bottom:1px dashed var(--creme2);font-size:0.85rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:0.3rem;}
     .etab-list li:last-child{border-bottom:none;}
     .etab-list .etab-nom{color:var(--vert);font-weight:500;}
     .etab-list .etab-loc{color:var(--gris2);font-size:0.75rem;}
@@ -192,7 +187,7 @@
           <tr><td>Poids des élèves (ESG + ESTP)</td><td>100%</td><td><strong>9,8%</strong></td><td>–</td></tr>
           <tr><td>Poids des salles de classe</td><td>100%</td><td><strong>9,9%</strong></td><td>–</td></tr>
           <tr><td>Poids des enseignants</td><td>100%</td><td><strong>8,2%</strong></td><td>–</td></tr>
-          <tr><td>Salles de classe en dur</td><td>89,6%</td><td><strong>93,1%</strong></td><td class="positif">✅ +3,5 pts</td></tr>
+          <tr><td>Salles de classe en dur</td><td>89,6%</td><td><strong>93,1%</strong></td><td class="positif">+3,5 pts</td></tr>
           <tr><td>Élèves par salle</td><td>27</td><td><strong>26</strong></td><td>–</td></tr>
           <tr><td>Élèves par place assise</td><td>1,04</td><td><strong>1,00</strong></td><td>–</td></tr>
         </tbody>
@@ -228,18 +223,25 @@
     <p class="source">📌 Source : MINESEC — Panorama Scolaire Région du Centre (2015/2016)</p>
   </div>
 
-  <!-- TABLEAU RÉCAPITULATIF AVEC ÉCARTS PCD/ISGI -->
+  <!-- TABLEAU RÉCAPITULATIF -->
   <div class="tableau-recap" id="recap">
-    <h4 style="font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:0.5rem;">📊 Récapitulatif par commune — PCD vs ISGI 2026</h4>
-    <div style="background:#fff8e1;border-left:4px solid var(--or);padding:0.6rem 1rem;margin-bottom:0.8rem;border-radius:6px;font-size:0.75rem;">
-      <strong>💡 Lecture :</strong> Écart positif = développement depuis le PCD · Écart négatif = sous-déclaration ou perte → <strong>à investiguer</strong>. Aucun chiffre n'est corrigé : les deux sources coexistent pour révéler l'évolution territoriale.
-    </div>
+    <h4 style="font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:0.5rem;">📊 Récapitulatif par commune</h4>
     <table>
       <thead>
-        <tr><th scope="col">Commune</th><th scope="col">Mater.</th><th scope="col">Prim.</th><th scope="col">Second.</th><th scope="col">Prof.</th><th scope="col">Total PCD</th><th scope="col">ISGI 2026</th><th scope="col">Écart</th><th scope="col">Source</th></tr>
+        <tr>
+          <th scope="col">Commune</th>
+          <th scope="col">Mater.</th>
+          <th scope="col">Prim.</th>
+          <th scope="col">Second.</th>
+          <th scope="col">Prof.</th>
+          <th scope="col">Total PCD</th>
+          <th scope="col">ISGI 2026</th>
+          <th scope="col">Écart</th>
+          <th scope="col">PCD</th>
+        </tr>
       </thead>
       <tbody id="recapBody">
-        <!-- Rempli dynamiquement par JS -->
+        <!-- Rempli par JS -->
       </tbody>
     </table>
     <div style="margin-top:0.5rem; font-size:0.7rem; color:var(--gris2);">
@@ -274,9 +276,7 @@
   <!-- ============================================================ -->
   <div class="commune-block" id="obala">
     <div class="commune-title">📌 OBALA <span class="pcd-annee">PCD 2013-2015</span></div>
-    <div class="signal-box succes">
-      ✅ <strong>Écart PCD/ISGI :</strong> 61 / 61 → <strong>Stable</strong>. Aucune évolution majeure depuis 2013-2015.
-    </div>
+    <div class="statut-block">📌 Données PCD 2013-2015 · Recensement ISGI en cours · Contribution ouverte</div>
     <div class="ecole-section">
       <h4>🏫 Écoles primaires et maternelles (41 établissements)</h4>
       <div class="ecole-par-village">
@@ -350,11 +350,9 @@
   <!-- ============================================================ -->
   <div class="commune-block" id="monatele">
     <div class="commune-title">📌 MONATÉLÉ <span class="pcd-annee">PCD 2015</span></div>
-    <div class="signal-box succes">
-      ✅ <strong>Écart PCD/ISGI :</strong> 67 (PCD 2015) → 73 (ISGI 2026) = <strong>+6 établissements en 11 ans</strong>. Signal de développement.
-    </div>
+    <div class="statut-block">📌 Données PCD 2015 · Recensement ISGI en cours · Contribution ouverte</div>
     <div class="ecole-section">
-      <h4>🧒 Écoles maternelles (16 — liste nominative PCD)</h4>
+      <h4>🧒 Écoles maternelles (16)</h4>
       <ul class="etab-list">
         <li><span class="etab-nom">EM MONATELE I</span> <span class="etab-loc">— Public · MONATELE I</span></li>
         <li><span class="etab-nom">EM MONATELE II</span> <span class="etab-loc">— Public · MONATELE II</span></li>
@@ -375,7 +373,7 @@
       </ul>
     </div>
     <div class="ecole-section">
-      <h4>📚 Écoles primaires (39 — liste nominative PCD)</h4>
+      <h4>📚 Écoles primaires (39)</h4>
       <ul class="etab-list">
         <li><span class="etab-nom">EP MONABO I</span> <span class="etab-loc">— Public</span></li>
         <li><span class="etab-nom">EP MONABO II</span> <span class="etab-loc">— Public</span></li>
@@ -419,15 +417,15 @@
       </ul>
     </div>
     <div class="ecole-section">
-      <h4>🎓 Enseignement secondaire (10 — 100% public)</h4>
+      <h4>🎓 Enseignement secondaire (10)</h4>
       <ul class="etab-list">
         <li><span class="etab-nom">Lycée Général de MONATELE</span> <span class="etab-loc">— MONATELE II</span></li>
         <li><span class="etab-nom">Lycée Technique de MONATELE</span> <span class="etab-loc">— MONATELE</span></li>
         <li><span class="etab-nom">ENIEG de MONATELE</span> <span class="etab-loc">— MONATELE</span> <span class="badge-statut badge-valide">Formation enseignants</span></li>
-        <li><span class="etab-nom">CES d'ELIG AMBASSA</span> <span class="etab-loc">— </span><span class="localisation-note">📍 Situé à TALA 2 (ne pas confondre avec un village "Elig Ambassa")</span></li>
+        <li><span class="etab-nom">CES d'Elig Ambassa</span> <span class="etab-loc">— TALA 2</span></li>
         <li><span class="etab-nom">CES de NKOLTOMO I</span> <span class="etab-loc">— NKOLTOMO I</span></li>
         <li><span class="etab-nom">CES de NLONG BON IV</span> <span class="etab-loc">— NLONG BON IV</span></li>
-        <li><span class="etab-nom">CETIC d'ELIG AMBASSA</span> <span class="etab-loc">— </span><span class="localisation-note">📍 Situé à TALA 2</span></li>
+        <li><span class="etab-nom">CETIC d'Elig Ambassa</span> <span class="etab-loc">— TALA 2</span></li>
         <li><span class="etab-nom">CETIC de NLONG BON I</span> <span class="etab-loc">— NLONG BON I</span></li>
         <li><span class="etab-nom">CETIC de NKOMIBIAM II</span> <span class="etab-loc">— NKOMIBIAM II</span></li>
         <li><span class="etab-nom">CETIC de LEKOUN</span> <span class="etab-loc">— LEKOUN</span></li>
@@ -441,7 +439,7 @@
       </ul>
     </div>
     <div class="ecole-section">
-      <h4>🚨 Besoins identifiés par le PCD 2015</h4>
+      <h4>🚧 Besoins mentionnés dans le PCD 2015</h4>
       <table class="besoins-table">
         <thead><tr><th>Besoin</th><th>Détail</th></tr></thead>
         <tbody>
@@ -467,9 +465,7 @@
   <!-- ============================================================ -->
   <div class="commune-block" id="ebebda">
     <div class="commune-title">📌 EBEBDA <span class="pcd-annee">PCD 2015</span></div>
-    <div class="signal-box alerte">
-      ⚠️ <strong>Écart PCD/ISGI :</strong> 60 (PCD 2015) → 53 (ISGI 2026) = <strong>−7 établissements</strong>. À investiguer : sous-déclaration actuelle ou fermeture d'écoles ?
-    </div>
+    <div class="statut-block">📌 Données PCD 2015 · Recensement ISGI en cours · Contribution ouverte</div>
     <div class="ecole-section">
       <h4>🧒 Écoles maternelles (19)</h4>
       <p style="font-size:0.8rem;color:var(--gris);margin-bottom:0.5rem;"><strong>Publiques (11) :</strong> Bilik-Bindik · Djounyat · Ebomzout · Ebong · Leka · Lendong · Lenyong · Ngoksa'a · Nkang-Efok · Nkom I · Ebebda II</p>
@@ -477,14 +473,14 @@
       <p style="font-size:0.8rem;color:var(--gris);"><strong>Privées laïques (2) :</strong> Ebebda I · Ebebda II</p>
     </div>
     <div class="ecole-section">
-      <h4>📚 Écoles primaires (29 — dont 1 non fonctionnelle)</h4>
-      <p style="font-size:0.8rem;color:var(--gris);margin-bottom:0.5rem;"><strong>Publiques (24) :</strong> Bilik-Bindik · Djounyat · Ebomzout (1) · Ebomzout (2) · Ebong · Endoum · Etam-Kouma · Koan (1) · Koan (2) · Leka · Lendong · Lenyong · Mbenegea · Ngoksa'a (1) · Ngoksa'a (2) · Nkang-Efok · <strong style="color:#c62828;">Nkolossang ⚠️ non fonctionnelle</strong> · Nkom I · Polo I (1) · Polo I (2) · Polo I (3) · Tsang · Ebebda II (1) · Ebebda II (2)</p>
+      <h4>📚 Écoles primaires (29)</h4>
+      <p style="font-size:0.8rem;color:var(--gris);margin-bottom:0.5rem;"><strong>Publiques (24) :</strong> Bilik-Bindik · Djounyat · Ebomzout (1) · Ebomzout (2) · Ebong · Endoum · Etam-Kouma · Koan (1) · Koan (2) · Leka · Lendong · Lenyong · Mbenegea · Ngoksa'a (1) · Ngoksa'a (2) · Nkang-Efok · Nkolossang <span class="badge-statut badge-alerte">Non fonctionnelle</span> · Nkom I · Polo I (1) · Polo I (2) · Polo I (3) · Tsang · Ebebda II (1) · Ebebda II (2)</p>
       <p style="font-size:0.8rem;color:var(--gris);"><strong>Catholiques (5) :</strong> Etam-Kouma · Eyene · Ngoksa'a · Zokogo · Ebebda II</p>
     </div>
     <div class="ecole-section">
       <h4>🎓 Enseignement secondaire (7)</h4>
       <ul class="etab-list">
-        <li><span class="etab-nom">Lycée d'Enseignement Général</span> <span class="etab-loc">— Ebebda II (quartier administratif)</span></li>
+        <li><span class="etab-nom">Lycée d'Enseignement Général</span> <span class="etab-loc">— Ebebda II</span></li>
         <li><span class="etab-nom">CES de Koan</span> <span class="etab-loc">— Koan</span></li>
         <li><span class="etab-nom">CES de Leka</span> <span class="etab-loc">— Leka</span></li>
         <li><span class="etab-nom">CES de Nkang-Efok</span> <span class="etab-loc">— Nkang-Efok</span></li>
@@ -513,11 +509,7 @@
   <!-- ============================================================ -->
   <div class="commune-block" id="evodoula">
     <div class="commune-title">📌 EVODOULA <span class="pcd-annee">PCD 2013</span></div>
-    <div class="signal-box alerte">
-      ⚠️ <strong>Écart PCD/ISGI :</strong> 50 (PCD 2013) → 41 (ISGI 2026) = <strong>−9 établissements</strong>. À investiguer.
-      <br>🔨 <strong>6 établissements en projet</strong> (CES Etok, CES Elig Zogo, CES Nkolabang, CETIC Nkol Nguele, EP Ngobo, EP Nkoalen) → réalisés en 2026 ?
-      <br>⚠️ <strong>1 établissement fermé :</strong> Collège privé d'Etok (non fonctionnel)
-    </div>
+    <div class="statut-block">📌 Données PCD 2013 · Recensement ISGI en cours · Contribution ouverte</div>
     <div class="ecole-section">
       <h4>🧒 Écoles maternelles (9)</h4>
       <ul class="etab-list">
@@ -533,7 +525,7 @@
       </ul>
     </div>
     <div class="ecole-section">
-      <h4>📚 Écoles primaires (24 — dont 2 à créer)</h4>
+      <h4>📚 Écoles primaires (24)</h4>
       <ul class="etab-list">
         <li><span class="etab-nom">GBPS Evodoula</span> <span class="etab-loc">— Public</span></li>
         <li><span class="etab-nom">EPGII Evodoula</span> <span class="etab-loc">— Public</span></li>
@@ -562,7 +554,7 @@
       </ul>
     </div>
     <div class="ecole-section">
-      <h4>🎓 Enseignement secondaire (14 — dont 4 à créer, 1 fermé)</h4>
+      <h4>🎓 Enseignement secondaire (14)</h4>
       <ul class="etab-list">
         <li><span class="etab-nom">Lycée Général d'Evodoula</span> <span class="etab-loc">— Public · Evodoula</span></li>
         <li><span class="etab-nom">Lycée Technique d'Evodoula</span> <span class="etab-loc">— Public · Evodoula</span></li>
@@ -577,7 +569,7 @@
         <li><span class="etab-nom">CETIC Nkolassa I</span> <span class="etab-loc">— Public · Nkolassa I</span></li>
         <li><span class="etab-nom">CETIC Mgbabang III</span> <span class="etab-loc">— Public · Mgbabang III</span></li>
         <li><span class="etab-nom">CETIC Nkol Nguele</span> <span class="badge-statut badge-projet">À créer</span></li>
-        <li><span class="etab-nom">Collège privé d'Etok</span> <span class="badge-statut badge-alerte">⚠️ Fermé</span></li>
+        <li><span class="etab-nom">Collège privé d'Etok</span> <span class="badge-statut badge-alerte">Fermé</span></li>
       </ul>
     </div>
     <div class="ecole-section">
@@ -597,27 +589,19 @@
   <!-- ============================================================ -->
   <div class="commune-block" id="elig-mfomo">
     <div class="commune-title">📌 ELIG-MFOMO <span class="pcd-annee">PCD 2015</span></div>
-    <div class="signal-box alerte">
-      🚨 <strong>Situation critique :</strong>
-      <br>• 4 maternelles fonctionnent <strong>sans bâtiments</strong>
-      <br>• 9 maternelles <strong>à créer</strong>
-      <br>• 38 salles à construire + 16 à réhabiliter
-      <br>• 49 postes enseignants vacants
-      <br>• 1 050 tables-bancs manquants
-      <br>• <strong>7 villages sans AUCUN établissement</strong> : Bodo, Elig-Onana, Kokodo 2, Lekié, Lekoukoua, Mbanedouma 1, Mbanedouma 2, Nkol-Bikok, Nkol-Mba, Nkol-Obang 1, Okok-Essele
-    </div>
+    <div class="statut-block">📌 Données PCD 2015 · Recensement ISGI en cours · Contribution ouverte</div>
     <div class="ecole-section">
-      <h4>🧒 Écoles maternelles publiques fonctionnelles (9 — dont 4 sans bâtiments)</h4>
+      <h4>🧒 Écoles maternelles publiques fonctionnelles (9)</h4>
       <ul class="etab-list">
-        <li><span class="etab-nom">EM Publique Elig-Mfomo</span> <span class="etab-loc">— Elig-Mfomo Urbain · 86 élèves</span> <span class="badge-statut badge-alerte">⚠️ Sans bâtiment</span></li>
-        <li><span class="etab-nom">EM Publique Kokodo 1</span> <span class="etab-loc">— Kokodo 1 · 55 élèves</span> <span class="badge-statut badge-alerte">⚠️ Sans bâtiment</span></li>
+        <li><span class="etab-nom">EM Publique Elig-Mfomo</span> <span class="etab-loc">— Elig-Mfomo · 86 élèves</span> <span class="badge-statut badge-alerte">Sans bâtiment</span></li>
+        <li><span class="etab-nom">EM Publique Kokodo 1</span> <span class="etab-loc">— Kokodo 1 · 55 élèves</span> <span class="badge-statut badge-alerte">Sans bâtiment</span></li>
         <li><span class="etab-nom">EM Nkol-Obang II</span> <span class="etab-loc">— Nkol-Obang II · 23 élèves</span></li>
-        <li><span class="etab-nom">EM Publique Bikogo</span> <span class="etab-loc">— Bikogo · 33 élèves</span> <span class="badge-statut badge-alerte">⚠️ Sans locaux</span></li>
-        <li><span class="etab-nom">EM Publique Nkengue</span> <span class="etab-loc">— Nkengue · 98 élèves</span> ✅ 2 salles en dur</li>
-        <li><span class="etab-nom">EM Publique Mebomo</span> <span class="etab-loc">— Mebomo · 40 élèves</span> ✅ 2 salles en dur</li>
-        <li><span class="etab-nom">EM Endama II</span> <span class="etab-loc">— Endama II · 200 élèves</span> 7 salles</li>
-        <li><span class="etab-nom">EM Nkol-Ossan</span> <span class="etab-loc">— Nkol-Ossan</span> <span class="badge-statut badge-alerte">⚠️ Sans bâtiment</span></li>
-        <li><span class="etab-nom">EM Catholique Elig-Mfomo</span> <span class="etab-loc">— Elig-Mfomo Urbain · Privé catholique</span></li>
+        <li><span class="etab-nom">EM Publique Bikogo</span> <span class="etab-loc">— Bikogo · 33 élèves</span> <span class="badge-statut badge-alerte">Sans locaux</span></li>
+        <li><span class="etab-nom">EM Publique Nkengue</span> <span class="etab-loc">— Nkengue · 98 élèves</span></li>
+        <li><span class="etab-nom">EM Publique Mebomo</span> <span class="etab-loc">— Mebomo · 40 élèves</span></li>
+        <li><span class="etab-nom">EM Endama II</span> <span class="etab-loc">— Endama II · 200 élèves</span></li>
+        <li><span class="etab-nom">EM Nkol-Ossan</span> <span class="etab-loc">— Nkol-Ossan</span> <span class="badge-statut badge-alerte">Sans bâtiment</span></li>
+        <li><span class="etab-nom">EM Catholique Elig-Mfomo</span> <span class="etab-loc">— Elig-Mfomo · Privé catholique</span></li>
       </ul>
     </div>
     <div class="ecole-section">
@@ -625,9 +609,9 @@
       <p style="font-size:0.8rem;color:var(--gris);">Nkol-Ossan (bilingue) · Endama I · Elot-Koss · Lekié · Nkolmba · Mbanedouma 1 · Elig-Onana · Nkol-Bikok · Bodo</p>
     </div>
     <div class="ecole-section">
-      <h4>📚 Écoles primaires publiques (15 — toutes avec besoins)</h4>
+      <h4>📚 Écoles primaires publiques (15)</h4>
       <ul class="etab-list">
-        <li><span class="etab-nom">EP Publique Elig-Mfomo</span> <span class="etab-loc">— 569 élèves · 11 salles · ⚠️ Pas de point d'eau</span></li>
+        <li><span class="etab-nom">EP Publique Elig-Mfomo</span> <span class="etab-loc">— 569 élèves · 11 salles</span></li>
         <li><span class="etab-nom">EP Kokodo 1</span> <span class="etab-loc">— 370 élèves · 7 salles + 3 sans toiture</span></li>
         <li><span class="etab-nom">EP Enobita</span> <span class="etab-loc">— 192 élèves · 4 salles</span></li>
         <li><span class="etab-nom">EP Akak</span> <span class="etab-loc">— 100 + 32 mater · 2 salles</span></li>
@@ -643,13 +627,13 @@
         <li><span class="etab-nom">EP Komo-Essele</span> <span class="etab-loc">— 335 élèves · 6 salles</span></li>
         <li><span class="etab-nom">EP Nkol-Ossan</span> <span class="etab-loc">— 6 salles</span></li>
       </ul>
-      <p style="font-size:0.8rem;color:var(--gris);margin-top:0.5rem;">+ <strong>EP Catholique</strong> (privée) — Elig-Mfomo Urbain</p>
+      <p style="font-size:0.8rem;color:var(--gris);margin-top:0.5rem;">+ <strong>EP Catholique</strong> (privée) — Elig-Mfomo</p>
     </div>
     <div class="ecole-section">
-      <h4>🎓 Enseignement secondaire (6 — concentré sur 4 villages/25)</h4>
+      <h4>🎓 Enseignement secondaire (6)</h4>
       <ul class="etab-list">
-        <li><span class="etab-nom">Lycée d'Elig-Mfomo</span> <span class="etab-loc">— Elig-Mfomo Urbain · 800 élèves / 16 salles</span></li>
-        <li><span class="etab-nom">CETIC d'Elig-Mfomo</span> <span class="etab-loc">— Elig-Mfomo Urbain</span> <span class="badge-statut badge-alerte">⚠️ Aucune salle</span></li>
+        <li><span class="etab-nom">Lycée d'Elig-Mfomo</span> <span class="etab-loc">— Elig-Mfomo · 800 élèves / 16 salles</span></li>
+        <li><span class="etab-nom">CETIC d'Elig-Mfomo</span> <span class="etab-loc">— Elig-Mfomo</span> <span class="badge-statut badge-alerte">Salles inexistantes</span></li>
         <li><span class="etab-nom">Lycée de Kokodo 1</span> <span class="etab-loc">— Kokodo 1 · 500 élèves · 8 salles</span></li>
         <li><span class="etab-nom">Lycée de Niga</span> <span class="etab-loc">— Niga · 400 élèves · 6 salles</span></li>
         <li><span class="etab-nom">Lycée Technique de Nkol-Ossan</span> <span class="etab-loc">— Nkol-Ossan · 450 élèves · 6+10 salles</span></li>
@@ -657,7 +641,7 @@
       </ul>
     </div>
     <div class="ecole-section">
-      <h4>🚨 Besoins identifiés par le PCD 2015</h4>
+      <h4>🚧 Besoins mentionnés dans le PCD 2015</h4>
       <table class="besoins-table">
         <thead><tr><th>Besoin</th><th>Détail</th></tr></thead>
         <tbody>
@@ -666,7 +650,7 @@
           <tr><td>Postes enseignants à pourvoir</td><td>49</td></tr>
           <tr><td>Tables-bancs manquants</td><td>1 050</td></tr>
           <tr><td>Maternelles à créer/construire</td><td>9</td></tr>
-          <tr><td>Villages sans aucun établissement</td><td>11</td></tr>
+          <tr><td>Villages sans établissement recensé</td><td>11</td></tr>
         </tbody>
       </table>
     </div>
@@ -680,11 +664,9 @@
   <!-- ============================================================ -->
   <div class="commune-block" id="saa">
     <div class="commune-title">📌 SA'A <span class="pcd-annee">PCD 2013-2015</span></div>
-    <div class="signal-box succes">
-      ✅ <strong>Écart PCD/ISGI :</strong> 123 / 123 → <strong>Stable</strong>.
-    </div>
+    <div class="statut-block">📌 Données PCD 2013-2015 · Recensement ISGI en cours · Contribution ouverte</div>
     <div class="ecole-section">
-      <h4>🏫 Écoles maternelles et primaires (103 établissements)</h4>
+      <h4>🏫 Écoles maternelles et primaires (103)</h4>
       <p style="font-size:0.8rem;color:var(--gris);margin-bottom:0.5rem;">Total : 44 maternelles + 59 primaires (93 publiques, 22 catholiques, 4 privées)</p>
       <div class="ecole-par-village">
         <div class="village-item"><strong>Groupement KOUNA-ODZOLO</strong>Abel · Ebang Minala · Ekalan Minkoul · Essolmeyong · Manélon · Mbama · Mbazoa · Nkolmesseng · Nkolzoa 1 & 2 · Nkolzomo</div>
@@ -725,12 +707,9 @@
   <!-- ============================================================ -->
   <div class="commune-block" id="okola">
     <div class="commune-title">📌 OKOLA <span class="pcd-annee">PCD 2018 · liste partielle</span></div>
-    <div class="signal-box succes">
-      ✅ <strong>Écart PCD/ISGI :</strong> 105 (PCD 2018) → 127 (ISGI 2026) = <strong>+22 établissements</strong>. Signal fort de développement.
-      <br>⚠️ <strong>Le PCD 2018 ne fournit PAS de liste nominative exhaustive</strong> — uniquement les projets prioritaires et cadres logiques. Pour la liste complète : Délégation Départementale de l'Éducation de Base de la Lékié / MINEDUB.
-    </div>
+    <div class="statut-block">📌 Données PCD 2018 · Liste partielle (projets et cadres logiques) · Pour la liste nominative complète : Délégation Départementale de l'Éducation de Base de la Lékié / MINEDUB</div>
     <div class="ecole-section">
-      <h4>🏙️ Espace urbain (3 espaces)</h4>
+      <h4>🏙️ Espace urbain</h4>
       <ul class="etab-list">
         <li><span class="etab-nom">Lycée d'OKOLA</span> <span class="etab-loc">— OKOLA Centre · Classique</span></li>
         <li><span class="etab-nom">Institut privé de formation du personnel médico-sanitaire</span> <span class="etab-loc">— OKOLA Centre</span></li>
@@ -744,7 +723,6 @@
     <div class="ecole-section">
       <h4>🧒 Écoles maternelles citées (28 villages)</h4>
       <p style="font-size:0.8rem;color:var(--gris);">EVIAN · NKODASSA · SONG-ONANA · AYOS · VOA I · MVA'A 1 · LENDOM I · NKOLTSIBA (à Nkolovang) · MEKAK · NKOLMEKOUMA · OBAN II · LENDOM II · NKONGZOCK · LOUMA · NGOYA I · NDANGUENG · NKOLNYADA · NOUMA · EBOD · EBOUGSI · METAK · ETOUD · NKOLONDOM · NTSAMA · NGOBASSI · ELIG-YEN · NKOLESSONG · BITSINGDA</p>
-      <p style="font-size:0.7rem;color:var(--gris2);margin-top:0.3rem;">⚠️ Le PCD ne précise pas lesquelles sont fonctionnelles ou en projet</p>
     </div>
     <div class="ecole-section">
       <h4>📚 Écoles primaires citées (~43 villages)</h4>
@@ -752,15 +730,15 @@
     </div>
     <div class="ecole-section">
       <h4>🎓 Enseignement secondaire (32 localités)</h4>
-      <p style="font-size:0.8rem;color:var(--gris);"><strong>Existants :</strong> Lycée NKONG · Lycée technique NKOLZIBI · Lycée NKOLPOBLO · CES EKATBITA TOM · CES OKOUKOUDA · CES NKOLEKOTSING · CES NKOLAKIE · CES MINSOA 1 · CES YEGUE-ASSI · CETIC KONABENG · CETIC NKODASSA · CETIC MVA'A 2</p>
-      <p style="font-size:0.8rem;color:var(--gris);"><strong>Privés :</strong> Collège privé NKONG · Collège privé NKOLONDOM</p>
+      <p style="font-size:0.8rem;color:var(--gris);margin-bottom:0.4rem;"><strong>Existants :</strong> Lycée NKONG · Lycée technique NKOLZIBI · Lycée NKOLPOBLO · CES EKATBITA TOM · CES OKOUKOUDA · CES NKOLEKOTSING · CES NKOLAKIE · CES MINSOA 1 · CES YEGUE-ASSI · CETIC KONABENG · CETIC NKODASSA · CETIC MVA'A 2</p>
+      <p style="font-size:0.8rem;color:var(--gris);margin-bottom:0.4rem;"><strong>Privés :</strong> Collège privé NKONG · Collège privé NKOLONDOM</p>
       <p style="font-size:0.8rem;color:var(--gris);"><strong>Projets :</strong> OBAN 1 · OBAN 2 · LENDOM 2 · NKONGZOCK (Bibouli) · NTSAMA · NKOLESSONG · NKOLDJOBE · ELIG YEN · LENDOM 1 · NDANGUENG · EKEKAM 1 · EBOUGSI · EKEKAM 2 · NKOLOTOMO · NKOLTSIBA · NKOL FEP · MVAA II · NGONG · MPONG 2</p>
     </div>
     <div class="ecole-section">
       <h4>🔧 Formation professionnelle</h4>
-      <p style="font-size:0.8rem;color:var(--gris);"><strong>Existants :</strong> SAR/SM MVOUA · SAR/SM LEBOTH</p>
-      <p style="font-size:0.8rem;color:var(--gris);"><strong>Projets SAR/SM :</strong> METAK · NGONG · MBELEKIE · NKOLANGOUNG · NKOLOTOMO · BITSINDA · NKOLNYADA · NGOYA II · FEGIMIBANG</p>
-      <p style="font-size:0.8rem;color:var(--gris);"><strong>Projets CFP :</strong> OBACK · MPONG II · EKEKAM II · EBOD · NOUMA · NKONG · NGOYA I · EKEKAM I · NKOLZIBI · MVA'A II · NKOL AKIE</p>
+      <p style="font-size:0.8rem;color:var(--gris);margin-bottom:0.4rem;"><strong>Existants :</strong> SAR/SM MVOUA · SAR/SM LEBOTH</p>
+      <p style="font-size:0.8rem;color:var(--gris);margin-bottom:0.4rem;"><strong>Projets SAR/SM :</strong> METAK · NGONG · MBELEKIE · NKOLANGOUNG · NKOLOTOMO · BITSINDA · NKOLNYADA · NGOYA II · FEGIMIBANG</p>
+      <p style="font-size:0.8rem;color:var(--gris);margin-bottom:0.4rem;"><strong>Projets CFP :</strong> OBACK · MPONG II · EKEKAM II · EBOD · NOUMA · NKONG · NGOYA I · EKEKAM I · NKOLZIBI · MVA'A II · NKOL AKIE</p>
       <p style="font-size:0.8rem;color:var(--gris);"><strong>Projet LTA :</strong> Lycée Technique Agricole à MINSOA II</p>
     </div>
     <div style="margin:0.5rem 0 0.5rem 1rem; font-size:0.75rem; color:var(--gris2);">
@@ -773,9 +751,7 @@
   <!-- ============================================================ -->
   <div class="commune-block" id="batchenga">
     <div class="commune-title">📌 BATCHENGA <span class="pcd-annee">PCD 2013-2015</span></div>
-    <div class="signal-box succes">
-      ✅ <strong>Écart PCD/ISGI :</strong> 14 / 14 → <strong>Stable</strong>.
-    </div>
+    <div class="statut-block">📌 Données PCD 2013-2015 · Recensement ISGI en cours · Contribution ouverte</div>
     <div class="ecole-section">
       <h4>🏫 Écoles maternelles et primaires</h4>
       <div class="ecole-par-village">
@@ -813,7 +789,7 @@
       </ul>
     </div>
     <div class="ecole-section">
-      <h4>📌 Informations complémentaires</h4>
+      <h4>📌 Informations PCD</h4>
       <ul>
         <li>Première école publique créée en <strong>1945</strong></li>
         <li><strong>IAEB</strong> (Inspection d'Arrondissement) : Ballong 2 — non fonctionnelle</li>
@@ -830,9 +806,7 @@
   <!-- ============================================================ -->
   <div class="commune-block" id="lobo">
     <div class="commune-title">📌 LOBO <span class="pcd-annee">PCD 2019</span></div>
-    <div class="signal-box succes">
-      ✅ <strong>Écart PCD/ISGI :</strong> 27 / 27 → <strong>Stable</strong>.
-    </div>
+    <div class="statut-block">📌 Données PCD 2019 · Recensement ISGI en cours · Contribution ouverte</div>
     <div class="ecole-section">
       <h4>📊 Synthèse globale</h4>
       <table class="besoins-table">
@@ -911,7 +885,7 @@
 
 <footer>
   <p>ISGI-Lékié — Données issues des PCD (années indiquées) et MINESEC (2015/2016) · En cours d'actualisation.</p>
-  <p style="margin-top: 0.3rem;">Dernière mise à jour : 11 Septembre 2026</p>
+  <p>Dernière mise à jour : 11 Septembre 2026</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
 
@@ -979,42 +953,37 @@
       totMater += c.mater; totPrim += c.prim; totSec += c.sec; totPro += c.pro;
       totPcd += pcdTotal; totIsgi += c.isgi;
 
-      let ecartClass = 'ecart-eq', ecartLabel = '=';
-      if (ecart > 0) { ecartClass = 'ecart-pos'; ecartLabel = '+' + ecart; }
-      else if (ecart < 0) { ecartClass = 'ecart-neg'; ecartLabel = ecart; }
+      let ecartLabel = '';
+      if (ecart > 0) ecartLabel = '+' + ecart;
+      else if (ecart < 0) ecartLabel = '' + ecart;
+      else ecartLabel = '=';
 
-      tbody.innerHTML += `
-        <tr>
-          <td><a href="#${c.id}" style="color:var(--vert);text-decoration:none;font-weight:600;">${c.nom}</a></td>
-          <td>${c.mater}</td>
-          <td>${c.prim}</td>
-          <td>${c.sec}</td>
-          <td>${c.pro}</td>
-          <td><strong>${pcdTotal}</strong></td>
-          <td>${c.isgi}</td>
-          <td class="${ecartClass}">${ecartLabel}</td>
-          <td><span class="badge-statut ${c.pcd === '2018' ? 'badge-encours' : 'badge-valide'}" style="font-size:0.55rem;">PCD ${c.pcd}</span></td>
-        </tr>
-      `;
+      tbody.innerHTML += '<tr>' +
+        '<td><a href="#' + c.id + '">' + c.nom + '</a></td>' +
+        '<td>' + c.mater + '</td>' +
+        '<td>' + c.prim + '</td>' +
+        '<td>' + c.sec + '</td>' +
+        '<td>' + c.pro + '</td>' +
+        '<td><strong>' + pcdTotal + '</strong></td>' +
+        '<td>' + c.isgi + '</td>' +
+        '<td>' + ecartLabel + '</td>' +
+        '<td><span class="badge-statut badge-valide" style="font-size:0.55rem;">PCD ' + c.pcd + '</span></td>' +
+        '</tr>';
     });
     const totEcart = totIsgi - totPcd;
-    let totEcartClass = 'ecart-eq', totEcartLabel = '=';
-    if (totEcart > 0) { totEcartClass = 'ecart-pos'; totEcartLabel = '+' + totEcart; }
-    else if (totEcart < 0) { totEcartClass = 'ecart-neg'; totEcartLabel = totEcart; }
+    let totEcartLabel = totEcart > 0 ? '+' + totEcart : (totEcart < 0 ? '' + totEcart : '=');
 
-    tbody.innerHTML += `
-      <tr class="total-row">
-        <td>TOTAL</td>
-        <td>${totMater}</td>
-        <td>${totPrim}</td>
-        <td>${totSec}</td>
-        <td>${totPro}</td>
-        <td>${totPcd}</td>
-        <td>${totIsgi}</td>
-        <td>${totEcartLabel}</td>
-        <td></td>
-      </tr>
-    `;
+    tbody.innerHTML += '<tr class="total-row">' +
+      '<td>TOTAL</td>' +
+      '<td>' + totMater + '</td>' +
+      '<td>' + totPrim + '</td>' +
+      '<td>' + totSec + '</td>' +
+      '<td>' + totPro + '</td>' +
+      '<td>' + totPcd + '</td>' +
+      '<td>' + totIsgi + '</td>' +
+      '<td>' + totEcartLabel + '</td>' +
+      '<td></td>' +
+      '</tr>';
   }
 
   // ---- RECHERCHE D'ÉCOLES ----
@@ -1035,17 +1004,9 @@
         if (match) found++;
       });
 
-      if (found > 0 && query.length > 2) {
-        const firstVisible = document.querySelector('.commune-block[style*="block"]');
-        if (firstVisible) {
-          firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
-
       if (noResults) {
         noResults.style.display = (query.length > 0 && found === 0) ? 'block' : 'none';
       }
-
       if (compteurEcoles) {
         compteurEcoles.textContent = found + ' commune' + (found > 1 ? 's' : '') + ' trouvée' + (found > 1 ? 's' : '');
       }
@@ -1055,7 +1016,7 @@
   // ---- FILTRES RAPIDES ----
   const filtreBtns = document.querySelectorAll('.filtre-btn');
   filtreBtns.forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function() {
       const id = this.dataset.commune;
       filtreBtns.forEach(function(b) { b.classList.remove('active'); });
       this.classList.add('active');
@@ -1073,12 +1034,11 @@
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
       if (compteurEcoles) compteurEcoles.textContent = '1 commune';
-
       if (searchEcole) searchEcole.value = '';
     });
   });
 
-  // ---- MASQUER STICKY CTA EN BAS DE PAGE ----
+  // ---- STICKY CTA ----
   const stickyCta = document.getElementById('stickyCta');
   if (stickyCta) {
     window.addEventListener('scroll', function() {
@@ -1088,19 +1048,18 @@
     });
   }
 
-  // ---- SCROLL VERS LA COMMUNE (ancre URL) ----
-  if (window.location.hash) {
-    const target = document.querySelector(window.location.hash);
-    if (target) {
-      setTimeout(function() {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 300);
-    }
-  }
-
   // ---- INITIALISATION ----
   document.addEventListener('DOMContentLoaded', function() {
     renderRecap();
+
+    if (window.location.hash) {
+      const target = document.querySelector(window.location.hash);
+      if (target) {
+        setTimeout(function() {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 300);
+      }
+    }
   });
 </script>
 </body>
