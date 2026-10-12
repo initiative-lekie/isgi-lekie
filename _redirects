@@ -1,16 +1,34 @@
-# Redirections pour les erreurs de frappe (URL avec accents)
-/mon-école /mon-ecole.html 301
-/mon-village /mon-village.html 301
-/observatoire /observatoire.html 301
-/plateforme /plateforme.html 301
-/certification /certification.html 301
-/sport /sport.html 301
-/tourisme /tourisme.html 301
-/presse /presse.html 301
-/elevage /elevage.html 301
-/agriculture /agriculture.html 301
-/hommage /hommage-andre-marie-mbida.html 301
-/administrateurs /administrateurs-territoriaux.html 301
+# ============================================================
+# ISGI-Lékié — Redirections Netlify
+# Toutes les URLs .html redirigent vers leur version courte
+# ============================================================
+
+# Pages principales (avec .html → sans .html)
+/index.html                         /                          301
+/plateforme.html                    /plateforme                301
+/mon-village.html                   /mon-village               301
+/mon-ecole.html                     /mon-ecole                 301
+/mon-école.html                     /mon-ecole                 301
+/observatoire.html                  /observatoire              301
+/certification.html                 /certification             301
+/sport.html                         /sport                     301
+/tourisme.html                      /tourisme                  301
+/presse.html                        /presse                    301
+/agriculture.html                   /agriculture               301
+/elevage.html                       /elevage                   301
+/blog.html                          /blog                      301
+/valeurs-et-competences.html        /valeurs-et-competences    301
+/valeurs-et-compétences.html        /valeurs-et-competences    301
+/hommage-andre-marie-mbida.html     /hommage-andre-marie-mbida 301
+/hommage-andré-marie-mbida.html     /hommage-andre-marie-mbida 301
+/charte-cisfootvac.html             /charte-cisfootvac         301
+/referentiel-cisfootvac.html        /referentiel-cisfootvac    301
+/reglement-cisfootvac.html          /reglement-cisfootvac      301
+/règlement-cisfootvac.html          /reglement-cisfootvac      301
+
+# Anciens noms incohérents (si des liens externes existent)
+/village-mon.html                   /mon-village               301
+/administrateurs-territoriaux.html  /administrateurs           301
 
 # Gestion des erreurs 404
-/* /404.html 404
+/*                                  /404.html                  404
