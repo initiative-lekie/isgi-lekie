@@ -1,145 +1,200 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Observatoire – ISGI-Lékié</title>
-  <meta name="description" content="Observatoire du Budget d'Investissement Public (BIP) et profil des ménages du département de la Lékié. Données MINMAP et FEICOM/INS.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1b3a2d">
+  <title>Observatoire de la Lékié — ISGI-Lékié · BIP, Démographie, Territoires</title>
+  <meta name="description" content="Observatoire Territorial de la Lékié (OTL) — BIP 2016-2026, démographie, profil des ménages, indicateurs socio-économiques et trajectoires de développement du département de la Lékié. Données INS 2025.">
   <meta name="author" content="ISGI-Lékié">
-  <meta property="og:title" content="Observatoire – ISGI-Lékié">
-  <meta property="og:description" content="Observatoire du Budget d'Investissement Public (BIP) et profil des ménages du département de la Lékié.">
-  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://isgi-lekie.cm/observatoire.html">
+  <meta property="og:title" content="Observatoire de la Lékié — ISGI-Lékié">
+  <meta property="og:description" content="BIP 2016-2026, démographie, conditions de vie, ambitions 2035 — vers un Observatoire Territorial de la Lékié.">
   <meta property="og:url" content="https://isgi-lekie.cm/observatoire.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="ISGI-Lékié">
+  <meta property="og:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Observatoire de la Lékié — ISGI-Lékié">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Observatoire de la Lékié — ISGI-Lékié">
+  <meta name="twitter:description" content="BIP 2016-2026 · Démographie · Ambitions 2035">
+  <meta name="twitter:image" content="https://isgi-lekie.cm/og-lekie.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" onerror="console.warn('[ISGI-Lékié] Chart.js non chargé.');"></script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Organization","name":"ISGI-Lékié","alternateName":"Initiative Stratégique Globale et Inclusive de la Lékié","url":"https://isgi-lekie.cm","logo":"https://isgi-lekie.cm/og-lekie.jpg","description":"Observatoire Territorial de la Lékié.","datePublished":"2026-07-28","dateModified":"2026-10-14","areaServed":["Monatélé","Obala","Sa'a","Evodoula","Ebebda","Okola","Batchenga","Elig-Mfomo","Lobo"],"parentOrganization":{"@type":"Organization","name":"Association Réfléchir Agir Soutenir (RAS)"}}
   </script>
   <style>
-    :root {
-      --vert: #1b3a2d;
-      --vert2: #2a5a44;
-      --or: #c4922a;
-      --or2: #e0a83e;
-      --creme: #f4efe6;
-      --creme2: #ede5d8;
-      --blanc: #fefcf8;
-      --texte: #2c2c28;
-      --gris: #5a5a50;
-      --gris2: #94a3b8;
+    :root{--vert:#1b3a2d;--vert2:#2a5a44;--or:#c4922a;--or2:#e0a83e;--creme:#f4efe6;--creme2:#ede5d8;--blanc:#fefcf8;--texte:#2c2c28;--gris:#5a5a50;--gris2:#94a3b8;--rouge:#c62828;--orange:#f57c00;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--blanc);color:var(--texte);line-height:1.5;}
+    .skip-link{position:absolute;left:-9999px;top:0;background:var(--or);color:var(--vert);padding:0.7rem 1.2rem;font-weight:600;text-decoration:none;z-index:9999;border-radius:0 0 8px 0;}
+    .skip-link:focus{left:0;outline:3px solid var(--vert);outline-offset:2px;}
+    *:focus-visible{outline:2px solid var(--or);outline-offset:3px;border-radius:4px;}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none!important;animation:none!important;}}
+    .container{max-width:1300px;margin:0 auto;padding:0 1.5rem;}
+    .status-banner{background:var(--or2);color:var(--vert);font-weight:600;text-align:center;padding:0.4rem;font-size:0.8rem;}
+    .lekie-en-premier{background:var(--vert);color:var(--or2);text-align:center;padding:0.4rem;font-size:0.8rem;font-style:italic;}
+    nav{background:var(--vert);padding:0.8rem 1.5rem;border-bottom:2px solid var(--or);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100;}
+    .logo a{color:var(--or2);text-decoration:none;font-size:1.5rem;font-weight:700;font-family:'Cormorant Garamond',serif;}
+    .logo span{font-size:0.7rem;display:block;color:rgba(255,255,255,0.85);}
+    .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;align-items:center;}
+    .nav-links a{color:rgba(255,255,255,0.92);text-decoration:none;font-size:0.8rem;font-weight:500;padding:0.2rem 0;white-space:nowrap;}
+    .nav-links a:hover,.nav-links a.active{color:var(--or2);}
+    .nav-links a.active{border-bottom:2px solid var(--or);}
+    .burger{display:none;background:none;border:none;color:var(--or2);font-size:1.8rem;cursor:pointer;padding:0.3rem 0.6rem;border-radius:6px;}
+    .burger:hover{background:rgba(255,255,255,0.1);}
+    .page-header{background:var(--vert);padding:2.5rem 1.5rem;border-bottom:4px solid var(--or);text-align:center;}
+    .page-header h1{color:#fff;font-size:2.5rem;font-family:'Cormorant Garamond',serif;}
+    .page-header h1 em{color:var(--or2);font-style:italic;}
+    .page-header p{color:rgba(255,255,255,0.75);margin-top:0.5rem;}
+    .page-header .otl-badge{display:inline-block;background:rgba(224,168,62,0.15);color:var(--or2);border:1px solid var(--or2);padding:0.25rem 0.8rem;border-radius:20px;font-size:0.7rem;font-weight:600;letter-spacing:0.5px;margin-top:0.75rem;}
+    .page-header .maj{font-size:0.7rem;color:var(--or2);margin-top:0.4rem;}
+    section{padding:2.5rem 0;border-bottom:1px solid var(--creme2);}
+    .section-title{font-size:1.6rem;color:var(--vert);margin-bottom:1.5rem;border-left:6px solid var(--or);padding-left:1rem;font-family:'Cormorant Garamond',serif;}
+    .section-sub{color:var(--gris2);margin-bottom:1.5rem;}
+    .chiffres-cles{background:var(--vert);color:#fff;padding:2rem 0;}
+    .chiffres-cles h2{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--or2);margin-bottom:1.5rem;text-align:center;}
+    .chiffres-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;max-width:1200px;margin:0 auto;padding:0 1.5rem;}
+    .chiffre-item{text-align:center;padding:1rem;background:rgba(255,255,255,0.05);border-radius:12px;border:1px solid rgba(224,168,62,0.2);}
+    .chiffre-item .chiffre-value{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--or2);line-height:1.1;}
+    .chiffre-item .chiffre-label{font-size:0.75rem;color:rgba(255,255,255,0.75);margin-top:0.3rem;line-height:1.3;}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:1rem;}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:1rem;}
+    .card{background:#fff;border:1px solid var(--creme2);border-radius:16px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s;}
+    .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.06);}
+    .card h3{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin-bottom:0.5rem;}
+    .card p{color:var(--gris);font-size:0.9rem;margin-top:0.3rem;}
+    .ambitions-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:1.5rem;}
+    .ambition-card{background:#fff;border:1px solid var(--creme2);border-radius:16px;padding:1.5rem;position:relative;overflow:hidden;transition:transform 0.2s,box-shadow 0.2s;}
+    .ambition-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--or),var(--or2));}
+    .ambition-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(27,58,45,0.1);}
+    .ambition-card .ambition-num{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--creme2);line-height:1;margin-bottom:0.5rem;}
+    .ambition-card h3{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.1rem;margin-bottom:0.5rem;}
+    .ambition-card p{font-size:0.85rem;color:var(--gris);margin-bottom:0.5rem;line-height:1.5;}
+    .ambition-card .ancrage{font-size:0.75rem;color:var(--gris2);font-style:italic;border-left:3px solid var(--or);padding-left:0.6rem;margin-top:0.5rem;}
+    .ambition-card .cible{font-size:0.8rem;color:var(--vert);font-weight:600;background:var(--creme);padding:0.4rem 0.7rem;border-radius:8px;margin-top:0.6rem;display:block;}
+    .badge-statut{display:inline-block;font-size:0.62rem;padding:0.15rem 0.5rem;border-radius:20px;font-weight:600;margin-top:0.5rem;}
+    .badge-valide{background:#e8f5e9;color:#2e7d32;}
+    .badge-encours{background:#fff8e1;color:#856404;}
+    .badge-contributif{background:#e8dfd0;color:#5a5a50;}
+    .badge-recherche{background:#ffebee;color:#c62828;}
+    .badge-officiel{background:#e3f2fd;color:#1565c0;}
+    .btn{display:inline-block;background:var(--or);color:var(--vert);padding:0.5rem 1.2rem;border-radius:40px;text-decoration:none;font-weight:600;margin-top:0.5rem;border:none;cursor:pointer;font-size:0.85rem;}
+    .btn:hover{background:var(--vert);color:var(--or2);}
+    .btn-secondary{background:var(--vert);color:var(--or2);}
+    .btn-secondary:hover{background:var(--or2);color:var(--vert);}
+    .chart-card{background:#fff;border:1px solid var(--creme2);border-radius:16px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+    .chart-card h3{font-size:1.05rem;font-weight:600;color:var(--texte);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;font-family:'Cormorant Garamond',serif;}
+    .chart-card h3 small{font-weight:400;font-size:0.8rem;color:var(--gris2);}
+    .chart-card .chart-wrapper{position:relative;height:280px;}
+    .chart-card .chart-wrapper.tall{height:340px;}
+    .chart-card .chart-note{font-size:0.8rem;color:var(--gris2);margin-top:0.5rem;text-align:center;}
+    .chart-full{grid-column:1/-1;}
+    .charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.75rem;margin-bottom:2.5rem;}
+    .table-wrap{background:#fff;border-radius:16px;padding:1.5rem;border:1px solid var(--creme2);margin:2rem 0;overflow-x:auto;-webkit-overflow-scrolling:touch;position:relative;}
+    .table-wrap h3{font-size:1.05rem;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap;font-family:'Cormorant Garamond',serif;}
+    .table-wrap table{width:100%;border-collapse:collapse;font-size:0.85rem;min-width:600px;}
+    .table-wrap th{background:var(--vert);color:#fff;padding:0.5rem;text-align:left;font-size:0.75rem;}
+    .table-wrap td{padding:0.45rem 0.5rem;border-bottom:1px solid var(--creme2);vertical-align:top;}
+    .table-wrap tr:nth-child(even){background:#f9f7f2;}
+    .table-wrap .highlight{font-weight:600;background:var(--creme);}
+    .table-wrap .source{font-size:0.7rem;color:var(--gris2);margin-top:0.5rem;}
+    .table-wrap .text-right{text-align:right;}
+    .table-wrap .text-center{text-align:center;}
+    .table-wrap .statut-cell{font-size:0.75rem;white-space:nowrap;}
+    .table-scroll-hint{display:none;font-size:0.7rem;color:var(--or);text-align:right;margin-top:0.3rem;font-style:italic;}
+    .analysis-box{background:var(--creme);border-left:6px solid var(--or);border-radius:12px;padding:1.75rem 2rem;margin:2.5rem 0 2rem;}
+    .analysis-box h3{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--vert);margin-bottom:0.75rem;}
+    .analysis-box p{line-height:1.7;color:var(--texte);margin-bottom:0.75rem;}
+    .analysis-box strong{color:var(--vert);}
+    .analysis-box.alerte{background:#fff3e0;border-left-color:var(--orange);}
+    .analysis-box.critique{background:#ffebee;border-left-color:var(--rouge);}
+    .analysis-box.info{background:#e3f2fd;border-left-color:#1976d2;}
+    .stats-block{background:var(--creme);border-radius:16px;padding:1.5rem;margin:1.5rem 0;border:1px solid var(--creme2);}
+    .stats-block h4{font-family:'Cormorant Garamond',serif;color:var(--vert);margin-bottom:0.8rem;font-size:1.05rem;}
+    .stats-block h4 .annee{font-size:0.75rem;color:var(--gris2);font-weight:400;margin-left:0.5rem;font-family:'Inter',sans-serif;}
+    .stats-block table{width:100%;border-collapse:collapse;font-size:0.8rem;min-width:500px;}
+    .stats-block th{background:var(--vert);color:#fff;padding:0.4rem;text-align:left;}
+    .stats-block td{padding:0.4rem;border-bottom:1px solid var(--creme2);}
+    .stats-block tr:nth-child(even){background:#f9f7f2;}
+    .renvoi-card{background:#fff;border:2px dashed var(--or);border-radius:16px;padding:1.25rem 1.5rem;margin:0.75rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;transition:transform 0.2s,box-shadow 0.2s;}
+    .renvoi-card:hover{transform:translateX(5px);box-shadow:0 4px 12px rgba(196,146,42,0.15);}
+    .renvoi-card .renvoi-content{flex:1;}
+    .renvoi-card .renvoi-titre{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.1rem;font-weight:700;margin-bottom:0.25rem;}
+    .renvoi-card .renvoi-desc{font-size:0.85rem;color:var(--gris);}
+    .odd-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1rem;}
+    .odd-item{display:flex;align-items:flex-start;gap:0.75rem;padding:0.8rem 1rem;background:#fff;border:1px solid var(--creme2);border-radius:12px;}
+    .odd-badge{background:var(--vert);color:#fff;font-weight:700;font-size:0.7rem;padding:0.2rem 0.6rem;border-radius:6px;white-space:nowrap;flex-shrink:0;}
+    .odd-item div{font-size:0.85rem;color:var(--texte);}
+    .odd-item div strong{color:var(--vert);}
+    .sources-box{background:#fff;border:1px solid var(--creme2);border-radius:16px;padding:1.5rem;margin:1.5rem 0;}
+    .sources-box h3{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.1rem;margin-bottom:1rem;}
+    .sources-box ul{list-style:none;padding-left:0;}
+    .sources-box li{padding:0.5rem 0;border-bottom:1px solid var(--creme2);font-size:0.85rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+    .sources-box li:last-child{border-bottom:none;}
+    .glossaire{background:#fff;border:1px solid var(--creme2);border-radius:16px;padding:1.5rem;margin:1.5rem 0;}
+    .glossaire h3{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.05rem;margin-bottom:1rem;}
+    .glossaire dl{display:grid;grid-template-columns:auto 1fr;gap:0.5rem 1rem;}
+    .glossaire dt{font-weight:700;color:var(--vert);white-space:nowrap;}
+    .glossaire dd{color:var(--gris);font-size:0.85rem;margin:0;padding-bottom:0.5rem;border-bottom:1px solid var(--creme2);}
+    .note{background:#fff8e1;padding:1rem;border-left:4px solid var(--or);margin:1rem 0;border-radius:4px;font-size:0.9rem;}
+    .note-info{background:#e3f2fd;border-left-color:#1976d2;}
+    footer{background:#0f2c21;color:rgba(255,255,255,0.75);text-align:center;padding:2rem 1rem;font-size:0.8rem;margin-top:2rem;}
+    footer p{margin-bottom:0.3rem;}
+    footer a{color:var(--or2);}
+    footer .boussole{font-style:italic;color:rgba(255,255,255,0.5);margin-top:0.4rem;}
+    footer time{color:var(--or2);font-weight:500;}
+    .back-to-top{position:fixed;bottom:90px;right:20px;background:var(--or);color:var(--vert);width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:99;}
+    .back-to-top.show{opacity:1;}
+    .back-to-top:hover{background:var(--vert);color:var(--or2);}
+    .sticky-contrib-btn{position:fixed;bottom:20px;right:20px;z-index:99;background:var(--or);color:var(--vert);padding:0.8rem 1.2rem;border-radius:40px;text-decoration:none;font-weight:600;font-size:0.85rem;box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:transform 0.2s;}
+    .sticky-contrib-btn:hover{transform:scale(1.05);background:var(--vert);color:var(--or2);}
+    @media (max-width:900px){.charts-grid{grid-template-columns:1fr;}}
+    @media (max-width:700px){
+      nav{flex-direction:row;}
+      .burger{display:block;}
+      .nav-links{display:none;width:100%;flex-direction:column;align-items:center;padding-top:0.5rem;}
+      .nav-links.show{display:flex;}
+      .container{padding:0 1rem;}
+      .page-header h1{font-size:1.8rem;}
+      .table-wrap table{font-size:0.75rem;min-width:600px;}
+      .table-scroll-hint{display:block;}
+      .sticky-contrib-btn{bottom:20px;right:10px;padding:0.6rem 1rem;font-size:0.75rem;}
+      .back-to-top{bottom:75px;right:10px;width:40px;height:40px;font-size:1.3rem;}
+      .glossaire dl{grid-template-columns:1fr;}
+      .glossaire dt{margin-top:0.5rem;}
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: var(--blanc); color: var(--texte); line-height: 1.5; }
-
-    .container { max-width: 1300px; margin: 0 auto; padding: 0 1.5rem; }
-
-    nav { background: var(--vert); padding: 0.8rem 1.5rem; border-bottom: 2px solid var(--or); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; position: sticky; top: 0; z-index: 100; }
-    .logo a { color: var(--or2); text-decoration: none; font-size: 1.5rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
-    .logo span { font-size: 0.7rem; display: block; color: rgba(255,255,255,0.7); }
-    .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.8rem; font-weight: 500; }
-    .nav-links a:hover, .nav-links a.active { color: var(--or2); }
-    .nav-links a.active { border-bottom: 2px solid var(--or); padding-bottom: 0.2rem; }
-    .burger { display: none; background: none; border: none; color: var(--or2); font-size: 1.8rem; cursor: pointer; }
-
-    .page-header { background: var(--vert); padding: 2.5rem 1.5rem; border-bottom: 4px solid var(--or); text-align: center; }
-    .page-header h1 { color: #fff; border-left: none; padding-left: 0; font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; }
-    .page-header h1 em { color: var(--or2); font-style: italic; }
-    .page-header p { color: rgba(255,255,255,0.75); margin-top: 0.5rem; }
-    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.3rem; }
-
-    section { padding: 2.5rem 0; border-bottom: 1px solid var(--creme2); }
-    .section-title { font-size: 1.6rem; color: var(--vert); margin-bottom: 1.5rem; border-left: 6px solid var(--or); padding-left: 1rem; font-family: 'Cormorant Garamond', serif; }
-    .section-sub { color: var(--gris2); margin-bottom: 1.5rem; }
-
-    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-    .card { background: #fff; border: 1px solid var(--creme2); border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s, box-shadow 0.2s; }
-    .card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
-    .card h3 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.2rem; margin-bottom: 0.5rem; }
-    .card p { color: var(--gris); font-size: 0.9rem; margin-top: 0.3rem; }
-
-    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; margin-top: 0.5rem; }
-    .badge-valide { background: #e8f5e9; color: #2e7d32; }
-    .badge-encours { background: #fff8e1; color: #856404; }
-    .badge-contributif { background: #e8dfd0; color: #5a5a50; }
-
-    .btn { display: inline-block; background: var(--or); color: #1b3a2d; padding: 0.5rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; margin-top: 0.5rem; border: none; cursor: pointer; font-size: 0.85rem; }
-    .btn:hover { background: var(--vert); color: var(--or2); }
-
-    .chart-card { background: #fff; border: 1px solid var(--creme2); border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-    .chart-card h3 { font-size: 1.05rem; font-weight: 600; color: var(--texte); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-family: 'Cormorant Garamond', serif; }
-    .chart-card h3 small { font-weight: 400; font-size: 0.8rem; color: var(--gris2); }
-    .chart-card .chart-wrapper { position: relative; height: 280px; }
-    .chart-card .chart-wrapper.tall { height: 340px; }
-    .chart-card .chart-note { font-size: 0.8rem; color: var(--gris2); margin-top: 0.5rem; text-align: center; }
-    .chart-full { grid-column: 1 / -1; }
-
-    .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-bottom: 2.5rem; }
-
-    .table-wrap { background: #fff; border-radius: 16px; padding: 1.5rem; border: 1px solid var(--creme2); margin: 2rem 0; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .table-wrap h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; font-family: 'Cormorant Garamond', serif; }
-    .table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.85rem; min-width: 500px; }
-    .table-wrap th { background: var(--vert); color: #fff; padding: 0.5rem; text-align: left; }
-    .table-wrap td { padding: 0.4rem; border-bottom: 1px solid var(--creme2); }
-    .table-wrap tr:nth-child(even) { background: #f9f7f2; }
-    .table-wrap .highlight { font-weight: 600; background: var(--creme); }
-    .table-wrap .source { font-size: 0.7rem; color: var(--gris2); margin-top: 0.5rem; }
-
-    .commune-link { color: var(--vert); text-decoration: none; font-weight: 600; }
-    .commune-link:hover { text-decoration: underline; }
-
-    .top-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin: 1.5rem 0 2.5rem; }
-    .top-card { background: #fff; border: 1px solid var(--creme2); border-radius: 16px; padding: 1.5rem; }
-    .top-card h3 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.1rem; margin-bottom: 1rem; }
-    .top-item { display: flex; justify-content: space-between; align-items: center; padding: 0.4rem 0; border-bottom: 1px solid var(--creme2); font-size: 0.85rem; }
-    .top-item:last-child { border-bottom: none; }
-    .top-item .rank { font-weight: 700; color: var(--gris2); width: 2rem; }
-    .top-item .project { flex: 1; padding: 0 0.75rem; }
-    .top-item .project .commune { font-size: 0.7rem; color: var(--gris2); display: block; }
-    .top-item .amount { font-weight: 600; color: var(--vert); white-space: nowrap; }
-    .top-item .year-badge { background: var(--creme2); border-radius: 100px; padding: 0.05rem 0.65rem; font-size: 0.65rem; font-weight: 600; color: var(--gris); margin-left: 0.5rem; }
-
-    .analysis-box { background: var(--creme); border-left: 6px solid var(--or); border-radius: 12px; padding: 1.75rem 2rem; margin: 2.5rem 0 2rem; }
-    .analysis-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 700; color: var(--vert); margin-bottom: 0.75rem; }
-    .analysis-box p { line-height: 1.7; color: var(--texte); margin-bottom: 0.75rem; }
-    .analysis-box strong { color: var(--vert); }
-
-    .stats-block { background: var(--creme); border-radius: 16px; padding: 1.5rem; margin: 1.5rem 0; border: 1px solid var(--creme2); }
-    .stats-block h4 { font-family: 'Cormorant Garamond', serif; color: var(--vert); margin-bottom: 0.8rem; }
-    .stats-block table { width: 100%; border-collapse: collapse; font-size: 0.8rem; min-width: 500px; }
-    .stats-block th { background: var(--vert); color: #fff; padding: 0.4rem; text-align: left; }
-    .stats-block td { padding: 0.4rem; border-bottom: 1px solid var(--creme2); }
-    .stats-block tr:nth-child(even) { background: #f9f7f2; }
-    .stats-block .source { font-size: 0.7rem; color: var(--gris2); margin-top: 0.5rem; }
-
-    .footer-note { text-align: center; font-size: 0.85rem; color: var(--gris2); border-top: 1px solid var(--creme2); padding-top: 2rem; margin-top: 1rem; }
-
-    footer { background: #0f2c21; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.8rem; margin-top: 2rem; }
-    footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
-
-    .back-to-top { position: fixed; bottom: 20px; right: 20px; background: var(--or); color: #1b3a2d; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.5rem; font-weight: bold; opacity: 0; transition: opacity 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 99; }
-    .back-to-top.show { opacity: 1; }
-    .back-to-top:hover { background: var(--vert); color: var(--or2); }
-
-    .note { background: #fff8e1; padding: 1rem; border-left: 4px solid var(--or); margin: 1rem 0; border-radius: 4px; font-size: 0.9rem; }
-
-    @media (max-width: 900px) { .charts-grid { grid-template-columns: 1fr; } .top-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 700px) { nav { flex-direction: row; } .burger { display: block; } .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; padding-top: 0.5rem; } .nav-links.show { display: flex; } .container { padding: 0 1rem; } .page-header h1 { font-size: 1.8rem; } .table-wrap table { font-size: 0.75rem; min-width: 400px; } }
+    @media (max-width:400px){.table-wrap table{min-width:400px;}}
   </style>
 </head>
 <body>
 
+<a href="#contenu" class="skip-link">Aller au contenu principal</a>
+
+<div class="status-banner">Plateforme en déploiement progressif — données en cours de consolidation.</div>
+<div class="lekie-en-premier">🟢 Lékié en premier — l'humain, le territoire, la fierté</div>
+
 <nav aria-label="Navigation principale">
   <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
-  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="navLinks" type="button">☰</button>
   <div class="nav-links" id="navLinks">
     <a href="index.html">Accueil</a>
     <a href="plateforme.html">Plateforme</a>
     <a href="mon-village.html">Mon village</a>
     <a href="mon-ecole.html">Mon école</a>
     <a href="observatoire.html" class="active">Observatoire</a>
+    <a href="valeurs-et-competences.html">Valeurs et compétences</a>
     <a href="sport.html">Sport</a>
     <a href="certification.html">Certification</a>
+    <a href="agriculture.html">🌾 Agriculture</a>
+    <a href="elevage.html">🐄 Élevage</a>
     <a href="tourisme.html">Tourisme</a>
     <a href="hommage-andre-marie-mbida.html">Hommage</a>
     <a href="presse.html">Presse</a>
@@ -148,493 +203,662 @@
 
 <div class="page-header">
   <h1>📊 Observatoire de la <em>Lékié</em></h1>
-  <p>Budget d'Investissement Public (BIP) · Profil des ménages et conditions de vie</p>
-  <p class="maj">📅 Dernière mise à jour : 28 Juillet 2026</p>
+  <p>BIP · Démographie · Conditions de vie · Ambitions 2035</p>
+  <span class="otl-badge">🌿 Vers un Observatoire Territorial — OTL en construction</span>
+  <p class="maj">📅 Dernière mise à jour : <time datetime="2026-10-14">14 octobre 2026</time> · Sources : INS 2025 · MINMAP · FEICOM</p>
 </div>
+
+<main id="contenu">
+
+<section class="chiffres-cles" aria-labelledby="titre-chiffres">
+  <h2 id="titre-chiffres">🌿 La Lékié en chiffres clés</h2>
+  <div class="chiffres-grid">
+    <div class="chiffre-item"><div class="chiffre-value">9</div><div class="chiffre-label">Arrondissements</div></div>
+    <div class="chiffre-item"><div class="chiffre-value">509 457</div><div class="chiffre-label">Habitants (2023)</div></div>
+    <div class="chiffre-item"><div class="chiffre-value">2 989 km²</div><div class="chiffre-label">Superficie officielle</div></div>
+    <div class="chiffre-item"><div class="chiffre-value">170,4</div><div class="chiffre-label">hab/km² (2023)</div></div>
+    <div class="chiffre-item"><div class="chiffre-value">2ᵉ</div><div class="chiffre-label">Producteur cacao régional</div></div>
+    <div class="chiffre-item"><div class="chiffre-value">30,98 Mds</div><div class="chiffre-label">BIP 2016-2026 (FCFA)</div></div>
+  </div>
+</section>
 
 <div class="container">
 
-  <!-- ============================================================ -->
-  <!-- SECTION 1 : OBSERVATOIRE DU BIP -->
-  <!-- ============================================================ -->
-  <section>
-    <h2 class="section-title">📈 Observatoire du BIP — Marchés publics (2016–2026)</h2>
-    <p class="section-sub">Programmation budgétaire des marchés publics dans le département de la Lékié. Données MINMAP.</p>
+<section id="ambitions" aria-labelledby="titre-ambitions">
+  <h2 class="section-title" id="titre-ambitions">🎯 Ambitions Lékié 2035</h2>
+  <p class="section-sub">Cinq ambitions structurantes, ancrées dans les réalités documentées du département. Chaque ambition est adossée à une cible chiffrée.</p>
+  <div class="ambitions-grid">
+    <div class="ambition-card"><div class="ambition-num">01</div><h3>🌾 Lékié, grenier vivrier du Centre</h3><p>Consolider la position de la Lékié comme premier fournisseur de vivres frais du Grand Yaoundé.</p><div class="ancrage">Ancrage : 60-70% des vivres vendus à Yaoundé proviennent de la Lékié.</div><span class="cible">🎯 Cible 2035 : +30% de production maraîchère</span></div>
+    <div class="ambition-card"><div class="ambition-num">02</div><h3>🍫 Lékié, cacao modernisé</h3><p>Moderniser la filière cacao : transformation locale, traçabilité, marchés certifiés.</p><div class="ancrage">Ancrage : 2ᵉ producteur régional · 81 045 ha exploités · 39 712 t produites (2024).</div><span class="cible">🎯 Cible 2035 : relance de 5 000 ha certifiés</span></div>
+    <div class="ambition-card"><div class="ambition-num">03</div><h3>💧 Lékié, territoire connecté à l'eau</h3><p>Atteindre une couverture universelle en eau potable via le modèle SYNCOLEK.</p><div class="ancrage">Ancrage : SYNCOLEK, seule intercommunalité eau fonctionnelle du Cameroun · 8 communes membres.</div><span class="cible">🎯 Cible 2035 : 80% d'accès à l'eau améliorée</span></div>
+    <div class="ambition-card"><div class="ambition-num">04</div><h3>🎓 Lékié, jeunesse formée</h3><p>Transformer le dividende démographique en force productive par l'éducation et la formation.</p><div class="ancrage">Ancrage : 165 845 élèves au primaire (2023/2024) · 485 écoles primaires · ratio 46 élèves/maître.</div><span class="cible">🎯 Cible 2035 : 70% de scolarisation secondaire</span></div>
+    <div class="ambition-card"><div class="ambition-num">05</div><h3>🏛️ Lékié, gouvernance exemplaire</h3><p>Faire de la Lékié un territoire pilote en transparence publique et redevabilité.</p><div class="ancrage">Ancrage : cet Observatoire · publication annuelle des données BIP.</div><span class="cible">🎯 Cible 2035 : publication annuelle 100% des réalisations</span></div>
+  </div>
+</section>
 
-    <div class="note">
-      <strong>📌 Note méthodologique :</strong> Les données présentées sont issues des <strong>programmations budgétaires</strong> du MINMAP. Il s'agit de montants prévisionnels planifiés, non des réalisations effectives.
+<section id="territoire" aria-labelledby="titre-territoire">
+  <h2 class="section-title" id="titre-territoire">🌍 Territoire & Démographie</h2>
+  <p class="section-sub">Données officielles INS/BUCREP — Annuaire Statistique de la Région du Centre, édition 2025.</p>
+
+  <div class="note note-info"><strong>📌 Note de vocabulaire :</strong> Dans ce document, les termes <strong>« commune »</strong> et <strong>« arrondissement »</strong> désignent la même réalité territoriale. « Commune » est le terme utilisé pour la collectivité territoriale décentralisée (administrée par un conseil élu) ; « arrondissement » est le terme administratif déconcentré (représenté par un sous-préfet). La Lékié compte <strong>9 communes/arrondissements</strong>.</div>
+  <div class="note note-info"><strong>📌 Note méthodologique sur la superficie :</strong> La superficie officielle retenue pour ce document est celle de l'INS/BUCREP : <strong>2 989 km²</strong> (Source : INS — Annuaire Statistique de la Région du Centre, édition 2025, Tableau 1-1). À noter que des référentiels divergents existent (voir tableau ci-dessous). <strong>La donnée de référence nationale retenue est celle de l'INS.</strong></div>
+
+  <div class="table-wrap">
+    <h3>📐 Superficie de la Lékié — Référentiels comparés</h3>
+    <table>
+      <thead><tr><th scope="col">Référentiel</th><th scope="col" class="text-right">Superficie (km²)</th><th scope="col">Nature</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td><strong>INS — Annuaire Statistique du Centre 2025</strong></td><td class="text-right"><strong>2 989</strong></td><td>Référentiel national retenu ✅</td></tr>
+        <tr><td>BUCREP — RGPH</td><td class="text-right">2 989</td><td>Recensement — cohérent avec INS</td></tr>
+        <tr><td>SRADDT Centre (MINEPAT)</td><td class="text-right">2 989,0</td><td>Planification territoriale</td></tr>
+        <tr><td>Cumul des superficies communales</td><td class="text-right">~3 160</td><td>Administratif local — divergent</td></tr>
+        <tr><td>IRD 1963 (historique)</td><td class="text-right">3 023,60</td><td>Historique — obsolète</td></tr>
+      </tbody>
+    </table>
+    <p class="source">📌 <strong>Lecture :</strong> L'écart entre le référentiel national (2 989 km²) et le cumul communal (~3 160 km²) s'explique par des ajustements frontaliers, des zones contestées et la création de nouveaux arrondissements.</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="card"><h3>📐 Superficie officielle</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">2 989 km²</p><p style="font-size:0.8rem;color:var(--gris2);">4,3% de la Région du Centre</p><span class="badge-statut badge-officiel">INS 2025 — Tableau 1-1</span></div>
+    <div class="card"><h3>👥 Population 2023</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">509 457</p><p style="font-size:0.8rem;color:var(--gris2);">Estimation officielle BUCREP</p><span class="badge-statut badge-officiel">INS 2025 — Tableau 4-3</span></div>
+    <div class="card"><h3>📊 Densité 2023</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">170,4 hab/km²</p><p style="font-size:0.8rem;color:var(--gris2);">2,8× la moyenne nationale</p><span class="badge-statut badge-officiel">INS 2025 — Tableau 4-6 (donnée directe)</span></div>
+  </div>
+
+  <div class="table-wrap">
+    <h3>📈 Évolution démographique 1987-2023</h3>
+    <table>
+      <thead><tr><th scope="col">Année</th><th scope="col" class="text-right">Population</th><th scope="col" class="text-right">Densité (hab/km²)</th><th scope="col">Source</th></tr></thead>
+      <tbody>
+        <tr><td>1987</td><td class="text-right">240 252</td><td class="text-right">80,4</td><td>RGPH 1987</td></tr>
+        <tr><td>2005</td><td class="text-right">286 050</td><td class="text-right">95,7</td><td>RGPH 2005</td></tr>
+        <tr><td>2010</td><td class="text-right">337 401</td><td class="text-right">112,9</td><td>Projection INS/BUCREP</td></tr>
+        <tr class="highlight"><td><strong>2023</strong></td><td class="text-right"><strong>509 457</strong></td><td class="text-right"><strong>170,4</strong></td><td><strong>Projection INS 2025</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="source">📌 Source : INS — Annuaire Statistique du Centre 2025, Tableau 4-6. Croissance 1987-2023 : <strong>+112%</strong> en 36 ans.</p>
+  </div>
+
+  <div class="table-wrap">
+    <h3>🗺️ Répartition de la population par arrondissement (2023)</h3>
+    <table>
+      <thead><tr><th scope="col">#</th><th scope="col">Arrondissement</th><th scope="col" class="text-right">Population 2023</th><th scope="col" class="text-right">Part (%)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Obala</strong></td><td class="text-right">142 320</td><td class="text-right">27,9%</td></tr>
+        <tr><td>2</td><td><strong>Okola</strong></td><td class="text-right">103 561</td><td class="text-right">20,3%</td></tr>
+        <tr><td>3</td><td><strong>Sa'a</strong></td><td class="text-right">82 575</td><td class="text-right">16,2%</td></tr>
+        <tr><td>4</td><td><strong>Monatélé</strong> (chef-lieu)</td><td class="text-right">54 912</td><td class="text-right">10,8%</td></tr>
+        <tr><td>5</td><td>Ebebda</td><td class="text-right">34 154</td><td class="text-right">6,7%</td></tr>
+        <tr><td>6</td><td>Lobo</td><td class="text-right">26 524</td><td class="text-right">5,2%</td></tr>
+        <tr><td>7</td><td>Evodoula</td><td class="text-right">26 327</td><td class="text-right">5,2%</td></tr>
+        <tr><td>8</td><td>Elig-Mfomo</td><td class="text-right">25 555</td><td class="text-right">5,0%</td></tr>
+        <tr><td>9</td><td>Batchenga</td><td class="text-right">13 529</td><td class="text-right">2,7%</td></tr>
+        <tr style="font-weight:700;background:var(--vert);color:#fff;"><td>—</td><td><strong>TOTAL LÉKIÉ</strong></td><td class="text-right"><strong>509 457</strong></td><td class="text-right"><strong>100%</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="source">📌 Source : INS 2025, Tableau 4-3. <strong>Obala et Okola concentrent 48,3% de la population départementale.</strong></p>
+  </div>
+
+  <div class="chart-card">
+    <h3>📊 Évolution démographique 1987-2023 <small>(habitants)</small></h3>
+    <div class="chart-wrapper tall">
+      <canvas id="démographieChart" aria-label="Graphique d'évolution démographique de la Lékié 1987-2023">Votre navigateur ne supporte pas les graphiques Canvas.</canvas>
     </div>
+    <div class="chart-note">Points de référence : RGPH 1987 · RGPH 2005 · Projection INS/BUCREP 2010 · Projection INS 2025 (année 2023).</div>
+  </div>
 
-    <!-- KPI -->
-    <div class="grid-3" style="margin-bottom:2rem;">
-      <div class="card"><h3>💵 Total programmé</h3><p style="font-size:1.8rem; font-weight:700; color:var(--vert);">30,98 Mds FCFA</p><p style="font-size:0.8rem; color:var(--gris2);">1 208 marchés</p></div>
-      <div class="card"><h3>📈 Moyenne annuelle</h3><p style="font-size:1.8rem; font-weight:700; color:var(--vert);">2,82 Mds FCFA</p><p style="font-size:0.8rem; color:var(--gris2);">+63% en 2025 (pic)</p></div>
-      <div class="card"><h3>🏆 Commune la plus programmée</h3><p style="font-size:1.8rem; font-weight:700; color:var(--vert);"><a href="plateforme.html#okola" class="commune-link">Okola</a></p><p style="font-size:0.8rem; color:var(--gris2);">4,39 Mds FCFA (14,2%)</p></div>
+  <div class="analysis-box">
+    <h3>📌 Lecture démographique — Lékié 1987-2023</h3>
+    <p><strong>🔹 Croissance spectaculaire :</strong> La Lékié est passée de <strong>240 252 habitants</strong> (1987) à <strong>509 457 habitants</strong> (2023), soit une <strong>croissance de +112% en 36 ans</strong> (taux annuel moyen : +2,1%).</p>
+    <p><strong>🔹 Densité record :</strong> Avec <strong>170,4 hab/km²</strong>, la Lékié est <strong>2,8 fois plus dense</strong> que la moyenne nationale (~60,7 hab/km²).</p>
+    <p><strong>🔹 Déséquilibre territorial :</strong> <strong>Obala</strong> (27,9%) et <strong>Okola</strong> (20,3%) concentrent à eux seuls près de la moitié de la population départementale.</p>
+    <p><strong>🔹 Dividende démographique :</strong> Cette croissance rapide constitue à la fois une opportunité (main-d'œuvre, marché intérieur) et un défi (services publics, emploi, foncier).</p>
+  </div>
+</section>
+
+<section id="bip" aria-labelledby="titre-bip">
+  <h2 class="section-title" id="titre-bip">📈 Budget d'Investissement Public — Marchés publics (2016-2026)</h2>
+  <p class="section-sub">Cœur de l'Observatoire : suivi des investissements publics dans la Lékié. Données MINMAP + INS 2025.</p>
+
+  <div class="note"><strong>📌 Note méthodologique :</strong> Les données présentées sont issues des <strong>programmations budgétaires</strong> du MINMAP. Les statuts et montants réalisés sont renseignés au fur et à mesure de la remontée des données terrain. Les <strong>???</strong> signalent une <strong>donnée en cours de collecte</strong> — et non un projet non réalisé.</div>
+
+  <div class="grid-3" style="margin-bottom:2rem;">
+    <div class="card"><h3>💵 Total programmé 2016-2026</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">30,98 Mds FCFA</p><p style="font-size:0.8rem;color:var(--gris2);">1 208 marchés sur 10 ans</p></div>
+    <div class="card"><h3>📈 Moyenne annuelle</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">2,82 Mds FCFA</p><p style="font-size:0.8rem;color:var(--gris2);">+63% en 2025 (pic)</p></div>
+    <div class="card"><h3>🏆 Commune la plus programmée</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);"><a href="plateforme.html#communes" class="commune-link">Okola</a></p><p style="font-size:0.8rem;color:var(--gris2);">4,39 Mds FCFA (14,2%)</p></div>
+  </div>
+
+  <div class="analysis-box critique">
+    <h3>🚨 Alerte — Chute du taux d'exécution BIP en 2024</h3>
+    <p><strong>Donnée officielle INS 2025 (Tableau 23-1) :</strong></p>
+    <table style="width:100%;border-collapse:collapse;font-size:0.9rem;margin:1rem 0;">
+      <thead><tr style="background:var(--vert);color:#fff;"><th style="padding:0.5rem;text-align:left;">Année</th><th style="padding:0.5rem;text-align:right;">Nb projets</th><th style="padding:0.5rem;text-align:right;">Dotation AE (milliers FCFA)</th><th style="padding:0.5rem;text-align:right;">Taux exécution physique</th></tr></thead>
+      <tbody>
+        <tr style="background:#e8f5e9;"><td style="padding:0.5rem;"><strong>2023</strong></td><td style="padding:0.5rem;text-align:right;">160</td><td style="padding:0.5rem;text-align:right;">2 919 885</td><td style="padding:0.5rem;text-align:right;color:#2e7d32;font-weight:700;">54,25% ✅</td></tr>
+        <tr style="background:#ffebee;"><td style="padding:0.5rem;"><strong>2024</strong></td><td style="padding:0.5rem;text-align:right;">134</td><td style="padding:0.5rem;text-align:right;">2 424 027</td><td style="padding:0.5rem;text-align:right;color:var(--rouge);font-weight:700;">5,19% 🚨</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Lecture :</strong> Le taux d'exécution physique est passé de <strong>54,25%</strong> en 2023 à <strong>5,19%</strong> en 2024, soit une <strong>chute de 90%</strong>. La Lékié est <strong>9ᵉ sur 10</strong> départements de la Région du Centre en exécution BIP 2024.</p>
+    <p><strong>Hypothèses explicatives documentées :</strong> difficultés de mise en œuvre administrative, retards de trésorerie, problèmes de passation des marchés, ou données provisoires.</p>
+    <span class="badge-statut badge-officiel">Source : INS 2025, Tableau 23-1</span>
+  </div>
+
+  <div class="charts-grid">
+    <div class="chart-card chart-full">
+      <h3>📈 Évolution annuelle du BIP <small>valeur (courbe) et volume (barres)</small></h3>
+      <div class="chart-wrapper tall"><canvas id="evolutionChart" aria-label="Évolution BIP 2016-2026">Votre navigateur ne supporte pas les graphiques Canvas.</canvas></div>
+      <div class="chart-note">⚠️ Données de programmation budgétaire — montants prévisionnels non corrigés de l'inflation</div>
     </div>
-
-    <!-- GRAPHIQUES -->
-    <div class="charts-grid">
-
-      <div class="chart-card chart-full">
-        <h3>📈 Évolution annuelle <small>valeur (courbe) et volume (barres)</small></h3>
-        <div class="chart-wrapper tall">
-          <canvas id="evolutionChart" aria-label="Graphique d'évolution annuelle du BIP de 2016 à 2026"></canvas>
-        </div>
-        <div class="chart-note">⚠️ Données de programmation budgétaire — montants prévisionnels</div>
-      </div>
-
-      <div class="chart-card">
-        <h3>🗺️ Répartition par commune <small>valeur totale programmée</small></h3>
-        <div class="chart-wrapper">
-          <canvas id="communeChart" aria-label="Graphique de répartition du BIP par commune"></canvas>
-        </div>
-        <div style="font-size:0.75rem; color:var(--gris2); text-align:center; margin-top:0.5rem;">
-          Cliquez sur une barre pour voir la commune →
-          <a href="plateforme.html#communes" style="color:var(--vert); font-weight:600;">Plateforme</a>
-        </div>
-      </div>
-
-      <div class="chart-card">
-        <h3>🧩 Répartition par type de projet</h3>
-        <div class="chart-wrapper">
-          <canvas id="typeChart" aria-label="Graphique de répartition du BIP par type de projet"></canvas>
-        </div>
-        <div style="font-size:0.7rem; color:var(--gris2); text-align:center; margin-top:0.5rem;">
-          <strong>Légende :</strong> AI = Adduction d'eau / Électrification · BEC = Bâtiments · AG = Acquisitions · SPI = Études / Maîtrise d'œuvre
-        </div>
-      </div>
+    <div class="chart-card">
+      <h3>🗺️ Répartition par commune <small>valeur totale programmée</small></h3>
+      <div class="chart-wrapper"><canvas id="communeChart" aria-label="Répartition par commune">Votre navigateur ne supporte pas les graphiques Canvas.</canvas></div>
     </div>
-
-    <!-- TABLEAU COMMUNES -->
-    <div class="table-wrap">
-      <h3>📋 Récapitulatif par commune (programmation)</h3>
-      <table>
-        <thead><tr><th scope="col">#</th><th scope="col">Commune</th><th scope="col" class="text-right">Nb marchés</th><th scope="col" class="text-right">Montant (FCFA)</th><th scope="col" class="text-right">Part (%)</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td><a href="plateforme.html#okola" class="commune-link">Okola</a></td><td class="text-right">161</td><td class="text-right">4 393 865 762 FCFA</td><td class="text-right">14,18%</td></tr>
-          <tr><td>2</td><td><a href="plateforme.html#evodoula" class="commune-link">Evodoula</a></td><td class="text-right">107</td><td class="text-right">2 829 097 814 FCFA</td><td class="text-right">9,13%</td></tr>
-          <tr><td>3</td><td><a href="plateforme.html#saa" class="commune-link">Sa'a</a></td><td class="text-right">131</td><td class="text-right">2 656 154 000 FCFA</td><td class="text-right">8,57%</td></tr>
-          <tr><td>4</td><td><a href="plateforme.html#obala" class="commune-link">Obala</a></td><td class="text-right">139</td><td class="text-right">2 640 169 414 FCFA</td><td class="text-right">8,52%</td></tr>
-          <tr><td>5</td><td><a href="plateforme.html#monatele" class="commune-link">Monatélé</a></td><td class="text-right">126</td><td class="text-right">2 614 616 914 FCFA</td><td class="text-right">8,44%</td></tr>
-          <tr><td>6</td><td><a href="plateforme.html#lobo" class="commune-link">Lobo</a></td><td class="text-right">72</td><td class="text-right">2 468 559 256 FCFA</td><td class="text-right">7,97%</td></tr>
-          <tr><td>7</td><td><a href="plateforme.html#elig-mfomo" class="commune-link">Elig-Mfomo</a></td><td class="text-right">109</td><td class="text-right">2 216 981 319 FCFA</td><td class="text-right">7,15%</td></tr>
-          <tr><td>8</td><td><a href="plateforme.html#ebebda" class="commune-link">Ebebda</a></td><td class="text-right">95</td><td class="text-right">2 051 359 824 FCFA</td><td class="text-right">6,62%</td></tr>
-          <tr><td>9</td><td><a href="plateforme.html#batchenga" class="commune-link">Batchenga</a></td><td class="text-right">79</td><td class="text-right">1 697 956 000 FCFA</td><td class="text-right">5,48%</td></tr>
-          <tr class="highlight"><td>—</td><td><strong>Services déconcentrés</strong></td><td class="text-right">73</td><td class="text-right">2 767 366 000 FCFA</td><td class="text-right">—</td></tr>
-          <tr style="font-weight:700; background:var(--vert); color:#fff;"><td></td><td><strong>TOTAL</strong></td><td class="text-right"><strong>1 208</strong></td><td class="text-right"><strong>30 979 131 357 FCFA</strong></td><td class="text-right"><strong>100%</strong></td></tr>
-        </tbody>
-      </table>
+    <div class="chart-card">
+      <h3>🧩 Répartition par type de projet</h3>
+      <div class="chart-wrapper"><canvas id="typeChart" aria-label="Répartition par type">Votre navigateur ne supporte pas les graphiques Canvas.</canvas></div>
     </div>
+  </div>
 
-    <!-- TOP 10 MARCHÉS -->
-    <div class="table-wrap">
-      <h3>🏅 Top 10 des plus gros marchés programmés</h3>
-      <table>
-        <thead><tr><th scope="col">#</th><th scope="col">Marché / Projet</th><th scope="col">Commune</th><th scope="col" class="text-right">Montant (FCFA)</th><th scope="col">Année</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Reconstruction pont définitif Ngoko + routes</td><td><a href="plateforme.html#lobo" class="commune-link">Lobo</a></td><td class="text-right">300 000 000</td><td>2026</td></tr>
-          <tr><td>2</td><td>Cité municipale d'Okola</td><td><a href="plateforme.html#okola" class="commune-link">Okola</a></td><td class="text-right">285 000 000</td><td>2024</td></tr>
-          <tr><td>3</td><td>Hôtel de Ville d'Evodoula</td><td><a href="plateforme.html#evodoula" class="commune-link">Evodoula</a></td><td class="text-right">282 000 000</td><td>2025</td></tr>
-          <tr><td>4</td><td>Hôtel de Ville de Lobo</td><td><a href="plateforme.html#lobo" class="commune-link">Lobo</a></td><td class="text-right">258 000 000</td><td>2021</td></tr>
-          <tr><td>5</td><td>Hôtel de Ville d'Ebebda (clôture)</td><td><a href="plateforme.html#ebebda" class="commune-link">Ebebda</a></td><td class="text-right">230 000 000</td><td>2025</td></tr>
-          <tr><td>6</td><td>Construction école publique de Batchenga</td><td><a href="plateforme.html#batchenga" class="commune-link">Batchenga</a></td><td class="text-right">195 000 000</td><td>2024</td></tr>
-          <tr><td>7</td><td>Adduction d'eau Monatélé – phase 2</td><td><a href="plateforme.html#monatele" class="commune-link">Monatélé</a></td><td class="text-right">180 000 000</td><td>2023</td></tr>
-          <tr><td>8</td><td>Réhabilitation piste rurale Obala – Sa'a</td><td><a href="plateforme.html#obala" class="commune-link">Obala</a> / <a href="plateforme.html#saa" class="commune-link">Sa'a</a></td><td class="text-right">175 000 000</td><td>2025</td></tr>
-          <tr><td>9</td><td>Électrification rurale d'Elig-Mfomo</td><td><a href="plateforme.html#elig-mfomo" class="commune-link">Elig-Mfomo</a></td><td class="text-right">162 000 000</td><td>2023</td></tr>
-          <tr><td>10</td><td>Construction bloc pédagogique Sa'a</td><td><a href="plateforme.html#saa" class="commune-link">Sa'a</a></td><td class="text-right">155 000 000</td><td>2022</td></tr>
-        </tbody>
-      </table>
+  <div class="table-wrap" aria-label="Équivalent textuel du graphique Types">
+    <h3>📋 Répartition sectorielle détaillée</h3>
+    <table>
+      <thead><tr><th scope="col">Secteur</th><th scope="col" class="text-right">Montant (Mds FCFA)</th><th scope="col" class="text-right">Part (%)</th></tr></thead>
+      <tbody>
+        <tr><td>ROUTES</td><td class="text-right">8,50</td><td class="text-right">27,4%</td></tr>
+        <tr><td>AI (Adduction d'eau / Électrification)</td><td class="text-right">7,20</td><td class="text-right">23,2%</td></tr>
+        <tr><td>BEC (Bâtiments éducatifs et communaux)</td><td class="text-right">6,80</td><td class="text-right">21,9%</td></tr>
+        <tr><td>AG (Acquisitions)</td><td class="text-right">5,80</td><td class="text-right">18,7%</td></tr>
+        <tr><td>SPI (Études / Maîtrise d'œuvre)</td><td class="text-right">0,28</td><td class="text-right">0,9%</td></tr>
+        <tr><td>Autres / Non classés</td><td class="text-right">2,40</td><td class="text-right">7,7%</td></tr>
+        <tr style="font-weight:700;background:var(--vert);color:#fff;"><td>TOTAL</td><td class="text-right">30,98</td><td class="text-right">100%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="table-wrap">
+    <h3>📋 Projets emblématiques — Du BIP programmé au BIP réalisé</h3>
+    <p style="font-size:0.8rem;color:var(--gris2);margin-bottom:1rem;"><span class="badge-statut badge-valide">✅ Achevé</span> <span class="badge-statut badge-encours">⏳ En cours</span> <span class="badge-statut badge-recherche">🔍 Donnée en cours de collecte</span></p>
+    <table>
+      <thead><tr><th scope="col">#</th><th scope="col">Projet</th><th scope="col">Commune</th><th scope="col" class="text-right">Programmé (FCFA)</th><th scope="col" class="text-center">Statut</th><th scope="col" class="text-right">Réalisé (FCFA)</th><th scope="col">Année</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Reconstruction pont définitif Ngoko + routes</td><td><a href="plateforme.html#communes" class="commune-link">Lobo</a></td><td class="text-right">300 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2026</td></tr>
+        <tr><td>2</td><td>Cité municipale d'Okola</td><td><a href="plateforme.html#communes" class="commune-link">Okola</a></td><td class="text-right">285 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">180 000 000</td><td>2024</td></tr>
+        <tr><td>3</td><td>Hôtel de Ville d'Evodoula</td><td><a href="plateforme.html#communes" class="commune-link">Evodoula</a></td><td class="text-right">282 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2025</td></tr>
+        <tr><td>4</td><td>Hôtel de Ville de Lobo</td><td><a href="plateforme.html#communes" class="commune-link">Lobo</a></td><td class="text-right">258 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-valide">✅ Achevé</span></td><td class="text-right">258 000 000</td><td>2021</td></tr>
+        <tr><td>5</td><td>Hôtel de Ville d'Ebebda (clôture)</td><td><a href="plateforme.html#communes" class="commune-link">Ebebda</a></td><td class="text-right">230 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2025</td></tr>
+        <tr><td>6</td><td>Construction école publique de Batchenga</td><td><a href="plateforme.html#communes" class="commune-link">Batchenga</a></td><td class="text-right">195 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-valide">✅ Achevé</span></td><td class="text-right">195 000 000</td><td>2024</td></tr>
+        <tr><td>7</td><td>Adduction d'eau Monatélé – phase 2</td><td><a href="plateforme.html#communes" class="commune-link">Monatélé</a></td><td class="text-right">180 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2023</td></tr>
+        <tr><td>8</td><td>Réhabilitation piste rurale Obala – Sa'a</td><td><a href="plateforme.html#communes" class="commune-link">Obala</a> / <a href="plateforme.html#communes" class="commune-link">Sa'a</a></td><td class="text-right">175 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2025</td></tr>
+        <tr><td>9</td><td>Électrification rurale d'Elig-Mfomo</td><td><a href="plateforme.html#communes" class="commune-link">Elig-Mfomo</a></td><td class="text-right">162 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-recherche">🔍 Donnée en cours de collecte</span></td><td class="text-right">???</td><td>2023</td></tr>
+        <tr><td>10</td><td>Construction bloc pédagogique Sa'a</td><td><a href="plateforme.html#communes" class="commune-link">Sa'a</a></td><td class="text-right">155 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-valide">✅ Achevé</span></td><td class="text-right">155 000 000</td><td>2022</td></tr>
+      </tbody>
+    </table>
+    <p class="table-scroll-hint">← Faites glisser pour voir toutes les colonnes →</p>
+    <p class="source">📌 Source : MINMAP + rapports de suivi terrain ISGI-Lékié. <a href="plateforme.html#contribuer" style="color:var(--vert);font-weight:600;">Contribuer →</a></p>
+  </div>
+
+  <div class="table-wrap">
+    <h3>📋 Récapitulatif par commune (programmation 2016-2026)</h3>
+    <table>
+      <thead><tr><th scope="col">#</th><th scope="col">Commune</th><th scope="col" class="text-right">Nb marchés</th><th scope="col" class="text-right">Montant (FCFA)</th><th scope="col" class="text-right">Part (%)</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><a href="plateforme.html#communes" class="commune-link">Okola</a></td><td class="text-right">161</td><td class="text-right">4 393 865 762</td><td class="text-right">14,18%</td></tr>
+        <tr><td>2</td><td><a href="plateforme.html#communes" class="commune-link">Evodoula</a></td><td class="text-right">107</td><td class="text-right">2 829 097 814</td><td class="text-right">9,13%</td></tr>
+        <tr><td>3</td><td><a href="plateforme.html#communes" class="commune-link">Sa'a</a></td><td class="text-right">131</td><td class="text-right">2 656 154 000</td><td class="text-right">8,57%</td></tr>
+        <tr><td>4</td><td><a href="plateforme.html#communes" class="commune-link">Obala</a></td><td class="text-right">139</td><td class="text-right">2 640 169 414</td><td class="text-right">8,52%</td></tr>
+        <tr><td>5</td><td><a href="plateforme.html#communes" class="commune-link">Monatélé</a></td><td class="text-right">126</td><td class="text-right">2 614 616 914</td><td class="text-right">8,44%</td></tr>
+        <tr><td>6</td><td><a href="plateforme.html#communes" class="commune-link">Lobo</a></td><td class="text-right">72</td><td class="text-right">2 468 559 256</td><td class="text-right">7,97%</td></tr>
+        <tr><td>7</td><td><a href="plateforme.html#communes" class="commune-link">Elig-Mfomo</a></td><td class="text-right">109</td><td class="text-right">2 216 981 319</td><td class="text-right">7,15%</td></tr>
+        <tr><td>8</td><td><a href="plateforme.html#communes" class="commune-link">Ebebda</a></td><td class="text-right">95</td><td class="text-right">2 051 359 824</td><td class="text-right">6,62%</td></tr>
+        <tr><td>9</td><td><a href="plateforme.html#communes" class="commune-link">Batchenga</a></td><td class="text-right">79</td><td class="text-right">1 697 956 000</td><td class="text-right">5,48%</td></tr>
+        <tr class="highlight"><td>—</td><td><strong>Services déconcentrés</strong></td><td class="text-right">73</td><td class="text-right">2 767 366 000</td><td class="text-right">—</td></tr>
+        <tr style="font-weight:700;background:var(--vert);color:#fff;"><td></td><td><strong>TOTAL</strong></td><td class="text-right"><strong>1 208</strong></td><td class="text-right"><strong>30 979 131 357</strong></td><td class="text-right"><strong>100%</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="table-scroll-hint">← Faites glisser pour voir toutes les colonnes →</p>
+  </div>
+
+  <div class="analysis-box">
+    <h3>📌 Analyse BIP 2016-2026 — Lékié</h3>
+    <p>Sur 11 ans, <strong>30,98 milliards FCFA</strong> ont été programmés dans le département de la Lékié à travers <strong>1 208 marchés publics</strong> planifiés.</p>
+    <p><strong>🔹 Tendances :</strong> Après une relative stabilité entre 2016 et 2024, l'année <strong>2025</strong> marque un bond avec <strong>4,07 milliards FCFA</strong> programmés (+63% vs 2024). <em>Montants non corrigés de l'inflation.</em></p>
+    <p><strong>🔹 Disparités territoriales :</strong> <strong>Okola</strong> concentre 14,18% des programmations (4,39 Mds).</p>
+    <p><strong>🔹 Priorités sectorielles :</strong> Routes (27,4%), Adductions d'eau/Électrification (23,2%), Bâtiments éducatifs et communaux (21,9%).</p>
+  </div>
+</section>
+
+<section id="menages" aria-labelledby="titre-menages">
+  <h2 class="section-title" id="titre-menages">🏠 Conditions de vie des ménages</h2>
+  <p class="section-sub">Données FEICOM/INS — Profil des ménages (2016). En cours d'actualisation avec RGPH 2025.</p>
+  <div class="note"><strong>📌 Note :</strong> Ces données reflètent la situation des ménages en <strong>2016</strong>. Elles seront actualisées avec les résultats du RGPH 2025.</div>
+
+  <div class="stats-block">
+    <h4>👥 Profil démographique <span class="annee">(données 2016)</span></h4>
+    <table>
+      <thead><tr><th scope="col">Indicateur</th><th scope="col">Lékié</th></tr></thead>
+      <tbody>
+        <tr><td>Proportion de femmes</td><td><strong>49,7%</strong></td></tr>
+        <tr><td>Âge moyen</td><td><strong>25,4 ans</strong></td></tr>
+        <tr><td>Personnes de 0 à 14 ans</td><td><strong>40,1%</strong></td></tr>
+        <tr><td>Personnes de 15 à 34 ans</td><td><strong>30,2%</strong></td></tr>
+        <tr><td>Personnes de 60 ans ou plus</td><td><strong>8,3%</strong></td></tr>
+        <tr><td>Taille moyenne des ménages</td><td><strong>5,1 personnes</strong></td></tr>
+        <tr><td>Taux de pauvreté monétaire</td><td><strong>33,8%</strong> <span style="font-size:0.75rem;color:var(--gris2);">(moy. nationale 2014 : 37,5%)</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="stats-block">
+    <h4>🏚️ Habitat, hygiène et énergie <span class="annee">(données 2016)</span></h4>
+    <table>
+      <thead><tr><th scope="col">Indicateur</th><th scope="col">Lékié</th></tr></thead>
+      <tbody>
+        <tr><td>Murs en matériau rudimentaire</td><td><strong>59,6%</strong></td></tr>
+        <tr><td>Toit en matériau élaboré</td><td><strong>98,9%</strong></td></tr>
+        <tr><td>Ménages propriétaires</td><td><strong>68,5%</strong></td></tr>
+        <tr><td>Propriétaires avec titre foncier</td><td><strong>3,3%</strong> ⚠️</td></tr>
+        <tr><td>Toilettes non améliorées</td><td><strong>54,1%</strong></td></tr>
+        <tr><td>Ordures jetées dans la nature</td><td><strong>90,9%</strong></td></tr>
+        <tr><td>Accès à l'eau améliorée</td><td><strong>66,4%</strong></td></tr>
+        <tr><td>Ménages électrifiés ENEO</td><td><strong>39,9%</strong></td></tr>
+        <tr><td>Bois/charbon pour cuisson</td><td><strong>85,9%</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="analysis-box">
+    <h3>📌 Lecture des conditions de vie (2016)</h3>
+    <p><strong>🔹 Population jeune :</strong> Âge moyen de 25,4 ans, avec 40,1% de moins de 15 ans.</p>
+    <p><strong>🔹 Pauvreté modérée :</strong> Le taux de pauvreté (33,8%) est <strong>inférieur à la moyenne nationale de 2014</strong> (37,5% - ECAM 4).</p>
+    <p><strong>🔹 Enjeux fonciers majeurs :</strong> Seulement <strong>3,3% des propriétaires ont un titre foncier</strong>.</p>
+    <p><strong>🔹 Assainissement critique :</strong> <strong>54,1%</strong> de toilettes non améliorées et <strong>90,9%</strong> d'ordures jetées dans la nature.</p>
+    <p><strong>🔹 Dépendance au bois-énergie :</strong> <strong>85,9%</strong> des ménages utilisent le bois/charbon pour la cuisine.</p>
+  </div>
+</section>
+
+<section id="education" aria-labelledby="titre-education">
+  <h2 class="section-title" id="titre-education">📚 Éducation — Vue synthétique</h2>
+  <p class="section-sub">Données INS 2025 — Annuaire Statistique du Centre, 2023/2024. Pour le détail, consultez la page dédiée.</p>
+
+  <div class="renvoi-card">
+    <div class="renvoi-content">
+      <div class="renvoi-titre">🎓 Mon école — Détail par établissement</div>
+      <div class="renvoi-desc">Liste complète des écoles primaires, maternelles et secondaires de la Lékié, avec effectifs, ratios et coordonnées.</div>
     </div>
+    <a href="mon-ecole.html" class="btn btn-secondary">Voir Mon école →</a>
+  </div>
 
-    <!-- TOP 5 COMMUNES -->
-    <div class="top-grid">
-      <div class="top-card">
-        <h3>🏅 Top 5 des plus gros marchés programmés</h3>
-        <div class="top-item"><span class="rank">1</span><span class="project">Reconstruction pont Ngoko + routes <span class="commune">Lobo</span></span><span class="amount">300 M</span><span class="year-badge">2026</span></div>
-        <div class="top-item"><span class="rank">2</span><span class="project">Cité municipale d'Okola <span class="commune">Okola</span></span><span class="amount">285 M</span><span class="year-badge">2024</span></div>
-        <div class="top-item"><span class="rank">3</span><span class="project">Hôtel de Ville d'Evodoula <span class="commune">Evodoula</span></span><span class="amount">282 M</span><span class="year-badge">2025</span></div>
-        <div class="top-item"><span class="rank">4</span><span class="project">Hôtel de Ville de Lobo <span class="commune">Lobo</span></span><span class="amount">258 M</span><span class="year-badge">2021</span></div>
-        <div class="top-item"><span class="rank">5</span><span class="project">Hôtel de Ville d'Ebebda <span class="commune">Ebebda</span></span><span class="amount">230 M</span><span class="year-badge">2025</span></div>
-      </div>
-      <div class="top-card">
-        <h3>🏅 Top 5 des communes les plus programmées</h3>
-        <div class="top-item"><span class="rank">1</span><span class="project"><a href="plateforme.html#okola" class="commune-link">Okola</a></span><span class="amount">4,39 Mds</span><span class="year-badge">14,2%</span></div>
-        <div class="top-item"><span class="rank">2</span><span class="project"><a href="plateforme.html#evodoula" class="commune-link">Evodoula</a></span><span class="amount">2,83 Mds</span><span class="year-badge">9,1%</span></div>
-        <div class="top-item"><span class="rank">3</span><span class="project"><a href="plateforme.html#saa" class="commune-link">Sa'a</a></span><span class="amount">2,66 Mds</span><span class="year-badge">8,6%</span></div>
-        <div class="top-item"><span class="rank">4</span><span class="project"><a href="plateforme.html#obala" class="commune-link">Obala</a></span><span class="amount">2,64 Mds</span><span class="year-badge">8,5%</span></div>
-        <div class="top-item"><span class="rank">5</span><span class="project"><a href="plateforme.html#monatele" class="commune-link">Monatélé</a></span><span class="amount">2,61 Mds</span><span class="year-badge">8,4%</span></div>
-      </div>
+  <div class="table-wrap" style="margin-top:2rem;">
+    <h3>📊 Chiffres clés de l'éducation dans la Lékié <small>(2023/2024)</small></h3>
+    <table>
+      <thead><tr><th scope="col">Niveau</th><th scope="col" class="text-right">Établissements</th><th scope="col" class="text-right">Élèves</th><th scope="col" class="text-right">Enseignants</th><th scope="col" class="text-right">Ratio élèves/maître</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Primaire public</strong></td><td class="text-right">286</td><td class="text-right">69 128</td><td class="text-right">1 616</td><td class="text-right">42,8</td></tr>
+        <tr><td><strong>Primaire privé laïc</strong></td><td class="text-right">151</td><td class="text-right">77 368</td><td class="text-right">1 755</td><td class="text-right">44,1</td></tr>
+        <tr><td>Primaire privé confessionnel</td><td class="text-right">48</td><td class="text-right">19 349</td><td class="text-right">226</td><td class="text-right">85,6</td></tr>
+        <tr class="highlight"><td><strong>Total Primaire</strong></td><td class="text-right"><strong>485</strong></td><td class="text-right"><strong>165 845</strong></td><td class="text-right"><strong>3 597</strong></td><td class="text-right"><strong>46,1</strong></td></tr>
+        <tr><td><strong>Maternelle publique</strong></td><td class="text-right">178</td><td class="text-right">12 876</td><td class="text-right">115</td><td class="text-right">112,0</td></tr>
+        <tr><td>Maternelle privée laïque</td><td class="text-right">137</td><td class="text-right">25 135</td><td class="text-right">276</td><td class="text-right">91,1</td></tr>
+        <tr><td>Maternelle privée confessionnelle</td><td class="text-right">45</td><td class="text-right">9 241</td><td class="text-right">80</td><td class="text-right">115,5</td></tr>
+        <tr class="highlight"><td><strong>Total Maternelle</strong></td><td class="text-right"><strong>360</strong></td><td class="text-right"><strong>47 252</strong></td><td class="text-right"><strong>471</strong></td><td class="text-right"><strong>100,3</strong></td></tr>
+      </tbody>
+    </table>
+    <p class="source">📌 Source : INS 2025, Tableaux 6-3, 6-4, 6-5.</p>
+  </div>
+
+  <div class="analysis-box">
+    <h3>📌 Insight territorial — Le poids du privé laïc dans la Lékié</h3>
+    <p><strong>Constat :</strong> La Lékié a une <strong>particularité forte</strong> : le <strong>privé laïc représente 46,6% des élèves du primaire</strong> (77 368 sur 165 845). C'est <strong>exceptionnel</strong> dans un département camerounais.</p>
+    <p><strong>Enjeu stratégique :</strong> Le pilotage éducatif de la Lékié doit <strong>intégrer pleinement le secteur privé laïc</strong> dans les politiques d'aménagement scolaire.</p>
+    <span class="badge-statut badge-officiel">Source : INS 2025</span>
+  </div>
+</section>
+
+<section id="sante" aria-labelledby="titre-sante">
+  <h2 class="section-title" id="titre-sante">🏥 Santé — Vue synthétique</h2>
+  <p class="section-sub">Données MINSANTE via INS 2025. La Lékié compte 7 districts de santé.</p>
+  <div class="grid-3">
+    <div class="card"><h3>🏥 Districts de santé</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">7</p><p style="font-size:0.8rem;color:var(--gris2);">Monatélé, Obala, Okola, Sa'a, Ebebda, Elig-Mfomo, Evodoula</p><span class="badge-statut badge-officiel">Source : INS 2025</span></div>
+    <div class="card"><h3>🩺 Aires de santé</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">194</p><p style="font-size:0.8rem;color:var(--gris2);">Réparties sur l'ensemble du département</p><span class="badge-statut badge-officiel">Source : INS 2025</span></div>
+    <div class="card"><h3>🦟 Moustiquaires 2024</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">5 057</p><p style="font-size:0.8rem;color:var(--gris2);">Distribuées aux femmes enceintes (-43% vs 2023)</p><span class="badge-statut badge-encours">Tendance à surveiller</span></div>
+  </div>
+  <div class="analysis-box alerte">
+    <h3>🚨 Alerte santé — Baisse de la distribution de moustiquaires</h3>
+    <p>La distribution de moustiquaires imprégnées aux femmes enceintes a chuté de <strong>8 841 (2023) à 5 057 (2024)</strong>, soit <strong>-43%</strong>.</p>
+    <span class="badge-statut badge-officiel">Source : INS 2025, Tableau 7-10</span>
+  </div>
+</section>
+
+<section id="agriculture-synthese" aria-labelledby="titre-agri">
+  <h2 class="section-title" id="titre-agri">🌾 Agriculture — Vue synthétique</h2>
+  <p class="section-sub">Données MINADER via INS 2025 (2024). Pour le détail par filière, consultez la page dédiée.</p>
+
+  <div class="renvoi-card">
+    <div class="renvoi-content">
+      <div class="renvoi-titre">🌾 Agriculture — Page dédiée</div>
+      <div class="renvoi-desc">Filières complètes, rendements, superficie, opportunités et acteurs de la Lékié.</div>
     </div>
+    <a href="agriculture.html" class="btn btn-secondary">Voir Agriculture →</a>
+  </div>
 
-    <div class="analysis-box">
-      <h3>📌 Analyse BIP 2016–2026 – Lékié</h3>
-      <p>Sur 11 ans, <strong>30,98 milliards FCFA</strong> ont été programmés dans le département de la Lékié à travers <strong>1 208 marchés publics</strong> planifiés.</p>
-      <p><strong>🔹 Nature des données :</strong> L'ensemble des montants présentés correspond aux <strong>programmations budgétaires</strong> du MINMAP. Il s'agit d'une vision prévisionnelle des investissements publics sur 11 ans, non des réalisations effectives.</p>
-      <p><strong>🔹 Tendances :</strong> Après une relative stabilité entre 2016 et 2024, l'année <strong>2025</strong> marque un bond avec <strong>4,07 milliards FCFA</strong> programmés, soit une hausse de <strong>63%</strong> par rapport à 2024.</p>
-      <p><strong>🔹 Disparités territoriales :</strong> <strong>Okola</strong> concentre 14,18% des programmations (4,39 Mds), devançant largement les autres communes.</p>
-      <p><strong>🔹 Priorités sectorielles :</strong> Les <strong>routes</strong> arrivent en tête avec 27,4% du BIP programmé, suivies des <strong>adductions d'eau et électrification</strong> (23,2%) et des <strong>bâtiments éducatifs et communaux</strong> (21,9%).</p>
+  <div class="table-wrap" style="margin-top:2rem;">
+    <h3>📊 Filières clés de la Lékié <small>(2024)</small></h3>
+    <table>
+      <thead><tr><th scope="col">Filière</th><th scope="col" class="text-right">Superficie (ha)</th><th scope="col" class="text-right">Production (t)</th><th scope="col" class="text-right">Rendement (t/ha)</th><th scope="col">Position régionale</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td><strong>🍫 Cacao</strong></td><td class="text-right">81 045</td><td class="text-right">39 712</td><td class="text-right">0,49</td><td><strong>2ᵉ producteur régional (18%)</strong></td></tr>
+        <tr><td><strong>🍌 Banane plantain</strong></td><td class="text-right">9 002</td><td class="text-right">56 445</td><td class="text-right">6,27</td><td>3ᵉ bassin régional</td></tr>
+        <tr class="highlight"><td><strong>🌽 Maïs</strong></td><td class="text-right">15 021</td><td class="text-right">26 588</td><td class="text-right">1,77</td><td>Bassin régional majeur</td></tr>
+        <tr class="highlight"><td><strong>🥔 Manioc</strong></td><td class="text-right">2 850</td><td class="text-right">45 034</td><td class="text-right">15,8 ✅</td><td><strong>Rendement remarquable</strong></td></tr>
+        <tr><td><strong>🍅 Tomate</strong></td><td class="text-right">1 250</td><td class="text-right">34 957</td><td class="text-right">28,0 ✅</td><td><strong>Meilleur rendement régional</strong></td></tr>
+        <tr><td>🥜 Arachide</td><td class="text-right">6 948</td><td class="text-right">7 782</td><td class="text-right">1,12</td><td>2ᵉ bassin régional (15,9%)</td></tr>
+      </tbody>
+    </table>
+    <p class="source">📌 Source : INS 2025, Tableaux 14-10 à 14-15.</p>
+  </div>
+
+  <div class="analysis-box">
+    <h3>📌 Insight agricole — Deux filières d'excellence</h3>
+    <p><strong>🔹 Le cacao :</strong> La Lékié est <strong>2ᵉ producteur régional</strong> avec <strong>81 045 ha</strong> et <strong>39 712 tonnes</strong> produites (2024).</p>
+    <p><strong>🔹 Deux rendements exceptionnels :</strong> Tomate (28,0 t/ha) et Manioc (15,8 t/ha).</p>
+    <p><strong>Opportunité stratégique :</strong> Ces rendements remarquables constituent un <strong>avantage compétitif</strong> à valoriser dans une stratégie de transformation locale et de labellisation « Lékié ».</p>
+  </div>
+</section>
+
+<section id="elevage-synthese" aria-labelledby="titre-elevage">
+  <h2 class="section-title" id="titre-elevage">🐄 Élevage — Vue synthétique</h2>
+  <p class="section-sub">Données MINEPIA via INS 2025 (2024). Pour le détail, consultez la page dédiée.</p>
+
+  <div class="renvoi-card">
+    <div class="renvoi-content">
+      <div class="renvoi-titre">🐄 Élevage — Page dédiée</div>
+      <div class="renvoi-desc">Filières bovines, porcines, avicoles, piscicoles et leurs opportunités dans la Lékié.</div>
     </div>
+    <a href="elevage.html" class="btn btn-secondary">Voir Élevage →</a>
+  </div>
 
-    <div style="margin-top:1rem;">
-      <a href="plateforme.html#contribuer" class="btn">📢 Signaler une erreur sur les données BIP</a>
-    </div>
-  </section>
+  <div class="table-wrap" style="margin-top:2rem;">
+    <h3>📊 Cheptel de la Lékié <small>(2024)</small></h3>
+    <table>
+      <thead><tr><th scope="col">Espèce</th><th scope="col" class="text-right">Effectif (têtes)</th><th scope="col" class="text-right">Part régionale</th><th scope="col">Position régionale</th></tr></thead>
+      <tbody>
+        <tr class="highlight"><td><strong>🐖 Porcins</strong></td><td class="text-right">20 507</td><td class="text-right">15,1%</td><td><strong>3ᵉ producteur régional</strong></td></tr>
+        <tr><td><strong>🐐 Caprins</strong></td><td class="text-right">17 630</td><td class="text-right">10,7%</td><td>4ᵉ rang régional</td></tr>
+        <tr><td><strong>🐔 Volailles</strong></td><td class="text-right">945 780</td><td class="text-right">4,4%</td><td>4ᵉ rang régional</td></tr>
+        <tr><td>🐄 Bovins</td><td class="text-right">6 880</td><td class="text-right">4,7%</td><td>5ᵉ rang régional</td></tr>
+        <tr><td>🐑 Ovins</td><td class="text-right">2 975</td><td class="text-right">1,9%</td><td>8ᵉ rang régional</td></tr>
+      </tbody>
+    </table>
+    <p class="source">📌 Source : INS 2025, Tableaux 15-1 à 15-5.</p>
+  </div>
 
-  <!-- ============================================================ -->
-  <!-- SECTION 2 : PROFIL DES MÉNAGES ET CONDITIONS DE VIE -->
-  <!-- ============================================================ -->
-  <section>
-    <h2 class="section-title">🏠 Profil des ménages et conditions de vie</h2>
-    <p class="section-sub">Données issues du FEICOM / INS — Profil des ménages et potentialités naturelles des communes (2016).</p>
+  <div class="analysis-box">
+    <h3>📌 Insight élevage — Le porc comme filière phare</h3>
+    <p><strong>🔹 Filière porcine :</strong> La Lékié est <strong>3ᵉ producteur régional de porcins</strong> avec <strong>20 507 têtes</strong> (15,1% du cheptel régional).</p>
+    <p><strong>🔹 Poultry en progression :</strong> <strong>945 780 volailles</strong> — une filière en développement rapide pour approvisionner Yaoundé.</p>
+  </div>
+</section>
 
-    <div class="note">
-      <strong>📌 Note :</strong> Ces données reflètent la situation des ménages du département de la Lékié en 2016. Elles sont présentées à titre indicatif et peuvent avoir évolué depuis.
-    </div>
+<section id="energie" aria-labelledby="titre-energie">
+  <h2 class="section-title" id="titre-energie">⚡ Énergie & Télécommunications</h2>
+  <p class="section-sub">Données ENEO via INS 2025. État du réseau dans la Lékié.</p>
+  <div class="grid-3">
+    <div class="card"><h3>⚡ Abonnés ENEO BT 2023</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">26 716</p><p style="font-size:0.8rem;color:var(--gris2);">Basse tension · +2,4% vs 2022</p><span class="badge-statut badge-officiel">Source : INS 2025</span></div>
+    <div class="card"><h3>💰 Ventes électricité BT 2023</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">1,05 Md FCFA</p><p style="font-size:0.8rem;color:var(--gris2);">-18,5% en 2 ans ⚠️</p><span class="badge-statut badge-encours">Tendance à surveiller</span></div>
+    <div class="card"><h3>📮 Bureaux de poste 2023</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">7</p><p style="font-size:0.8rem;color:var(--gris2);">1 227 boîtes postales</p><span class="badge-statut badge-officiel">Source : INS 2025</span></div>
+  </div>
+  <div class="analysis-box alerte">
+    <h3>⚠️ Tendance énergétique — Paradoxe à analyser</h3>
+    <p><strong>Fait :</strong> Le nombre d'abonnés ENEO <strong>augmente</strong> (+2,4% en 2023), mais les <strong>ventes d'électricité baissent</strong> (-6,6% en 2023, -18,5% cumulé sur 2 ans).</p>
+    <p><strong>Hypothèses explicatives documentées :</strong> baisse de la consommation, fuites techniques, migration d'usage (autoproduction), ou modifications tarifaires.</p>
+    <span class="badge-statut badge-officiel">Source : INS 2025, Tableaux 17-17 et 17-19</span>
+  </div>
+</section>
 
-    <!-- 1. Démographie -->
-    <div class="stats-block">
-      <h4>👥 Profil démographique des ménages</h4>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-        <table>
-          <thead><tr><th scope="col">Indicateur</th><th scope="col">Lékié</th></tr></thead>
-          <tbody>
-            <tr><td>Proportion de femmes</td><td><strong>49,7%</strong></td></tr>
-            <tr><td>Âge moyen</td><td><strong>25,4 ans</strong></td></tr>
-            <tr><td>Personnes de 0 à 4 ans</td><td><strong>14,7%</strong></td></tr>
-            <tr><td>Personnes de 5 à 14 ans</td><td><strong>25,4%</strong></td></tr>
-            <tr><td>Personnes de 15 à 34 ans</td><td><strong>30,2%</strong></td></tr>
-            <tr><td>Personnes de 35 à 59 ans</td><td><strong>21,3%</strong></td></tr>
-            <tr><td>Personnes de 60 ans ou plus</td><td><strong>8,3%</strong></td></tr>
-            <tr><td>Population ayant un handicap</td><td><strong>4,3%</strong></td></tr>
-            <tr><td>Taille moyenne des ménages</td><td><strong>5,1 personnes</strong></td></tr>
-            <tr><td>Taux de pauvreté monétaire</td><td><strong>33,8%</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<section id="explorer" aria-labelledby="titre-explorer">
+  <h2 class="section-title" id="titre-explorer">🧭 Explorer le territoire — Pages dédiées</h2>
+  <p class="section-sub">L'Observatoire vous donne ici les chiffres clés du département. Pour approfondir chaque thématique, consultez les pages dédiées du site.</p>
 
-    <!-- 2. Habitat -->
-    <div class="stats-block">
-      <h4>🏚️ Habitat et cadre de vie</h4>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-        <table>
-          <thead><tr><th scope="col">Indicateur</th><th scope="col">Lékié</th></tr></thead>
-          <tbody>
-            <tr><td>Murs en matériau naturel</td><td><strong>0,0%</strong></td></tr>
-            <tr><td>Murs en matériau rudimentaire</td><td><strong>59,6%</strong></td></tr>
-            <tr><td>Murs en matériau élaboré</td><td><strong>39,8%</strong></td></tr>
-            <tr><td>Toit en matériau élaboré</td><td><strong>98,9%</strong></td></tr>
-            <tr><td>Sol en matériau naturel</td><td><strong>47,6%</strong></td></tr>
-            <tr><td>Sol en matériau élaboré</td><td><strong>52,4%</strong></td></tr>
-            <tr><td>Ménages propriétaires</td><td><strong>68,5%</strong></td></tr>
-            <tr><td>Propriétaires avec titre</td><td><strong>3,3%</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <h3 style="font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin:1.5rem 0 0.5rem;">🏘️ Territoire & Communautés</h3>
+  <div class="grid-2">
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🏘️ Mon village</div><div class="renvoi-desc">Villages, chefferies traditionnelles, personnalités et mémoire des communautés de la Lékié.</div></div><a href="mon-village.html" class="btn btn-secondary">Voir →</a></div>
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">📊 Plateforme territoriale</div><div class="renvoi-desc">Fiches communales détaillées, autorités locales, BIP, ambitions et données consolidées.</div></div><a href="plateforme.html" class="btn btn-secondary">Voir →</a></div>
+  </div>
 
-    <!-- 3. Hygiène et assainissement -->
-    <div class="stats-block">
-      <h4>🚽 Hygiène et assainissement</h4>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-        <table>
-          <thead><tr><th scope="col">Indicateur</th><th scope="col">Lékié</th></tr></thead>
-          <tbody>
-            <tr><td>Toilettes améliorées non partagées</td><td><strong>33,6%</strong></td></tr>
-            <tr><td>Toilettes améliorées partagées</td><td><strong>12,3%</strong></td></tr>
-            <tr><td>Toilettes non améliorées</td><td><strong>54,1%</strong></td></tr>
-            <tr><td>Eaux usées évacuées dans la nature</td><td><strong>63,1%</strong></td></tr>
-            <tr><td>Ordures jetées dans la nature</td><td><strong>90,9%</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <h3 style="font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin:2rem 0 0.5rem;">🌾 Activités économiques</h3>
+  <div class="grid-2">
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🌾 Agriculture</div><div class="renvoi-desc">Filières complètes (cacao, maïs, manioc, plantain), rendements remarquables, acteurs et opportunités.</div></div><a href="agriculture.html" class="btn btn-secondary">Voir →</a></div>
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🐄 Élevage</div><div class="renvoi-desc">Filières porcines, bovines, avicoles et piscicoles : cheptel, acteurs, dynamiques et opportunités.</div></div><a href="elevage.html" class="btn btn-secondary">Voir →</a></div>
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🌴 Tourisme</div><div class="renvoi-desc">Sites touristiques, hébergements, patrimoine naturel et culturel de la Lékié.</div></div><a href="tourisme.html" class="btn btn-secondary">Voir →</a></div>
+  </div>
 
-    <!-- 4. Économie -->
-    <div class="stats-block">
-      <h4>💼 Économie locale</h4>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-        <table>
-          <thead><tr><th scope="col">Indicateur</th><th scope="col">Lékié</th></tr></thead>
-          <tbody>
-            <tr><td>Taux d'emploi</td><td><strong>66,4%</strong></td></tr>
-            <tr><td>Actifs occupés dans le secteur primaire</td><td><strong>63,0%</strong></td></tr>
-            <tr><td>Actifs occupés dans le secteur secondaire</td><td><strong>10,6%</strong></td></tr>
-            <tr><td>Actifs occupés dans le secteur tertiaire</td><td><strong>26,3%</strong></td></tr>
-            <tr><td>Taux de chômage élargi</td><td><strong>2,9%</strong></td></tr>
-            <tr><td>Enfants de 5-14 ans exerçant une activité économique</td><td><strong>3,3%</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <h3 style="font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin:2rem 0 0.5rem;">🎓 Éducation & Jeunesse</h3>
+  <div class="grid-2">
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🎓 Mon école</div><div class="renvoi-desc">Liste des établissements primaires, maternelles et secondaires avec effectifs et ratios.</div></div><a href="mon-ecole.html" class="btn btn-secondary">Voir →</a></div>
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🏆 Valeurs et compétences</div><div class="renvoi-desc">Formation, transmission des savoirs, valorisation des compétences locales et de la diaspora.</div></div><a href="valeurs-et-competences.html" class="btn btn-secondary">Voir →</a></div>
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">⚽ Sport</div><div class="renvoi-desc">Activités sportives, championnats de vacances, associations et événements sportifs de la Lékié.</div></div><a href="sport.html" class="btn btn-secondary">Voir →</a></div>
+  </div>
 
-    <!-- 5. Éducation -->
-    <div class="stats-block">
-      <h4>📚 Éducation</h4>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-        <table>
-          <thead><tr><th scope="col">Indicateur</th><th scope="col">Lékié</th></tr></thead>
-          <tbody>
-            <tr><td>Taux d'alphabétisation (15-24 ans)</td><td><strong>91,4%</strong></td></tr>
-            <tr><td>Taux brut de scolarisation au primaire</td><td><strong>112,6%</strong></td></tr>
-            <tr><td>Taux net de scolarisation au primaire (6-11 ans)</td><td><strong>84,8%</strong></td></tr>
-            <tr><td>Rapport filles/garçons au primaire</td><td><strong>0,8</strong></td></tr>
-            <tr><td>Taux brut de scolarisation au secondaire</td><td><strong>89,9%</strong></td></tr>
-            <tr><td>Taux net ajusté de scolarisation au primaire</td><td><strong>93,4%</strong></td></tr>
-            <tr><td>Taux net ajusté de scolarisation au secondaire</td><td><strong>68,9%</strong></td></tr>
-            <tr><td>Population non scolarisée (6 ans ou plus)</td><td><strong>11,3%</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <h3 style="font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin:2rem 0 0.5rem;">📰 Mémoire & Communication</h3>
+  <div class="grid-2">
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">📰 Presse</div><div class="renvoi-desc">Presse locale, médias de la Lékié, événements médiatiques et couverture du territoire.</div></div><a href="presse.html" class="btn btn-secondary">Voir →</a></div>
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🕊️ Hommage à André-Marie Mbida</div><div class="renvoi-desc">Hommage au premier Premier ministre du Cameroun, enfant de la Lékié.</div></div><a href="hommage-andre-marie-mbida.html" class="btn btn-secondary">Voir →</a></div>
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🏅 Certification ISGI-Lékié</div><div class="renvoi-desc">Certification des événements, organisations et initiatives qui font vivre le territoire.</div></div><a href="certification.html" class="btn btn-secondary">Voir →</a></div>
+  </div>
 
-    <!-- 6. Accès à l'eau -->
-    <div class="stats-block">
-      <h4>💧 Accès à l'eau</h4>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-        <table>
-          <thead><tr><th scope="col">Indicateur</th><th scope="col">Lékié</th></tr></thead>
-          <tbody>
-            <tr><td>Ménages ayant accès à une source d'eau améliorée</td><td><strong>66,4%</strong></td></tr>
-            <tr><td>Ménages ayant accès à une source d'eau non améliorée</td><td><strong>33,4%</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+  <div class="analysis-box info" style="margin-top:2rem;">
+    <h3>🔗 Principe de navigation</h3>
+    <p>L'Observatoire joue le rôle de <strong>tableau de bord synthétique</strong> du département. Il présente les <strong>indicateurs clés consolidés</strong> et renvoie vers les pages dédiées pour l'approfondissement sectoriel.</p>
+    <p>Cette architecture évite la duplication des contenus et garantit la <strong>cohérence des données</strong> entre les différentes pages du site.</p>
+  </div>
+</section>
 
-    <!-- 7. Énergie -->
-    <div class="stats-block">
-      <h4>⚡ Énergie</h4>
-      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-        <table>
-          <thead><tr><th scope="col">Indicateur</th><th scope="col">Lékié</th></tr></thead>
-          <tbody>
-            <tr><td>Ménages utilisant l'électricité ENEO</td><td><strong>39,9%</strong></td></tr>
-            <tr><td>Ménages utilisant la lampe à pétrole</td><td><strong>42,5%</strong></td></tr>
-            <tr><td>Ménages utilisant la lampe solaire</td><td><strong>15,8%</strong></td></tr>
-            <tr><td>Ménages utilisant le bois pour la cuisine</td><td><strong>85,9%</strong></td></tr>
-            <tr><td>Ménages utilisant le GPL/gaz naturel</td><td><strong>8,2%</strong></td></tr>
-            <tr><td><strong>Autres sources</strong></td><td><strong>1,8%</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+<section id="odd" aria-labelledby="titre-odd">
+  <h2 class="section-title" id="titre-odd">🌍 Lékié & Objectifs de Développement Durable</h2>
+  <p class="section-sub">Mise en correspondance des indicateurs de l'Observatoire avec les ODD des Nations Unies.</p>
+  <div class="odd-grid">
+    <div class="odd-item"><span class="odd-badge">ODD 1</span><div><strong>Pauvreté</strong><br>Taux de pauvreté : <strong>33,8%</strong> (moy. nationale 2014 : 37,5%)</div></div>
+    <div class="odd-item"><span class="odd-badge">ODD 4</span><div><strong>Éducation</strong><br>165 845 élèves primaire · 485 écoles · ratio 46,1</div></div>
+    <div class="odd-item"><span class="odd-badge">ODD 6</span><div><strong>Eau et assainissement</strong><br>Accès eau améliorée : <strong>66,4%</strong> · Toilettes améliorées : <strong>33,6%</strong></div></div>
+    <div class="odd-item"><span class="odd-badge">ODD 7</span><div><strong>Énergie</strong><br>26 716 abonnés ENEO BT (2023) · 39,9% ménages électrifiés (2016)</div></div>
+    <div class="odd-item"><span class="odd-badge">ODD 8</span><div><strong>Travail décent</strong><br>Taux d'emploi : <strong>66,4%</strong> · Chômage élargi : <strong>2,9%</strong></div></div>
+    <div class="odd-item"><span class="odd-badge">ODD 9</span><div><strong>Infrastructures</strong><br>BIP 2016-2026 : <strong>30,98 Mds FCFA</strong> · 1 208 marchés</div></div>
+    <div class="odd-item"><span class="odd-badge">ODD 10</span><div><strong>Inégalités</strong><br>Obala + Okola = <strong>48,3%</strong> de la population</div></div>
+    <div class="odd-item"><span class="odd-badge">ODD 11</span><div><strong>Villes durables</strong><br>Habitat : <strong>98,9%</strong> toits élaborés · Propriété : <strong>68,5%</strong></div></div>
+  </div>
+</section>
 
-    <div class="analysis-box">
-      <h3>📌 Synthèse — Profil des ménages de la Lékié</h3>
-      <p><strong>🔹 Démographie :</strong> La Lékié a une population jeune (âge moyen de 25,4 ans) avec une majorité de femmes (49,7%). La taille moyenne des ménages est de 5,1 personnes.</p>
-      <p><strong>🔹 Pauvreté :</strong> Le taux de pauvreté monétaire est de <strong>33,8%</strong>, avec des disparités importantes entre les communes (de 23,8% à 43,1%).</p>
-      <p><strong>🔹 Habitat :</strong> Près de <strong>60%</strong> des ménages vivent dans des maisons aux murs rudimentaires, mais <strong>98,9%</strong> ont un toit en matériau élaboré.</p>
-      <p><strong>🔹 Assainissement :</strong> <strong>54,1%</strong> des ménages utilisent des toilettes non améliorées, et <strong>90,9%</strong> jettent leurs ordures dans la nature.</p>
-      <p><strong>🔹 Énergie :</strong> L'électricité ENEO couvre <strong>39,9%</strong> des ménages, tandis que le bois reste la principale source d'énergie pour la cuisine (<strong>85,9%</strong>).</p>
-    </div>
+<section id="sources" aria-labelledby="titre-sources">
+  <h2 class="section-title" id="titre-sources">🔗 Sources & partenariats</h2>
+  <p class="section-sub">L'Observatoire s'inscrit dans une trajectoire de consolidation méthodologique et institutionnelle.</p>
 
-    <div style="margin-top:1rem;">
-      <a href="plateforme.html#contribuer" class="btn">📢 Signaler une erreur sur les données FEICOM/INS</a>
-    </div>
-  </section>
+  <div class="sources-box">
+    <h3>📚 Sources officielles intégrées</h3>
+    <ul>
+      <li><span>INS — Annuaire Statistique du Centre, édition 2025</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>BUCREP — RGPH 1987, 2005 + projections démographiques</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>MINMAP — Journaux de Programmation des Marchés (2016-2026)</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>MINADER — Statistiques agricoles 2024</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>MINEPIA — Statistiques d'élevage 2024</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>MINEPAT / DR MINEPAT — BIP 2023-2024 (taux d'exécution)</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>FEICOM / INS — Profil des ménages (2016)</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>ENEO — Abonnés et ventes 2021-2023</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>CAMPOST — Postes et télécommunications</span><span class="badge-statut badge-valide">Intégré</span></li>
+    </ul>
+  </div>
+
+  <div class="sources-box">
+    <h3>🔍 Sources en cours de mobilisation</h3>
+    <ul>
+      <li><span>INS — RGPH 2025 (données désagrégées actualisées)</span><span class="badge-statut badge-encours">Démarche en cours</span></li>
+      <li><span>MINEDUB — Annuaire 2024/2025 détaillé par arrondissement</span><span class="badge-statut badge-encours">Démarche en cours</span></li>
+      <li><span>MINESEC — Statistiques secondaires 2025/2026</span><span class="badge-statut badge-encours">Démarche en cours</span></li>
+      <li><span>SIGE — Données désagrégées par arrondissement</span><span class="badge-statut badge-encours">Démarche en cours</span></li>
+      <li><span>Communes de la Lékié — Données de réalisations effectives</span><span class="badge-statut badge-encours">Démarche en cours</span></li>
+    </ul>
+  </div>
+
+  <div class="sources-box">
+    <h3>🤝 Partenariats à construire</h3>
+    <ul>
+      <li><span>INS — Accès aux données désagrégées RGPH 2025</span><span class="badge-statut badge-recherche">À initier</span></li>
+      <li><span>MINEPAT — Formation aux méthodes statistiques territoriales</span><span class="badge-statut badge-recherche">À initier</span></li>
+      <li><span>FEICOM — Suivi des investissements communaux</span><span class="badge-statut badge-recherche">À initier</span></li>
+      <li><span>Universités — Comité scientifique de l'Observatoire</span><span class="badge-statut badge-recherche">À initier</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="glossaire" aria-labelledby="titre-glossaire">
+  <h2 class="section-title" id="titre-glossaire">📖 Glossaire</h2>
+  <p class="section-sub">Les acronymes utilisés dans cette page, expliqués simplement.</p>
+
+  <div class="glossaire">
+    <h3 style="font-size:0.95rem;color:var(--gris);margin:0 0 0.5rem;font-family:'Inter',sans-serif;font-weight:600;">📚 Institutions & programmes</h3>
+    <dl>
+      <dt>BIP</dt><dd>Budget d'Investissement Public — enveloppe annuelle de l'État camerounais consacrée aux investissements.</dd>
+      <dt>JPM</dt><dd>Journal de Programmation des Marchés — document annuel du MINMAP listant les marchés publics prévus.</dd>
+      <dt>MINMAP</dt><dd>Ministère des Marchés Publics du Cameroun.</dd>
+      <dt>MINEPAT</dt><dd>Ministère de l'Économie, de la Planification et de l'Aménagement du Territoire.</dd>
+      <dt>PCD</dt><dd>Plan Communal de Développement — document stratégique de chaque commune.</dd>
+      <dt>RGPH</dt><dd>Recensement Général de la Population et de l'Habitat — opéré par le BUCREP.</dd>
+      <dt>SYNCOLEK</dt><dd>Syndicat Intercommunal pour l'Eau de la Lékié — structure pionnière au Cameroun.</dd>
+      <dt>SODECAO</dt><dd>Société de Développement du Cacao — organisme public en charge de la filière cacao.</dd>
+      <dt>FEICOM</dt><dd>Fonds Spécial d'Équipement et d'Intervention Intercommunale.</dd>
+      <dt>INS</dt><dd>Institut National de la Statistique du Cameroun.</dd>
+      <dt>ECAM</dt><dd>Enquête Camerounaise Auprès des Ménages (ECAM 4, 2014).</dd>
+      <dt>BUCREP</dt><dd>Bureau Central des Recensements et des Études de Population.</dd>
+      <dt>ENEO</dt><dd>Energy of Cameroon — concessionnaire du service public de l'électricité.</dd>
+      <dt>CAMPOST</dt><dd>Société Nationale des Postes du Cameroun.</dd>
+      <dt>MINADER</dt><dd>Ministère de l'Agriculture et du Développement Rural.</dd>
+      <dt>MINEPIA</dt><dd>Ministère de l'Élevage, des Pêches et des Industries Animales.</dd>
+    </dl>
+
+    <h3 style="font-size:0.95rem;color:var(--gris);margin:1.5rem 0 0.5rem;font-family:'Inter',sans-serif;font-weight:600;">📋 Vocabulaire territorial</h3>
+    <dl>
+      <dt>Commune</dt><dd>Collectivité territoriale décentralisée, administrée par un conseil municipal élu.</dd>
+      <dt>Arrondissement</dt><dd>Circonscription administrative déconcentrée, dirigée par un sous-préfet. Recouvre le même territoire que la commune.</dd>
+      <dt>Département</dt><dd>Circonscription administrative regroupant plusieurs arrondissements, dirigée par un préfet.</dd>
+    </dl>
+
+    <h3 style="font-size:0.95rem;color:var(--gris);margin:1.5rem 0 0.5rem;font-family:'Inter',sans-serif;font-weight:600;">🏗️ Catégories sectorielles MINMAP (graphique « Types »)</h3>
+    <dl>
+      <dt>AI</dt><dd><strong>Adduction d'eau / Électrification</strong> — 23,2% du BIP programmé.</dd>
+      <dt>BEC</dt><dd><strong>Bâtiments éducatifs et communaux</strong> — 21,9% du BIP programmé.</dd>
+      <dt>AG</dt><dd><strong>Acquisitions</strong> — 18,7% du BIP programmé.</dd>
+      <dt>SPI</dt><dd><strong>Études / Maîtrise d'œuvre</strong> — 0,9% du BIP programmé.</dd>
+    </dl>
+  </div>
+
+  <div style="margin-top:1.5rem;">
+    <a href="plateforme.html#contribuer" class="btn">📢 Contribuer aux données de l'Observatoire</a>
+  </div>
+</section>
 
 </div>
+</main>
 
 <footer>
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
-  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 28 Juillet 2026</p>
+  <p>Association Réfléchir Agir Soutenir (RAS) — <a href="mailto:contact@isgi-lekie.cm">contact@isgi-lekie.cm</a></p>
+  <p style="margin-top:0.3rem;">Dernière mise à jour : <time datetime="2026-10-14">14 Octobre 2026</time></p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
 
 <a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
+<a href="plateforme.html#contribuer" class="sticky-contrib-btn" aria-label="Contribuer">✍️ Contribuer</a>
 
 <script>
-  // ---- BURGER MENU ----
-  const burger = document.getElementById('burgerBtn');
-  const navLinks = document.getElementById('navLinks');
-  if (burger && navLinks) {
-    burger.addEventListener('click', function() {
-      const isOpen = navLinks.classList.toggle('show');
-      burger.setAttribute('aria-expanded', isOpen);
-      burger.textContent = isOpen ? '✕' : '☰';
-    });
-    navLinks.querySelectorAll('a').forEach(function(link) {
-      link.addEventListener('click', function() {
-        navLinks.classList.remove('show');
-        burger.setAttribute('aria-expanded', 'false');
-        burger.textContent = '☰';
+  (function() {
+    'use strict';
+    var burger = document.getElementById('burgerBtn');
+    var navLinks = document.getElementById('navLinks');
+    if (burger && navLinks) {
+      burger.addEventListener('click', function() {
+        var isOpen = navLinks.classList.toggle('show');
+        burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        burger.textContent = isOpen ? '✕' : '☰';
       });
-    });
-    document.addEventListener('click', function(e) {
-      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
-        navLinks.classList.remove('show');
-        burger.setAttribute('aria-expanded', 'false');
-        burger.textContent = '☰';
-      }
-    });
-  }
-
-  // ---- BACK TO TOP ----
-  const backToTop = document.getElementById('backToTop');
-  if (backToTop) {
-    window.addEventListener('scroll', function() {
-      backToTop.classList.toggle('show', window.scrollY > 300);
-    });
-    backToTop.addEventListener('click', function(e) {
-      e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  // ---- DÉTECTION MOBILE POUR CUTOUT DOUGHNUT ----
-  function isMobile() {
-    return window.innerWidth < 500;
-  }
-
-  // ---- GRAPHIQUES ----
-  document.addEventListener('DOMContentLoaded', function() {
-    // Évolution
-    const years = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025', '2026'];
-    const volumes = [109, 149, 103, 108, 114, 110, 81, 102, 98, 126, 108];
-    const valeurs = [2.40, 2.74, 2.47, 2.68, 2.45, 2.89, 2.27, 2.99, 2.49, 4.07, 3.53];
-
-    const ctx1 = document.getElementById('evolutionChart').getContext('2d');
-    new Chart(ctx1, {
-      type: 'bar',
-      data: {
-        labels: years,
-        datasets: [{
-          label: 'Volume (nb marchés programmés)',
-          data: volumes,
-          backgroundColor: 'rgba(27,58,45,0.25)',
-          borderColor: '#1b3a2d',
-          borderWidth: 1.5,
-          borderRadius: 4,
-          order: 2,
-          yAxisID: 'y1'
-        }, {
-          label: 'Valeur (milliards FCFA)',
-          data: valeurs,
-          type: 'line',
-          borderColor: '#c4922a',
-          backgroundColor: 'rgba(196,146,42,0.10)',
-          borderWidth: 3,
-          pointBackgroundColor: '#c4922a',
-          pointBorderColor: '#fff',
-          pointBorderWidth: 2,
-          pointRadius: 5,
-          tension: 0.3,
-          fill: true,
-          order: 1,
-          yAxisID: 'y'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-          legend: {
-            position: 'top',
-            labels: { usePointStyle: true, padding: 20, font: { size: 13, weight: '500' } }
-          },
-          tooltip: {
-            callbacks: {
-              label: function(ctx) {
-                if (ctx.datasetIndex === 0) return ctx.dataset.label + ' : ' + ctx.parsed.y + ' marchés';
-                return ctx.dataset.label + ' : ' + ctx.parsed.y.toFixed(2) + ' Mds FCFA';
-              }
-            }
-          }
-        },
-        scales: {
-          y: { beginAtZero: true, position: 'left', grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { callback: function(value) { return value.toFixed(1) + ' Mds'; } } },
-          y1: { beginAtZero: true, position: 'right', grid: { display: false }, ticks: { callback: function(value) { return value + ' marchés'; } } },
-          x: { grid: { display: false } }
+      navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          navLinks.classList.remove('show');
+          burger.setAttribute('aria-expanded', 'false');
+          burger.textContent = '☰';
+        });
+      });
+      document.addEventListener('click', function(e) {
+        if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+          navLinks.classList.remove('show');
+          burger.setAttribute('aria-expanded', 'false');
+          burger.textContent = '☰';
         }
-      }
-    });
-
-    // Communes (avec onClick)
-    const communes = ['Okola', 'Evodoula', 'Sa\'a', 'Obala', 'Monatélé', 'Lobo', 'Elig-Mfomo', 'Ebebda', 'Batchenga'];
-    const valeursCommunes = [4.39, 2.83, 2.66, 2.64, 2.61, 2.47, 2.22, 2.05, 1.70];
-    const couleursCommunes = ['#1b3a2d', '#2a5a44', '#3ba3c4', '#5bb8d4', '#7ccce0', '#a8dceb', '#b17d5c', '#8a6e8c', '#9aa7b5'];
-
-    const ctx2 = document.getElementById('communeChart').getContext('2d');
-    new Chart(ctx2, {
-      type: 'bar',
-      data: {
-        labels: communes,
-        datasets: [{
-          label: 'Montant (milliards FCFA)',
-          data: valeursCommunes,
-          backgroundColor: couleursCommunes,
-          borderRadius: 4
-        }]
-      },
-      options: {
-        indexAxis: 'y',
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        onClick: function(e, elements) {
-          if (elements.length > 0) {
-            const idx = elements[0].index;
-            const commune = communes[idx].toLowerCase().replace(/[^a-z]/g, '');
-            window.location.href = 'plateforme.html#' + commune;
-          }
-        },
-        scales: {
-          x: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { callback: function(value) { return value.toFixed(1) + ' Mds'; } } },
-          y: { grid: { display: false } }
-        }
-      }
-    });
-
-    // Types (doughnut avec cutout adaptatif)
-    const types = ['ROUTES', 'AI (Eau/Électrification)', 'BEC (Bâtiments)', 'AG (Acquisitions)', 'SPI (Études/MO)'];
-    const valeursTypes = [8.50, 7.20, 6.80, 5.80, 0.28];
-    const couleursTypes = ['#4a7c59', '#2d7a9b', '#b17d5c', '#8a6e8c', '#9aa7b5'];
-
-    const ctx3 = document.getElementById('typeChart').getContext('2d');
-    new Chart(ctx3, {
-      type: 'doughnut',
-      data: {
-        labels: types,
-        datasets: [{
-          data: valeursTypes,
-          backgroundColor: couleursTypes,
-          borderWidth: 3,
-          borderColor: '#ffffff'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        cutout: isMobile() ? '55%' : '65%',
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: { usePointStyle: true, padding: 16, font: { size: 12, weight: '500' } }
-          },
-          tooltip: {
-            callbacks: {
-              label: function(ctx) {
-                const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
-                const pct = ((ctx.parsed / total) * 100).toFixed(1);
-                return ctx.label + ' : ' + ctx.parsed.toFixed(2) + ' Mds (' + pct + '%)';
-              }
-            }
-          }
-        }
-      }
-    });
-  });
-
-  // ---- AJUSTEMENT CUTOUT AU REDIMENSIONNEMENT ----
-  window.addEventListener('resize', function() {
-    const chart = Chart.getChart('typeChart');
-    if (chart) {
-      chart.options.cutout = isMobile() ? '55%' : '65%';
-      chart.update();
+      });
     }
-  });
+    var backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+      window.addEventListener('scroll', function() {
+        backToTop.classList.toggle('show', window.scrollY > 300);
+      }, { passive: true });
+      backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    function initCharts() {
+      if (typeof Chart === 'undefined') return;
+      var demoEl = document.getElementById('démographieChart');
+      if (demoEl) {
+        new Chart(demoEl.getContext('2d'), {
+          type: 'line',
+          data: { labels: ['1987','2005','2010','2023'], datasets: [{ label: 'Population (habitants)', data: [240252,286050,337401,509457], borderColor: '#c4922a', backgroundColor: 'rgba(196,146,42,0.15)', borderWidth: 3, pointBackgroundColor: '#c4922a', pointBorderColor: '#fff', pointBorderWidth: 2, pointRadius: 7, tension: 0.3, fill: true }] },
+          options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: { usePointStyle: true, padding: 20, font: { size: 13, weight: '500' } } }, tooltip: { callbacks: { label: function(ctx) { return ctx.dataset.label + ' : ' + ctx.parsed.y.toLocaleString('fr-FR'); } } } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { callback: function(v) { return v.toLocaleString('fr-FR'); } } }, x: { grid: { display: false } } } }
+        });
+      }
+      var evolutionEl = document.getElementById('evolutionChart');
+      if (evolutionEl) {
+        new Chart(evolutionEl.getContext('2d'), {
+          type: 'bar',
+          data: { labels: ['2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'], datasets: [{ label: 'Volume (nb marchés)', data: [109,149,103,108,114,110,81,102,98,126,108], backgroundColor: 'rgba(27,58,45,0.25)', borderColor: '#1b3a2d', borderWidth: 1.5, borderRadius: 4, order: 2, yAxisID: 'y1' }, { label: 'Valeur (Mds FCFA)', data: [2.40,2.74,2.47,2.68,2.45,2.89,2.27,2.99,2.49,4.07,3.53], type: 'line', borderColor: '#c4922a', backgroundColor: 'rgba(196,146,42,0.10)', borderWidth: 3, pointBackgroundColor: '#c4922a', pointBorderColor: '#fff', pointBorderWidth: 2, pointRadius: 5, tension: 0.3, fill: true, order: 1, yAxisID: 'y' }] },
+          options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top', labels: { usePointStyle: true, padding: 20, font: { size: 13, weight: '500' } } }, tooltip: { callbacks: { label: function(ctx) { if (ctx.datasetIndex === 0) return ctx.dataset.label + ' : ' + ctx.parsed.y + ' marchés'; return ctx.dataset.label + ' : ' + ctx.parsed.y.toFixed(2) + ' Mds FCFA'; } } } }, scales: { y: { beginAtZero: true, position: 'left', grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { callback: function(v) { return v.toFixed(1) + ' Mds'; } } }, y1: { beginAtZero: true, position: 'right', grid: { display: false }, ticks: { callback: function(v) { return v + ' marchés'; } } }, x: { grid: { display: false } } } }
+        });
+      }
+      var communeEl = document.getElementById('communeChart');
+      if (communeEl) {
+        new Chart(communeEl.getContext('2d'), {
+          type: 'bar',
+          data: { labels: ['Okola','Evodoula','Sa\'a','Obala','Monatélé','Lobo','Elig-Mfomo','Ebebda','Batchenga'], datasets: [{ label: 'Montant (Mds FCFA)', data: [4.39,2.83,2.66,2.64,2.61,2.47,2.22,2.05,1.70], backgroundColor: ['#1b3a2d','#2a5a44','#3ba3c4','#5bb8d4','#7ccce0','#a8dceb','#b17d5c','#8a6e8c','#9aa7b5'], borderRadius: 4 }] },
+          options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, onClick: function(e, elements) { if (elements.length > 0) { window.location.href = 'plateforme.html#communes'; } }, scales: { x: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { callback: function(v) { return v.toFixed(1) + ' Mds'; } } }, y: { grid: { display: false } } } }
+        });
+      }
+      var typeEl = document.getElementById('typeChart');
+      if (typeEl) {
+        new Chart(typeEl.getContext('2d'), {
+          type: 'doughnut',
+          data: { labels: ['ROUTES (27,4%)','AI — Eau/Électrification (23,2%)','BEC — Bâtiments éducatifs et communaux (21,9%)','AG — Acquisitions (18,7%)','SPI — Études / Maîtrise d\'œuvre (0,9%)','Autres / Non classés (7,7%)'], datasets: [{ data: [8.50,7.20,6.80,5.80,0.28,2.40], backgroundColor: ['#4a7c59','#2d7a9b','#b17d5c','#8a6e8c','#9aa7b5','#c9d1d9'], borderWidth: 3, borderColor: '#ffffff' }] },
+          options: { responsive: true, maintainAspectRatio: false, cutout: window.innerWidth < 500 ? '55%' : '65%', plugins: { legend: { position: 'bottom', labels: { usePointStyle: true, padding: 14, font: { size: 11, weight: '500' }, boxWidth: 12 } }, tooltip: { callbacks: { label: function(ctx) { var total = ctx.dataset.data.reduce(function(a, b) { return a + b; }, 0); var pct = ((ctx.parsed / total) * 100).toFixed(1); return ctx.label.split(' (')[0] + ' : ' + ctx.parsed.toFixed(2) + ' Mds (' + pct + '%)'; } } } } }
+        });
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof Chart !== 'undefined') { initCharts(); }
+        else {
+          var attempts = 0;
+          var timer = setInterval(function() {
+            attempts++;
+            if (typeof Chart !== 'undefined') { clearInterval(timer); initCharts(); }
+            else if (attempts > 20) { clearInterval(timer); console.warn('[ISGI-Lékié] Chart.js non disponible.'); }
+          }, 500);
+        }
+      });
+    } else {
+      if (typeof Chart !== 'undefined') { initCharts(); }
+    }
+    window.addEventListener('resize', function() {
+      if (typeof Chart === 'undefined') return;
+      var chart = Chart.getChart('typeChart');
+      if (chart) { chart.options.cutout = window.innerWidth < 500 ? '55%' : '65%'; chart.update(); }
+    });
+  })();
 </script>
 </body>
 </html>
