@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#1b3a2d">
   <title>Observatoire de la Lékié — ISGI-Lékié · BIP, Démographie, Territoires</title>
-  <meta name="description" content="Observatoire Territorial de la Lékié (OTL) — BIP 2016-2026, démographie, profil des ménages, indicateurs socio-économiques et trajectoires de développement du département de la Lékié. Données INS 2025.">
+  <meta name="description" content="Observatoire Territorial de la Lékié (OTL) — BIP 2016-2026, démographie, éducation, conditions de vie, indicateurs socio-économiques et trajectoires de développement du département de la Lékié. Données INS 2025.">
   <meta name="author" content="ISGI-Lékié">
   <link rel="canonical" href="https://isgi-lekie.cm/observatoire.html">
   <meta property="og:title" content="Observatoire de la Lékié — ISGI-Lékié">
-  <meta property="og:description" content="BIP 2016-2026, démographie, conditions de vie, ambitions 2035 — vers un Observatoire Territorial de la Lékié.">
+  <meta property="og:description" content="BIP 2016-2026 · Démographie · Éducation · Conditions de vie · Ambitions 2035.">
   <meta property="og:url" content="https://isgi-lekie.cm/observatoire.html">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
@@ -20,14 +20,14 @@
   <meta property="og:image:alt" content="Observatoire de la Lékié — ISGI-Lékié">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Observatoire de la Lékié — ISGI-Lékié">
-  <meta name="twitter:description" content="BIP 2016-2026 · Démographie · Ambitions 2035">
+  <meta name="twitter:description" content="BIP 2016-2026 · Démographie · Éducation · Ambitions 2035">
   <meta name="twitter:image" content="https://isgi-lekie.cm/og-lekie.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" onerror="console.warn('[ISGI-Lékié] Chart.js non chargé.');"></script>
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Organization","name":"ISGI-Lékié","alternateName":"Initiative Stratégique Globale et Inclusive de la Lékié","url":"https://isgi-lekie.cm","logo":"https://isgi-lekie.cm/og-lekie.jpg","description":"Observatoire Territorial de la Lékié.","datePublished":"2026-07-28","dateModified":"2026-10-14","areaServed":["Monatélé","Obala","Sa'a","Evodoula","Ebebda","Okola","Batchenga","Elig-Mfomo","Lobo"],"parentOrganization":{"@type":"Organization","name":"Association Réfléchir Agir Soutenir (RAS)"}}
+    {"@context":"https://schema.org","@type":"Organization","name":"ISGI-Lékié","alternateName":"Initiative Stratégique Globale et Inclusive de la Lékié","url":"https://isgi-lekie.cm","logo":"https://isgi-lekie.cm/og-lekie.jpg","description":"Observatoire Territorial de la Lékié.","datePublished":"2026-07-28","dateModified":"2026-10-17","areaServed":["Monatélé","Obala","Sa'a","Evodoula","Ebebda","Okola","Batchenga","Elig-Mfomo","Lobo"],"parentOrganization":{"@type":"Organization","name":"Association Réfléchir Agir Soutenir (RAS)"}}
   </script>
   <style>
     :root{--vert:#1b3a2d;--vert2:#2a5a44;--or:#c4922a;--or2:#e0a83e;--creme:#f4efe6;--creme2:#ede5d8;--blanc:#fefcf8;--texte:#2c2c28;--gris:#5a5a50;--gris2:#94a3b8;--rouge:#c62828;--orange:#f57c00;}
@@ -86,6 +86,8 @@
     .badge-contributif{background:#e8dfd0;color:#5a5a50;}
     .badge-recherche{background:#ffebee;color:#c62828;}
     .badge-officiel{background:#e3f2fd;color:#1565c0;}
+    .badge-estimation{background:#f3e5f5;color:#6a1b9a;}
+    .badge-alerte{background:#ffebee;color:#c62828;}
     .btn{display:inline-block;background:var(--or);color:var(--vert);padding:0.5rem 1.2rem;border-radius:40px;text-decoration:none;font-weight:600;margin-top:0.5rem;border:none;cursor:pointer;font-size:0.85rem;}
     .btn:hover{background:var(--vert);color:var(--or2);}
     .btn-secondary{background:var(--vert);color:var(--or2);}
@@ -156,6 +158,8 @@
     .back-to-top:hover{background:var(--vert);color:var(--or2);}
     .sticky-contrib-btn{position:fixed;bottom:20px;right:20px;z-index:99;background:var(--or);color:var(--vert);padding:0.8rem 1.2rem;border-radius:40px;text-decoration:none;font-weight:600;font-size:0.85rem;box-shadow:0 4px 16px rgba(0,0,0,0.15);transition:transform 0.2s;}
     .sticky-contrib-btn:hover{transform:scale(1.05);background:var(--vert);color:var(--or2);}
+    .data-legend{display:flex;flex-wrap:wrap;gap:0.5rem;margin:0.5rem 0 1.5rem;font-size:0.7rem;align-items:center;}
+    .data-legend .badge-statut{margin-top:0;}
     @media (max-width:900px){.charts-grid{grid-template-columns:1fr;}}
     @media (max-width:700px){
       nav{flex-direction:row;}
@@ -203,9 +207,9 @@
 
 <div class="page-header">
   <h1>📊 Observatoire de la <em>Lékié</em></h1>
-  <p>BIP · Démographie · Conditions de vie · Ambitions 2035</p>
+  <p>BIP · Démographie · Éducation · Conditions de vie · Ambitions 2035</p>
   <span class="otl-badge">🌿 Vers un Observatoire Territorial — OTL en construction</span>
-  <p class="maj">📅 Dernière mise à jour : <time datetime="2026-10-14">14 octobre 2026</time> · Sources : INS 2025 · MINMAP · FEICOM</p>
+  <p class="maj">📅 Dernière mise à jour : <time datetime="2026-10-17">17 octobre 2026</time> · Sources : INS 2025 · MINMAP · FEICOM · MINESEC</p>
 </div>
 
 <main id="contenu">
@@ -214,7 +218,7 @@
   <h2 id="titre-chiffres">🌿 La Lékié en chiffres clés</h2>
   <div class="chiffres-grid">
     <div class="chiffre-item"><div class="chiffre-value">9</div><div class="chiffre-label">Arrondissements</div></div>
-    <div class="chiffre-item"><div class="chiffre-value">509 457</div><div class="chiffre-label">Habitants (2023)</div></div>
+    <div class="chiffre-item"><div class="chiffre-value">509 457</div><div class="chiffre-label">Habitants (2023, INS)</div></div>
     <div class="chiffre-item"><div class="chiffre-value">2 989 km²</div><div class="chiffre-label">Superficie officielle</div></div>
     <div class="chiffre-item"><div class="chiffre-value">170,4</div><div class="chiffre-label">hab/km² (2023)</div></div>
     <div class="chiffre-item"><div class="chiffre-value">2ᵉ</div><div class="chiffre-label">Producteur cacao régional</div></div>
@@ -224,6 +228,37 @@
 
 <div class="container">
 
+<!-- ============================================================ -->
+<!-- LÉGENDE DES STATUTS DE DONNÉES -->
+<!-- ============================================================ -->
+<section id="legendes" aria-labelledby="titre-legendes" style="padding:1.5rem 0;">
+  <h2 class="section-title" id="titre-legendes" style="font-size:1.2rem; margin-bottom:0.8rem;">🔖 Légende des statuts de données</h2>
+  <div class="data-legend">
+    <span class="badge-statut badge-officiel">Officiel</span> <span style="font-size:0.8rem;color:var(--gris);">Source INS, BUCREP, MINESEC — référence nationale</span>
+  </div>
+  <div class="data-legend">
+    <span class="badge-statut badge-valide">Validé</span> <span style="font-size:0.8rem;color:var(--gris);">Vérifié ISGI-Lékié, recoupé avec la source</span>
+  </div>
+  <div class="data-legend">
+    <span class="badge-statut badge-encours">En cours</span> <span style="font-size:0.8rem;color:var(--gris);">Collecte terrain en progression</span>
+  </div>
+  <div class="data-legend">
+    <span class="badge-statut badge-contributif">Contributif</span> <span style="font-size:0.8rem;color:var(--gris);">Contribution citoyenne, non encore recoupée</span>
+  </div>
+  <div class="data-legend">
+    <span class="badge-statut badge-estimation">Estimation</span> <span style="font-size:0.8rem;color:var(--gris);">Estimation ISGI-Lékié argumentée (méthode explicite)</span>
+  </div>
+  <div class="data-legend">
+    <span class="badge-statut badge-recherche">Recherché</span> <span style="font-size:0.8rem;color:var(--gris);">Donnée identifiée mais non encore disponible</span>
+  </div>
+  <div class="data-legend">
+    <span class="badge-statut badge-alerte">Alerte</span> <span style="font-size:0.8rem;color:var(--gris);">Signal fort — à traiter en priorité</span>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- AMBITIONS 2035 -->
+<!-- ============================================================ -->
 <section id="ambitions" aria-labelledby="titre-ambitions">
   <h2 class="section-title" id="titre-ambitions">🎯 Ambitions Lékié 2035</h2>
   <p class="section-sub">Cinq ambitions structurantes, ancrées dans les réalités documentées du département. Chaque ambition est adossée à une cible chiffrée.</p>
@@ -231,17 +266,20 @@
     <div class="ambition-card"><div class="ambition-num">01</div><h3>🌾 Lékié, grenier vivrier du Centre</h3><p>Consolider la position de la Lékié comme premier fournisseur de vivres frais du Grand Yaoundé.</p><div class="ancrage">Ancrage : 60-70% des vivres vendus à Yaoundé proviennent de la Lékié.</div><span class="cible">🎯 Cible 2035 : +30% de production maraîchère</span></div>
     <div class="ambition-card"><div class="ambition-num">02</div><h3>🍫 Lékié, cacao modernisé</h3><p>Moderniser la filière cacao : transformation locale, traçabilité, marchés certifiés.</p><div class="ancrage">Ancrage : 2ᵉ producteur régional · 81 045 ha exploités · 39 712 t produites (2024).</div><span class="cible">🎯 Cible 2035 : relance de 5 000 ha certifiés</span></div>
     <div class="ambition-card"><div class="ambition-num">03</div><h3>💧 Lékié, territoire connecté à l'eau</h3><p>Atteindre une couverture universelle en eau potable via le modèle SYNCOLEK.</p><div class="ancrage">Ancrage : SYNCOLEK, seule intercommunalité eau fonctionnelle du Cameroun · 8 communes membres.</div><span class="cible">🎯 Cible 2035 : 80% d'accès à l'eau améliorée</span></div>
-    <div class="ambition-card"><div class="ambition-num">04</div><h3>🎓 Lékié, jeunesse formée</h3><p>Transformer le dividende démographique en force productive par l'éducation et la formation.</p><div class="ancrage">Ancrage : 165 845 élèves au primaire (2023/2024) · 485 écoles primaires · ratio 46 élèves/maître.</div><span class="cible">🎯 Cible 2035 : 70% de scolarisation secondaire</span></div>
+    <div class="ambition-card"><div class="ambition-num">04</div><h3>🎓 Lékié, jeunesse formée</h3><p>Transformer le dividende démographique en force productive par l'éducation et la formation.</p><div class="ancrage">Ancrage : 165 845 élèves au primaire (2023/2024) · 485 écoles primaires · ratio officiel 40,23 (public).</div><span class="cible">🎯 Cible 2035 : 70% de scolarisation secondaire</span></div>
     <div class="ambition-card"><div class="ambition-num">05</div><h3>🏛️ Lékié, gouvernance exemplaire</h3><p>Faire de la Lékié un territoire pilote en transparence publique et redevabilité.</p><div class="ancrage">Ancrage : cet Observatoire · publication annuelle des données BIP.</div><span class="cible">🎯 Cible 2035 : publication annuelle 100% des réalisations</span></div>
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- TERRITOIRE & DÉMOGRAPHIE -->
+<!-- ============================================================ -->
 <section id="territoire" aria-labelledby="titre-territoire">
   <h2 class="section-title" id="titre-territoire">🌍 Territoire & Démographie</h2>
   <p class="section-sub">Données officielles INS/BUCREP — Annuaire Statistique de la Région du Centre, édition 2025.</p>
 
   <div class="note note-info"><strong>📌 Note de vocabulaire :</strong> Dans ce document, les termes <strong>« commune »</strong> et <strong>« arrondissement »</strong> désignent la même réalité territoriale. « Commune » est le terme utilisé pour la collectivité territoriale décentralisée (administrée par un conseil élu) ; « arrondissement » est le terme administratif déconcentré (représenté par un sous-préfet). La Lékié compte <strong>9 communes/arrondissements</strong>.</div>
-  <div class="note note-info"><strong>📌 Note méthodologique sur la superficie :</strong> La superficie officielle retenue pour ce document est celle de l'INS/BUCREP : <strong>2 989 km²</strong> (Source : INS — Annuaire Statistique de la Région du Centre, édition 2025, Tableau 1-1). À noter que des référentiels divergents existent (voir tableau ci-dessous). <strong>La donnée de référence nationale retenue est celle de l'INS.</strong></div>
+  <div class="note note-info"><strong>📌 Note méthodologique sur la superficie :</strong> La superficie officielle retenue est celle de l'INS/BUCREP : <strong>2 989 km²</strong>. Des référentiels divergents existent (voir tableau ci-dessous). <strong>La donnée de référence nationale retenue est celle de l'INS.</strong></div>
 
   <div class="table-wrap">
     <h3>📐 Superficie de la Lékié — Référentiels comparés</h3>
@@ -261,7 +299,18 @@
   <div class="grid-3">
     <div class="card"><h3>📐 Superficie officielle</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">2 989 km²</p><p style="font-size:0.8rem;color:var(--gris2);">4,3% de la Région du Centre</p><span class="badge-statut badge-officiel">INS 2025 — Tableau 1-1</span></div>
     <div class="card"><h3>👥 Population 2023</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">509 457</p><p style="font-size:0.8rem;color:var(--gris2);">Estimation officielle BUCREP</p><span class="badge-statut badge-officiel">INS 2025 — Tableau 4-3</span></div>
-    <div class="card"><h3>📊 Densité 2023</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">170,4 hab/km²</p><p style="font-size:0.8rem;color:var(--gris2);">2,8× la moyenne nationale</p><span class="badge-statut badge-officiel">INS 2025 — Tableau 4-6 (donnée directe)</span></div>
+    <div class="card"><h3>📊 Densité 2023</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">170,4 hab/km²</p><p style="font-size:0.8rem;color:var(--gris2);">2,8× la moyenne nationale</p><span class="badge-statut badge-officiel">INS 2025 — Tableau 4-6</span></div>
+  </div>
+
+  <div class="analysis-box info">
+    <h3>📌 Note sur la population de la Lékié — trois niveaux à distinguer</h3>
+    <p><strong>🔹 Population résidente officielle (2023) :</strong> <strong>509 457 habitants</strong> (projection INS 2025 sur base RGPH 2005). C'est la référence nationale.</p>
+    <p><strong>🔹 Population réelle estimée (ISGI-Lékié) :</strong> <strong>≈ 700 000 habitants</strong>. Cette estimation intègre les résidents non-recensés (zones rurales enclavées, habitats dispersés) et la migration pendulaire vers Yaoundé. À considérer comme une estimation argumentée ISGI, non comme une donnée officielle.</p>
+    <p><strong>🔹 Communauté lékiéenne élargie (diaspora incluse) :</strong> <strong>1,5 à 2 millions de personnes</strong> selon les estimations ISGI-Lékié. Inclut les ressortissants installés à Yaoundé, Douala, au Cameroun et à l'étranger.</p>
+    <p style="margin-bottom:0;">📌 <strong>Méthodologie :</strong> ces deux dernières estimations sont établies par recoupement de sources (PCD, enquêtes terrain, données associatives). Elles ne remplacent pas les données officielles mais les complètent pour la planification territoriale.</p>
+    <span class="badge-statut badge-officiel">509 457 — INS 2025</span>
+    <span class="badge-statut badge-estimation">700K+ — Estimation ISGI-Lékié</span>
+    <span class="badge-statut badge-estimation">1,5–2M — Estimation ISGI-Lékié (diaspora)</span>
   </div>
 
   <div class="table-wrap">
@@ -301,7 +350,7 @@
   <div class="chart-card">
     <h3>📊 Évolution démographique 1987-2023 <small>(habitants)</small></h3>
     <div class="chart-wrapper tall">
-      <canvas id="démographieChart" aria-label="Graphique d'évolution démographique de la Lékié 1987-2023">Votre navigateur ne supporte pas les graphiques Canvas.</canvas>
+      <canvas id="demographieChart" aria-label="Graphique d'évolution démographique de la Lékié 1987-2023">Votre navigateur ne supporte pas les graphiques Canvas.</canvas>
     </div>
     <div class="chart-note">Points de référence : RGPH 1987 · RGPH 2005 · Projection INS/BUCREP 2010 · Projection INS 2025 (année 2023).</div>
   </div>
@@ -315,6 +364,9 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- BIP — MARCHÉS PUBLICS -->
+<!-- ============================================================ -->
 <section id="bip" aria-labelledby="titre-bip">
   <h2 class="section-title" id="titre-bip">📈 Budget d'Investissement Public — Marchés publics (2016-2026)</h2>
   <p class="section-sub">Cœur de l'Observatoire : suivi des investissements publics dans la Lékié. Données MINMAP + INS 2025.</p>
@@ -322,9 +374,9 @@
   <div class="note"><strong>📌 Note méthodologique :</strong> Les données présentées sont issues des <strong>programmations budgétaires</strong> du MINMAP. Les statuts et montants réalisés sont renseignés au fur et à mesure de la remontée des données terrain. Les <strong>???</strong> signalent une <strong>donnée en cours de collecte</strong> — et non un projet non réalisé.</div>
 
   <div class="grid-3" style="margin-bottom:2rem;">
-    <div class="card"><h3>💵 Total programmé 2016-2026</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">30,98 Mds FCFA</p><p style="font-size:0.8rem;color:var(--gris2);">1 208 marchés sur 10 ans</p></div>
+    <div class="card"><h3>💵 Total programmé 2016-2026</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">30,98 Mds FCFA</p><p style="font-size:0.8rem;color:var(--gris2);">1 208 marchés sur 10 ans</p><span class="badge-statut badge-officiel">MINMAP 2026</span></div>
     <div class="card"><h3>📈 Moyenne annuelle</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);">2,82 Mds FCFA</p><p style="font-size:0.8rem;color:var(--gris2);">+63% en 2025 (pic)</p></div>
-    <div class="card"><h3>🏆 Commune la plus programmée</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);"><a href="plateforme.html#communes" class="commune-link">Okola</a></p><p style="font-size:0.8rem;color:var(--gris2);">4,39 Mds FCFA (14,2%)</p></div>
+    <div class="card"><h3>🏆 Commune la plus programmée</h3><p style="font-size:1.8rem;font-weight:700;color:var(--vert);"><a href="plateforme.html#communes" class="commune-link" style="color:inherit;text-decoration:none;">Okola</a></p><p style="font-size:0.8rem;color:var(--gris2);">4,39 Mds FCFA (14,2%)</p></div>
   </div>
 
   <div class="analysis-box critique">
@@ -380,16 +432,16 @@
     <table>
       <thead><tr><th scope="col">#</th><th scope="col">Projet</th><th scope="col">Commune</th><th scope="col" class="text-right">Programmé (FCFA)</th><th scope="col" class="text-center">Statut</th><th scope="col" class="text-right">Réalisé (FCFA)</th><th scope="col">Année</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td>Reconstruction pont définitif Ngoko + routes</td><td><a href="plateforme.html#communes" class="commune-link">Lobo</a></td><td class="text-right">300 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2026</td></tr>
-        <tr><td>2</td><td>Cité municipale d'Okola</td><td><a href="plateforme.html#communes" class="commune-link">Okola</a></td><td class="text-right">285 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">180 000 000</td><td>2024</td></tr>
-        <tr><td>3</td><td>Hôtel de Ville d'Evodoula</td><td><a href="plateforme.html#communes" class="commune-link">Evodoula</a></td><td class="text-right">282 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2025</td></tr>
-        <tr><td>4</td><td>Hôtel de Ville de Lobo</td><td><a href="plateforme.html#communes" class="commune-link">Lobo</a></td><td class="text-right">258 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-valide">✅ Achevé</span></td><td class="text-right">258 000 000</td><td>2021</td></tr>
-        <tr><td>5</td><td>Hôtel de Ville d'Ebebda (clôture)</td><td><a href="plateforme.html#communes" class="commune-link">Ebebda</a></td><td class="text-right">230 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2025</td></tr>
-        <tr><td>6</td><td>Construction école publique de Batchenga</td><td><a href="plateforme.html#communes" class="commune-link">Batchenga</a></td><td class="text-right">195 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-valide">✅ Achevé</span></td><td class="text-right">195 000 000</td><td>2024</td></tr>
-        <tr><td>7</td><td>Adduction d'eau Monatélé – phase 2</td><td><a href="plateforme.html#communes" class="commune-link">Monatélé</a></td><td class="text-right">180 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2023</td></tr>
-        <tr><td>8</td><td>Réhabilitation piste rurale Obala – Sa'a</td><td><a href="plateforme.html#communes" class="commune-link">Obala</a> / <a href="plateforme.html#communes" class="commune-link">Sa'a</a></td><td class="text-right">175 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2025</td></tr>
-        <tr><td>9</td><td>Électrification rurale d'Elig-Mfomo</td><td><a href="plateforme.html#communes" class="commune-link">Elig-Mfomo</a></td><td class="text-right">162 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-recherche">🔍 Donnée en cours de collecte</span></td><td class="text-right">???</td><td>2023</td></tr>
-        <tr><td>10</td><td>Construction bloc pédagogique Sa'a</td><td><a href="plateforme.html#communes" class="commune-link">Sa'a</a></td><td class="text-right">155 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-valide">✅ Achevé</span></td><td class="text-right">155 000 000</td><td>2022</td></tr>
+        <tr><td>1</td><td>Reconstruction pont définitif Ngoko + routes</td><td>Lobo</td><td class="text-right">300 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2026</td></tr>
+        <tr><td>2</td><td>Cité municipale d'Okola</td><td>Okola</td><td class="text-right">285 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">180 000 000</td><td>2024</td></tr>
+        <tr><td>3</td><td>Hôtel de Ville d'Evodoula</td><td>Evodoula</td><td class="text-right">282 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2025</td></tr>
+        <tr><td>4</td><td>Hôtel de Ville de Lobo</td><td>Lobo</td><td class="text-right">258 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-valide">✅ Achevé</span></td><td class="text-right">258 000 000</td><td>2021</td></tr>
+        <tr><td>5</td><td>Hôtel de Ville d'Ebebda (clôture)</td><td>Ebebda</td><td class="text-right">230 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2025</td></tr>
+        <tr><td>6</td><td>Construction école publique de Batchenga</td><td>Batchenga</td><td class="text-right">195 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-valide">✅ Achevé</span></td><td class="text-right">195 000 000</td><td>2024</td></tr>
+        <tr><td>7</td><td>Adduction d'eau Monatélé – phase 2</td><td>Monatélé</td><td class="text-right">180 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2023</td></tr>
+        <tr><td>8</td><td>Réhabilitation piste rurale Obala – Sa'a</td><td>Obala / Sa'a</td><td class="text-right">175 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-encours">⏳ En cours</span></td><td class="text-right">???</td><td>2025</td></tr>
+        <tr><td>9</td><td>Électrification rurale d'Elig-Mfomo</td><td>Elig-Mfomo</td><td class="text-right">162 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-recherche">🔍 Donnée en cours de collecte</span></td><td class="text-right">???</td><td>2023</td></tr>
+        <tr><td>10</td><td>Construction bloc pédagogique Sa'a</td><td>Sa'a</td><td class="text-right">155 000 000</td><td class="text-center statut-cell"><span class="badge-statut badge-valide">✅ Achevé</span></td><td class="text-right">155 000 000</td><td>2022</td></tr>
       </tbody>
     </table>
     <p class="table-scroll-hint">← Faites glisser pour voir toutes les colonnes →</p>
@@ -401,15 +453,15 @@
     <table>
       <thead><tr><th scope="col">#</th><th scope="col">Commune</th><th scope="col" class="text-right">Nb marchés</th><th scope="col" class="text-right">Montant (FCFA)</th><th scope="col" class="text-right">Part (%)</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td><a href="plateforme.html#communes" class="commune-link">Okola</a></td><td class="text-right">161</td><td class="text-right">4 393 865 762</td><td class="text-right">14,18%</td></tr>
-        <tr><td>2</td><td><a href="plateforme.html#communes" class="commune-link">Evodoula</a></td><td class="text-right">107</td><td class="text-right">2 829 097 814</td><td class="text-right">9,13%</td></tr>
-        <tr><td>3</td><td><a href="plateforme.html#communes" class="commune-link">Sa'a</a></td><td class="text-right">131</td><td class="text-right">2 656 154 000</td><td class="text-right">8,57%</td></tr>
-        <tr><td>4</td><td><a href="plateforme.html#communes" class="commune-link">Obala</a></td><td class="text-right">139</td><td class="text-right">2 640 169 414</td><td class="text-right">8,52%</td></tr>
-        <tr><td>5</td><td><a href="plateforme.html#communes" class="commune-link">Monatélé</a></td><td class="text-right">126</td><td class="text-right">2 614 616 914</td><td class="text-right">8,44%</td></tr>
-        <tr><td>6</td><td><a href="plateforme.html#communes" class="commune-link">Lobo</a></td><td class="text-right">72</td><td class="text-right">2 468 559 256</td><td class="text-right">7,97%</td></tr>
-        <tr><td>7</td><td><a href="plateforme.html#communes" class="commune-link">Elig-Mfomo</a></td><td class="text-right">109</td><td class="text-right">2 216 981 319</td><td class="text-right">7,15%</td></tr>
-        <tr><td>8</td><td><a href="plateforme.html#communes" class="commune-link">Ebebda</a></td><td class="text-right">95</td><td class="text-right">2 051 359 824</td><td class="text-right">6,62%</td></tr>
-        <tr><td>9</td><td><a href="plateforme.html#communes" class="commune-link">Batchenga</a></td><td class="text-right">79</td><td class="text-right">1 697 956 000</td><td class="text-right">5,48%</td></tr>
+        <tr><td>1</td><td>Okola</td><td class="text-right">161</td><td class="text-right">4 393 865 762</td><td class="text-right">14,18%</td></tr>
+        <tr><td>2</td><td>Evodoula</td><td class="text-right">107</td><td class="text-right">2 829 097 814</td><td class="text-right">9,13%</td></tr>
+        <tr><td>3</td><td>Sa'a</td><td class="text-right">131</td><td class="text-right">2 656 154 000</td><td class="text-right">8,57%</td></tr>
+        <tr><td>4</td><td>Obala</td><td class="text-right">139</td><td class="text-right">2 640 169 414</td><td class="text-right">8,52%</td></tr>
+        <tr><td>5</td><td>Monatélé</td><td class="text-right">126</td><td class="text-right">2 614 616 914</td><td class="text-right">8,44%</td></tr>
+        <tr><td>6</td><td>Lobo</td><td class="text-right">72</td><td class="text-right">2 468 559 256</td><td class="text-right">7,97%</td></tr>
+        <tr><td>7</td><td>Elig-Mfomo</td><td class="text-right">109</td><td class="text-right">2 216 981 319</td><td class="text-right">7,15%</td></tr>
+        <tr><td>8</td><td>Ebebda</td><td class="text-right">95</td><td class="text-right">2 051 359 824</td><td class="text-right">6,62%</td></tr>
+        <tr><td>9</td><td>Batchenga</td><td class="text-right">79</td><td class="text-right">1 697 956 000</td><td class="text-right">5,48%</td></tr>
         <tr class="highlight"><td>—</td><td><strong>Services déconcentrés</strong></td><td class="text-right">73</td><td class="text-right">2 767 366 000</td><td class="text-right">—</td></tr>
         <tr style="font-weight:700;background:var(--vert);color:#fff;"><td></td><td><strong>TOTAL</strong></td><td class="text-right"><strong>1 208</strong></td><td class="text-right"><strong>30 979 131 357</strong></td><td class="text-right"><strong>100%</strong></td></tr>
       </tbody>
@@ -426,6 +478,9 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- CONDITIONS DE VIE -->
+<!-- ============================================================ -->
 <section id="menages" aria-labelledby="titre-menages">
   <h2 class="section-title" id="titre-menages">🏠 Conditions de vie des ménages</h2>
   <p class="section-sub">Données FEICOM/INS — Profil des ménages (2016). En cours d'actualisation avec RGPH 2025.</p>
@@ -475,44 +530,97 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- ÉDUCATION — SYNTHÈSE -->
+<!-- ============================================================ -->
 <section id="education" aria-labelledby="titre-education">
   <h2 class="section-title" id="titre-education">📚 Éducation — Vue synthétique</h2>
-  <p class="section-sub">Données INS 2025 — Annuaire Statistique du Centre, 2023/2024. Pour le détail, consultez la page dédiée.</p>
+  <p class="section-sub">Données INS 2025 — Annuaire Statistique du Centre, 2023/2024 et 2024/2025. Pour le détail nominatif, consultez la page dédiée.</p>
 
   <div class="renvoi-card">
     <div class="renvoi-content">
-      <div class="renvoi-titre">🎓 Mon école — Détail par établissement</div>
-      <div class="renvoi-desc">Liste complète des écoles primaires, maternelles et secondaires de la Lékié, avec effectifs, ratios et coordonnées.</div>
+      <div class="renvoi-titre">🎓 Mon école — Annuaire détaillé</div>
+      <div class="renvoi-desc">Établissements primaires, maternels, secondaires, professionnels et d'enseignement supérieur de la Lékié, avec effectifs, ratios et coordonnées.</div>
     </div>
     <a href="mon-ecole.html" class="btn btn-secondary">Voir Mon école →</a>
   </div>
 
-  <div class="table-wrap" style="margin-top:2rem;">
-    <h3>📊 Chiffres clés de l'éducation dans la Lékié <small>(2023/2024)</small></h3>
+  <h3 style="font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin:2rem 0 0.8rem;">📊 Enseignement de base — Vue d'ensemble (2023/2024)</h3>
+
+  <div class="stats-block">
+    <h4>Effectifs et établissements <span class="annee">(INS 2025, tableaux 6-3 à 6-5)</span></h4>
     <table>
-      <thead><tr><th scope="col">Niveau</th><th scope="col" class="text-right">Établissements</th><th scope="col" class="text-right">Élèves</th><th scope="col" class="text-right">Enseignants</th><th scope="col" class="text-right">Ratio élèves/maître</th></tr></thead>
+      <thead><tr><th scope="col">Ordre</th><th scope="col" class="text-right">Primaire — étab.</th><th scope="col" class="text-right">Primaire — élèves</th><th scope="col" class="text-right">Maternel — étab.</th><th scope="col" class="text-right">Maternel — élèves</th></tr></thead>
       <tbody>
-        <tr><td><strong>Primaire public</strong></td><td class="text-right">286</td><td class="text-right">69 128</td><td class="text-right">1 616</td><td class="text-right">42,8</td></tr>
-        <tr><td><strong>Primaire privé laïc</strong></td><td class="text-right">151</td><td class="text-right">77 368</td><td class="text-right">1 755</td><td class="text-right">44,1</td></tr>
-        <tr><td>Primaire privé confessionnel</td><td class="text-right">48</td><td class="text-right">19 349</td><td class="text-right">226</td><td class="text-right">85,6</td></tr>
-        <tr class="highlight"><td><strong>Total Primaire</strong></td><td class="text-right"><strong>485</strong></td><td class="text-right"><strong>165 845</strong></td><td class="text-right"><strong>3 597</strong></td><td class="text-right"><strong>46,1</strong></td></tr>
-        <tr><td><strong>Maternelle publique</strong></td><td class="text-right">178</td><td class="text-right">12 876</td><td class="text-right">115</td><td class="text-right">112,0</td></tr>
-        <tr><td>Maternelle privée laïque</td><td class="text-right">137</td><td class="text-right">25 135</td><td class="text-right">276</td><td class="text-right">91,1</td></tr>
-        <tr><td>Maternelle privée confessionnelle</td><td class="text-right">45</td><td class="text-right">9 241</td><td class="text-right">80</td><td class="text-right">115,5</td></tr>
-        <tr class="highlight"><td><strong>Total Maternelle</strong></td><td class="text-right"><strong>360</strong></td><td class="text-right"><strong>47 252</strong></td><td class="text-right"><strong>471</strong></td><td class="text-right"><strong>100,3</strong></td></tr>
+        <tr><td>Public</td><td class="text-right">286</td><td class="text-right">69 128</td><td class="text-right">178</td><td class="text-right">12 876</td></tr>
+        <tr><td>Privé laïc</td><td class="text-right">151</td><td class="text-right">77 368</td><td class="text-right">137</td><td class="text-right">25 135</td></tr>
+        <tr><td>Privé confessionnel</td><td class="text-right">48</td><td class="text-right">19 349</td><td class="text-right">45</td><td class="text-right">9 241</td></tr>
+        <tr style="font-weight:700;background:var(--vert);color:#fff;"><td>TOTAL</td><td class="text-right">485</td><td class="text-right">165 845</td><td class="text-right">360</td><td class="text-right">47 252</td></tr>
       </tbody>
     </table>
-    <p class="source">📌 Source : INS 2025, Tableaux 6-3, 6-4, 6-5.</p>
+    <p class="source">📌 Source : INS 2025 — Annuaire Statistique du Centre, tableaux 6-3, 6-4, 6-5.</p>
+  </div>
+
+  <div class="stats-block">
+    <h4>Ratios officiels élèves/enseignant <span class="annee">(avec MPF, INS 2025)</span></h4>
+    <table>
+      <thead><tr><th scope="col">Ordre</th><th scope="col" class="text-right">Primaire</th><th scope="col" class="text-right">Maternel</th><th scope="col" class="text-right">MPF</th></tr></thead>
+      <tbody>
+        <tr><td>Public</td><td class="text-right"><strong>40,23</strong></td><td class="text-right"><strong>38,43</strong></td><td class="text-right">428</td></tr>
+        <tr><td>Privé laïc</td><td class="text-right"><strong>18,01</strong></td><td class="text-right"><strong>16,63</strong></td><td class="text-right">30</td></tr>
+        <tr><td>Privé confessionnel</td><td class="text-right"><strong>38,12</strong></td><td class="text-right"><strong>22,24</strong></td><td class="text-right">40</td></tr>
+      </tbody>
+    </table>
+    <p class="source">📌 Source : INS 2025, tableaux 6-6 à 6-8. <strong>Les ratios officiels intègrent les MPF (Maîtres Parents Formation)</strong> — d'où les écarts avec un simple calcul effectifs/enseignants.</p>
+  </div>
+
+  <div class="stats-block">
+    <h4>Salles de classe par matériau <span class="annee">(primaire, INS 2025)</span></h4>
+    <table>
+      <thead><tr><th scope="col">Ordre</th><th scope="col" class="text-right">Durables</th><th scope="col" class="text-right">Semi-dures</th><th scope="col" class="text-right">Provisoires</th><th scope="col" class="text-right">Total</th><th scope="col" class="text-right">% provisoire</th></tr></thead>
+      <tbody>
+        <tr><td>Public</td><td class="text-right">568</td><td class="text-right">340</td><td class="text-right">225</td><td class="text-right">1 133</td><td class="text-right">19,9%</td></tr>
+        <tr><td>Privé laïc</td><td class="text-right">720</td><td class="text-right">51</td><td class="text-right">494</td><td class="text-right">1 265</td><td class="text-right">39,1%</td></tr>
+        <tr><td>Privé confessionnel</td><td class="text-right">168</td><td class="text-right">0</td><td class="text-right">138</td><td class="text-right">306</td><td class="text-right">45,1%</td></tr>
+        <tr style="font-weight:700;background:var(--vert);color:#fff;"><td>TOTAL</td><td class="text-right">1 456</td><td class="text-right">391</td><td class="text-right">857</td><td class="text-right">2 704</td><td class="text-right">31,7%</td></tr>
+      </tbody>
+    </table>
+    <p class="source">📌 Source : INS 2025, tableau 6-9.</p>
+  </div>
+
+  <h3 style="font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin:2rem 0 0.8rem;">🎓 Enseignement secondaire — Séries 2022-2025</h3>
+
+  <div class="stats-block">
+    <h4>ESG et EST — Effectifs élèves (2024/2025) <span class="annee">(INS 2025)</span></h4>
+    <table>
+      <thead><tr><th scope="col">Type</th><th scope="col" class="text-right">Public</th><th scope="col" class="text-right">Privé</th><th scope="col" class="text-right">Total</th><th scope="col" class="text-right">% filles</th></tr></thead>
+      <tbody>
+        <tr><td>ESG (Général)</td><td class="text-right">24 959</td><td class="text-right">5 515</td><td class="text-right"><strong>30 474</strong></td><td class="text-right">52,6%</td></tr>
+        <tr><td>EST (Technique)</td><td class="text-right">14 121</td><td class="text-right">319</td><td class="text-right"><strong>14 440</strong></td><td class="text-right">42,8%</td></tr>
+        <tr><td>Enseignement normal</td><td class="text-right" colspan="2">—</td><td class="text-right"><strong>2 270</strong></td><td class="text-right">60,8%</td></tr>
+      </tbody>
+    </table>
+    <p class="source">📌 Source : INS 2025, tableaux 6-13 à 6-15. <strong>Tendance :</strong> filles majoritaires en ESG (52,6%) mais minoritaires en EST (42,8%) — écart qui se creuse. Le privé technique est quasi inexistant (319 élèves, 2,2% de l'EST).</p>
   </div>
 
   <div class="analysis-box">
     <h3>📌 Insight territorial — Le poids du privé laïc dans la Lékié</h3>
     <p><strong>Constat :</strong> La Lékié a une <strong>particularité forte</strong> : le <strong>privé laïc représente 46,6% des élèves du primaire</strong> (77 368 sur 165 845). C'est <strong>exceptionnel</strong> dans un département camerounais.</p>
+    <p><strong>Conséquence directe :</strong> Les ratios du privé laïc (18,01 élèves/enseignant) sont <strong>très inférieurs</strong> à ceux du public (40,23) et du confessionnel (38,12). Le privé laïc est plus encadré — mais aussi plus précaire en infrastructures (39,1% de salles provisoires contre 19,9% dans le public).</p>
     <p><strong>Enjeu stratégique :</strong> Le pilotage éducatif de la Lékié doit <strong>intégrer pleinement le secteur privé laïc</strong> dans les politiques d'aménagement scolaire.</p>
     <span class="badge-statut badge-officiel">Source : INS 2025</span>
   </div>
+
+  <div class="analysis-box alerte">
+    <h3>📌 Insight secondaire — Le déséquilibre filles/garçons en EST</h3>
+    <p>Les filles sont <strong>majoritaires en ESG</strong> (52,6% en 2024/2025) mais <strong>minoritaires en EST</strong> (42,8%). L'écart se creuse légèrement sur les 3 dernières années.</p>
+    <p><strong>Lecture :</strong> l'orientation vers les filières techniques reste genrée — un levier de politique éducative à travailler.</p>
+  </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- SANTÉ — SYNTHÈSE -->
+<!-- ============================================================ -->
 <section id="sante" aria-labelledby="titre-sante">
   <h2 class="section-title" id="titre-sante">🏥 Santé — Vue synthétique</h2>
   <p class="section-sub">Données MINSANTE via INS 2025. La Lékié compte 7 districts de santé.</p>
@@ -528,6 +636,9 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- AGRICULTURE — SYNTHÈSE -->
+<!-- ============================================================ -->
 <section id="agriculture-synthese" aria-labelledby="titre-agri">
   <h2 class="section-title" id="titre-agri">🌾 Agriculture — Vue synthétique</h2>
   <p class="section-sub">Données MINADER via INS 2025 (2024). Pour le détail par filière, consultez la page dédiée.</p>
@@ -564,6 +675,9 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- ÉLEVAGE — SYNTHÈSE -->
+<!-- ============================================================ -->
 <section id="elevage-synthese" aria-labelledby="titre-elevage">
   <h2 class="section-title" id="titre-elevage">🐄 Élevage — Vue synthétique</h2>
   <p class="section-sub">Données MINEPIA via INS 2025 (2024). Pour le détail, consultez la page dédiée.</p>
@@ -598,6 +712,9 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- ÉNERGIE -->
+<!-- ============================================================ -->
 <section id="energie" aria-labelledby="titre-energie">
   <h2 class="section-title" id="titre-energie">⚡ Énergie & Télécommunications</h2>
   <p class="section-sub">Données ENEO via INS 2025. État du réseau dans la Lékié.</p>
@@ -614,9 +731,12 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- NAVIGATION SECTORIELLE -->
+<!-- ============================================================ -->
 <section id="explorer" aria-labelledby="titre-explorer">
   <h2 class="section-title" id="titre-explorer">🧭 Explorer le territoire — Pages dédiées</h2>
-  <p class="section-sub">L'Observatoire vous donne ici les chiffres clés du département. Pour approfondir chaque thématique, consultez les pages dédiées du site.</p>
+  <p class="section-sub">L'Observatoire donne les chiffres clés consolidés. Pour approfondir chaque thématique, consultez les pages dédiées du site.</p>
 
   <h3 style="font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin:1.5rem 0 0.5rem;">🏘️ Territoire & Communautés</h3>
   <div class="grid-2">
@@ -633,7 +753,7 @@
 
   <h3 style="font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin:2rem 0 0.5rem;">🎓 Éducation & Jeunesse</h3>
   <div class="grid-2">
-    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🎓 Mon école</div><div class="renvoi-desc">Liste des établissements primaires, maternelles et secondaires avec effectifs et ratios.</div></div><a href="mon-ecole.html" class="btn btn-secondary">Voir →</a></div>
+    <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🎓 Mon école</div><div class="renvoi-desc">Établissements primaires, maternels, secondaires, professionnels et d'enseignement supérieur.</div></div><a href="mon-ecole.html" class="btn btn-secondary">Voir →</a></div>
     <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">🏆 Valeurs et compétences</div><div class="renvoi-desc">Formation, transmission des savoirs, valorisation des compétences locales et de la diaspora.</div></div><a href="valeurs-et-competences.html" class="btn btn-secondary">Voir →</a></div>
     <div class="renvoi-card"><div class="renvoi-content"><div class="renvoi-titre">⚽ Sport</div><div class="renvoi-desc">Activités sportives, championnats de vacances, associations et événements sportifs de la Lékié.</div></div><a href="sport.html" class="btn btn-secondary">Voir →</a></div>
   </div>
@@ -652,12 +772,15 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- ODD -->
+<!-- ============================================================ -->
 <section id="odd" aria-labelledby="titre-odd">
   <h2 class="section-title" id="titre-odd">🌍 Lékié & Objectifs de Développement Durable</h2>
   <p class="section-sub">Mise en correspondance des indicateurs de l'Observatoire avec les ODD des Nations Unies.</p>
   <div class="odd-grid">
     <div class="odd-item"><span class="odd-badge">ODD 1</span><div><strong>Pauvreté</strong><br>Taux de pauvreté : <strong>33,8%</strong> (moy. nationale 2014 : 37,5%)</div></div>
-    <div class="odd-item"><span class="odd-badge">ODD 4</span><div><strong>Éducation</strong><br>165 845 élèves primaire · 485 écoles · ratio 46,1</div></div>
+    <div class="odd-item"><span class="odd-badge">ODD 4</span><div><strong>Éducation</strong><br>165 845 élèves primaire · 485 écoles · ratio public 40,23 (avec MPF)</div></div>
     <div class="odd-item"><span class="odd-badge">ODD 6</span><div><strong>Eau et assainissement</strong><br>Accès eau améliorée : <strong>66,4%</strong> · Toilettes améliorées : <strong>33,6%</strong></div></div>
     <div class="odd-item"><span class="odd-badge">ODD 7</span><div><strong>Énergie</strong><br>26 716 abonnés ENEO BT (2023) · 39,9% ménages électrifiés (2016)</div></div>
     <div class="odd-item"><span class="odd-badge">ODD 8</span><div><strong>Travail décent</strong><br>Taux d'emploi : <strong>66,4%</strong> · Chômage élargi : <strong>2,9%</strong></div></div>
@@ -667,6 +790,9 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- SOURCES -->
+<!-- ============================================================ -->
 <section id="sources" aria-labelledby="titre-sources">
   <h2 class="section-title" id="titre-sources">🔗 Sources & partenariats</h2>
   <p class="section-sub">L'Observatoire s'inscrit dans une trajectoire de consolidation méthodologique et institutionnelle.</p>
@@ -674,15 +800,17 @@
   <div class="sources-box">
     <h3>📚 Sources officielles intégrées</h3>
     <ul>
-      <li><span>INS — Annuaire Statistique du Centre, édition 2025</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>INS — Annuaire Statistique du Centre, édition 2025 (chapitres 1, 4, 6, 7, 14, 15, 17, 23)</span><span class="badge-statut badge-valide">Intégré</span></li>
       <li><span>BUCREP — RGPH 1987, 2005 + projections démographiques</span><span class="badge-statut badge-valide">Intégré</span></li>
       <li><span>MINMAP — Journaux de Programmation des Marchés (2016-2026)</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>MINESEC — Panorama Scolaire Région du Centre (2015/2016)</span><span class="badge-statut badge-valide">Intégré</span></li>
       <li><span>MINADER — Statistiques agricoles 2024</span><span class="badge-statut badge-valide">Intégré</span></li>
       <li><span>MINEPIA — Statistiques d'élevage 2024</span><span class="badge-statut badge-valide">Intégré</span></li>
       <li><span>MINEPAT / DR MINEPAT — BIP 2023-2024 (taux d'exécution)</span><span class="badge-statut badge-valide">Intégré</span></li>
       <li><span>FEICOM / INS — Profil des ménages (2016)</span><span class="badge-statut badge-valide">Intégré</span></li>
       <li><span>ENEO — Abonnés et ventes 2021-2023</span><span class="badge-statut badge-valide">Intégré</span></li>
       <li><span>CAMPOST — Postes et télécommunications</span><span class="badge-statut badge-valide">Intégré</span></li>
+      <li><span>PCD communaux — Obala 2013, Batchenga 2015, Sa'a 2016, Lobo 2019 (recoupement structure territoriale)</span><span class="badge-statut badge-valide">Intégré</span></li>
     </ul>
   </div>
 
@@ -694,6 +822,8 @@
       <li><span>MINESEC — Statistiques secondaires 2025/2026</span><span class="badge-statut badge-encours">Démarche en cours</span></li>
       <li><span>SIGE — Données désagrégées par arrondissement</span><span class="badge-statut badge-encours">Démarche en cours</span></li>
       <li><span>Communes de la Lékié — Données de réalisations effectives</span><span class="badge-statut badge-encours">Démarche en cours</span></li>
+      <li><span>PCD restants — Monatélé, Ebebda, Evodoula, Okola, Elig-Mfomo</span><span class="badge-statut badge-encours">Collecte à poursuivre</span></li>
+      <li><span>MINESUP — IPES et enseignement supérieur dans la Lékié</span><span class="badge-statut badge-contributif">Contributif — collecte ISGI</span></li>
     </ul>
   </div>
 
@@ -708,6 +838,9 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- GLOSSAIRE -->
+<!-- ============================================================ -->
 <section id="glossaire" aria-labelledby="titre-glossaire">
   <h2 class="section-title" id="titre-glossaire">📖 Glossaire</h2>
   <p class="section-sub">Les acronymes utilisés dans cette page, expliqués simplement.</p>
@@ -731,6 +864,10 @@
       <dt>CAMPOST</dt><dd>Société Nationale des Postes du Cameroun.</dd>
       <dt>MINADER</dt><dd>Ministère de l'Agriculture et du Développement Rural.</dd>
       <dt>MINEPIA</dt><dd>Ministère de l'Élevage, des Pêches et des Industries Animales.</dd>
+      <dt>MINEDUB</dt><dd>Ministère de l'Éducation de Base.</dd>
+      <dt>MINESEC</dt><dd>Ministère des Enseignements Secondaires.</dd>
+      <dt>MINESUP</dt><dd>Ministère de l'Enseignement Supérieur.</dd>
+      <dt>MPF</dt><dd>Maîtres Parents Formation — enseignants financés par les parents d'élèves, intégrés dans le calcul des ratios officiels INS.</dd>
     </dl>
 
     <h3 style="font-size:0.95rem;color:var(--gris);margin:1.5rem 0 0.5rem;font-family:'Inter',sans-serif;font-weight:600;">📋 Vocabulaire territorial</h3>
@@ -760,7 +897,7 @@
 <footer>
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
   <p>Association Réfléchir Agir Soutenir (RAS) — <a href="mailto:contact@isgi-lekie.cm">contact@isgi-lekie.cm</a></p>
-  <p style="margin-top:0.3rem;">Dernière mise à jour : <time datetime="2026-10-14">14 Octobre 2026</time></p>
+  <p style="margin-top:0.3rem;">Dernière mise à jour : <time datetime="2026-10-17">17 Octobre 2026</time></p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
 
@@ -805,7 +942,7 @@
     }
     function initCharts() {
       if (typeof Chart === 'undefined') return;
-      var demoEl = document.getElementById('démographieChart');
+      var demoEl = document.getElementById('demographieChart');
       if (demoEl) {
         new Chart(demoEl.getContext('2d'), {
           type: 'line',
