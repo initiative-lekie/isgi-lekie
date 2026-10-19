@@ -1,0 +1,151 @@
+/* ============================================================
+   ISGI-Lékié — Feuille de style commune
+   Utilisée par : index.html, ma-commune/*.html, etc.
+   ============================================================ */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: #fefcf8; color: #3a3a35; line-height: 1.5; }
+
+/* Accessibilité */
+.skip-link { position: absolute; left: -9999px; top: 0; background: #c4922a; color: #1b3a2d; padding: 0.7rem 1.2rem; font-weight: 600; text-decoration: none; z-index: 9999; border-radius: 0 0 8px 0; }
+.skip-link:focus { left: 0; outline: 3px solid #1b3a2d; outline-offset: 2px; }
+*:focus-visible { outline: 2px solid #c4922a; outline-offset: 3px; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; animation: none !important; }
+}
+
+/* Layout */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+.container-narrow { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+/* Bandeaux */
+.status-banner { background: #e0a83e; color: #1b3a2d; font-weight: 600; text-align: center; padding: 0.4rem; font-size: 0.8rem; }
+.lekie-en-premier { background: #1b3a2d; color: #e0a83e; text-align: center; padding: 0.4rem; font-size: 0.8rem; font-style: italic; }
+
+/* Navigation */
+.navbar { background: #1b3a2d; padding: 0.8rem 1.5rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #c4922a; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.logo a { color: #e0a83e; text-decoration: none; font-size: 1.5rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
+.logo span { font-size: 0.7rem; display: block; color: rgba(255,255,255,0.85); }
+.nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; }
+.nav-links a { color: rgba(255,255,255,0.92); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 0.2rem 0; white-space: nowrap; }
+.nav-links a:hover { color: #e0a83e; }
+.nav-links a.active { color: #e0a83e; border-bottom: 2px solid #c4922a; }
+.burger { display: none; background: none; border: none; color: #e0a83e; font-size: 1.8rem; cursor: pointer; padding: 0.3rem 0.6rem; border-radius: 6px; }
+.burger:hover { background: rgba(255,255,255,0.1); }
+
+/* Fil d'Ariane */
+.breadcrumb { background: #f4efe6; padding: 0.6rem 1.5rem; font-size: 0.78rem; color: #5a5a50; border-bottom: 1px solid #e8dfd0; }
+.breadcrumb ol { list-style: none; display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; max-width: 1280px; margin: 0 auto; }
+.breadcrumb li { display: inline-flex; align-items: center; gap: 0.4rem; }
+.breadcrumb li + li::before { content: "›"; color: #94a3b8; }
+.breadcrumb a { color: #1b3a2d; text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb [aria-current="page"] { color: #5a5a50; font-weight: 600; }
+
+/* En-tête de page */
+.page-header { background: #1b3a2d; padding: 2.5rem 1.5rem; border-bottom: 4px solid #c4922a; text-align: center; }
+.page-header h1 { color: #fff; font-size: 2.2rem; font-family: 'Cormorant Garamond', serif; }
+.page-header h1 em { color: #e0a83e; font-style: italic; }
+.page-header p { color: rgba(255,255,255,0.75); margin-top: 0.5rem; font-size: 0.9rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+.page-header .maj { font-size: 0.7rem; color: #e0a83e; margin-top: 0.6rem; }
+.page-header .sous-titre { color: rgba(255,255,255,0.75); margin-top: 0.5rem; font-size: 0.9rem; }
+.badge-chef-lieu { display: inline-block; background: #c4922a; color: #fff; font-size: 0.65rem; padding: 0.2rem 0.7rem; border-radius: 20px; font-weight: 600; margin-top: 0.5rem; }
+
+/* Sections */
+.section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: #1b3a2d; margin-bottom: 1rem; border-left: 6px solid #c4922a; padding-left: 1rem; }
+
+/* Table des matières */
+.toc { background: #f4efe6; border-radius: 12px; padding: 1rem 1.2rem; margin: 1.5rem 0; }
+.toc h2 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: #1b3a2d; margin-bottom: 0.6rem; font-weight: 700; }
+.toc ol { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; font-size: 0.85rem; counter-reset: toc; }
+.toc li { counter-increment: toc; }
+.toc li::before { content: counter(toc) ". "; color: #c4922a; font-weight: 700; }
+.toc a { color: #1b3a2d; text-decoration: none; font-weight: 500; }
+.toc a:hover { text-decoration: underline; color: #c4922a; }
+
+/* Cartes */
+.card { background: #fff; border: 1px solid #e8dfd0; border-radius: 16px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+.card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: #1b3a2d; margin-bottom: 0.6rem; }
+
+/* Grille d'informations */
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.info-item { background: #f4efe6; padding: 0.8rem 1rem; border-radius: 12px; }
+.info-item .label { font-size: 0.7rem; color: #5a5a50; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+.info-item .value { font-size: 1rem; color: #1b3a2d; font-weight: 600; margin-top: 0.2rem; }
+.info-item .source { font-size: 0.65rem; color: #94a3b8; margin-top: 0.2rem; font-style: italic; }
+
+/* Listes simples */
+.liste-simple { list-style: none; padding: 0; }
+.liste-simple li { padding: 0.5rem 0; border-bottom: 1px dashed #f0eadd; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-size: 0.9rem; }
+.liste-simple li:last-child { border-bottom: none; }
+.liste-simple .fonction { color: #5a5a50; font-size: 0.82rem; }
+.liste-simple .nom { color: #1b3a2d; font-weight: 600; }
+
+/* Badges */
+.badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; margin-left: 0.4rem; vertical-align: middle; }
+.badge-valide { background: #e8f5e9; color: #2e7d32; }
+.badge-encours { background: #fff8e1; color: #856404; }
+.badge-contributif { background: #e8dfd0; color: #5a5a50; }
+.badge-recherche { background: #ffebee; color: #c62828; }
+.badge-verifier { background: #fce4ec; color: #c2185b; }
+.badge-officiel { background: #e3f2fd; color: #1565c0; }
+.badge-suspens { background: #f3e5f5; color: #6a1b9a; }
+.badge-historique { background: #eceff1; color: #455a64; }
+
+/* Boutons */
+.btn { background: #1b3a2d; color: #e0a83e; padding: 0.6rem 1.2rem; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-block; border: none; cursor: pointer; }
+.btn:hover { background: #c4922a; color: #1b3a2d; }
+
+/* Notes */
+.note { background: #fff8e1; padding: 1rem; border-left: 4px solid #c4922a; margin: 1rem 0; border-radius: 4px; font-size: 0.88rem; }
+.note-info { background: #e3f2fd; border-left-color: #1976d2; }
+.note strong { color: #c62828; }
+.note a { color: #1b3a2d; font-weight: 600; }
+
+/* Renvois */
+.renvoi-card { background: #fff; border: 2px dashed #c4922a; border-radius: 16px; padding: 1.2rem 1.5rem; margin: 1rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.renvoi-card .renvoi-titre { font-family: 'Cormorant Garamond', serif; color: #1b3a2d; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+.renvoi-card .renvoi-desc { font-size: 0.85rem; color: #5a5a50; }
+
+/* Pied de page */
+footer { background: #0f2c21; color: rgba(255,255,255,0.75); text-align: center; padding: 2rem 1rem; font-size: 0.8rem; margin-top: 2rem; }
+footer p { margin-bottom: 0.3rem; }
+footer .boussole { font-style: italic; color: rgba(255,255,255,0.55); margin-top: 0.4rem; }
+footer a { color: #e0a83e; }
+footer time { color: #e0a83e; font-weight: 500; }
+
+/* Retour en haut */
+.back-to-top { position: fixed; bottom: 20px; right: 20px; background: #c4922a; color: #1b3a2d; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.5rem; font-weight: bold; opacity: 0; transition: opacity 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 99; }
+.back-to-top.show { opacity: 1; }
+.back-to-top:hover { background: #1b3a2d; color: #e0a83e; }
+
+/* Légende des badges */
+.legende-badges { background: #f4efe6; border-radius: 12px; padding: 0.8rem 1.2rem; margin: 1rem 0; font-size: 0.82rem; }
+.legende-badges summary { cursor: pointer; font-weight: 600; color: #1b3a2d; }
+.legende-badges summary:hover { color: #c4922a; }
+.legende-badges ul { list-style: none; padding: 0; margin-top: 0.6rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.legende-badges li { display: flex; gap: 0.6rem; align-items: baseline; }
+.legende-badges .badge-statut { margin-left: 0; min-width: 110px; text-align: center; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .navbar { flex-direction: row; }
+  .burger { display: block; }
+  .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; }
+  .nav-links.show { display: flex; }
+  .page-header h1 { font-size: 1.6rem; }
+  .section-title { font-size: 1.3rem; }
+  .liste-simple li { flex-direction: column; align-items: flex-start; }
+}
+
+/* Impression */
+@media print {
+  .navbar, .burger, .status-banner, .lekie-en-premier, .breadcrumb, .back-to-top, .renvoi-card, footer, .page-header .maj, .toc, .legende-badges { display: none !important; }
+  body { background: #fff; color: #000; }
+  .page-header { background: #fff; color: #000; border-bottom: 2px solid #000; padding: 1rem; }
+  .page-header h1 { color: #000; }
+  .card { box-shadow: none; border: 1px solid #999; break-inside: avoid; }
+  a { color: #000; text-decoration: none; }
+}
