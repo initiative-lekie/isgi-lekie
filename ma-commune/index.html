@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#1b3a2d">
+  <title>Ma Commune – ISGI-Lékié · Les 9 communes de la Lékié</title>
+  <meta name="description" content="Les 9 communes du département de la Lékié — identité, institutions, groupements, écoles, santé et projets.">
+  <meta name="author" content="ISGI-Lékié">
+  <link rel="canonical" href="https://isgi-lekie.cm/ma-commune/">
+  <meta property="og:title" content="Ma Commune – ISGI-Lékié">
+  <meta property="og:description" content="Les 9 communes de la Lékié.">
+  <meta property="og:url" content="https://isgi-lekie.cm/ma-commune/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="ISGI-Lékié">
+  <meta property="og:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ma Commune – Les 9 communes de la Lékié – ISGI-Lékié">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ma Commune – ISGI-Lékié">
+  <meta name="twitter:description" content="Les 9 communes de la Lékié.">
+  <meta name="twitter:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/lekie.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://isgi-lekie.cm/ma-commune/#webpage",
+          "url": "https://isgi-lekie.cm/ma-commune/",
+          "name": "Ma Commune – ISGI-Lékié",
+          "description": "Les 9 communes du département de la Lékié — identité, institutions, groupements, écoles, santé et projets.",
+          "isPartOf": {
+            "@type": "WebSite",
+            "@id": "https://isgi-lekie.cm/#website",
+            "url": "https://isgi-lekie.cm/",
+            "name": "ISGI-Lékié",
+            "publisher": {
+              "@type": "Organization",
+              "name": "ISGI-Lékié",
+              "alternateName": "Initiative Stratégique Globale et Inclusive de la Lékié",
+              "url": "https://isgi-lekie.cm",
+              "logo": "https://isgi-lekie.cm/og-lekie.jpg",
+              "parentOrganization": { "@type": "Organization", "name": "Association Réfléchir Agir Soutenir (RAS)" }
+            }
+          },
+          "inLanguage": "fr-FR",
+          "dateModified": "2026-10-19"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://isgi-lekie.cm/" },
+            { "@type": "ListItem", "position": 2, "name": "Ma Commune", "item": "https://isgi-lekie.cm/ma-commune/" }
+          ]
+        }
+      ]
+    }
+  </script>
+  <style>
+    /* Surcharges propres à la page d'index (à migrer dans lekie.css dans une future passe) */
+    .communes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .commune-card { background: #fff; border: 1px solid #e8dfd0; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+    .commune-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .commune-card-entete { background: #f4efe6; padding: 1rem 1.2rem; border-bottom: 1px solid #e8dfd0; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .commune-card-entete h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: #1b3a2d; }
+    .commune-card-entete .badge-chef-lieu { background: #c4922a; color: #fff; font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; }
+    .commune-card-body { padding: 1rem 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+    .commune-card-body .row { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.85rem; padding: 0.3rem 0; border-bottom: 1px dashed #f0eadd; }
+    .commune-card-body .row:last-child { border-bottom: none; }
+    .commune-card-body .row .label { color: #5a5a50; }
+    .commune-card-body .row .value { color: #1b3a2d; font-weight: 500; text-align: right; }
+    .commune-card-body .maire { font-size: 0.85rem; color: #3a3a35; padding-top: 0.3rem; }
+    .commune-card-body .maire strong { color: #1b3a2d; }
+    .commune-card-footer { padding: 0 1.2rem 1rem; }
+    .btn-fiche { display: block; width: 100%; background: #1b3a2d; color: #e0a83e; text-align: center; padding: 0.7rem; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 0.85rem; border: none; cursor: pointer; transition: background 0.2s; }
+    .btn-fiche:hover { background: #c4922a; color: #1b3a2d; }
+    .renvoi-bar { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin: 2rem 0 1rem; }
+    .renvoi-bar a { background: #fff; border: 2px dashed #c4922a; padding: 0.7rem 1.2rem; border-radius: 30px; text-decoration: none; color: #1b3a2d; font-weight: 600; font-size: 0.85rem; transition: background 0.2s; }
+    .renvoi-bar a:hover { background: #f4efe6; }
+    @media (max-width: 700px) { .communes-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .commune-card:hover { transform: none !important; } }
+  </style>
+</head>
+<body>
+
+<a href="#contenu" class="skip-link">Aller au contenu principal</a>
+
+<div class="status-banner">Plateforme en déploiement progressif — données en cours de consolidation.</div>
+<div class="lekie-en-premier">🟢 Lékié en premier — l'humain, le territoire, la fierté</div>
+
+<nav class="navbar" aria-label="Navigation principale">
+  <div class="logo"><a href="../index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="navLinks" type="button">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">Accueil</a>
+    <a href="../plateforme.html">Plateforme</a>
+    <a href="index.html" class="active">Ma Commune</a>
+    <a href="../mon-village.html">Mon village</a>
+    <a href="../mon-ecole.html">Mon école</a>
+    <a href="../observatoire.html">Observatoire</a>
+    <a href="../valeurs-et-competences.html">Valeurs et compétences</a>
+    <a href="../sport.html">Sport</a>
+    <a href="../certification.html">Certification</a>
+    <a href="../agriculture.html">🌾 Agriculture</a>
+    <a href="../elevage.html">🐄 Élevage</a>
+    <a href="../tourisme.html">Tourisme</a>
+    <a href="../hommage-andre-marie-mbida.html">Hommage</a>
+    <a href="../presse.html">Presse</a>
+  </div>
+</nav>
+
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+  <ol>
+    <li><a href="../index.html">Accueil</a></li>
+    <li><span aria-current="page">Ma Commune</span></li>
+  </ol>
+</nav>
+
+<header class="page-header">
+  <h1><span aria-hidden="true">🏛️</span> Ma <em>Commune</em></h1>
+  <p>Les 9 communes du département de la Lékié — identité, institutions, groupements, écoles, santé, projets.</p>
+  <p class="maj">📅 Dernière mise à jour : <time datetime="2026-10-19">19 octobre 2026</time></p>
+</header>
+
+<main id="contenu">
+<div class="container">
+
+  <section aria-labelledby="titre-communes">
+    <div class="note note-info">
+      <strong>📌 Principe :</strong> chaque commune a sa fiche dédiée, avec les informations qui la concernent directement. Les données détaillées sur les villages et personnalités restent dans <a href="../mon-village.html">Mon village</a> ; les établissements scolaires dans <a href="../mon-ecole.html">Mon école</a> ; les indicateurs départementaux dans <a href="../observatoire.html">l'Observatoire</a>.
+    </div>
+
+    <div class="note" style="text-align:center;">
+      <strong>Populations officielles</strong> — INS 2025 (année 2023) <span class="badge-statut badge-officiel">INS 2025</span> · Total départemental : <strong>509 457 habitants</strong>
+    </div>
+
+    <h2 id="titre-communes" class="section-title">Les 9 communes de la Lékié</h2>
+
+    <div class="communes-grid">
+
+      <article class="commune-card">
+        <div class="commune-card-entete">
+          <h3>Monatélé</h3>
+          <span class="badge-chef-lieu">Chef-lieu</span>
+        </div>
+        <div class="commune-card-body">
+          <div class="row"><span class="label">Population</span><span class="value">54 912 hab.</span></div>
+          <div class="row"><span class="label">Superficie</span><span class="value">375 km²</span></div>
+          <div class="row"><span class="label">Groupements</span><span class="value">5</span></div>
+          <p class="maire"><strong>Maire :</strong> Prosper Parfait Mbassi Bessala</p>
+        </div>
+        <div class="commune-card-footer">
+          <a href="monatele.html" class="btn-fiche">Voir la fiche de Monatélé →</a>
+        </div>
+      </article>
+
+      <article class="commune-card">
+        <div class="commune-card-entete"><h3>Obala</h3></div>
+        <div class="commune-card-body">
+          <div class="row"><span class="label">Population</span><span class="value">142 320 hab.</span></div>
+          <div class="row"><span class="label">Superficie</span><span class="value">475 km²</span></div>
+          <div class="row"><span class="label">Groupements</span><span class="value">7</span></div>
+          <p class="maire"><strong>Maire :</strong> Francis Gaël Touna</p>
+        </div>
+        <div class="commune-card-footer">
+          <a href="obala.html" class="btn-fiche">Voir la fiche d'Obala →</a>
+        </div>
+      </article>
+
+      <article class="commune-card">
+        <div class="commune-card-entete"><h3>Sa'a</h3></div>
+        <div class="commune-card-body">
+          <div class="row"><span class="label">Population</span><span class="value">82 575 hab.</span></div>
+          <div class="row"><span class="label">Superficie</span><span class="value">583,9 km²</span></div>
+          <div class="row"><span class="label">Groupements</span><span class="value">5 + 2 cantons</span></div>
+          <p class="maire"><strong>Maire :</strong> Jean Blaise Messina Noah</p>
+        </div>
+        <div class="commune-card-footer">
+          <a href="saa.html" class="btn-fiche">Voir la fiche de Sa'a →</a>
+        </div>
+      </article>
+
+      <article class="commune-card">
+        <div class="commune-card-entete"><h3>Okola</h3></div>
+        <div class="commune-card-body">
+          <div class="row"><span class="label">Population</span><span class="value">103 561 hab.</span></div>
+          <div class="row"><span class="label">Superficie</span><span class="value">605 km²</span></div>
+          <div class="row"><span class="label">Groupements</span><span class="value">3</span></div>
+          <p class="maire"><strong>Maire :</strong> Vincent De Paul Noa</p>
+        </div>
+        <div class="commune-card-footer">
+          <a href="okola.html" class="btn-fiche">Voir la fiche d'Okola →</a>
+        </div>
+      </article>
+
+      <article class="commune-card">
+        <div class="commune-card-entete"><h3>Ebebda</h3></div>
+        <div class="commune-card-body">
+          <div class="row"><span class="label">Population</span><span class="value">34 154 hab.</span></div>
+          <div class="row"><span class="label">Superficie</span><span class="value">250 km²</span></div>
+          <div class="row"><span class="label">Groupements</span><span class="value">5 (dont 2 hérités)</span></div>
+          <p class="maire"><strong>Maire :</strong> Manga Bessala</p>
+        </div>
+        <div class="commune-card-footer">
+          <a href="ebebda.html" class="btn-fiche">Voir la fiche d'Ebebda →</a>
+        </div>
+      </article>
+
+      <article class="commune-card">
+        <div class="commune-card-entete"><h3>Evodoula</h3></div>
+        <div class="commune-card-body">
+          <div class="row"><span class="label">Population</span><span class="value">26 327 hab.</span></div>
+          <div class="row"><span class="label">Superficie</span><span class="value">250 km²</span></div>
+          <div class="row"><span class="label">Groupements</span><span class="value">2</span></div>
+          <p class="maire"><strong>Maire :</strong> Armand Joachim Ongolo Eloundou</p>
+        </div>
+        <div class="commune-card-footer">
+          <a href="evodoula.html" class="btn-fiche">Voir la fiche d'Evodoula →</a>
+        </div>
+      </article>
+
+      <article class="commune-card">
+        <div class="commune-card-entete"><h3>Elig-Mfomo</h3></div>
+        <div class="commune-card-body">
+          <div class="row"><span class="label">Population</span><span class="value">25 555 hab.</span></div>
+          <div class="row"><span class="label">Superficie</span><span class="value">144 km²</span></div>
+          <div class="row"><span class="label">Groupements</span><span class="value">3 (créés en 2025)</span></div>
+          <p class="maire"><strong>Maire :</strong> Stanislas Ayissi</p>
+        </div>
+        <div class="commune-card-footer">
+          <a href="elig-mfomo.html" class="btn-fiche">Voir la fiche d'Elig-Mfomo →</a>
+        </div>
+      </article>
+
+      <article class="commune-card">
+        <div class="commune-card-entete"><h3>Batchenga</h3></div>
+        <div class="commune-card-body">
+          <div class="row"><span class="label">Population</span><span class="value">13 529 hab.</span></div>
+          <div class="row"><span class="label">Superficie</span><span class="value">216 km²</span></div>
+          <div class="row"><span class="label">Groupements</span><span class="value">1</span></div>
+          <p class="maire"><strong>Maire :</strong> Anatole Souga</p>
+        </div>
+        <div class="commune-card-footer">
+          <a href="batchenga.html" class="btn-fiche">Voir la fiche de Batchenga →</a>
+        </div>
+      </article>
+
+      <article class="commune-card">
+        <div class="commune-card-entete"><h3>Lobo</h3></div>
+        <div class="commune-card-body">
+          <div class="row"><span class="label">Population</span><span class="value">26 524 hab.</span></div>
+          <div class="row"><span class="label">Superficie</span><span class="value">260 km²</span></div>
+          <div class="row"><span class="label">Chefferie</span><span class="value">1er degré</span></div>
+          <p class="maire"><strong>Maire :</strong> Serge Bertin Obono Onguene</p>
+        </div>
+        <div class="commune-card-footer">
+          <a href="lobo.html" class="btn-fiche">Voir la fiche de Lobo →</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="renvoi-bar">
+      <a href="../plateforme.html">← Plateforme territoriale</a>
+      <a href="../mon-village.html">Mon village</a>
+      <a href="../mon-ecole.html">Mon école</a>
+      <a href="../observatoire.html">Observatoire</a>
+    </div>
+
+    <details class="legende-badges">
+      <summary>🔖 Légende des statuts de données</summary>
+      <ul>
+        <li><span class="badge-statut badge-officiel">Officiel</span> <span>Source officielle (INS, BUCREP, ministère).</span></li>
+        <li><span class="badge-statut badge-valide">Validé</span> <span>Information vérifiée et recoupée.</span></li>
+        <li><span class="badge-statut badge-encours">En cours</span> <span>Donnée en cours de collecte ou d'actualisation.</span></li>
+        <li><span class="badge-statut badge-verifier">À vérifier</span> <span>Donnée identifiée, source à confirmer.</span></li>
+      </ul>
+    </details>
+
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p>Association Réfléchir Agir Soutenir (RAS) — <a href="mailto:contact@isgi-lekie.cm">contact@isgi-lekie.cm</a></p>
+  <p style="margin-top: 0.3rem;">Dernière mise à jour : <time datetime="2026-10-19">19 octobre 2026</time></p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" aria-label="Retour en haut de la page">↑</a>
+
+<script>
+  (function() {
+    'use strict';
+    var burger = document.getElementById('burgerBtn');
+    var navLinks = document.getElementById('navLinks');
+    if (burger && navLinks) {
+      burger.addEventListener('click', function() {
+        var isOpen = navLinks.classList.toggle('show');
+        burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        burger.setAttribute('aria-label', isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
+        burger.textContent = isOpen ? '✕' : '☰';
+      });
+      navLinks.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          navLinks.classList.remove('show');
+          burger.setAttribute('aria-expanded', 'false');
+          burger.setAttribute('aria-label', 'Ouvrir le menu de navigation');
+          burger.textContent = '☰';
+        });
+      });
+    }
+    var backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+      window.addEventListener('scroll', function() {
+        backToTop.classList.toggle('show', window.scrollY > 300);
+      }, { passive: true });
+      backToTop.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    window.addEventListener('beforeprint', function() {
+      document.querySelectorAll('details').forEach(function(d) { d.setAttribute('open', ''); });
+    });
+  })();
+</script>
+</body>
+</html>
