@@ -1,166 +1,180 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1b3a2d" />
   <title>Sport – ISGI-Lékié</title>
   <meta name="description" content="Le sport dans la Lékié — Lionnes Indomptables, Lekié FF, clubs mythiques, championnats de vacances 2026 et certification.">
+
+  <link rel="canonical" href="https://isgi-lekie.cm/sport">
+
+  <meta property="og:title" content="Sport – ISGI-Lékié">
+  <meta property="og:description" content="Lionnes Indomptables, Lekié FF, clubs mythiques et championnats de vacances 2026 dans la Lékié.">
+  <meta property="og:url" content="https://isgi-lekie.cm/sport">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="ISGI-Lékié">
+  <meta property="og:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Sport dans la Lékié — ISGI-Lékié">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sport – ISGI-Lékié">
+  <meta name="twitter:description" content="Lionnes Indomptables, Lekié FF, clubs mythiques et championnats de vacances 2026 dans la Lékié.">
+  <meta name="twitter:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/lekie.css">
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "SportsOrganization",
-      "name": "ISGI-Lékié Sport",
+      "@type": "WebPage",
+      "name": "Sport – ISGI-Lékié",
       "description": "Le sport dans la Lékié — Lionnes Indomptables, Lekié FF, clubs mythiques, championnats de vacances 2026 et certification.",
-      "url": "https://isgi-lekie.cm/sport.html",
-      "member": [
-        {"@type": "SportsTeam", "name": "Lekié FF", "foundingDate": "2012", "sport": "Football"},
-        {"@type": "SportsTeam", "name": "Eding Sport FC", "foundingDate": "2012-02-01", "sport": "Football"}
-      ]
+      "url": "https://isgi-lekie.cm/sport",
+      "inLanguage": "fr-FR",
+      "dateModified": "2026-09-13",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ISGI-Lékié",
+        "url": "https://isgi-lekie.cm/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ISGI-Lékié",
+        "alternateName": "Initiative Stratégique Globale et Inclusive de la Lékié",
+        "url": "https://isgi-lekie.cm",
+        "logo": "https://isgi-lekie.cm/og-lekie.jpg",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Association Réfléchir Agir Soutenir (RAS)"
+        }
+      },
+      "about": {
+        "@type": "SportsOrganization",
+        "name": "Sport dans la Lékié",
+        "description": "Clubs, joueurs, dirigeants et championnats de la Lékié.",
+        "member": [
+          {"@type": "SportsTeam", "name": "Lekié FF", "foundingDate": "2012", "sport": "Football"},
+          {"@type": "SportsTeam", "name": "Eding Sport FC", "foundingDate": "2012-02-01", "sport": "Football"}
+        ]
+      }
     }
   </script>
+
   <style>
-    :root {
-      --vert: #1b3a2d;
-      --vert2: #2a5a44;
-      --or: #c4922a;
-      --or2: #e0a83e;
-      --creme: #f4efe6;
-      --creme2: #ede5d8;
-      --blanc: #fefcf8;
-      --texte: #2c2c28;
-      --gris: #5a5a50;
-      --gris2: #94a3b8;
-    }
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Inter',sans-serif;background:var(--blanc);color:var(--texte);line-height:1.6;}
-    .container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem;}
+    /* Styles spécifiques à cette page — les règles communes viennent de lekie.css */
 
-    nav{background:var(--vert);padding:0.8rem 1.5rem;border-bottom:2px solid var(--or);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:sticky;top:0;z-index:100;}
-    .logo a{color:var(--or2);text-decoration:none;font-size:1.5rem;font-weight:700;font-family:'Cormorant Garamond',serif;}
-    .logo span{font-size:0.7rem;display:block;color:rgba(255,255,255,0.7);}
-    .nav-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
-    .nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.8rem;font-weight:500;}
-    .nav-links a:hover,.nav-links a.active{color:var(--or2);}
-    .burger{display:none;background:none;border:none;color:var(--or2);font-size:1.8rem;cursor:pointer;}
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.3rem; }
 
-    .page-header{background:var(--vert);padding:2.5rem 1.5rem;border-bottom:4px solid var(--or);text-align:center;}
-    .page-header h1{color:#fff;border-left:none;padding-left:0;font-size:2.5rem;font-family:'Cormorant Garamond',serif;}
-    .page-header h1 em{color:var(--or2);font-style:italic;}
-    .page-header p{color:rgba(255,255,255,0.75);margin-top:0.5rem;}
-    .page-header .maj{font-size:0.7rem;color:var(--or2);margin-top:0.3rem;}
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
 
-    section{padding:2.5rem 0;border-bottom:1px solid var(--creme2);}
-    .section-title{font-size:1.6rem;color:var(--vert);margin-bottom:1.5rem;border-left:6px solid var(--or);padding-left:1rem;font-family:'Cormorant Garamond',serif;}
-    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:1rem;}
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:1rem;}
-    .card{background:#fff;border:1px solid var(--creme2);border-radius:16px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,0.04);transition:transform 0.2s,box-shadow 0.2s;position:relative;}
-    .card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,0,0,0.06);}
-    .card h3{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.2rem;margin-bottom:0.5rem;}
-    .card p{color:var(--gris);font-size:0.9rem;margin-top:0.3rem;}
-    .badge-statut{display:inline-block;font-size:0.62rem;padding:0.15rem 0.5rem;border-radius:20px;font-weight:600;margin-top:0.5rem;}
-    .badge-valide{background:#e8f5e9;color:#2e7d32;}
-    .badge-encours{background:#fff8e1;color:#856404;}
-    .badge-contributif{background:#e8dfd0;color:#5a5a50;}
-    .badge-en-cours{background:#d4edda;color:#155724;font-weight:700;}
-    .badge-historique{background:#fce4ec;color:#c2185b;font-weight:700;}
-    .btn{display:inline-block;background:var(--or);color:#1b3a2d;padding:0.5rem 1.2rem;border-radius:40px;text-decoration:none;font-weight:600;margin-top:0.5rem;border:none;cursor:pointer;font-size:0.85rem;}
-    .btn:hover{background:var(--vert);color:var(--or2);}
-    .btn-outline{border:1.5px solid var(--vert);background:transparent;}
-    .btn-outline:hover{background:var(--vert);color:#fff;}
-    .btn-small{padding:0.3rem 0.8rem;font-size:0.75rem;}
+    /* Card avec survol propre à cette page (surcharge de lekie.css) */
+    .card { background: #fff; border: 1px solid var(--creme2); border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+    .card h3 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .card p { color: var(--gris); font-size: 0.9rem; margin-top: 0.3rem; }
 
-    .search-bar{display:flex;gap:0.8rem;flex-wrap:wrap;margin:1rem 0 1.5rem;align-items:center;}
-    .search-input{flex:1;padding:0.6rem 1rem;border:1.5px solid var(--creme2);border-radius:30px;font-family:'Inter',sans-serif;font-size:0.85rem;min-width:150px;}
-    .search-input:focus{outline:2px solid var(--or);border-color:var(--or);}
+    /* Badges spécifiques au sport */
+    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; margin-top: 0.5rem; }
+    .badge-en-cours { background: #d4edda; color: #155724; font-weight: 700; }
+    .badge-historique { background: #fce4ec; color: #c2185b; font-weight: 700; }
 
-    .filtres-bar{display:flex;flex-wrap:wrap;gap:0.8rem;align-items:center;margin:0.5rem 0 1.5rem;}
-    .filter-btn{padding:0.4rem 1rem;border:1.5px solid var(--creme2);border-radius:30px;background:#fff;font-family:'Inter',sans-serif;font-size:0.75rem;font-weight:500;cursor:pointer;transition:all 0.2s;color:var(--texte);}
-    .filter-btn:hover,.filter-btn.actif{background:var(--vert);color:#fff;border-color:var(--vert);}
-    .compteur-clubs{font-size:0.8rem;color:var(--gris2);margin-left:auto;}
+    /* Bouton (surcharge de lekie.css — couleurs inversées) */
+    .btn { display: inline-block; background: var(--or); color: #1b3a2d; padding: 0.5rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; margin-top: 0.5rem; border: none; cursor: pointer; font-size: 0.85rem; }
+    .btn:hover { background: var(--vert); color: var(--or2); }
+    .btn-outline { border: 1.5px solid var(--vert); background: transparent; }
+    .btn-outline:hover { background: var(--vert); color: #fff; }
+    .btn-small { padding: 0.3rem 0.8rem; font-size: 0.75rem; }
 
-    .joueur-card,.club-card{background:#fff;border:1px solid var(--creme2);border-radius:12px;padding:1rem;display:flex;flex-direction:column;}
-    .joueur-card .nom,.club-card .nom-club{font-weight:700;font-size:1.1rem;color:var(--vert);}
-    .joueur-card .info,.club-card .detail{font-size:0.85rem;color:var(--gris);margin-top:0.2rem;}
-    .joueur-card .origine,.club-card .commune-club{font-size:0.75rem;color:var(--gris2);margin-top:0.2rem;}
-    .joueur-card .palmares{font-size:0.85rem;color:var(--texte);margin-top:0.4rem;}
-    .img-placeholder{background:var(--creme);border-radius:8px;padding:0.5rem;text-align:center;font-size:0.75rem;color:var(--gris2);margin-bottom:0.5rem;}
+    /* Recherche et filtres clubs */
+    .search-bar { display: flex; gap: 0.8rem; flex-wrap: wrap; margin: 1rem 0 1.5rem; align-items: center; }
+    .search-input { flex: 1; padding: 0.6rem 1rem; border: 1.5px solid var(--creme2); border-radius: 30px; font-family: 'Inter', sans-serif; font-size: 0.85rem; min-width: 150px; }
+    .search-input:focus { outline: 2px solid var(--or); border-color: var(--or); }
 
-    .notice{background:#fff8e1;border-left:4px solid var(--or);padding:0.8rem 1.2rem;border-radius:8px;margin:1.5rem 0;}
+    .filtres-bar { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; margin: 0.5rem 0 1.5rem; }
+    .filter-btn { padding: 0.4rem 1rem; border: 1.5px solid var(--creme2); border-radius: 30px; background: #fff; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; cursor: pointer; transition: all 0.2s; color: var(--texte); }
+    .filter-btn:hover, .filter-btn.actif { background: var(--vert); color: #fff; border-color: var(--vert); }
+    .compteur-clubs { font-size: 0.8rem; color: var(--gris2); margin-left: auto; }
 
-    .map-wrapper{margin:1.5rem 0;border-radius:16px;overflow:hidden;border:1px solid var(--creme2);}
-    #stadiumMap{height:350px;width:100%;}
+    /* Cartes joueurs et clubs */
+    .joueur-card, .club-card { background: #fff; border: 1px solid var(--creme2); border-radius: 12px; padding: 1rem; display: flex; flex-direction: column; }
+    .joueur-card .nom, .club-card .nom-club { font-weight: 700; font-size: 1.1rem; color: var(--vert); }
+    .joueur-card .info, .club-card .detail { font-size: 0.85rem; color: var(--gris); margin-top: 0.2rem; }
+    .joueur-card .origine, .club-card .commune-club { font-size: 0.75rem; color: var(--gris2); margin-top: 0.2rem; }
+    .joueur-card .palmares { font-size: 0.85rem; color: var(--texte); margin-top: 0.4rem; }
+    .img-placeholder { background: var(--creme); border-radius: 8px; padding: 0.5rem; text-align: center; font-size: 0.75rem; color: var(--gris2); margin-bottom: 0.5rem; }
 
-    .maps-link,.share-link{display:inline-block;margin-top:0.3rem;font-size:0.75rem;color:var(--vert);text-decoration:none;}
-    .maps-link:hover,.share-link:hover{color:var(--or);text-decoration:underline;}
+    /* Encadré notice */
+    .notice { background: #fff8e1; border-left: 4px solid var(--or); padding: 0.8rem 1.2rem; border-radius: 8px; margin: 1.5rem 0; }
 
-    .tableau-classement{width:100%;border-collapse:collapse;font-size:0.8rem;margin-top:0.5rem;}
-    .tableau-classement th{background:var(--vert);color:#fff;padding:0.3rem;text-align:left;}
-    .tableau-classement td{padding:0.3rem;border-bottom:1px solid var(--creme2);}
-    .tableau-classement tr:nth-child(even){background:#f9f7f2;}
+    .maps-link, .share-link { display: inline-block; margin-top: 0.3rem; font-size: 0.75rem; color: var(--vert); text-decoration: none; }
+    .maps-link:hover, .share-link:hover { color: var(--or); text-decoration: underline; }
+
+    /* Tableau classement UNIFFAC */
+    .tableau-classement { width: 100%; border-collapse: collapse; font-size: 0.8rem; margin-top: 0.5rem; }
+    .tableau-classement th { background: var(--vert); color: #fff; padding: 0.3rem; text-align: left; }
+    .tableau-classement td { padding: 0.3rem; border-bottom: 1px solid var(--creme2); }
+    .tableau-classement tr:nth-child(even) { background: #f9f7f2; }
 
     /* Bloc article magazine */
-    .article-magazine{background:#fff;border:1px solid var(--creme2);border-radius:16px;padding:1.5rem;margin:1.5rem 0;border-left:5px solid var(--or);}
-    .article-magazine h4{font-family:'Cormorant Garamond',serif;color:var(--vert);font-size:1.1rem;margin-bottom:0.5rem;}
-    .article-magazine .auteur{font-size:0.75rem;color:var(--gris2);font-style:italic;margin-bottom:0.8rem;}
-    .article-magazine p{font-size:0.85rem;color:var(--texte);margin-bottom:0.6rem;}
-    .article-magazine .signature{font-size:0.75rem;color:var(--gris);margin-top:0.8rem;font-style:italic;text-align:right;}
+    .article-magazine { background: #fff; border: 1px solid var(--creme2); border-radius: 16px; padding: 1.5rem; margin: 1.5rem 0; border-left: 5px solid var(--or); }
+    .article-magazine h4 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .article-magazine .auteur { font-size: 0.75rem; color: var(--gris2); font-style: italic; margin-bottom: 0.8rem; }
+    .article-magazine p { font-size: 0.85rem; color: var(--texte); margin-bottom: 0.6rem; }
+    .article-magazine .signature { font-size: 0.75rem; color: var(--gris); margin-top: 0.8rem; font-style: italic; text-align: right; }
 
-    footer{text-align:center;margin-top:3rem;padding:2rem 1rem;background:var(--vert);font-size:0.8rem;color:rgba(255,255,255,0.7);}
-    footer p{margin-bottom:0.3rem;}
-    footer .boussole{font-style:italic;color:rgba(255,255,255,0.4);margin-top:0.5rem;}
-    footer .maj{font-size:0.7rem;color:rgba(255,255,255,0.4);margin-top:0.3rem;}
-    footer a{color:rgba(255,255,255,0.85);}
+    /* Surcharge locale de lekie.css — à valider */
+    footer { color: rgba(255,255,255,0.5); }
 
-    .back-to-top{position:fixed;bottom:20px;right:20px;background:var(--or);color:#1b3a2d;width:45px;height:45px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.5rem;font-weight:bold;opacity:0;transition:opacity 0.3s;box-shadow:0 2px 10px rgba(0,0,0,0.2);z-index:99;}
-    .back-to-top.show{opacity:1;}
-    .back-to-top:hover{background:var(--vert);color:var(--or2);}
-
-    @media(max-width:700px){
-      nav{flex-direction:row;}
-      .burger{display:block;}
-      .nav-links{display:none;width:100%;flex-direction:column;align-items:center;padding-top:0.5rem;}
-      .nav-links.show{display:flex;}
-      .grid-2,.grid-3{grid-template-columns:1fr;}
-      .filtres-bar{flex-wrap:wrap;}
-      .compteur-clubs{margin-left:0;}
-      #stadiumMap{height:250px;}
-      .tableau-classement{font-size:0.7rem;}
-      .page-header h1{font-size:1.7rem;}
+    @media (max-width: 700px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .filtres-bar { flex-wrap: wrap; }
+      .compteur-clubs { margin-left: 0; }
+      .tableau-classement { font-size: 0.7rem; }
+      .page-header h1 { font-size: 1.7rem; }
     }
   </style>
 </head>
 <body>
 
-<nav>
-  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
+<a href="#contenu" class="skip-link">Aller au contenu principal</a>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="/">ISGI</a><span>Lékié — Cameroun</span></div>
   <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
   <div class="nav-links" id="navLinks">
-    <a href="index.html">Accueil</a>
-    <a href="plateforme.html">Plateforme</a>
-    <a href="mon-village.html">Mon village</a>
-    <a href="mon-ecole.html">Mon école</a>
-    <a href="observatoire.html">Observatoire</a>
-    <a href="sport.html" class="active">Sport</a>
-    <a href="certification.html">Certification</a>
-    <a href="agriculture.html">🌾 Agriculture</a>
-    <a href="elevage.html">🐄 Élevage</a>
-    <a href="tourisme.html">Tourisme</a>
-    <a href="hommage-andre-marie-mbida.html">Hommage</a>
-    <a href="presse.html">Presse</a>
+    <a href="/">Accueil</a>
+    <a href="plateforme">Plateforme</a>
+    <a href="mon-village">Mon village</a>
+    <a href="mon-ecole">Mon école</a>
+    <a href="observatoire">Observatoire</a>
+    <a href="valeurs-et-competences">Valeurs et compétences</a>
+    <a href="sport" class="active">Sport</a>
+    <a href="certification">Certification</a>
+    <a href="agriculture">🌾 Agriculture</a>
+    <a href="elevage">🐄 Élevage</a>
+    <a href="tourisme">Tourisme</a>
+    <a href="hommage-andre-marie-mbida">Hommage</a>
+    <a href="presse">Presse</a>
+    <a href="blog">Blog</a>
   </div>
 </nav>
 
-<div class="page-header">
+<div class="page-header" id="top">
   <h1>🏆 Le sport dans <em>la Lékié</em></h1>
   <p>Lionnes Indomptables, Lekié FF, clubs mythiques, championnats de vacances 2026 et certification — un patrimoine vivant</p>
   <p class="maj">📅 Dernière mise à jour : 13 Septembre 2026</p>
 </div>
 
-<div class="container">
+<div class="container" id="contenu">
 
   <!-- ============================================================ -->
   <!-- LIONNES INDOMPTABLES -->
@@ -235,7 +249,7 @@
   </section>
 
   <!-- ============================================================ -->
-  <!-- LIONS INDOMPTABLES (FOOTBALL MASCULIN) -->
+  <!-- LIONS INDOMPTABLES (MASCULIN) -->
   <!-- ============================================================ -->
   <section>
     <h2 class="section-title">🦁 Lions Indomptables (football masculin) — Originaires de la Lékié</h2>
@@ -315,7 +329,6 @@
 
     <div class="grid-2" id="championnatsGrid">
 
-      <!-- FESTI-FOOT BITSINGDA -->
       <div class="card" data-date="2026-07-05" data-fin="2026-08-30">
         <h3>⚽ Championnat de vacances de Bitsingda</h3>
         <p><strong>Commune :</strong> Okola</p>
@@ -326,7 +339,6 @@
         <span class="badge-statut badge-encours" id="badge-bitsingda">En cours</span>
       </div>
 
-      <!-- TRADEX CHAMPION LEAGUE LOBO -->
       <div class="card" data-date="2026-07-12" data-fin="2026-08-30">
         <h3>🏆 Tradex Champions League Lobo 2026</h3>
         <p><strong>Commune :</strong> Lobo</p>
@@ -339,7 +351,6 @@
         <span class="badge-statut badge-valide">Terminé</span>
       </div>
 
-      <!-- FESTI-FOOT TALA -->
       <div class="card" data-date="2026-07-12" data-fin="2026-08-26">
         <h3>⚽ Festi-Foot TALA 2026 — 1ʳᵉ édition</h3>
         <p><strong>Commune :</strong> Monatélé</p>
@@ -352,7 +363,6 @@
         <span class="badge-statut badge-valide">Terminé</span>
       </div>
 
-      <!-- FESTI-FOOT MENGONO -->
       <div class="card" data-date="2026-07-19" data-fin="2026-08-23">
         <h3>🏅 Festi-Foot Mengono — 5ᵉ édition</h3>
         <p><strong>Commune :</strong> Monatélé (Groupement Mbognamnye 1)</p>
@@ -364,7 +374,6 @@
         <span class="badge-statut badge-valide">Terminé</span>
       </div>
 
-      <!-- CHAMPION'S LEAGUE ELIG-MFOMO -->
       <div class="card" data-date="2026-07-19" data-fin="2026-09-06">
         <h3>🏆 Champion's League Elig-Mfomo — 4ᵉ édition</h3>
         <p><strong>Commune :</strong> Elig-Mfomo</p>
@@ -376,7 +385,6 @@
         <span class="badge-statut badge-encours">Finale à venir</span>
       </div>
 
-      <!-- JKOE FOOT -->
       <div class="card" data-date="2026-08-30" data-fin="2026-08-30">
         <h3>⚽ JKOE FOOT 2026 — 5ᵉ édition</h3>
         <p><strong>Promoteur :</strong> Dr BELA MENGADA Léopold</p>
@@ -386,7 +394,6 @@
         <span class="badge-statut badge-valide">Terminé</span>
       </div>
 
-      <!-- OBALA FOOT VACANCES -->
       <div class="card" data-date="2026-07-26" data-fin="2026-08-30">
         <h3>⚽ Obala Foot Vacances 2026</h3>
         <p><strong>Commune :</strong> Obala</p>
@@ -399,7 +406,6 @@
         <span class="badge-statut badge-valide">Terminé</span>
       </div>
 
-      <!-- ESLV ESSONG -->
       <div class="card" data-date="2026-08-23" data-fin="2026-08-23">
         <h3>🏅 Essong Sports et Loisirs Vacances (ESLV) — 5ᵉ édition</h3>
         <p><strong>Lieu :</strong> Essong, route d'Elig-Mfomo</p>
@@ -410,7 +416,6 @@
         <span class="badge-statut badge-valide">Terminé</span>
       </div>
 
-      <!-- MARATHON MARADÉL -->
       <div class="card" data-date="2026-08-23" data-fin="2026-08-23">
         <h3>🏃 Marathon de la Lékié MARADÉL — 2ᵉ édition</h3>
         <p><strong>Lieu :</strong> Axe Ebebda – Monatélé</p>
@@ -422,7 +427,6 @@
         <span class="badge-statut badge-valide">Terminé</span>
       </div>
 
-      <!-- SUPER COUPE RAFDEL EVODOULA -->
       <div class="card" data-date="2026-08-07" data-fin="2026-08-09">
         <h3>🏅 Super Coupe RAFDEL Evodoula — 3ᵉ édition</h3>
         <p><strong>Commune :</strong> Evodoula</p>
@@ -435,8 +439,8 @@
     </div>
 
     <div style="text-align:center; margin-top:1.5rem;">
-      <a href="plateforme.html#contribuer" class="btn btn-outline">📢 Signaler un autre championnat</a>
-      <a href="certification.html" class="btn" style="margin-left:0.5rem;">🏅 Découvrir la certification ISGI-Lékié</a>
+      <a href="plateforme#contribuer" class="btn btn-outline">📢 Signaler un autre championnat</a>
+      <a href="certification" class="btn" style="margin-left:0.5rem;">🏅 Découvrir la certification ISGI-Lékié</a>
     </div>
   </section>
 
@@ -462,17 +466,13 @@
 
 <footer>
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
-  <p class="maj">Dernière mise à jour : 13 Septembre 2026</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 13 Septembre 2026</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
-  <p style="font-size:0.7rem; margin-top:0.5rem;">
-    🗺️ Données cartographiques <a href="https://www.openstreetmap.org" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> — Contribuez à améliorer la carte de votre territoire
-  </p>
 </footer>
 
 <a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
 
 <script>
-  // ---- BURGER MENU ----
   const burger = document.getElementById('burgerBtn');
   const navLinks = document.getElementById('navLinks');
   if (burger && navLinks) {
@@ -497,7 +497,6 @@
     });
   }
 
-  // ---- BACK TO TOP ----
   const backToTop = document.getElementById('backToTop');
   if (backToTop) {
     window.addEventListener('scroll', function() {
@@ -555,7 +554,6 @@
     championnatsGrid.appendChild(card);
   });
 
-  // ---- INITIALISATION ----
   filterClubs();
 </script>
 </body>
