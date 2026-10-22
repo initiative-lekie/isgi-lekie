@@ -1,34 +1,409 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hommage à André Marie Mbida – ISGI-Lékié</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1b3a2d" />
+  <title>Hommage à André-Marie Mbida – ISGI-Lékié</title>
+  <meta name="description" content="Hommage à André-Marie Mbida (1917-1980), premier Camerounais à la tête d'un gouvernement (1957-1958). Biographie, chronologie, héritage, lieux de mémoire.">
+  <meta name="author" content="ISGI-Lékié">
+
+  <link rel="canonical" href="https://isgi-lekie.cm/hommage-andre-marie-mbida">
+
+  <meta property="og:title" content="Hommage à André-Marie Mbida – ISGI-Lékié">
+  <meta property="og:description" content="Hommage à André-Marie Mbida (1917-1980), premier Camerounais à la tête d'un gouvernement (1957-1958).">
+  <meta property="og:url" content="https://isgi-lekie.cm/hommage-andre-marie-mbida">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="ISGI-Lékié">
+  <meta property="og:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Hommage à André-Marie Mbida — ISGI-Lékié">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hommage à André-Marie Mbida – ISGI-Lékié">
+  <meta name="twitter:description" content="Hommage à André-Marie Mbida (1917-1980), premier Camerounais à la tête d'un gouvernement (1957-1958).">
+  <meta name="twitter:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/lekie.css">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Hommage à André-Marie Mbida",
+      "description": "Hommage à André-Marie Mbida (1917-1980), premier Camerounais à la tête d'un gouvernement (1957-1958). Biographie, chronologie, héritage, lieux de mémoire.",
+      "url": "https://isgi-lekie.cm/hommage-andre-marie-mbida",
+      "inLanguage": "fr-FR",
+      "dateModified": "2026-07-28",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ISGI-Lékié",
+        "url": "https://isgi-lekie.cm/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ISGI-Lékié",
+        "alternateName": "Initiative Stratégique Globale et Inclusive de la Lékié",
+        "url": "https://isgi-lekie.cm",
+        "logo": "https://isgi-lekie.cm/og-lekie.jpg",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Association Réfléchir Agir Soutenir (RAS)"
+        }
+      },
+      "about": {
+        "@type": "Person",
+        "name": "André-Marie Mbida",
+        "birthDate": "1917-01-01",
+        "deathDate": "1980-05-02",
+        "jobTitle": "Premier ministre du Cameroun autonome (1957-1958)",
+        "description": "Homme d'État camerounais, premier Camerounais à la tête d'un gouvernement (1957-1958)."
+      }
+    }
+  </script>
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Inter',sans-serif;background:#FEFCF8;color:#2c2c28;line-height:1.6;}
-    .container{max-width:1000px;margin:0 auto;padding:2rem;}
-    .navbar{background:#1B4332;padding:1rem;border-bottom:2px solid #C8922A;text-align:center;}
-    .navbar a{color:#FEFCF8;margin:0 1rem;text-decoration:none;}
-    h1{font-family:'Cormorant Garamond',serif;color:#1B4332;margin-bottom:1rem;}
-    .encart{background:#F5F0E8;border-left:6px solid #C8922A;padding:1.5rem;margin:2rem 0;}
-    footer{text-align:center;margin-top:3rem;padding-top:1rem;border-top:1px solid #ddd;font-size:0.8rem;}
+    /* Styles spécifiques à cette page — les règles communes viennent de lekie.css */
+
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.5rem; }
+
+    /* Bloc introductif avec portrait placeholder */
+    .intro-hommage { display: grid; grid-template-columns: 200px 1fr; gap: 2rem; align-items: start; margin: 2rem 0; }
+    .portrait-placeholder { background: var(--creme); border: 2px dashed var(--creme2); border-radius: 12px; height: 240px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.4rem; color: var(--gris2); font-size: 0.8rem; text-align: center; padding: 1rem; }
+    .portrait-placeholder .portrait-icone { font-size: 2rem; }
+    .intro-texte { color: var(--gris); font-size: 0.95rem; line-height: 1.7; }
+
+    /* Bloc lieu de naissance (conflit signalé) */
+    .lieu-naissance { background: #fff3cd; border-left: 4px solid var(--or); padding: 1rem 1.2rem; border-radius: 8px; margin: 1.5rem 0; font-size: 0.88rem; }
+    .lieu-naissance strong { color: var(--vert); }
+    .lieu-naissance ul { margin: 0.5rem 0 0 1.2rem; color: var(--gris); font-size: 0.85rem; }
+
+    /* Timeline */
+    .timeline { position: relative; margin: 2rem 0; padding-left: 1.5rem; border-left: 3px solid var(--or); }
+    .timeline-item { position: relative; padding: 0 0 1.5rem 1.5rem; }
+    .timeline-item::before { content: ''; position: absolute; left: -1.9rem; top: 0.3rem; width: 14px; height: 14px; background: var(--or); border-radius: 50%; border: 3px solid var(--blanc); box-shadow: 0 0 0 2px var(--or); }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-date { font-family: 'Cormorant Garamond', serif; font-weight: 700; color: var(--vert); font-size: 1rem; margin-bottom: 0.2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .timeline-event { color: var(--gris); font-size: 0.88rem; line-height: 1.6; }
+
+    /* Cartes héritage */
+    .carte-heritage { background: #fff; border: 1px solid var(--creme2); border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .carte-heritage h3 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .carte-heritage p { color: var(--gris); font-size: 0.9rem; margin-top: 0.3rem; line-height: 1.6; }
+
+    /* Encart citation */
+    .encart-citation { background: var(--creme); border-left: 6px solid var(--or); padding: 2rem 1.8rem; margin: 2rem 0; border-radius: 12px; position: relative; }
+    .encart-citation::before { content: '“'; font-family: 'Cormorant Garamond', serif; font-size: 4rem; color: var(--or); position: absolute; top: 0; left: 0.5rem; line-height: 1; }
+    .encart-citation p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; color: var(--vert); margin: 0 0 0 1rem; line-height: 1.6; }
+    .encart-citation .auteur { font-family: 'Inter', sans-serif; font-style: normal; font-weight: 600; color: var(--gris); margin-top: 0.8rem; font-size: 0.85rem; }
+
+    /* Cartes lieux de mémoire */
+    .carte-lieu { background: #fff; border: 1px solid var(--creme2); border-radius: 12px; padding: 1.2rem; }
+    .carte-lieu h4 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1rem; margin-bottom: 0.4rem; }
+    .carte-lieu p { color: var(--gris); font-size: 0.85rem; line-height: 1.5; }
+
+    /* Encart sources */
+    .encart-sources { background: #f9f7f2; border-radius: 12px; padding: 1.2rem 1.5rem; margin: 2rem 0; border: 1px solid var(--creme2); }
+    .encart-sources h3 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.05rem; margin-bottom: 0.6rem; }
+    .encart-sources ul { list-style: none; padding: 0; font-size: 0.82rem; color: var(--gris); }
+    .encart-sources li { padding: 0.3rem 0; border-bottom: 1px dashed var(--creme2); }
+    .encart-sources li:last-child { border-bottom: none; }
+
+    /* Grille générique de cette page */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-top: 1rem; }
+
+    /* CTA contribution */
+    .cta-contribution { background: var(--vert); color: #fff; border-radius: 16px; padding: 2rem 1.5rem; margin: 2rem 0; text-align: center; }
+    .cta-contribution h2 { font-family: 'Cormorant Garamond', serif; color: var(--or2); font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .cta-contribution p { color: rgba(255,255,255,0.85); font-size: 0.95rem; max-width: 560px; margin: 0 auto 1rem; }
+    .cta-contribution .btn { background: var(--or2); color: var(--vert); }
+    .cta-contribution .btn:hover { background: #fff; color: var(--vert); }
+
+    /* Badge local pour signaler les conflits */
+    .badge-verifier, .badge-contributif, .badge-valide, .badge-recherche {
+      display: inline-block; font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; vertical-align: middle;
+    }
+
+    /* Surcharge locale de lekie.css — à valider */
+    footer { color: rgba(255,255,255,0.5); }
+
+    @media (max-width: 700px) {
+      .intro-hommage { grid-template-columns: 1fr; }
+      .portrait-placeholder { height: 200px; max-width: 240px; margin: 0 auto; }
+      .timeline { padding-left: 1rem; }
+      .timeline-item { padding-left: 1rem; }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
-<div class="navbar">
-  <a href="index.html">Accueil</a>
-  <a href="plateforme.html">Plateforme</a>
-  <a href="blog.html">Blog</a>
-</div>
-<div class="container">
-  <h1>🕯️ Hommage à André Marie Mbida</h1>
-  <p><strong>Né à Ndzéla-Meyo (Sa’a, Lékié)</strong> – Premier Camerounais à la tête d’un gouvernement (1957-1958).</p>
-  <div class="encart"><p>« Homme d’État intègre, artisan de la souveraineté camerounaise. »</p></div>
-  <p>Disparu le <strong>2 mai 1980</strong>. La plateforme ISGI-Lékié lui rend hommage et appelle les enfants du terroir à contribuer à la mémoire vivante du territoire.</p>
-  <p>➡️ <a href="plateforme.html#contribuer">Partager un témoignage ou une archive</a></p>
-</div>
-<footer>ISGI-Lékié — Mémoire et territoire</footer>
+
+<a href="#contenu" class="skip-link">Aller au contenu principal</a>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="/">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="/">Accueil</a>
+    <a href="plateforme">Plateforme</a>
+    <a href="mon-village">Mon village</a>
+    <a href="mon-ecole">Mon école</a>
+    <a href="observatoire">Observatoire</a>
+    <a href="sport">Sport</a>
+    <a href="certification">Certification</a>
+    <a href="tourisme">Tourisme</a>
+    <a href="hommage-andre-marie-mbida" class="active">Hommage</a>
+    <a href="presse">Presse</a>
+  </div>
+</nav>
+
+<header class="page-header">
+  <h1>🕯️ André-Marie <em>Mbida</em></h1>
+  <p class="sous-titre">1917 – 1980 · Premier Camerounais à la tête d'un gouvernement (1957-1958)</p>
+  <p class="maj">📅 Dernière mise à jour : 28 Juillet 2026</p>
+</header>
+
+<main id="contenu" class="container">
+
+  <!-- ============================================================ -->
+  <!-- INTRO + PORTRAIT -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="intro-hommage">
+      <div class="portrait-placeholder">
+        <span class="portrait-icone">📷</span>
+        <span>Portrait à venir</span>
+        <span class="badge-recherche" style="margin-top:0.4rem;">Contributif</span>
+      </div>
+      <div class="intro-texte">
+        <p><strong>André-Marie Mbida</strong> est né le <strong>1<sup>er</sup> janvier 1917</strong> et décédé le <strong>2 mai 1980</strong> <span class="badge-contributif">À Paris</span>. Ancien séminariste (Petit Séminaire d'Akono, puis Grand Séminaire de Mvolyé), il fut enseignant, directeur d'école rurale, puis agent d'affaires avant de se consacrer à la politique. Il est le <strong>premier Premier ministre du Cameroun autonome, du 12 mai 1957 au 16 février 1958</strong> <span class="badge-valide">Validé</span>.</p>
+      </div>
+    </div>
+
+    <!-- Point de vigilance — lieu de naissance -->
+    <div class="lieu-naissance">
+      ⚠️ <strong>Lieu de naissance — écart entre sources</strong> <span class="badge-verifier">À vérifier</span>
+      <ul>
+        <li><strong>Endinding (par Obala, Lékié)</strong> — selon l'Assemblée nationale française, Wikipédia, Camerounweb, Camer.be. « Né le 1<sup>er</sup> janvier 1917 à Endingding (Cameroun) » (Assemblée nationale française).</li>
+        <li><strong>Ndzéla-Meyo (Sa'a, Lékié)</strong> — mention du fichier ISGI-Lékié initial, source à identifier.</li>
+      </ul>
+      <p style="margin-top: 0.6rem; font-size: 0.82rem; color: var(--gris);">
+        📌 Conformément à la doctrine ISGI-Lékié, l'écart est <strong>signalé, non tranché</strong>. Si vous disposez d'un acte de naissance, d'un écrit de la famille ou d'une source primaire, merci de <a href="plateforme#contribuer" style="color: var(--vert); font-weight: 600;">contribuer</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CHRONOLOGIE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">📅 Chronologie</h2>
+    <p style="color: var(--gris); font-size: 0.88rem; margin-bottom: 1rem;">Dates issues de sources externes, non encore recoupées par ISGI-Lékié. Sauf mention contraire, badge <span class="badge-contributif">Contributif</span>.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">1<sup>er</sup> janvier 1917 <span class="badge-verifier">Lieu à vérifier</span></div>
+        <div class="timeline-event">Naissance (Endinding par Obala, ou Ndzéla-Meyo selon sources — voir encadré ci-dessus).</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1929-1935</div>
+        <div class="timeline-event">Petit Séminaire d'Akono ; y enseigne le latin et les mathématiques.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1935-1943</div>
+        <div class="timeline-event">Grand Séminaire de Mvolyé (philosophie, théologie) ; condisciple de Fulbert Youlou et Barthélemy Boganda.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1943</div>
+        <div class="timeline-event">Directeur de l'école rurale de Balessing.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1945</div>
+        <div class="timeline-event">Agent du Trésor à Yaoundé ; obtient son diplôme d'avocat.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">14 août 1946</div>
+        <div class="timeline-event">Mariage avec Marguerite Embolo ; six enfants, dont Louis-Tobie Mbida.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1952</div>
+        <div class="timeline-event">Élu à l'Assemblée territoriale du Cameroun.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">10 octobre 1953</div>
+        <div class="timeline-event">Désigné conseiller de l'Union française.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1956</div>
+        <div class="timeline-event">Élu député du Cameroun à l'Assemblée nationale française.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">12 mai 1957</div>
+        <div class="timeline-event">Désigné chef du gouvernement par le Haut-Commissaire Pierre Messmer.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">15 mai 1957</div>
+        <div class="timeline-event">Investiture du gouvernement par l'ALCAM (56 voix pour, 10 contre, 4 abstentions).</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">1957</div>
+        <div class="timeline-event">Adoption du drapeau vert-jaune-rouge, de l'hymne et de la devise « Paix, Travail, Patrie ».</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">11-16 février 1958</div>
+        <div class="timeline-event">Chute du gouvernement ; démission.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2 mai 1980 <span class="badge-valide">Date validée</span></div>
+        <div class="timeline-event">Décès à Paris <span class="badge-contributif">Lieu contributif</span>.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- HÉRITAGE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🏛️ Héritage et mémoire</h2>
+
+    <div class="grid-3">
+      <div class="carte-heritage">
+        <h3>🇨🇲 L'homme d'État</h3>
+        <p>Premier Camerounais à diriger un gouvernement (1957-1958). Il a doté le pays de ses premiers symboles nationaux : drapeau, hymne, devise.</p>
+      </div>
+      <div class="carte-heritage">
+        <h3>🛡️ Le défenseur de l'indépendance véritable</h3>
+        <p>Figure d'une souveraineté pleine et entière, refusant toute forme de semi-indépendance. Citation ci-dessous.</p>
+      </div>
+      <div class="carte-heritage">
+        <h3>🏔️ Le lien avec la Lékié</h3>
+        <p>Natif de la Lékié, formé à Efok, enterré à Efok dans un mausolée. Commémorations annuelles à Obala, paroisse Sainte-Anne.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CITATION -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">💬 Citation</h2>
+
+    <div class="encart-citation">
+      <p>« Ça veut dire quoi, une certaine indépendance ? Soit c'est l'indépendance, soit ça ne l'est pas… Il ne saurait y avoir de semi-indépendance ou de semblant-indépendance. »</p>
+      <div class="auteur">— André-Marie Mbida <span class="badge-contributif">Source externe</span></div>
+    </div>
+
+    <div class="encart-citation">
+      <p>« Pendant 51 ans, vous n'avez pas formé de gens, à présent vous voulez vous en aller : pas question. »</p>
+      <div class="auteur">— André-Marie Mbida <span class="badge-contributif">Source externe</span></div>
+    </div>
+
+    <div class="encart-citation">
+      <p>« Homme d'État intègre, artisan de la souveraineté camerounaise. »</p>
+      <div class="auteur">— ISGI-Lékié <span class="badge-valide">Validé</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- LIEUX DE MÉMOIRE -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🗺️ Lieux de mémoire</h2>
+
+    <div class="grid-2">
+      <div class="carte-lieu">
+        <h4>⚱️ Mausolée d'Efok</h4>
+        <p>Les restes du couple Mbida y reposent. Efok est un lieu de pèlerinage mémoriel dans la Lékié. <span class="badge-contributif">Contributif</span></p>
+      </div>
+      <div class="carte-lieu">
+        <h4>⛪ Paroisse Sainte-Anne d'Obala</h4>
+        <p>Lieu des commémorations annuelles en mémoire d'André-Marie Mbida. <span class="badge-contributif">Contributif</span></p>
+      </div>
+      <div class="carte-lieu" style="grid-column: 1 / -1;">
+        <h4>🏙️ Absence relative de monument public</h4>
+        <p>À ce jour, aucune rue, place ou bâtiment public majeur ne porte son nom à Yaoundé <strong>dans les sources consultées</strong>. <span class="badge-verifier">À vérifier — constat à mentionner avec prudence</span>. Cette absence contraste avec sa place dans l'histoire nationale.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- SOURCES -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="encart-sources">
+      <h3>📚 Sources</h3>
+      <ul>
+        <li><strong>Assemblée nationale française</strong> — fiche biographique d'André-Marie Mbida.</li>
+        <li><strong>Wikipédia</strong> — notice « André-Marie Mbida ».</li>
+        <li><strong>Camerounweb, Camer.be</strong> — articles biographiques.</li>
+        <li><strong>Fichier ISGI-Lékié initial</strong> — mention du lieu de naissance (Ndzéla-Meyo, Sa'a).</li>
+        <li><strong>Sources à recouper</strong> — acte de naissance, archives familiales, presse d'époque <span class="badge-recherche">Recherché</span>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CONTRIBUTION -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="cta-contribution">
+      <h2>📢 Contribuer à cette page</h2>
+      <p>Vous avez des photographies, des archives, des témoignages ou des documents sur André-Marie Mbida ? Vous connaissez un fait non encore documenté ? Votre contribution est précieuse.</p>
+      <a href="plateforme#contribuer" class="btn">📝 Proposer une contribution</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 28 Juillet 2026</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
 </body>
 </html>
