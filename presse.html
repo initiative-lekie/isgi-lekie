@@ -1,34 +1,333 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Espace presse – ISGI-Lékié</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1b3a2d" />
+  <title>Presse – Médiascopie de la Lékié – ISGI-Lékié</title>
+  <meta name="description" content="Médiascopie de la Lékié — Ces fils et filles du département qui façonnent le paysage médiatique camerounais. Cinq portraits, cinq trajectoires, une tradition.">
+  <meta name="author" content="ISGI-Lékié">
+
+  <link rel="canonical" href="https://isgi-lekie.cm/presse">
+
+  <meta property="og:title" content="Presse – Médiascopie de la Lékié – ISGI-Lékié">
+  <meta property="og:description" content="Ces fils et filles du département qui façonnent le paysage médiatique camerounais.">
+  <meta property="og:url" content="https://isgi-lekie.cm/presse">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="ISGI-Lékié">
+  <meta property="og:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Médiascopie de la Lékié — ISGI-Lékié">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Presse – Médiascopie de la Lékié – ISGI-Lékié">
+  <meta name="twitter:description" content="Ces fils et filles du département qui façonnent le paysage médiatique camerounais.">
+  <meta name="twitter:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/lekie.css">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Presse – Médiascopie de la Lékié",
+      "description": "Médiascopie de la Lékié — Ces fils et filles du département qui façonnent le paysage médiatique camerounais.",
+      "url": "https://isgi-lekie.cm/presse",
+      "inLanguage": "fr-FR",
+      "dateModified": "2026-07-28",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "ISGI-Lékié",
+        "url": "https://isgi-lekie.cm/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ISGI-Lékié",
+        "alternateName": "Initiative Stratégique Globale et Inclusive de la Lékié",
+        "url": "https://isgi-lekie.cm",
+        "logo": "https://isgi-lekie.cm/og-lekie.jpg",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Association Réfléchir Agir Soutenir (RAS)"
+        }
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Médiascopie de la Lékié",
+        "description": "Premier inventaire des figures médiatiques majeures originaires du département de la Lékié, Cameroun."
+      }
+    }
+  </script>
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:'Inter',sans-serif;background:#FEFCF8;color:#2c2c28;line-height:1.6;}
-    .container{max-width:1000px;margin:0 auto;padding:2rem;}
-    .navbar{background:#1B4332;padding:1rem;border-bottom:2px solid #C8922A;text-align:center;}
-    .navbar a{color:#FEFCF8;margin:0 1rem;text-decoration:none;}
-    h1{font-family:'Cormorant Garamond',serif;color:#1B4332;margin-bottom:1rem;}
-    .card{background:#F5F0E8;padding:1rem;margin:1rem 0;border-radius:12px;}
-    footer{text-align:center;margin-top:2rem;padding-top:1rem;border-top:1px solid #ddd;font-size:0.8rem;}
+    /* Styles spécifiques à cette page — les règles communes viennent de lekie.css */
+
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.5rem; }
+
+    /* Introduction */
+    .intro-mediascopie { background: var(--creme); border-left: 6px solid var(--or); border-radius: 12px; padding: 1.5rem 1.8rem; margin: 2rem 0; }
+    .intro-mediascopie p { color: var(--gris); font-size: 0.95rem; line-height: 1.7; }
+    .intro-mediascopie p + p { margin-top: 0.8rem; }
+    .intro-mediascopie strong { color: var(--vert); }
+
+    /* Note de définition du terme « médiascopie » */
+    .definition-mediascopie { font-size: 0.8rem; color: var(--gris2); font-style: italic; margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 1px dashed var(--creme2); }
+
+    /* Portrait */
+    .portrait-media { background: #fff; border: 1px solid var(--creme2); border-radius: 16px; padding: 1.8rem 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.04); position: relative; }
+    .portrait-media::before { content: ''; position: absolute; left: 0; top: 1.5rem; bottom: 1.5rem; width: 4px; background: var(--or); border-radius: 4px; }
+    .portrait-media .numero { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--creme2); line-height: 1; margin-bottom: 0.3rem; }
+    .portrait-media h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--vert); margin-bottom: 1rem; font-weight: 700; }
+    .portrait-media p { color: var(--gris); font-size: 0.92rem; line-height: 1.7; margin-bottom: 0.7rem; }
+    .portrait-media p:last-child { margin-bottom: 0; }
+    .portrait-media em { color: var(--texte); font-style: italic; }
+    .portrait-media strong { color: var(--vert); }
+
+    /* Constantes */
+    .constante-item { background: #fff; border: 1px solid var(--creme2); border-radius: 12px; padding: 1.2rem 1.5rem; margin-bottom: 1rem; }
+    .constante-item h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; color: var(--vert); margin-bottom: 0.5rem; font-weight: 700; }
+    .constante-item p { color: var(--gris); font-size: 0.9rem; line-height: 1.7; }
+    .constante-item strong { color: var(--vert); }
+
+    /* Conclusion */
+    .conclusion-bloc { background: var(--vert); color: #fff; border-radius: 16px; padding: 2rem 2.2rem; margin: 2rem 0; }
+    .conclusion-bloc h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--or2); margin-bottom: 1rem; font-weight: 700; }
+    .conclusion-bloc p { color: rgba(255,255,255,0.9); font-size: 0.92rem; line-height: 1.7; margin-bottom: 0.7rem; }
+    .conclusion-bloc p:last-child { margin-bottom: 0; }
+    .conclusion-bloc strong { color: var(--or2); }
+
+    /* Section "à suivre" */
+    .a-suivre { background: #fff8e1; border-left: 4px solid var(--or); border-radius: 12px; padding: 1.5rem 1.8rem; margin: 2rem 0; }
+    .a-suivre h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--vert); margin-bottom: 0.8rem; font-weight: 700; }
+    .a-suivre p { color: var(--gris); font-size: 0.9rem; line-height: 1.7; margin-bottom: 0.5rem; }
+    .a-suivre ul { margin: 0.5rem 0 0 1.2rem; color: var(--gris); font-size: 0.88rem; }
+    .a-suivre li { margin-bottom: 0.3rem; }
+    .a-suivre .badge-statut { margin-left: 0.4rem; }
+
+    /* Remerciements */
+    .remerciements { font-size: 0.82rem; color: var(--gris2); font-style: italic; text-align: center; margin: 2rem 0 1rem; padding: 1rem; border-top: 1px dashed var(--creme2); border-bottom: 1px dashed var(--creme2); }
+
+    /* Surcharge locale de lekie.css — à valider */
+    footer { color: rgba(255,255,255,0.5); }
+
+    @media (max-width: 700px) {
+      .portrait-media { padding: 1.3rem 1.2rem; }
+      .portrait-media .numero { font-size: 2rem; }
+      .portrait-media h2 { font-size: 1.25rem; }
+      .intro-mediascopie { padding: 1rem 1.2rem; }
+      .conclusion-bloc { padding: 1.3rem 1.2rem; }
+      .a-suivre { padding: 1.2rem; }
+    }
   </style>
 </head>
 <body>
-<div class="navbar">
-  <a href="index.html">Accueil</a>
-  <a href="plateforme.html">Plateforme</a>
-  <a href="blog.html">Blog</a>
+
+<a href="#contenu" class="skip-link">Aller au contenu principal</a>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="/">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="/">Accueil</a>
+    <a href="plateforme">Plateforme</a>
+    <a href="mon-village">Mon village</a>
+    <a href="mon-ecole">Mon école</a>
+    <a href="observatoire">Observatoire</a>
+    <a href="valeurs-et-competences">Valeurs et compétences</a>
+    <a href="sport">Sport</a>
+    <a href="certification">Certification</a>
+    <a href="agriculture">🌾 Agriculture</a>
+    <a href="elevage">🐄 Élevage</a>
+    <a href="tourisme">Tourisme</a>
+    <a href="hommage-andre-marie-mbida">Hommage</a>
+    <a href="presse" class="active">Presse</a>
+    <a href="blog">Blog</a>
+  </div>
+</nav>
+
+<div class="page-header" id="top">
+  <h1>📰 Médiascopie <em>de la Lékié</em></h1>
+  <p>Ces fils et filles du département qui façonnent le paysage médiatique camerounais</p>
+  <p class="maj">📅 Dernière mise à jour : 28 Juillet 2026</p>
 </div>
-<div class="container">
-  <h1>📰 Lékié dans les médias</h1>
-  <div class="card"><strong>Cameroon Tribune</strong> – “La Lékié se dote d’une plateforme territoriale” (2026)</div>
-  <div class="card"><strong>Le Messager</strong> – “Mémoire et chefferies : la Lékié innove” (2026)</div>
-  <div class="card"><strong>Africa Intelligence</strong> – “Un département camerounais mise sur les données citoyennes”</div>
-  <p>📢 Enfants de la Lékié : envoyez vos articles ou médias via <a href="mailto:contact@isgi-lekie.cm">contact@isgi-lekie.cm</a></p>
+
+<div class="container" id="contenu">
+
+  <!-- ============================================================ -->
+  <!-- INTRODUCTION -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="intro-mediascopie">
+      <p class="definition-mediascopie">📖 <strong>Médiascopie</strong> — inventaire documenté des figures médiatiques d'un territoire : leurs parcours, leurs œuvres, leurs filiations.</p>
+      <p><strong>Introduction</strong></p>
+      <p>Une question mérite d'être posée avant même de dérouler les portraits : comment un même département a-t-il pu produire, sur trois générations, une telle densité de figures médiatiques majeures — de la CRTV à France 24, de la presse d'investigation à la presse panafricaine ? Le lecteur attentif trouvera dans les pages qui suivent un début de réponse : ces parcours ne sont pas parallèles, ils se croisent, se forment et parfois se transmettent. Richard Touna Ombé, on le verra, comptait Alain Belibi parmi ses parrains professionnels. Ce n'est pas un hasard isolé — c'est un motif.</p>
+      <p>Cette médiascopie propose un premier inventaire de ces figures emblématiques, de leurs parcours et de leurs œuvres.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- PORTRAITS -->
+  <!-- ============================================================ -->
+
+  <article class="portrait-media">
+    <div class="numero">1</div>
+    <h2>Alain Belibi — l'icône de la radio-télévision publique</h2>
+    <p>Né le 22 janvier 1959 à Nkolmefon, dans l'arrondissement de Sa'a, Alain Belibi incarne le parcours d'excellence de la formation journalistique camerounaise. Major de la 9<sup>e</sup> promotion de l'École supérieure internationale de journalisme de Yaoundé (ancêtre de l'ESSTIC), il entre à la Radio Cameroun en 1981 et y fait toute sa carrière jusqu'à la CRTV, où il s'impose comme présentateur attitré des journaux parlés et télévisés.</p>
+    <p><em>Signe des temps</em> et <em>Le point d'exclamation</em> : ses chroniques sont restées dans les mémoires, témoignant d'un talent qui a marqué des générations d'auditeurs et de téléspectateurs pendant près de quarante ans.</p>
+    <p>Après avoir occupé les fonctions de chef de service politique, rédacteur en chef, puis directeur de l'information radio et directeur central radio, il prend sa retraite fin 2019. Mais l'homme de médias n'a pas rangé sa plume : en juillet 2025, il est nommé président du comité de gestion et du suivi de la ligne éditoriale de Bnews1, la chaîne de télévision privée en pleine restructuration.</p>
+  </article>
+
+  <article class="portrait-media">
+    <div class="numero">2</div>
+    <h2>Vianney Ombe Ndzana — le journaliste de combat</h2>
+    <p>Journaliste et économiste de formation, Vianney Ombe Ndzana a marqué l'histoire de la presse écrite indépendante au Cameroun. Après avoir fait ses armes aux côtés de Célestin Monga dans <em>Challenge Hebdo</em>, il est démis de ses fonctions de cadre à la Société Nationale d'Investissement en raison de ses tribunes dans la presse d'opposition — un licenciement qui le pousse, avec Protais Ayangma et Haman Mana, vers le projet qui deviendra le journal <em>Génération</em>.</p>
+    <p>Directeur de publication de ce titre dans les années 1990, il s'entoure de jeunes journalistes formés à l'ESSTIC, avec lesquels il joue un rôle marquant dans le paysage médiatique camerounais. Son engagement a un prix : le 20 août 1996, en quittant les locaux de <em>Génération</em> à Yaoundé, il est attaqué par plusieurs hommes armés qui ouvrent le feu sur son véhicule. Grièvement blessé, il est hospitalisé. L'attaque survient trois semaines après une première irruption d'inconnus dans les locaux du journal, et dans un contexte où d'autres journalistes camerounais — Étienne Tassé de <em>Challenge Hebdo</em>, Nicolas Tejoumessié de <em>Challenge Nouveau</em> — subissent au même moment enlèvements et intimidations. Ces années-là, la presse indépendante camerounaise paie physiquement le prix de son existence.</p>
+    <p>Analyste critique des politiques économiques du gouvernement, il a légué à la postérité un ouvrage de référence : <em>Agriculture, pétrole et politique au Cameroun. Sortir de la crise ?</em>, publié chez L'Harmattan en 1987. Son héritage perdure à travers les vocations qu'il a inspirées — Richard Touna Ombé, qui fera ses classes à <em>Génération</em> sous sa direction, en sera l'illustration la plus directe.</p>
+  </article>
+
+  <article class="portrait-media">
+    <div class="numero">3</div>
+    <h2>Marie Roger Biloa — la panafricaine</h2>
+    <p>Fille de Germain Tsala Mekongo, premier secrétaire d'État à la Fonction publique du Cameroun en 1957 dans le gouvernement d'<a href="hommage-andre-marie-mbida" style="color: var(--vert); font-weight: 600;">André-Marie Mbida</a>, Marie Roger Biloa a su s'imposer dans un milieu longtemps dominé par les hommes. Diplômée d'études germaniques de l'université Paris-IV, elle débute à <em>Jeune Afrique</em> avant de rejoindre <em>Africa International</em>, magazine panafricain créé en 1958.</p>
+    <p>En 1991, elle en prend la direction, à travers laquelle elle côtoie les têtes couronnées et les célébrités du continent. Elle diversifie ensuite ses offres éditoriales en créant, au début des années 2000, le magazine <em>Ici les gens du Cameroun</em>, qui s'impose comme une référence dans la presse people.</p>
+    <p>Son parcours illustre la capacité des fils et filles de la Lékié à rayonner au-delà des frontières nationales.</p>
+  </article>
+
+  <article class="portrait-media">
+    <div class="numero">4</div>
+    <h2>Alain Amobé Mévégué — l'ambassadeur des médias français</h2>
+    <p>Originaire de Nkolbogo, par Sa'a, dans le département de la Lékié, Alain Amobé Mévégué — né à Yaoundé le 1<sup>er</sup> octobre 1968, arrivé en France à l'âge de cinq ans — a construit une carrière exceptionnelle, devenant une figure de l'intégration des Noirs dans les médias publics français.</p>
+    <p>Journaliste, animateur et producteur, il exerce sur RFI (l'émission <em>Plein Sud</em>, de 1994 à 2006) puis sur France 24, où il anime la chronique culturelle <em>À l'affiche</em> à partir de 2010. Il fonde également la chaîne panafricaine Ubiznews, accessible dans une quarantaine de pays du continent.</p>
+    <p>Sa mort brutale, le 8 septembre 2021, à l'âge de 52 ans, a été saluée par de nombreux hommages. Il repose depuis le 25 septembre 2021 à Nkolbogo I, où l'État camerounais, par la voix du préfet de la Lékié, l'a élevé à titre posthume à la dignité de chevalier de l'Ordre national de la Valeur.</p>
+  </article>
+
+  <article class="portrait-media">
+    <div class="numero">5</div>
+    <h2>Richard Touna Ombé — l'héritier de la presse engagée</h2>
+    <p>Fondateur et directeur de publication de l'hebdomadaire <em>Repères</em>, lancé en 2007, Richard Touna Ombé a poursuivi la tradition du journalisme d'investigation initiée par Vianney Ombe Ndzana — dont il fut l'un des jeunes journalistes formés à <em>Génération</em>, où on l'appelait déjà « M. Touna ». Alain Belibi comptait lui aussi parmi ses parrains professionnels : la filiation entre les figures de cette médiascopie n'est donc pas seulement thématique, elle est directement biographique.</p>
+    <p>Originaire de Nkolkaï, dans l'arrondissement de Sa'a, non loin de Monatélé, il meurt le 22 janvier 2009 à Yaoundé, à quelques jours du deuxième anniversaire de son journal. Après son décès, son épouse Régine reprend la direction du titre, perpétuant son héritage malgré les difficultés financières rencontrées.</p>
+  </article>
+
+  <!-- ============================================================ -->
+  <!-- CONSTANTES -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🧭 Les constantes d'une tradition médiatique lékiéenne</h2>
+    <p style="color: var(--gris); margin-bottom: 1rem;">Au-delà des parcours individuels, ces cinq trajectoires laissent apparaître des régularités qui dépassent la simple coïncidence géographique.</p>
+
+    <div class="constante-item">
+      <h3>① La formation</h3>
+      <p>Plusieurs des figures recensées sont passées par la même filière de formation au journalisme — l'ESIJY, devenue ESSTIC — dont Alain Belibi demeure la figure tutélaire, au point que la <strong>49<sup>e</sup> promotion de l'école porte son nom depuis 2018</strong>. Cette proximité de formation n'est pas neutre : elle a produit des générations de journalistes partageant un même socle méthodologique, avant que leurs trajectoires ne divergent vers la presse publique, la presse indépendante ou les médias internationaux.</p>
+    </div>
+
+    <div class="constante-item">
+      <h3>② La presse indépendante des années 1990</h3>
+      <p><em>Challenge Hebdo</em> puis <em>Génération</em> n'ont pas seulement publié Vianney Ombe Ndzana : ils ont formé, sous sa direction, une génération de jeunes journalistes dont Richard Touna Ombé est l'exemple le plus documenté. Cette pépinière rédactionnelle, née dans le contexte périlleux de l'ouverture démocratique et de la répression qui l'a accompagnée, a fonctionné comme une <strong>véritable école parallèle à l'ESSTIC</strong> — une école de terrain, forgée dans l'adversité plutôt que dans l'amphithéâtre.</p>
+    </div>
+
+    <div class="constante-item">
+      <h3>③ La circulation entre les supports</h3>
+      <p>Aucune de ces figures ne s'est enfermée dans un seul média : Belibi passe de la radio à la télévision au sein de la CRTV avant de rejoindre une chaîne privée ; Biloa dirige simultanément presse écrite panafricaine et presse people ; Mévégué circule entre RFI, TV5 Monde, France 24 et sa propre chaîne. Cette polyvalence, plus que le hasard des carrières, semble relever d'une <strong>disposition partagée à investir tous les canaux disponibles</strong> plutôt que d'en privilégier un seul.</p>
+    </div>
+
+    <div class="constante-item">
+      <h3>④ L'ouverture internationale</h3>
+      <p>Portée principalement par Biloa et Mévégué, elle montre qu'une partie de cette tradition ne s'est pas construite au Cameroun mais dans la diaspora — sans jamais s'en couper : le rapatriement du corps de Mévégué pour une inhumation à Nkolbogo, la reconnaissance posthume de l'État camerounais, disent assez que ce rayonnement extérieur reste <strong>arrimé au territoire d'origine</strong>.</p>
+    </div>
+
+    <div class="constante-item">
+      <h3>⑤ Le mentorat</h3>
+      <p>Il traverse silencieusement l'ensemble de ce corpus. Belibi et Ombe Ndzana, deux générations et deux univers médiatiques distincts, se retrouvent tous deux nommés « parrains professionnels » de Richard Touna Ombé. Que deux figures aussi différentes — l'une de la radio-télévision publique, l'autre de la presse frondeuse — aient pu jouer ce rôle simultanément suggère que la transmission, dans cette tradition, ne suit pas une ligne unique mais <strong>un maillage</strong>.</p>
+    </div>
+
+    <p style="color: var(--gris2); font-size: 0.85rem; font-style: italic; margin-top: 1rem;">Restent, en creux, deux angles que cette première médiascopie n'a fait qu'effleurer : la place des femmes, portée pour l'instant par la seule figure de Marie Roger Biloa, mériterait d'être documentée plus largement à mesure que le corpus s'enrichit ; de même, la mécanique précise de la transmission — ce qui se joue concrètement dans le passage d'un mentor à un disciple — reste à approfondir au-delà des deux cas actuellement documentés.</p>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- CONCLUSION -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="conclusion-bloc">
+      <h2>En guise de conclusion</h2>
+      <p>Ces cinq figures dessinent les premiers contours de ce qui pourrait être qualifié d'<strong>école de la Lékié dans le journalisme camerounais</strong>. Au-delà d'une origine territoriale commune, leurs parcours révèlent des relations de formation, de mentorat et de transmission professionnelle qui méritent d'être étudiées plus largement, à mesure que de nouvelles notices viendront enrichir ce corpus.</p>
+      <p><strong>La Lékié est assurément une terre de médias.</strong></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- À SUIVRE -->
+  <!-- ============================================================ -->
+  <section>
+    <div class="a-suivre">
+      <h2>📌 À suivre…</h2>
+      <p>Cette médiascopie n'est qu'une première étape. D'autres figures méritent d'être recensées :</p>
+      <ul>
+        <li>Alphonse Eloundou (Anagsama) <span class="badge-statut badge-recherche">Recherché</span></li>
+        <li>Marie Robert Eloundou Andegue (Essingan) <span class="badge-statut badge-recherche">Recherché</span></li>
+        <li>Pr François-Marc Modzom (ESSTIC) <span class="badge-statut badge-recherche">Recherché</span></li>
+        <li>Eyebe Junior (Cam 10 TV) <span class="badge-statut badge-recherche">Recherché</span></li>
+      </ul>
+      <p style="margin-top: 0.8rem;">📢 Vous connaissez une figure médiatique originaire de la Lékié qui mériterait d'être recensée ? <a href="plateforme#contribuer" style="color: var(--vert); font-weight: 600;">Contribuez</a>.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- REMERCIEMENTS -->
+  <!-- ============================================================ -->
+  <section>
+    <p class="remerciements">Nos remerciements à <strong>Marie Robert Eloundou Andegue</strong> pour le sourcing.</p>
+  </section>
+
 </div>
-<footer>ISGI-Lékié — Mémoire et territoire</footer>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 28 Juillet 2026</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
 </body>
 </html>
