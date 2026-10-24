@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#1b3a2d" />
   <title>Ma Lékié – Département de la Lékié – ISGI-Lékié</title>
-  <meta name="description" content="Ma Lékié — le département de la Lékié : 9 communes, autorités, parlementaires, chronique préfectorale, institutions, délégations sectorielles, synthèses sectorielles.">
+  <meta name="description" content="Ma Lékié — le département de la Lékié : carte des 9 communes, tableau de bord, autorités, parlementaires, chronique préfectorale, institutions, délégations sectorielles et synthèses.">
   <meta name="author" content="ISGI-Lékié">
   <link rel="canonical" href="https://isgi-lekie.cm/ma-lekie">
   <meta property="og:title" content="Ma Lékié – Département de la Lékié – ISGI-Lékié">
-  <meta property="og:description" content="Le département de la Lékié : 9 communes, autorités, parlementaires, chronique préfectorale, institutions et synthèses sectorielles.">
+  <meta property="og:description" content="Carte, tableau de bord, autorités, parlementaires, chronique préfectorale et synthèses sectorielles de la Lékié.">
   <meta property="og:url" content="https://isgi-lekie.cm/ma-lekie">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
@@ -19,11 +19,14 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Ma Lékié – Département de la Lékié – ISGI-Lékié">
-  <meta name="twitter:description" content="Le département de la Lékié : 9 communes, autorités, parlementaires, institutions.">
+  <meta name="twitter:description" content="Carte, tableau de bord, autorités, parlementaires, chronique préfectorale et synthèses de la Lékié.">
   <meta name="twitter:image" content="https://isgi-lekie.cm/og-lekie.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
   <link rel="stylesheet" href="assets/lekie.css">
   <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"WebPage","name":"Ma Lékié – Département de la Lékié","url":"https://isgi-lekie.cm/ma-lekie","inLanguage":"fr-FR","isPartOf":{"@type":"WebSite","name":"ISGI-Lékié","url":"https://isgi-lekie.cm/"},"about":{"@type":"AdministrativeArea","name":"Département de la Lékié, Région du Centre, Cameroun"}}
@@ -55,12 +58,21 @@
     .delegation-bloc { background: #fff; border: 1px solid var(--creme2); border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; }
     .delegation-bloc h4 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1rem; margin-bottom: 0.3rem; }
     .delegation-bloc p { font-size: 0.82rem; color: var(--gris2); margin: 0.2rem 0; }
+    .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .dash-item { background: var(--creme); padding: 1rem; border-radius: 16px; text-align: center; }
+    .dash-item .dash-label { font-size: 0.75rem; color: #5a5a50; font-weight: 500; }
+    .dash-item .dash-value { font-size: 1.8rem; font-weight: 700; color: var(--vert); font-family: 'Cormorant Garamond', serif; }
+    .dash-item .dash-source { font-size: 0.6rem; color: #94a3b8; margin-top: 0.2rem; }
+    .map-wrapper { margin: 1rem 0 2rem; border-radius: 20px; overflow: hidden; border: 1px solid var(--creme2); }
+    #map { height: 400px; width: 100%; }
     footer { color: rgba(255,255,255,0.5); }
     @media (max-width: 700px) {
       .grid-2, .grid-3 { grid-template-columns: 1fr; }
       .table-data { font-size: 0.75rem; }
       .table-data th, .table-data td { padding: 0.35rem; }
       .chronique-liste { grid-template-columns: 1fr; }
+      .dashboard-grid { grid-template-columns: 1fr 1fr; }
+      #map { height: 300px; }
     }
   </style>
 </head>
@@ -75,6 +87,7 @@
     <a href="/">Accueil</a>
     <a href="ma-lekie" class="active">Ma Lékié</a>
     <a href="ma-region">Ma Région</a>
+    <a href="plateforme">Plateforme</a>
     <a href="mon-village">Mon village</a>
     <a href="mon-ecole">Mon école</a>
     <a href="observatoire">Observatoire</a>
@@ -101,7 +114,7 @@
 
   <section>
     <div class="note-recherche">
-      <strong>📌 Note de lecture.</strong> Page départementale de référence : territoire, institutions, autorités, chroniques, parlementaires, délégations sectorielles et synthèses. Pour l'analyse approfondie (BIP, séries démographiques, conditions de vie), voir <a href="observatoire" style="color:var(--vert);font-weight:600;">l'Observatoire</a>. Pour les fiches communales détaillées, voir <a href="ma-commune/" style="color:var(--vert);font-weight:600;">Ma Commune</a>. Pour les villages et chefferies, voir <a href="mon-village" style="color:var(--vert);font-weight:600;">Mon village</a>. Sources : INS 2025, BUCREP, MINAT, JPM Centre 2026, collecte ISGI-Lékié. Données manquantes marquées <span class="badge-recherche">Recherché</span> ou <span class="badge-verifier">À vérifier</span>.
+      <strong>📌 Note de lecture.</strong> Page départementale de référence : territoire, institutions, autorités, chroniques, parlementaires, délégations sectorielles et synthèses. Pour l'analyse approfondie (BIP, séries démographiques, conditions de vie), voir <a href="observatoire" style="color:var(--vert);font-weight:600;">l'Observatoire</a>. Pour les fiches communales détaillées, voir <a href="ma-commune" style="color:var(--vert);font-weight:600;">Ma Commune</a>. Pour les villages et chefferies, voir <a href="mon-village" style="color:var(--vert);font-weight:600;">Mon village</a>. Sources : INS 2025, BUCREP, MINAT, JPM Centre 2026, collecte ISGI-Lékié. Données manquantes marquées <span class="badge-recherche">Recherché</span> ou <span class="badge-verifier">À vérifier</span>.
     </div>
   </section>
 
@@ -126,22 +139,74 @@
     </div>
   </section>
 
+  <!-- TABLEAU DE BORD -->
+  <section>
+    <h2 class="section-title">📊 Tableau de bord territorial — Lékié</h2>
+    <div class="card" id="dashboardSection">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
+        <p style="font-size:0.85rem; color:var(--gris2); margin:0;">Indicateurs clés consolidés.</p>
+        <button onclick="exportPDF()" class="btn" style="font-size:0.75rem; padding:0.3rem 1rem; background:var(--vert); color:var(--or2);" type="button">📄 Exporter en PDF</button>
+      </div>
+      <div class="dashboard-grid">
+        <div class="dash-item">
+          <div class="dash-label">👥 Population</div>
+          <div class="dash-value">509 457</div>
+          <div class="dash-source">INS 2023</div>
+        </div>
+        <div class="dash-item">
+          <div class="dash-label">📚 Écoles</div>
+          <div class="dash-value">485</div>
+          <div class="dash-source">INS 2025</div>
+        </div>
+        <div class="dash-item">
+          <div class="dash-label">🏥 Santé</div>
+          <div class="dash-value">7</div>
+          <div class="dash-source">Districts</div>
+        </div>
+        <div class="dash-item">
+          <div class="dash-label">🏛️ Communes</div>
+          <div class="dash-value">9</div>
+          <div class="dash-source">Département</div>
+        </div>
+        <div class="dash-item">
+          <div class="dash-label">💰 BIP 2016-2026</div>
+          <div class="dash-value">30,98 Mds</div>
+          <div class="dash-source">FCFA</div>
+        </div>
+      </div>
+      <div style="font-size:0.65rem; color:#94a3b8; margin-top:0.8rem; text-align:center;">
+        Sources : INS 2025 + MINMAP + collecte ISGI-Lékié.
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTE -->
+  <section>
+    <h2 class="section-title">🗺️ Carte du département</h2>
+    <div class="map-wrapper">
+      <div id="map" role="img" aria-label="Carte des 9 communes de la Lékié"></div>
+    </div>
+    <p style="font-size:0.75rem; color:var(--gris2); text-align:center;">
+      🗺️ Carte OpenStreetMap. Cliquez sur un marqueur pour voir les détails.
+    </p>
+  </section>
+
   <section>
     <h2 class="section-title">🏘️ Les 9 communes de la Lékié</h2>
-    <p style="color: var(--gris); margin-bottom: 0.5rem;">Synthèse. Pour le détail, voir <a href="ma-commune/" style="color:var(--vert);font-weight:600;">Ma Commune</a>.</p>
+    <p style="color: var(--gris); margin-bottom: 0.5rem;">Synthèse. Pour le détail, voir <a href="ma-commune" style="color:var(--vert);font-weight:600;">Ma Commune</a>.</p>
     <div style="overflow-x: auto;">
       <table class="table-data">
-        <thead><tr><th>Commune</th><th>Chef-lieu</th><th style="text-align:right;">Population (2023)</th><th style="text-align:right;">Superficie</th><th>Maire</th></tr></thead>
+        <thead><tr><th>Commune</th><th>Chef-lieu</th><th style="text-align:right;">Pop. 2023</th><th style="text-align:right;">Superficie</th><th>Groupements</th><th>Maire</th></tr></thead>
         <tbody>
-          <tr class="lekie"><td><strong>Monatélé</strong></td><td>Monatélé</td><td class="num">54 912</td><td class="num">375 km²</td><td>Prosper Parfait Mbassi Bessala</td></tr>
-          <tr><td>Obala</td><td>Obala</td><td class="num">142 320</td><td class="num">475 km²</td><td>Francis Gaël Touna</td></tr>
-          <tr><td>Sa'a</td><td>Sa'a</td><td class="num">82 575</td><td class="num">583,9 km²</td><td>Jean Blaise Messina Noah</td></tr>
-          <tr><td>Okola</td><td>Okola</td><td class="num">103 561</td><td class="num">605 km²</td><td>Vincent De Paul Noa</td></tr>
-          <tr><td>Ebebda</td><td>Ebebda</td><td class="num">34 154</td><td class="num">250 km²</td><td>Manga Bessala</td></tr>
-          <tr><td>Evodoula</td><td>Evodoula</td><td class="num">26 327</td><td class="num">250 km²</td><td>Armand Joachim Ongolo Eloundou</td></tr>
-          <tr><td>Elig-Mfomo</td><td>Elig-Mfomo</td><td class="num">25 555</td><td class="num">144 km²</td><td>Stanislas Ayissi</td></tr>
-          <tr><td>Batchenga</td><td>Batchenga</td><td class="num">13 529</td><td class="num">216 km²</td><td>Anatole Souga</td></tr>
-          <tr><td>Lobo</td><td>Lobo</td><td class="num">26 524</td><td class="num">260 km²</td><td>Serge Bertin Obono Onguene</td></tr>
+          <tr class="lekie"><td><strong>Monatélé</strong></td><td>Monatélé</td><td class="num">54 912</td><td class="num">375 km²</td><td>5 (Ekot, Eyen-Meyong, Kougouda, Mvog-Namnye 1, Nkolkosse)</td><td>Prosper Parfait Mbassi Bessala</td></tr>
+          <tr><td>Obala</td><td>Obala</td><td class="num">142 320</td><td class="num">475 km²</td><td>7</td><td>Francis Gaël Touna</td></tr>
+          <tr><td>Sa'a</td><td>Sa'a</td><td class="num">82 575</td><td class="num">583,9 km²</td><td>5 + 2 cantons</td><td>Jean Blaise Messina Noah</td></tr>
+          <tr><td>Okola</td><td>Okola</td><td class="num">103 561</td><td class="num">605 km²</td><td>3</td><td>Vincent De Paul Noa</td></tr>
+          <tr><td>Ebebda</td><td>Ebebda</td><td class="num">34 154</td><td class="num">250 km²</td><td>5</td><td>Manga Bessala</td></tr>
+          <tr><td>Evodoula</td><td>Evodoula</td><td class="num">26 327</td><td class="num">250 km²</td><td>2</td><td>Armand Joachim Ongolo Eloundou</td></tr>
+          <tr><td>Elig-Mfomo</td><td>Elig-Mfomo</td><td class="num">25 555</td><td class="num">144 km²</td><td>3 (créés en 2025)</td><td>Stanislas Ayissi</td></tr>
+          <tr><td>Batchenga</td><td>Batchenga</td><td class="num">13 529</td><td class="num">216 km²</td><td>1</td><td>Anatole Souga</td></tr>
+          <tr><td>Lobo</td><td>Lobo</td><td class="num">26 524</td><td class="num">260 km²</td><td>1er degré</td><td>Serge Bertin Obono Onguene</td></tr>
         </tbody>
       </table>
     </div>
@@ -456,12 +521,36 @@
   </section>
 
   <section>
-    <h2 class="section-title">🔗 Renvois</h2>
-    <div class="grid-2">
-      <div class="card"><h3>📊 Observatoire de la Lékié</h3><p>Analyse approfondie : BIP 2016-2026, démographie détaillée, séries temporelles, conditions de vie.</p><a href="observatoire" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir l'Observatoire →</a></div>
-      <div class="card"><h3>🏘️ Ma Commune</h3><p>Fiches communales détaillées (9 communes, 1 actuellement publiée).</p><a href="ma-commune/" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir Ma Commune →</a></div>
-      <div class="card"><h3>🏘️ Mon village</h3><p>Villages, chefferies de 3e degré, chefs traditionnels.</p><a href="mon-village" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir Mon village →</a></div>
-      <div class="card"><h3>🌍 Ma Région</h3><p>Région du Centre : 10 départements, gouverneur, Conseil régional, maires.</p><a href="ma-region" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir Ma Région →</a></div>
+    <h2 class="section-title">👤 Élites et personnalités</h2>
+    <div class="note-recherche">
+      <p>Les élites et personnalités de la Lékié sont documentées dans trois pages dédiées :</p>
+      <ul style="margin-left:1.2rem; margin-top:0.5rem;">
+        <li><a href="mon-village" style="color:var(--vert);font-weight:600;">Mon village</a> — personnalités par village et groupement</li>
+        <li><a href="valeurs-et-competences" style="color:var(--vert);font-weight:600;">Valeurs et compétences</a> — professeurs et docteurs</li>
+        <li><a href="nos-ministres" style="color:var(--vert);font-weight:600;">Nos ministres</a> — 26 membres du gouvernement depuis 1957</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🔗 Renvois sectoriels</h2>
+    <div class="grid-3">
+      <div class="card"><h3>📊 Observatoire</h3><p>Analyse approfondie : BIP, démographie, conditions de vie, ODD.</p><a href="observatoire" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>🏘️ Ma Commune</h3><p>Fiches communales détaillées (9 communes).</p><a href="ma-commune" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>🏘️ Mon village</h3><p>Villages, chefferies de 3e degré, chefs traditionnels.</p><a href="mon-village" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>🌍 Ma Région</h3><p>Région du Centre : 10 départements, gouverneur, Conseil régional.</p><a href="ma-region" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>🏢 Plateforme</h3><p>Les 9 arrondissements : services déconcentrés de l'État.</p><a href="plateforme" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>📚 Mon école</h3><p>Établissements scolaires, effectifs, ratios.</p><a href="mon-ecole" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>🎓 Valeurs et compétences</h3><p>Professeurs et docteurs de la Lékié.</p><a href="valeurs-et-competences" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>👔 Nos ministres</h3><p>26 membres du gouvernement depuis 1957.</p><a href="nos-ministres" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>⚽ Sport</h3><p>Clubs, joueurs, championnats de vacances.</p><a href="sport" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>🏅 Certification</h3><p>Certification ISGI-Lékié, CISFOOTVAC.</p><a href="certification" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>🌾 Agriculture</h3><p>Filières, rendements, transformation.</p><a href="agriculture" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>🐄 Élevage</h3><p>Cheptel, filières, acteurs.</p><a href="elevage" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>🌴 Tourisme</h3><p>Sites, patrimoine, hébergements.</p><a href="tourisme" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>🕯️ Hommage</h3><p>André-Marie Mbida, mémoire du territoire.</p><a href="hommage-andre-marie-mbida" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>📰 Presse</h3><p>Médiascopie de la Lékié.</p><a href="presse" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
+      <div class="card"><h3>📝 Blog</h3><p>Analyses, tribunes, actualités.</p><a href="blog" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir →</a></div>
     </div>
   </section>
 
@@ -520,6 +609,66 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  // ---- CARTE LEAFLET ----
+  window.addEventListener('load', function() {
+    if (typeof L === 'undefined') return;
+    try {
+      const map = L.map('map').setView([4.15, 11.4], 9.2);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd' }).addTo(map);
+
+      const communes = [
+        { nom: "Monatélé", lat: 4.1875, lng: 11.2525, pop: "54 912", maire: "Prosper Parfait Mbassi Bessala", ecoles: 59, sante: 24 },
+        { nom: "Obala", lat: 4.1589, lng: 11.5339, pop: "142 320", maire: "Francis Gaël Touna", ecoles: 36, sante: 19 },
+        { nom: "Sa'a", lat: 4.117, lng: 11.417, pop: "82 575", maire: "Jean Blaise Messina Noah", ecoles: 91, sante: 30 },
+        { nom: "Okola", lat: 4.0167, lng: 11.3833, pop: "103 561", maire: "Vincent De Paul Noa", ecoles: 107, sante: 26 },
+        { nom: "Ebebda", lat: 4.35, lng: 11.2, pop: "34 154", maire: "Manga Bessala", ecoles: 49, sante: 18 },
+        { nom: "Evodoula", lat: 4.083, lng: 11.2, pop: "26 327", maire: "Armand Joachim Ongolo Eloundou", ecoles: 30, sante: 13 },
+        { nom: "Elig-Mfomo", lat: 4.1, lng: 11.1, pop: "25 555", maire: "Stanislas Ayissi", ecoles: 28, sante: 7 },
+        { nom: "Batchenga", lat: 4.2333, lng: 11.6833, pop: "13 529", maire: "Anatole Souga", ecoles: 11, sante: 2 },
+        { nom: "Lobo", lat: 3.9833, lng: 11.4, pop: "26 524", maire: "Serge Bertin Obono Onguene", ecoles: 22, sante: 10 }
+      ];
+
+      communes.forEach(function(c) {
+        L.circleMarker([c.lat, c.lng], {
+          radius: 12,
+          fillColor: '#1b3a2d',
+          color: '#fff',
+          weight: 2,
+          fillOpacity: 0.85
+        }).addTo(map).bindPopup(
+          '<div style="font-family: Inter, sans-serif; max-width: 280px;">' +
+          '<strong style="font-size:1.05rem; color:#1b3a2d;">' + c.nom + '</strong><hr style="border:0.5px solid #ede5d8; margin:0.3rem 0;">' +
+          '<div style="font-size:0.8rem; color:#3a3a35;">' +
+          '<div><strong>Maire :</strong> ' + c.maire + '</div>' +
+          '<div><strong>Population :</strong> ' + c.pop + '</div>' +
+          '<div><strong>📚 Écoles :</strong> ' + c.ecoles + '</div>' +
+          '<div><strong>🏥 Santé :</strong> ' + c.sante + '</div>' +
+          '</div>' +
+          '<a href="ma-commune" style="display:inline-block; margin-top:0.5rem; background:#1b3a2d; color:#e0a83e; padding:0.3rem 0.8rem; border-radius:20px; text-decoration:none; font-size:0.7rem; font-weight:600;">Voir la fiche communale</a>' +
+          '</div>'
+        );
+      });
+    } catch(e) {}
+  });
+
+  // ---- EXPORT PDF ----
+  window.exportPDF = function() {
+    if (typeof html2pdf === 'undefined') {
+      alert('Export PDF en cours de chargement. Réessayez dans un instant.');
+      return;
+    }
+    var element = document.getElementById('dashboardSection');
+    if (!element) return;
+    var opt = {
+      margin: 0.5,
+      filename: 'Dashboard_Lekie_2026.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2, useCORS: true },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+  };
 </script>
 </body>
 </html>
