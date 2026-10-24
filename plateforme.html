@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#1b3a2d">
-  <title>ISGI-Lékié — Plateforme d'Intelligence Territoriale de la Lékié</title>
-  <meta name="description" content="Plateforme d'Intelligence Territoriale de la Lékié — données, cartographie, autorités, santé, éducation, chefferies et mémoire du département.">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1b3a2d" />
+  <title>Plateforme — Les 9 arrondissements de la Lékié — ISGI-Lékié</title>
+  <meta name="description" content="Plateforme — le département de la Lékié par ses 9 arrondissements : sous-préfectures, délégations d'arrondissement, gendarmerie, police et santé déconcentrée.">
+  <meta name="author" content="ISGI-Lékié">
   <link rel="canonical" href="https://isgi-lekie.cm/plateforme">
-
-  <meta property="og:title" content="Plateforme d'Intelligence Territoriale de la Lékié – ISGI-Lékié">
-  <meta property="og:description" content="Données, cartographie, autorités, santé, éducation, chefferies et mémoire de la Lékié.">
+  <meta property="og:title" content="Plateforme — Les 9 arrondissements de la Lékié — ISGI-Lékié">
+  <meta property="og:description" content="Sous-préfectures, délégations d'arrondissement, gendarmerie, police et santé des 9 arrondissements de la Lékié.">
   <meta property="og:url" content="https://isgi-lekie.cm/plateforme">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="fr_FR">
@@ -18,1537 +17,513 @@
   <meta property="og:image" content="https://isgi-lekie.cm/og-lekie.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="ISGI-Lékié — Plateforme d'Intelligence Territoriale">
-
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Plateforme d'Intelligence Territoriale de la Lékié">
-  <meta name="twitter:description" content="Données, cartographie, autorités, santé, éducation de la Lékié.">
+  <meta name="twitter:title" content="Plateforme — Les 9 arrondissements de la Lékié — ISGI-Lékié">
+  <meta name="twitter:description" content="Sous-préfectures, délégations d'arrondissement, gendarmerie, police et santé des 9 arrondissements.">
   <meta name="twitter:image" content="https://isgi-lekie.cm/og-lekie.jpg">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-
+  <link rel="stylesheet" href="assets/lekie.css">
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ISGI-Lékié",
-      "alternateName": "Initiative Stratégique Globale et Inclusive de la Lékié",
-      "url": "https://isgi-lekie.cm",
-      "logo": "https://isgi-lekie.cm/og-lekie.jpg",
-      "description": "Plateforme d'Intelligence Territoriale de la Lékié — données, cartographie, autorités, santé, éducation, chefferies et mémoire du département.",
-      "dateModified": "2026-10-11",
-      "areaServed": ["Monatélé", "Obala", "Sa'a", "Evodoula", "Ebebda", "Okola", "Batchenga", "Elig-Mfomo", "Lobo"],
-      "parentOrganization": {
-        "@type": "Organization",
-        "name": "Association Réfléchir Agir Soutenir (RAS)"
-      }
-    }
+    {"@context":"https://schema.org","@type":"WebPage","name":"Plateforme — Les 9 arrondissements de la Lékié","url":"https://isgi-lekie.cm/plateforme","inLanguage":"fr-FR","isPartOf":{"@type":"WebSite","name":"ISGI-Lékié","url":"https://isgi-lekie.cm/"},"about":{"@type":"AdministrativeArea","name":"Département de la Lékié, Région du Centre, Cameroun"}}
   </script>
-
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #fefcf8; color: #3a3a35; line-height: 1.5; }
-
-    .skip-link { position: absolute; left: -9999px; top: 0; background: #c4922a; color: #1b3a2d; padding: 0.7rem 1.2rem; font-weight: 600; text-decoration: none; z-index: 9999; border-radius: 0 0 8px 0; }
-    .skip-link:focus { left: 0; outline: 3px solid #1b3a2d; outline-offset: 2px; }
-    *:focus-visible { outline: 2px solid #c4922a; outline-offset: 3px; border-radius: 4px; }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
-
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
-
-    .status-banner { background: #e0a83e; color: #1b3a2d; font-style: normal; font-weight: 600; text-align: center; padding: 0.4rem; font-size: 0.8rem; }
-    .lekie-en-premier { background: #1b3a2d; color: #e0a83e; text-align: center; padding: 0.4rem; font-size: 0.8rem; font-style: italic; }
-
-    .navbar { background: #1b3a2d; padding: 0.8rem 1.5rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #c4922a; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .logo a { color: #e0a83e; text-decoration: none; font-size: 1.5rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
-    .logo span { font-size: 0.7rem; display: block; color: rgba(255,255,255,0.85); }
-    .nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-    .nav-links a { color: rgba(255,255,255,0.92); text-decoration: none; font-size: 0.8rem; font-weight: 500; padding: 0.2rem 0; }
-    .nav-links a:hover { color: #e0a83e; }
-    .nav-links a.active { color: #e0a83e; border-bottom: 2px solid #c4922a; }
-    .burger { display: none; background: none; border: none; color: #e0a83e; font-size: 1.8rem; cursor: pointer; padding: 0.3rem 0.6rem; border-radius: 6px; }
-    .burger:hover { background: rgba(255,255,255,0.1); }
-
-    section { padding: 3rem 0; border-bottom: 1px solid #e8dfd0; }
-    .section-title { font-size: 1.8rem; color: #1b3a2d; margin-bottom: 1.5rem; border-left: 6px solid #c4922a; padding-left: 1rem; font-family: 'Cormorant Garamond', serif; }
-    .section-note { font-size: 0.8rem; color: #8a8a80; font-style: italic; margin-bottom: 1.2rem; }
-
-    .grid-2, .grid-3 { display: grid; gap: 2rem; margin-top: 1.5rem; }
-    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .card { background: white; border-radius: 20px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e8dfd0; }
-    .card h3 { font-size: 1.2rem; color: #1b3a2d; margin-bottom: 0.5rem; font-family: 'Cormorant Garamond', serif; }
-    .card p { color: #5a5a50; font-size: 0.85rem; margin-top: 0.5rem; }
-    .badge-statut { display: inline-block; font-size: 0.62rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; margin-left: 0.4rem; vertical-align: middle; }
-    .badge-valide { background: #e8f5e9; color: #2e7d32; }
-    .badge-encours { background: #fff8e1; color: #856404; }
-    .badge-contributif { background: #e8dfd0; color: #5a5a50; }
-    .badge-recherche { background: #ffebee; color: #c62828; }
-    .badge-verifier { background: #fce4ec; color: #c2185b; }
-    .btn { background: #c4922a; color: #1b3a2d; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 0.5rem; border: none; cursor: pointer; font-size: 0.85rem; }
-    .btn:hover { background: #1b3a2d; color: #e0a83e; }
-
-    .map-wrapper { margin: 1rem 0 2rem; border-radius: 20px; overflow: hidden; border: 1px solid #e8dfd0; }
-    #map { height: 400px; width: 100%; }
-    .map-fallback { display: none; background: #f4efe6; height: 400px; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; color: #8a8a80; font-size: 0.9rem; text-align: center; padding: 2rem; }
-    .map-osm-mention { font-size: 0.7rem; color: #94a3b8; text-align: center; margin-top: 0.3rem; }
-    .map-osm-mention a { color: #1b3a2d; font-weight: 500; }
-
-    .dashboard { background: white; border: 1px solid #e8dfd0; border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-    .dashboard h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: #1b3a2d; margin-bottom: 1rem; border-left: 4px solid #c4922a; padding-left: 0.8rem; }
-    .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
-    .dash-item { background: #f4efe6; padding: 1rem; border-radius: 16px; text-align: center; }
-    .dash-item .dash-label { font-size: 0.75rem; color: #5a5a50; font-weight: 500; }
-    .dash-item .dash-value { font-size: 1.8rem; font-weight: 700; color: #1b3a2d; font-family: 'Cormorant Garamond', serif; }
-    .dash-item .dash-source { font-size: 0.6rem; color: #94a3b8; margin-top: 0.2rem; }
-
-    .export-btn { background: #1b3a2d; color: #e0a83e; border: 1px solid #e0a83e; }
-    .export-btn:hover { background: #e0a83e; color: #1b3a2d; }
-
-    .filtres-bar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin: 1.5rem 0 1rem; }
-    .search-input { flex: 1; padding: 0.7rem 1rem; border: 1px solid #e8dfd0; border-radius: 40px; font-family: 'Inter', sans-serif; }
-    .compteur { font-size: 0.8rem; background: #f4efe6; padding: 0.3rem 1rem; border-radius: 30px; }
-    .filter-btn { padding: 0.3rem 1rem; border: 1.5px solid #e8dfd0; border-radius: 30px; background: #fff; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 500; cursor: pointer; transition: all 0.2s; color: #3a3a35; }
-    .filter-btn:hover, .filter-btn.active { background: #1b3a2d; color: #fff; border-color: #1b3a2d; }
-
-    .communes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-    .fiche-commune { background: white; border: 1px solid #e8dfd0; border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; height: 100%; }
-    .fiche-entete { background: #f4efe6; padding: 1rem; border-bottom: 1px solid #e8dfd0; }
-    .fiche-entete h3 { font-size: 1.3rem; color: #1b3a2d; font-family: 'Cormorant Garamond', serif; display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem; }
-    .badge-cheflieu { display: inline-block; background: #c4922a; color: white; font-size: 0.6rem; padding: 0.2rem 0.6rem; border-radius: 20px; }
-    .fiche-body { padding: 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
-    .stat-row { display: flex; justify-content: space-between; background: #f4efe6; padding: 0.4rem 0.8rem; border-radius: 12px; font-size: 0.85rem; flex-wrap: wrap; gap: 0.3rem; }
-    .stat-row .label { font-weight: 500; color: #1b3a2d; }
-    .stat-row .value { text-align: right; flex: 1; }
-    .village-tag { display: inline-block; background: #e8dfd0; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; margin: 0.2rem; }
-    .projet-item { font-size: 0.8rem; background: #eef6fb; padding: 0.3rem 0.6rem; border-radius: 8px; margin: 0.2rem 0; }
-    .projet-item .projet-nom { font-weight: 600; color: #1b3a2d; }
-    .projet-item .projet-detail { color: #64748b; font-size: 0.7rem; }
-    .btn-fiche { background: #1b3a2d; color: #e0a83e; border: none; width: 100%; padding: 0.8rem; font-weight: 600; cursor: pointer; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 0.85rem; margin-top: 0.5rem; transition: background 0.2s; }
-    .btn-fiche:hover { background: #c4922a; color: #1b3a2d; }
-    .table-scroll { overflow-x: auto; }
-
-    .alertes-list { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
-    .alerte-item { background: white; border: 1px solid #e8dfd0; border-radius: 16px; padding: 1rem; border-left: 4px solid #e67e22; }
-    .alerte-item.verifie { border-left-color: #2ecc71; }
-    .badge-alerte { display: inline-block; font-size: 0.65rem; padding: 0.2rem 0.5rem; border-radius: 20px; margin-top: 0.5rem; }
-    .badge-nonverifie { background: #e67e22; color: white; }
-    .badge-verifie { background: #2ecc71; color: white; }
-
-    .form-contrib { background: #f4efe6; border-radius: 24px; padding: 2rem; margin: 2rem 0; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
-    .form-col { display: flex; flex-direction: column; gap: 1rem; }
-    .form-btn { display: block; background: #1b3a2d; color: #e0a83e; padding: 0.8rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; text-align: center; border: 1px solid #e0a83e; transition: all 0.2s; }
-    .form-btn:hover { background: #e0a83e; color: #1b3a2d; border-color: #1b3a2d; }
-    .form-btn.agir { background: #c4922a; color: #1b3a2d; border-color: #c4922a; }
-    .form-btn.agir:hover { background: #1b3a2d; color: #e0a83e; border-color: #1b3a2d; }
-    .form-col h4 { font-family: 'Cormorant Garamond', serif; color: #1b3a2d; font-size: 1.2rem; margin-bottom: 0.3rem; }
-
-    .chefferies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
-    .chef-card { background: white; border: 1px solid #e8dfd0; border-radius: 16px; padding: 1.2rem; }
-    .chef-card h4 { color: #1b3a2d; font-size: 1.1rem; margin-bottom: 0.3rem; font-family: 'Cormorant Garamond', serif; }
-
-    .chronique-full { background: white; border: 1px solid #e8dfd0; border-radius: 16px; padding: 1.5rem; margin: 1rem 0; }
-    .chronique-full h4 { font-family: 'Cormorant Garamond', serif; color: #1b3a2d; font-size: 1.2rem; margin: 1.5rem 0 0.5rem; }
-    .chronique-full p { color: #3a3a35; margin-bottom: 0.6rem; }
-    .chronique-full .auteur { font-style: italic; color: #64748b; margin-bottom: 1rem; }
-    .chronique-full .contact { background: #f4efe6; padding: 0.8rem 1rem; border-radius: 12px; margin-top: 1rem; font-weight: 500; }
-    .chronique-full ul { margin-left: 1.5rem; margin-bottom: 0.8rem; }
-    .chronique-full ul li { margin-bottom: 0.3rem; }
-    .liste-prefets { font-size: 0.85rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.2rem 1rem; margin-bottom: 1rem; }
-
-    .grid-3-elites { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem 1rem; font-size: 0.85rem; margin-top: 0.5rem; }
-    .elite-item { padding: 0.2rem 0; border-bottom: 1px solid #f4efe6; }
-    .elite-item strong { color: #1b3a2d; }
-
-    footer { background: #0f2c21; color: rgba(255,255,255,0.75); text-align: center; padding: 2rem 1rem; font-size: 0.8rem; margin-top: 2rem; }
-    footer .boussole { font-style: italic; color: rgba(255,255,255,0.55); margin-top: 0.4rem; }
-    footer a { color: #e0a83e; }
-
-    .back-to-top { position: fixed; bottom: 20px; right: 20px; background: #c4922a; color: #1b3a2d; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 1.5rem; font-weight: bold; opacity: 0; transition: opacity 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 99; }
-    .back-to-top.show { opacity: 1; }
-    .back-to-top:hover { background: #1b3a2d; color: #e0a83e; }
-
-    .sticky-contrib-btn { position: fixed; bottom: 80px; right: 20px; z-index: 99; background: #c4922a; color: #1b3a2d; padding: 0.8rem 1.2rem; border-radius: 40px; text-decoration: none; font-weight: 600; font-size: 0.85rem; box-shadow: 0 4px 16px rgba(0,0,0,0.15); transition: transform 0.2s; }
-    .sticky-contrib-btn:hover { transform: scale(1.05); background: #1b3a2d; color: #e0a83e; }
-
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.5rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .card { background: #fff; border: 1px solid var(--creme2); border-radius: 16px; padding: 1.5rem; margin-bottom: 0; }
+    .card h3 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .card p { color: var(--gris); font-size: 0.9rem; margin-top: 0.3rem; }
+    .table-data { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.8rem; }
+    .table-data th { background: var(--vert); color: #fff; padding: 0.5rem; text-align: left; font-size: 0.75rem; font-weight: 600; }
+    .table-data td { padding: 0.5rem; border-bottom: 1px solid var(--creme2); vertical-align: top; }
+    .table-data tr:nth-child(even) td { background: #f9f7f2; }
+    .table-data tr.lekie td { background: #e8f5e9; font-weight: 600; }
+    .table-data td.num { text-align: right; white-space: nowrap; }
+    .note-recherche { background: #fff8e1; border-left: 4px solid var(--or); padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; font-size: 0.88rem; color: var(--gris); }
+    .note-recherche strong { color: var(--vert); }
+    .badge-verifier { display: inline-block; font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; background: #fce4ec; color: #c2185b; }
+    .badge-recherche { display: inline-block; font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; background: #ffebee; color: #c62828; }
+    .chronique-details { background: #f4efe6; border-radius: 12px; padding: 1rem 1.2rem; margin-top: 0.8rem; }
+    .chronique-details summary { cursor: pointer; font-weight: 600; color: var(--vert); font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; }
+    .chronique-liste { list-style: none; padding: 0; margin-top: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.3rem 1rem; font-size: 0.82rem; }
+    .chronique-liste li { padding: 0.35rem 0; border-bottom: 1px dashed var(--creme2); color: var(--gris); }
+    .chronique-liste li.actuel { color: var(--vert); font-weight: 700; background: #e8f5e9; padding: 0.35rem 0.5rem; border-radius: 6px; }
+    .delegation-bloc { background: #fff; border: 1px solid var(--creme2); border-radius: 12px; padding: 1rem 1.2rem; margin-bottom: 0.8rem; }
+    .delegation-bloc h4 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1rem; margin-bottom: 0.3rem; }
+    .delegation-bloc p { font-size: 0.82rem; color: var(--gris2); margin: 0.2rem 0; }
+    footer { color: rgba(255,255,255,0.5); }
     @media (max-width: 700px) {
-      .navbar { flex-direction: row; }
-      .burger { display: block; }
-      .nav-links { display: none; width: 100%; flex-direction: column; align-items: center; }
-      .nav-links.show { display: flex; }
-      .section-title { font-size: 1.5rem; }
-      .grid-3 { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; }
-      .communes-grid { grid-template-columns: 1fr; }
-      .stat-row { flex-direction: column; align-items: flex-start; }
-      .stat-row .value { text-align: left; width: 100%; }
-      .dashboard-grid { grid-template-columns: 1fr 1fr; }
-      .sticky-contrib-btn { bottom: 70px; right: 10px; padding: 0.6rem 1rem; font-size: 0.75rem; }
-      .grid-3-elites { grid-template-columns: 1fr; }
-      #map { height: 300px; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .table-data { font-size: 0.75rem; }
+      .table-data th, .table-data td { padding: 0.35rem; }
+      .chronique-liste { grid-template-columns: 1fr; }
     }
-
-    #pdfContent { background: #fff; padding: 2rem; font-family: 'Inter', sans-serif; }
-    #pdfContent h2 { font-family: 'Cormorant Garamond', serif; color: #1b3a2d; border-left: 4px solid #c4922a; padding-left: 1rem; }
-    #pdfContent table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
-    #pdfContent th { background: #1b3a2d; color: #fff; padding: 0.5rem; text-align: left; }
-    #pdfContent td { padding: 0.4rem; border-bottom: 1px solid #e8dfd0; }
-    #pdfContent .pdf-badge { display: inline-block; font-size: 0.6rem; padding: 0.1rem 0.4rem; border-radius: 12px; font-weight: 600; }
-    .pdf-badge-vert { background: #e8f5e9; color: #2e7d32; }
-    .pdf-badge-orange { background: #fff8e1; color: #856404; }
-    .pdf-badge-rouge { background: #ffebee; color: #c62828; }
-    .projet-pdf { font-size: 0.7rem; color: #64748b; margin: 0.1rem 0; }
   </style>
 </head>
 <body>
 
 <a href="#contenu" class="skip-link">Aller au contenu principal</a>
 
-<div class="status-banner">Plateforme en déploiement progressif — données en cours de consolidation.</div>
-<div class="lekie-en-premier">🟢 Lékié en premier — l'humain, le territoire, la fierté</div>
-
-<nav class="navbar" aria-label="Navigation principale">
-  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
-  <button class="burger" id="burgerBtn" aria-label="Ouvrir le menu de navigation" aria-expanded="false" aria-controls="navLinks" type="button">☰</button>
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="/">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
   <div class="nav-links" id="navLinks">
-    <a href="index.html">Accueil</a>
-    <a href="plateforme.html" class="active">Plateforme</a>
-    <a href="mon-village.html">Mon village</a>
-    <a href="mon-ecole.html">Mon école</a>
-    <a href="observatoire.html">Observatoire</a>
-    <a href="valeurs-et-competences.html">Valeurs et compétences</a>
-    <a href="sport.html">Sport</a>
-    <a href="certification.html">Certification</a>
-    <a href="agriculture.html">🌾 Agriculture</a>
-    <a href="elevage.html">🐄 Élevage</a>
-    <a href="tourisme.html">Tourisme</a>
-    <a href="hommage-andre-marie-mbida.html">Hommage</a>
-    <a href="presse.html">Presse</a>
+    <a href="/">Accueil</a>
+    <a href="ma-lekie">Ma Lékié</a>
+    <a href="ma-region">Ma Région</a>
+    <a href="plateforme" class="active">Plateforme</a>
+    <a href="mon-village">Mon village</a>
+    <a href="mon-ecole">Mon école</a>
+    <a href="observatoire">Observatoire</a>
+    <a href="valeurs-et-competences">Valeurs et compétences</a>
+    <a href="nos-ministres">Nos ministres</a>
+    <a href="sport">Sport</a>
+    <a href="certification">Certification</a>
+    <a href="agriculture">🌾 Agriculture</a>
+    <a href="elevage">🐄 Élevage</a>
+    <a href="tourisme">Tourisme</a>
+    <a href="hommage-andre-marie-mbida">Hommage</a>
+    <a href="presse">Presse</a>
+    <a href="blog">Blog</a>
   </div>
 </nav>
 
-<main id="contenu">
-<div class="container">
+<div class="page-header" id="top">
+  <h1>🏢 <em>Plateforme</em> — les 9 arrondissements</h1>
+  <p>Le département de la Lékié par ses arrondissements : sous-préfectures, délégations d'arrondissement, services déconcentrés</p>
+  <p class="maj">📅 Version du 24 Octobre 2026</p>
+</div>
 
-  <!-- ============================================================ -->
-  <!-- CARTE AVEC TABLEAU DE BORD -->
-  <!-- ============================================================ -->
-  <section id="carte" role="region" aria-labelledby="titre-carte">
-    <h2 class="section-title" id="titre-carte" style="font-size:2rem; margin-bottom:0.5rem;">Plateforme d'Intelligence Territoriale de la Lékié</h2>
+<div class="container" id="contenu">
 
-    <p style="color:#5a5a50; font-size:0.95rem; margin-bottom:1.5rem; max-width:800px;">
-      ISGI-Lékié est la plateforme d'intelligence territoriale du département de la Lékié. Elle documente, organise et valorise les connaissances, les institutions, les territoires et les initiatives afin de produire une mémoire collective utile au développement.
-    </p>
-
-    <div class="dashboard" id="dashboardSection">
-      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
-        <h3>📊 Tableau de bord territorial — Lékié 2025</h3>
-        <button onclick="exportPDF()" class="btn export-btn" style="font-size:0.75rem; padding:0.3rem 1rem;" type="button">📄 Exporter en PDF</button>
-      </div>
-      <div class="dashboard-grid">
-        <div class="dash-item">
-          <div class="dash-label">👥 Population totale</div>
-          <div class="dash-value" id="dashPopulation">...</div>
-          <div class="dash-source">Estimations ISGI-Lékié</div>
-        </div>
-        <div class="dash-item">
-          <div class="dash-label">📚 Établissements scolaires</div>
-          <div class="dash-value" id="dashEcoles">...</div>
-          <div class="dash-source">MINEDUB / PCD</div>
-        </div>
-        <div class="dash-item">
-          <div class="dash-label">🏥 Formations sanitaires</div>
-          <div class="dash-value" id="dashSante">...</div>
-          <div class="dash-source">MINSANTE / PCD</div>
-        </div>
-        <div class="dash-item">
-          <div class="dash-label">🏛️ Communes</div>
-          <div class="dash-value" id="dashCommunes">...</div>
-          <div class="dash-source">Département de la Lékié</div>
-        </div>
-        <div class="dash-item">
-          <div class="dash-label">💰 Investissements documentés</div>
-          <div class="dash-value" id="dashInvestissement">...</div>
-          <div class="dash-source">Projets ISGI-Lékié (base interne)</div>
-        </div>
-      </div>
-      <div style="font-size:0.65rem; color:#94a3b8; margin-top:0.8rem; text-align:center;">
-        Source : Collecte terrain ISGI-Lékié + INS + MINEDUB + MINSANTE.
-        <span class="badge-statut badge-valide">Validé</span>
-        <span class="badge-statut badge-encours">En cours</span>
-        <span class="badge-statut badge-recherche">Donnée recherchée</span>
-      </div>
-    </div>
-
-    <div class="map-wrapper">
-      <div id="map" role="img" aria-label="Carte des 9 communes de la Lékié"></div>
-      <div id="mapFallback" class="map-fallback">
-        <span>🗺️</span>
-        <span>Carte temporairement indisponible</span>
-        <span>Les fiches communes restent accessibles ci-dessous.</span>
-      </div>
-      <noscript>
-        <div class="map-fallback" style="display:flex;">
-          <span>🗺️</span>
-          <span>La carte interactive nécessite JavaScript.</span>
-          <span>Les fiches communes restent accessibles ci-dessous.</span>
-        </div>
-      </noscript>
-    </div>
-    <div class="map-osm-mention">
-      🗺️ Carte OpenStreetMap — <a href="https://www.openstreetmap.org" target="_blank" rel="noopener noreferrer">Contribuez à améliorer la carte de votre territoire</a>
+  <section>
+    <div class="note-recherche">
+      <strong>📌 Note de lecture.</strong> Cette page présente les 9 arrondissements de la Lékié sous l'angle des <strong>services déconcentrés de l'État</strong> : sous-préfectures, délégations d'arrondissement (pour les ministères qui ont ce niveau), gendarmerie, police et structures sanitaires publiques. Pour les collectivités décentralisées (mairies, conseils municipaux, maires), voir <a href="ma-commune" style="color:var(--vert);font-weight:600;">Ma Commune</a>. Pour les données départementales consolidées, voir <a href="ma-lekie" style="color:var(--vert);font-weight:600;">Ma Lékié</a>. Sources : MINSANTE, CDNSS, INS 2025, PCD communaux, SRADDT 2018, ARMP, Banque mondiale, presse officielle. Données manquantes marquées <span class="badge-recherche">Recherché</span> ou <span class="badge-verifier">À vérifier</span>.
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- COMMUNES (9) -->
+  <!-- ARRONDISSEMENT 1 : MONATÉLÉ -->
   <!-- ============================================================ -->
-  <section id="communes" role="region" aria-labelledby="titre-communes">
-    <h2 class="section-title" id="titre-communes">Les 9 communes de la Lékié</h2>
-    <p class="section-note">Données issues de la collecte terrain ISGI-Lékié — en enrichissement continu. <span class="badge-statut badge-valide">Validé</span> <span class="badge-statut badge-encours">En cours</span> <span class="badge-statut badge-contributif">Contributif</span> <span class="badge-statut badge-recherche">Donnée recherchée</span></p>
-    <div class="filtres-bar">
-      <button class="filter-btn active" id="filterAll" data-filter="all" type="button" aria-pressed="true">Toutes</button>
-      <button class="filter-btn" id="filterAlert" data-filter="alert" type="button" aria-pressed="false">⚠️ Alertes</button>
-      <input type="text" id="searchCommune" class="search-input" placeholder="🔍 Rechercher une commune..." aria-label="Rechercher une commune">
-      <span class="compteur" id="compteur" aria-live="polite">9 communes</span>
-    </div>
-    <div id="communesGrid" class="communes-grid"></div>
-  </section>
+  <section>
+    <h2 class="section-title">🏛️ Monatélé</h2>
 
-  <!-- ============================================================ -->
-  <!-- SANTÉ (9 communes) -->
-  <!-- ============================================================ -->
-  <section id="sante" role="region" aria-labelledby="titre-sante">
-    <h2 class="section-title" id="titre-sante">Établissements de santé</h2>
-    <p class="section-note">Données issues du Ministère de la Santé Publique et de la collecte terrain ISGI-Lékié. Voir aussi <a href="observatoire.html">l'Observatoire</a> pour le profil des ménages.</p>
-
-    <div class="grid-2">
-      <div class="card"><h3>🏥 Obala</h3><p>Hôpital de district : <strong>2</strong> (dont réhabilitation 2021)<br>CSI : <strong>13</strong><br>Privé : <strong>4</strong><br>Taux de couverture : ~80% · Vaccinal : ~90%</p></div>
-      <div class="card"><h3>🏥 Monatélé</h3><p>Hôpital de district : <strong>1</strong><br>CSI : <strong>11</strong><br>Privé : <strong>12</strong></p></div>
-      <div class="card"><h3>🏥 Okola</h3><p>Hôpital de district : <strong>1</strong><br>CSI : <strong>4</strong> (Nkolbega, Nkoldjobe, Nkolfem, Nkoltsiba)<br>Privé : <strong>1</strong> (Mvog-Nama II)</p></div>
-      <div class="card"><h3>🏥 Sa'a</h3><p>Hôpital de district : <strong>0</strong><br>CSI : <strong>3</strong> (Lebamzip, Nkolbogo, Nkol-Mvak)<br>Privé : <strong>2</strong> (CEGTI Saint Jérôme de Nkolve, Collège Agricole Bullier)</p></div>
-      <div class="card"><h3>🏥 Ebebda</h3><p>Hôpital de district : <strong>1</strong> (Djounyat)<br>CSI : Leka, Ngoksa'a, Nkang-Efok, Nkol Elouga, Nkom I<br>Privé catholique : Etam-Kouma<br>Privé laïc : 5 centres</p></div>
-      <div class="card"><h3>🏥 Evodoula</h3><p>Hôpital de district : <strong>1</strong><br>CSI : 12 (Nkolassa I, Nkolossa II, Nloudou, Kalngaha, Evodoula, Nkolkougda I, Nkolabang, Nkol Meyos II, Nkol Meyos I, Nkol Ohandja, Mgbabang II, Pongsol)</p></div>
-      <div class="card"><h3>🏥 Elig-Mfomo</h3><p>Hôpital de district : <strong>0</strong><br>CSI : <strong>5</strong> (Elig-Mfomo, Essélé, Nkolmbam, Nkolossan, Okok-Essélé)<br>Privé : <strong>1</strong> (Endama)</p></div>
-      <div class="card"><h3>🏥 Batchenga</h3><p>Hôpital de district : <strong>0</strong><br>CSI : <strong>2</strong> (Batchenga, Elon)<br>Privé : <span style="color:#94a3b8; font-style:italic;">À compléter</span></p></div>
-      <div class="card"><h3>🏥 Lobo</h3><p>Hôpital de district : <strong>0</strong><br>CSI : <strong>3</strong> (Lobo, Nlong, Ozom)<br>Privé : <span style="color:#94a3b8; font-style:italic;">À compléter</span></p></div>
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Sous-préfecture de Monatélé</h3>
+      <p><strong>Sous-préfète :</strong> POUFON née BOMBA NKOLO Odile <span class="badge-statut badge-valide">Décret 2025/357</span></p>
+      <p><strong>Adresse / coordonnées :</strong> <span class="badge-recherche">Recherché</span></p>
     </div>
 
-    <p style="font-size:0.8rem; color:#8a8a80; margin-top:1rem;">📌 <strong>Contribuez à enrichir ces données :</strong> Si vous avez des informations sur les CSI, centres de santé ou structures privées, partagez-les via le formulaire "Contribuer à la plateforme".</p>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- CERTIFICATION ISGI-LÉKIÉ -->
-  <!-- ============================================================ -->
-  <section id="certification" role="region" aria-labelledby="titre-certification">
-    <h2 class="section-title" id="titre-certification">Certification ISGI-Lékié</h2>
-    <p class="section-note">L'ISGI-Lékié certifie les événements et organisations qui font vivre le territoire.</p>
-    <div class="grid-3">
-      <div class="card"><h3>🏆 Championnats de vacances</h3><p>Certification ouverte.</p><a href="sport.html" class="btn" style="margin-top:0.5rem;">En savoir plus sur le sport →</a></div>
-      <div class="card"><h3>🎭 Événements culturels</h3><p>Certification ouverte.</p></div>
-      <div class="card"><h3>🏪 Forums & foires</h3><p>Certification ouverte.</p></div>
-    </div>
-    <div style="text-align:center; margin-top:1rem;">
-      <a href="certification.html" class="btn">🏅 Découvrir la certification ISGI-Lékié →</a>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- MARCHÉS PUBLICS — JPM 2026 -->
-  <!-- ============================================================ -->
-  <section id="marches-publics" role="region" aria-labelledby="titre-marches">
-    <h2 class="section-title" id="titre-marches">📋 Marchés publics — Lékié 2026</h2>
-    <p class="section-note">
-      Extraits des Journaux de Programmation des Marchés (JPM) — MINMAP. <strong>Périmètre : marchés publics programmés par l'État et les communes en 2026.</strong> Voir aussi <a href="observatoire.html">l'Observatoire du BIP</a> pour la synthèse 2016–2026.
-    </p>
-
-    <div class="card" style="margin-bottom:1rem; background:#f4efe6;">
-      <h3>🏛️ Préfecture de la Lékié</h3>
-      <p><strong>Réhabilitation et agrandissement de la Préfecture de Monatélé — Phase I</strong></p>
-      <p>Montant : <strong>75 000 000 FCFA</strong> · Source : BIP MINAT 2026</p>
-      <span class="badge-statut badge-encours">En cours</span>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <h3>📍 Monatélé</h3>
-        <ul style="list-style:none; font-size:0.85rem; margin-top:0.5rem;">
-          <li style="padding:0.4rem 0; border-bottom:1px dashed #e8dfd0;">🏗️ Achèvement case communautaire <strong>Nkolossananga</strong> (phase 2) — <strong>11,6 M FCFA</strong></li>
-          <li style="padding:0.4rem 0; border-bottom:1px dashed #e8dfd0;">🏟️ Aménagement gradins et tribune stade municipal — <strong>29,5 M FCFA</strong></li>
-          <li style="padding:0.4rem 0; border-bottom:1px dashed #e8dfd0;">🛣️ Piste agricole Nkol Owono-Ekani Messina (Lot 2) — <strong>20,2 M FCFA</strong></li>
-          <li style="padding:0.4rem 0;">💧 Forage équipé de PMH à <strong>Elig Bikot</strong> — <strong>6,7 M FCFA</strong></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>📍 Elig-Mfomo</h3>
-        <ul style="list-style:none; font-size:0.85rem; margin-top:0.5rem;">
-          <li style="padding:0.4rem 0;">📚 Dons du CERAC à <strong>28 écoles primaires</strong> — 15 000 cahiers, ordinateurs, lampes solaires <span class="badge-statut badge-valide">Réalisé 2025</span></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>📍 Okola</h3>
-        <ul style="list-style:none; font-size:0.85rem; margin-top:0.5rem;">
-          <li style="padding:0.4rem 0;">🎓 <strong>600 bourses et primes d'excellence</strong> distribuées par le DGA des Aéroports du Cameroun <span class="badge-statut badge-valide">Réalisé 2026</span></li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>📍 Monatélé — Éducation</h3>
-        <ul style="list-style:none; font-size:0.85rem; margin-top:0.5rem;">
-          <li style="padding:0.4rem 0; border-bottom:1px dashed #e8dfd0;">📚 Acquisition de matériels et fournitures scolaires — <strong>10,6 M FCFA</strong> <span class="badge-statut badge-valide">Réalisé 2026</span></li>
-          <li style="padding:0.4rem 0;">🏫 Construction d'un bloc de 2 salles de classe à l'EP de <strong>MONG</strong> — <strong>16,7 M FCFA</strong> <span class="badge-statut badge-valide">Réalisé 2026</span></li>
-        </ul>
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Chronique des sous-préfets de Monatélé (1964-2026)</h3>
+      <div class="chronique-details">
+        <details>
+          <summary>📋 Voir les 22 sous-préfets depuis 1964</summary>
+          <ol class="chronique-liste">
+            <li>1. NDONGO ESSOLA Simon (1964–1966)</li>
+            <li>2. MBIANDA F.R (1966–1968)</li>
+            <li>3. KNOUEDI Gaston (1968–1970) <span class="badge-verifier">À vérifier</span></li>
+            <li>4. ONDOUA ATANGANA Paul (1970–1974)</li>
+            <li>5. BINDI Louis (1974–1976)</li>
+            <li>6. NJOIKOU NJOYA Mama (1976–1977)</li>
+            <li>7. MEDIA NLATE Janvier (1977–1978)</li>
+            <li>8. BELL Alexis (1978–1980)</li>
+            <li>9. BOMOKO MDENDE (1980–1982)</li>
+            <li>10. DJEUMO Fidèle Modeste (1982–1984)</li>
+            <li>11. EKANI NDONGO Apollinaire (1984–1988)</li>
+            <li>12. NSANGO J.M. (1988–1991)</li>
+            <li>13. MVONGO (1991–1994)</li>
+            <li>14. METOMB KEBEG (1994–1998)</li>
+            <li>15. BIYA II Jean-Jacques (1998–2000)</li>
+            <li>16. NZEKI Théophile (2000–2003)</li>
+            <li>17. NGUELE NGUELE Alex (2003–2006)</li>
+            <li>18. ILOUGA Jean Claire (2006–2011)</li>
+            <li>19. NNA MAVEBEME Claude B. (2011–2013)</li>
+            <li>20. SOP MOTE Alexandre (2013–2019)</li>
+            <li>21. Tchoume Tchoume Léo (2019–2025)</li>
+            <li class="actuel">22. POUFON née BOMBA NKOLO Odile (2025 – en poste)</li>
+          </ol>
+        </details>
       </div>
     </div>
 
-    <p style="font-size:0.75rem; color:#94a3b8; margin-top:1rem; font-style:italic;">
-      📌 Source : Journaux de Programmation des Marchés — MINMAP 2026 + Rapports de suivi 2024-2026. Les montants sont indicatifs et peuvent évoluer.
-    </p>
-  </section>
-
-<!-- ============================================================ -->
-<!-- AUTORITÉS LOCALES -->
-<!-- ============================================================ -->
-<section id="autorites" role="region" aria-labelledby="titre-autorites">
-  <h2 class="section-title" id="titre-autorites">Autorités locales</h2>
-  <p class="section-note">Données en cours de vérification. <a href="#contribuer">Contribuer</a></p>
-
-  <!-- PRÉFET -->
-  <div class="grid-2" style="margin-bottom:1.5rem;">
-    <div class="card">
-      <h3>Préfet de la Lékié</h3>
-      <p><strong>Patrick Simou Kamsu</strong></p>
-      <p style="font-size:0.8rem; color:#64748b;">Préfet depuis 2012 (décret du 22 octobre 2012) — <strong>14 ans</strong> en 2026</p>
-      <span class="badge-statut badge-valide">Validé</span>
-    </div>
-    <div class="card">
-      <h3>Adjoints au Préfet</h3>
-      <p><strong>Mme AMINATA TOURE</strong> — 1er Adjoint Préfectoral de Monatélé (nommée le 30 juillet 2026)</p>
-      <p><strong>[À COMPLÉTER]</strong> — 2e adjoint</p>
-      <span class="badge-statut badge-encours">En cours</span>
-    </div>
-  </div>
-
-  <!-- SOUS-PRÉFETS -->
-  <div class="card" style="margin-bottom:1.5rem;">
-    <h3>Sous-préfets (9)</h3>
-    <div class="grid-2" style="margin-top:0.5rem;">
-      <div><strong>Monatélé</strong> : Mme BOMBA NKOLO Odile</div>
-      <div><strong>Obala</strong> : M. KANGA Félix</div>
-      <div><strong>Sa'a</strong> : M. DJIBRILA YAYA Amadou</div>
-      <div><strong>Evodoula</strong> : M. IBAMIÉ Madam</div>
-      <div><strong>Ebebda</strong> : Mme NGO MBEY Mireille</div>
-      <div><strong>Okola</strong> : M. ABOUBACAR MOUSSA</div>
-      <div><strong>Batchenga</strong> : M. PEPTSOPI Emmanuel</div>
-      <div><strong>Elig-Mfomo</strong> : M. NGUIMÉ Joseph</div>
-      <div><strong>Lobo</strong> : Mme KEJA COLLE FEATUM</div>
-    </div>
-    <span class="badge-statut badge-valide" style="margin-top:0.5rem;">Validé</span>
-  </div>
-
-  <!-- CHRONIQUE SOUS-PRÉFECTURE MONATÉLÉ -->
-  <div class="card" style="margin-bottom:1.5rem;">
-    <h3>📜 Chronique de la sous-préfecture de Monatélé (1964–2026)</h3>
-    <p><strong>Sous-préfète actuelle :</strong> Odile MBOMBA NKOLO Épouse POUFON (depuis 2025)</p>
-    <details>
-      <summary style="cursor:pointer; font-weight:600; color:#1b3a2d;">📋 Voir la liste complète (22 sous-préfets)</summary>
-      <div style="margin-top:0.5rem; font-size:0.85rem; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0.2rem 1rem;">
-        <div>1. NDONGO ESSOLA Simon (1964–1966)</div>
-        <div>2. MBIANDA F.R (1966–1968)</div>
-        <div>3. KNOUEDI Gaston (1968–1970) <span class="badge-statut badge-verifier">À vérifier</span></div>
-        <div>4. ONDOUA ATANGANA Paul (1970–1974)</div>
-        <div>5. BINDI Louis (1974–1976)</div>
-        <div>6. NJOIKOU NJOYA Mama (1976–1977)</div>
-        <div>7. MEDIA NLATE Janvier (1977–1978)</div>
-        <div>8. BELL Alexis (1978–1980)</div>
-        <div>9. BOMOKO MDENDE (1980–1982)</div>
-        <div>10. DJEUMO Fidèle Modeste (1982–1984)</div>
-        <div>11. EKANI NDONGO Apollinaire (1984–1988)</div>
-        <div>12. NSANGO J.M. (1988–1991)</div>
-        <div>13. MVONGO (1991–1994)</div>
-        <div>14. METOMB KEBEG (1994–1998)</div>
-        <div>15. BIYA II Jean-Jacques (1998–2000)</div>
-        <div>16. NZEKI Théophile (2000–2003)</div>
-        <div>17. NGUELE NGUELE Alex (2003–2006)</div>
-        <div>18. ILOUGA Jean Claire (2006–2011)</div>
-        <div>19. NNA MAVEBEME Claude B. (2011–2013)</div>
-        <div>20. SOP MOTE Alexandre (2013–2019)</div>
-        <div>21. Tchoume Tchoume Léo (2019–2025)</div>
-        <div>22. Odile MBOMBA NKOLO Epse POUFON (2025–en poste)</div>
-      </div>
-    </details>
-    <span class="badge-statut badge-valide" style="margin-top:0.5rem;">Validé</span>
-  </div>
-
-  <!-- FORCES DE L'ORDRE -->
-  <div class="grid-2" style="margin-bottom:1.5rem;">
-    <div class="card"><h3>👮 Gendarmerie — Compagnie de Monatélé</h3>
-      <p><strong>Commandant :</strong> Baourou Lamine (2025)</p>
-      <p>La Lékié est couverte par la <strong>Compagnie de Gendarmerie de Monatélé</strong>, dont l'État-Major est basé à Monatélé.</p>
-      <p><strong>Brigades territoriales (9) :</strong> Monatélé, Obala, Sa'a, Okola, Elig-Mfomo, Evodoula, Ebebda, Lobo, Batchenga</p>
-      <p><strong>Postes de Gendarmerie (3) :</strong> Nkolve, Ngoksa, Ekabita-Medum</p>
-      <p style="font-size:0.8rem; color:#64748b; margin-top:0.5rem;">📌 <strong>Contribuez :</strong> numéros d'urgence, adresses — partagez via le formulaire "Contribuer".</p>
-      <span class="badge-statut badge-valide">Validé</span>
-    </div>
-    <div class="card"><h3>👮 Police Nationale</h3>
-      <p><strong>Commissariat Spécial de Batchenga</strong> : Commissaire Spécial ATEBA ENGUENO Philippe</p>
-      <p><strong>Adjoint</strong> : ONGONO ENAMA Philémon, Officier de Police 2ᵉ grade</p>
-      <p><strong>Commissariat Spécial d'Obala</strong> : Commissaire Spécial MBO Moïse Deschanel</p>
-      <p><strong>Commissariat de Sécurité Publique</strong> : Monatélé</p>
-      <p style="font-size:0.8rem; color:#64748b; margin-top:0.5rem;">📌 <strong>Contribuez :</strong> Autres commissariats, numéros d'urgence — partagez via le formulaire "Contribuer".</p>
-      <span class="badge-statut badge-valide">Validé</span>
-    </div>
-  </div>
-
-  <!-- MAIRES -->
-  <div class="card" style="margin-bottom:1.5rem;">
-    <h3>Maires</h3>
-    <div class="grid-2" style="margin-top:0.5rem;">
-      <div><strong>Monatélé</strong> : Prosper Parfait Mbassi Bessala</div>
-      <div><strong>Obala</strong> : Francis Gaël Touna</div>
-      <div><strong>Sa'a</strong> : M. Jean Blaise Messina Noah</div>
-      <div><strong>Okola</strong> : M. Vincent De Paul Noa</div>
-      <div><strong>Evodoula</strong> : M. Armand Joachim Ongolo Eloundou</div>
-      <div><strong>Ebebda</strong> : M. Manga Bessala</div>
-      <div><strong>Elig-Mfomo</strong> : M. Stanislas Ayissi</div>
-      <div><strong>Batchenga</strong> : M. Anatole Souga</div>
-      <div><strong>Lobo</strong> : M. Serge Bertin Obono Onguene</div>
-    </div>
-    <span class="badge-statut badge-valide" style="margin-top:0.5rem;">Validé</span>
-  </div>
-
-  <!-- PARLEMENTAIRES -->
-  <div class="card" style="margin-bottom:1.5rem;">
-    <h3>🏛️ Parlementaires de la Lékié</h3>
-    <h4 style="margin-top:0.5rem; font-size:1rem; color:#1b3a2d; font-family:'Cormorant Garamond',serif;">Sénat</h4>
-    <p><strong>Sa Majesté Jean Marie Mama</strong> — Sénateur représentant la Lékié</p>
-    <h4 style="margin-top:0.5rem; font-size:1rem; color:#1b3a2d; font-family:'Cormorant Garamond',serif;">Assemblée Nationale</h4>
-    <p><strong>Lékié Est :</strong> Ndongo Essomba †, Ndongo Eteme Edgard, Ngaba Zogo Salomé</p>
-    <p><strong>Lékié Ouest :</strong> Koa Songo, Tassi Evelyne</p>
-    <span class="badge-statut badge-valide" style="margin-top:0.5rem;">Validé</span>
-  </div>
-
-  <!-- CONSEIL RÉGIONAL -->
-  <div class="card" style="margin-bottom:1.5rem;">
-    <h3>Conseil régional du Centre — Représentants de la Lékié (2025-2030)</h3>
-    <p><strong>ALIMA NGA</strong> — Monatélé</p>
-    <p><strong>ESSOA Eloi Gabriel</strong> — Batchenga</p>
-    <p><strong>NDOUMBA ELOUNDOU</strong> — Ebebda</p>
-    <p><strong>BESSALA FOE Alexandre</strong> — Elig-Mfomo</p>
-    <p><strong>MBALLA MBARGA Yves Bertrand</strong> — Obala</p>
-    <p><strong>Bénédict BELIBI</strong> — Okola</p>
-    <p><strong>Pr. NTUDA EBODE Joseph Vincent</strong> — Lobo</p>
-    <p><strong>Mme ONGOLO Ndzana Régine</strong> — Sa'a</p>
-    <p><strong>Mme MIKOULOU Rachelle</strong> — Evodoula</p>
-    <span class="badge-statut badge-valide">Validé</span>
-  </div>
-
-  <!-- GOUVERNEMENT -->
-  <div class="grid-2" style="margin-bottom:1.5rem;">
-    <div class="card"><h3>Membres du gouvernement</h3>
-      <p>Henri Eyebe Ayissi (MINDCAF), Galax Etoga (SED), Benoît Ndong Soumhet (PR)</p>
-      <span class="badge-statut badge-valide">Validé</span>
-    </div>
-    <div class="card"><h3>Autres hautes responsabilités</h3>
-      <p><strong>Vice-Président de la Commission de la CEMAC</strong> : Charles Assamba Ongodo</p>
-      <p><strong>Directeur Général de la CAA</strong> : Adolphe Noah Ndongo</p>
-      <p><strong>Président du PCA de l'Hôpital Général de Yaoundé</strong> : Essomba Auguste</p>
-      <p><strong>Directeur National de la BEAC</strong> : Pierre Emmanuel Nkoa Ayissi</p>
-      <p><strong>PCA SOCADEL</strong> : Antoine Ntsimi</p>
-      <p><strong>Ambassadeur du Cameroun au Japon</strong> : Pierre Ndzengue</p>
-      <p><strong>Général de Brigade Donatien Melingui Nouma</strong> — Commandant de la 1ère Région Militaire Interarmées (nommé le 03 août 2026)</p>
-      <p><strong>Général de Brigade Valère Nka</strong> — Commandant des Écoles et Centres d'Instruction Interarmées (nommé le 03 août 2026)</p>
-      <p><strong>Général Tobie Gabriel Ngolo Ngomba</strong> — Commandant 2e RMIA</p>
-      <span class="badge-statut badge-valide">Validé</span>
-    </div>
-  </div>
-
-  <!-- ANCIENS MEMBRES DU GOUVERNEMENT -->
-  <div class="card" style="margin-bottom:1.5rem;">
-    <h3>Anciens membres du gouvernement</h3>
-    <p><strong>ELOUNDOU MANI Pierre</strong> — Ancien ministre</p>
-    <p><strong>OLANGUENA AWONO</strong> — Ancien ministre</p>
-    <p><strong>ESSIMI MENYE Lazare</strong> — Ancien ministre</p>
-    <p><strong>Prof. AYINA OHANDJA Max</strong> — Ancien secrétaire d'État</p>
-    <span class="badge-statut badge-valide">Validé</span>
-  </div>
-
-  <!-- ADMINISTRATEURS TERRITORIAUX -->
-  <div class="card" style="margin-bottom:1.5rem;">
-    <h3>👔 Administrateurs territoriaux originaires de la Lékié</h3>
-    <p>Liste des administrateurs territoriaux (préfets, sous-préfets, gouverneurs) originaires du département.</p>
-    <p style="color:#c4922a; font-weight:600;">🔒 Liste à accès restreint — disponible sur demande et validation</p>
-    <a href="#contribuer" style="color:#1b3a2d; text-decoration:none; border:1px solid #c4922a; padding:0.3rem 1rem; border-radius:20px; display:inline-block; margin-top:0.5rem; font-size:0.8rem;">📩 Demander l'accès →</a>
-  </div>
-
-  <!-- ÉLITES ET PERSONNALITÉS -->
-  <div id="elites" style="margin-top:2rem;">
-    <h3 style="font-family:'Cormorant Garamond',serif; color:#1b3a2d; font-size:1.3rem; margin-bottom:0.5rem;">👤 Élites et personnalités de la Lékié</h3>
-    <p class="section-note">⚠️ Compilation en cours — Liste des enfants du terroir occupant des fonctions stratégiques. Voir aussi <a href="mon-village.html" style="color:#1b3a2d; font-weight:600;">Mon village</a> pour les personnalités par groupement.</p>
-
-    <!-- GROUPEMENT EKOT -->
-    <div class="card" style="margin-bottom:1.5rem;">
-      <h3>Groupement EKOT</h3>
-      <div class="grid-3-elites">
-        <div class="elite-item"><strong>ELOUNDOU MANI Pierre</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Ancien Ministre</div>
-        <div class="elite-item"><strong>NDJAGA Jules Marcelin</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Questeur/Région du Centre</div>
-        <div class="elite-item"><strong>NOAH ALIMA Beauregard</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Opérateur économique</div>
-        <div class="elite-item"><strong>OMENGUE MESSANGA Eric</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Chef de division/Consupe</div>
-        <div class="elite-item"><strong>Pr. EBELE ONANA Désiré</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Universitaire</div>
-        <div class="elite-item"><strong>EVENGA ONANA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Diaspora</div>
-        <div class="elite-item"><strong>BEDZIGUI Jules</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Commissaire retraité</div>
-        <div class="elite-item"><strong>BELOBO Jean Pierre</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKONGMESSE</span><br>Enseignant/Banquier</div>
-        <div class="elite-item"><strong>ABENA Sosthène Nicaise</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKONGMESSE</span><br>Diaspora</div>
-        <div class="elite-item"><strong>MILANGA ALIMA Nathalie</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre/CNPS</div>
-        <div class="elite-item"><strong>NDJANA Yves Bertrand</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKONGMENDOK</span><br>Préfet du Moungo</div>
-        <div class="elite-item"><strong>Mme EYEBE Marcelle</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Enseignante retraitée</div>
-        <div class="elite-item"><strong>Dr Vanessa IPALA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Universitaire</div>
-        <div class="elite-item"><strong>MENUNGA Médard</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller municipal</div>
-        <div class="elite-item"><strong>BILANA Denis</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller municipal</div>
-        <div class="elite-item"><strong>Dr BINDZI Henriette</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseillère municipale</div>
-        <div class="elite-item"><strong>NGAH OBIAGA Jérôme</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Mintourl</div>
-        <div class="elite-item"><strong>MOLO Lydiane</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Inspecteur des Douanes</div>
-        <div class="elite-item"><strong>MENYE Placide</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Contrôleur du Trésor</div>
-        <div class="elite-item"><strong>TSALA François</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Avocat</div>
-        <div class="elite-item"><strong>ELOUNDOU MVOGO</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Avocat</div>
-        <div class="elite-item"><strong>NOMO Henri</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre Minfof</div>
-        <div class="elite-item"><strong>Rév. ONANA KOA Didier</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Pasteur EPC</div>
-        <div class="elite-item"><strong>MBASSI Alexandre</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Enseignant</div>
-        <div class="elite-item"><strong>SM NTEDE NDJOMO Michel</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Chef 2è degré</div>
-        <div class="elite-item"><strong>Pr EDOUMA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Enseignant/Univ-Ebolowa</div>
-        <div class="elite-item"><strong>NOAH ELOUNDOU Fabrice</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Sous-préfet de FIFINDA</div>
-        <div class="elite-item"><strong>NGAH KOA Roland</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Sous-préfet Mouanko</div>
-        <div class="elite-item"><strong>MESSINA Ernest</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre MINFI</div>
-        <div class="elite-item"><strong>AWONO Daniel</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Journaliste</div>
-        <div class="elite-item"><strong>OLINGA ONANA Jean</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller Municipal</div>
-        <div class="elite-item"><strong>SM ASSOMO NGONO Fabrice Achylle</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Chef traditionnel</div>
-        <div class="elite-item"><strong>NGA NGONO Yvette Béatrice</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre Contractuel d'Administration</div>
-        <div class="elite-item"><strong>METOUGA NGONO Benjamin</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Délégué Régional MINFOF</div>
-        <div class="elite-item"><strong>MOLE MESSOLO Roger</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>AWONO MBASSI Casimir</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Dir/SAR.SM</div>
-        <div class="elite-item"><strong>TSALA François Xavier</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Avocat</div>
-        <div class="elite-item"><strong>BELIBI Constantin</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Mintrans/Edéa</div>
-        <div class="elite-item"><strong>BELA ZOMO Christian</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre/Minsanté</div>
-      </div>
-    </div>
-
-    <!-- GROUPEMENT MVOG NAMNYIE I -->
-    <div class="card" style="margin-bottom:1.5rem;">
-      <h3>Groupement MVOG NAMNYIE I</h3>
-      <div class="grid-3-elites">
-        <div class="elite-item"><strong>TSALA ELOUNDOU Théophile</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>CT2/Minmap</div>
-        <div class="elite-item"><strong>MESSANGA MANI Pascal</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Procureur du Moungo</div>
-        <div class="elite-item"><strong>SM ETOGA Paul Longin</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre/DGI</div>
-        <div class="elite-item"><strong>NKANGA Benjamin</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>SG Commune de Bafia</div>
-        <div class="elite-item"><strong>AWONGO Etienne</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Opérateur économique</div>
-        <div class="elite-item"><strong>EBO Léopold</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Informaticien</div>
-        <div class="elite-item"><strong>MOLO OMBOLO Gustave</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>A2 Commune Monatélé</div>
-        <div class="elite-item"><strong>Denis Emilien ATANGANA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : Mbognamnye 1 (Monatélé)</span><br>Pdt FDC</div>
-        <div class="elite-item"><strong>Dr Hugues François ONANA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller municipal</div>
-        <div class="elite-item"><strong>ALIMA NGAH Roger</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Douanier retraité</div>
-        <div class="elite-item"><strong>OMBEDE Raphael</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Inspecteur des Douanes</div>
-        <div class="elite-item"><strong>LOMOBILOA Ange</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Pdt CNJC/Monatélé</div>
-        <div class="elite-item"><strong>Némé Nem'Appo</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Diplômé Ens. Supérieur</div>
-        <div class="elite-item"><strong>ABENGUE Souga</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller municipal</div>
-        <div class="elite-item"><strong>Mme AWONO Félicité</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseillère municipale</div>
-        <div class="elite-item"><strong>NGONO Eugène</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Inspecteur des Impôts</div>
-        <div class="elite-item"><strong>ONANANGAH Ambroise</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Minfi</div>
-        <div class="elite-item"><strong>ESSIMI Régis</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Consupe</div>
-        <div class="elite-item"><strong>ELOUNA Paul</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Magistrat/Bafoussam</div>
-        <div class="elite-item"><strong>ELOUNDOU Alphonse</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : ZOBSILA</span><br>Journaliste / DP Anagsama International</div>
-        <div class="elite-item"><strong>Dr ENAMA MBATSOGO</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Gynécologue</div>
-        <div class="elite-item"><strong>EKANI Joseph</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Militaire retraité</div>
-        <div class="elite-item"><strong>Colonel MVIENA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Retraité</div>
-        <div class="elite-item"><strong>NGA Timothée</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Président de Sous-section</div>
-        <div class="elite-item"><strong>Hon NGONO Guy Parfait</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Ancien Député</div>
-        <div class="elite-item"><strong>Hon MVOGO Luc</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Ancien Député</div>
-        <div class="elite-item"><strong>ELOUNDOU ANDEGUE Marie Robert</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Journaliste / DP Essingan</div>
-        <div class="elite-item"><strong>COL. NKE Thomas</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Retraité</div>
-        <div class="elite-item"><strong>TSALA Philippe</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite Extérieure</div>
-        <div class="elite-item"><strong>MBAZOMO Jacques</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>
-Elite extérieure</div>
-        <div class="elite-item"><strong>NFONO MODO Fabrice</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Sous-préfet Loum</div>
-        <div class="elite-item"><strong>ONGUNE Vincent</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Adjoint sous-préfet Dla 5è</div>
-        <div class="elite-item"><strong>EBOLO Jean Claude</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Diplomate retraité</div>
-        <div class="elite-item"><strong>ONAMBELE Luc</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-      </div>
-    </div>
-
-    <!-- GROUPEMENT NKOLKOSSE -->
-    <div class="card" style="margin-bottom:1.5rem;">
-      <h3>Groupement NKOLKOSSE</h3>
-      <div class="grid-3-elites">
-        <div class="elite-item"><strong>SM MBASSI BESSALA Prosper</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Maire</div>
-        <div class="elite-item"><strong>SM ZAMBO Jean Berthelot</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLKOSSE</span><br>Conseiller Régional</div>
-        <div class="elite-item"><strong>Pr. AWONO ONANA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLKOSSE</span><br>Universitaire</div>
-        <div class="elite-item"><strong>Pr. ELE PIERRE</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLKOSSE</span><br>Universitaire</div>
-        <div class="elite-item"><strong>NGA OSSONGO Antoine</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLKOSSE</span><br>Universitaire</div>
-        <div class="elite-item"><strong>MBILONGO NOGO Joachim</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>—</div>
-        <div class="elite-item"><strong>ME ETEME ETEME Simon-Pierre</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>Traducteur international</div>
-        <div class="elite-item"><strong>NDJIE ETEME</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>SG Section RDPC Lékié-Ouest I</div>
-        <div class="elite-item"><strong>LEMA NGONO Blandine</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>Avocat</div>
-        <div class="elite-item"><strong>Laure ATANGANA MENOUNGA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>Ingénieur</div>
-        <div class="elite-item"><strong>CAPITAINE NDOUGA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>Cadre Enam retraité</div>
-        <div class="elite-item"><strong>MBASSI ANDRE</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>Cadre Unicef</div>
-        <div class="elite-item"><strong>AKOLO ABE MAURICE</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLMEYOS</span><br>Ingénieur projet</div>
-        <div class="elite-item"><strong>NOAH EKASSI</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>Armée</div>
-        <div class="elite-item"><strong>OSSONGO Faustin</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>Conseiller municipal</div>
-        <div class="elite-item"><strong>OMBOUDOU PIERRE</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>Pdt OJRDPC</div>
-        <div class="elite-item"><strong>Me NGOLO Désiré</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>Elite</div>
-        <div class="elite-item"><strong>ABBE NGAH NOGO Jean Aimé</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Pdt S/S OJRDPC</div>
-        <div class="elite-item"><strong>ONANA ONANA Sylvestre</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Avocat</div>
-        <div class="elite-item"><strong>ANDELA NDONGO Joseph</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Prêtre</div>
-        <div class="elite-item"><strong>OBAMA NYAGA Joël</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Diplomate</div>
-        <div class="elite-item"><strong>SM MAGNAN AWONO</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre/Mindcaf</div>
-        <div class="elite-item"><strong>CPP ZOGO ONANA André</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : NKOLOSSANAGA</span><br>Médecin</div>
-        <div class="elite-item"><strong>OHANDJA Clément</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Chef de village</div>
-        <div class="elite-item"><strong>MBIA ONANA Bernadin</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>Me ONANA ONANA Léandre</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>NGONO Christophe</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>MODO Pascal Jérémie</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Huissier de justice</div>
-        <div class="elite-item"><strong>Col. AWONO Louis Thadée</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Gardien de prison</div>
-        <div class="elite-item"><strong>MOLO BEYINA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Retraité</div>
-        <div class="elite-item"><strong>NTSAMA Pascal</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>MINDEF</div>
-        <div class="elite-item"><strong>TABESING Martial</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Opérateur économique</div>
-        <div class="elite-item"><strong>OMBOUDOU Innocent</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Universitaire</div>
-        <div class="elite-item"><strong>NDEME AWONO Léonard</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre Mtn/Dla</div>
-        <div class="elite-item"><strong>BELIBI Alexandre</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>ONANA Chantal</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre BICEC</div>
-        <div class="elite-item"><strong>LT NGOLO Boris Joachim</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Retraité</div>
-        <div class="elite-item"><strong>MBASSI MVOGO</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre/MINEDUB</div>
-        <div class="elite-item"><strong>NTEDE ABINA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>MINDEF</div>
-        <div class="elite-item"><strong>ZINGUI Grégoire</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>ONAMBELE Cyprien</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Econome CETIC</div>
-      </div>
-    </div>
-
-    <!-- GROUPEMENT KOUGOUDA -->
-    <div class="card" style="margin-bottom:1.5rem;">
-      <h3>Groupement KOUGOUDA</h3>
-      <div class="grid-3-elites">
-        <div class="elite-item"><strong>BILEGE André Marie</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Pdt Section/Conseiller municipal</div>
-        <div class="elite-item"><strong>Dr BIDJOGO ATANGANA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>ADG/Fondation Ad Lucem</div>
-        <div class="elite-item"><strong>Pr AYINA OHANDJA Louis-Max</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Ancien SETAT/MINTP</div>
-        <div class="elite-item"><strong>Colonel NDZANA MVONDO C.</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre de l'Armée</div>
-        <div class="elite-item"><strong>ELOUNDOU MVONDO Théophile</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>DG/Minmap</div>
-        <div class="elite-item"><strong>Dr AYINA NGOA Jean Paul</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Diplomate</div>
-        <div class="elite-item"><strong>MISSANGA OHANDJA B.</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller Municipal</div>
-        <div class="elite-item"><strong>SM AWONO Norbert</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Opérateur économique</div>
-        <div class="elite-item"><strong>ESSAMA Louis Marie</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Retraité</div>
-        <div class="elite-item"><strong>NGA Victor</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Régisseur/Gare routière</div>
-        <div class="elite-item"><strong>ONANA Magloire</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>—</div>
-        <div class="elite-item"><strong>Colonel EYEBE Didier</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Retraité</div>
-        <div class="elite-item"><strong>Mgr Damase ZINGA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Evêque de Kribi</div>
-        <div class="elite-item"><strong>NGONO Christophe</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Inspecteur des impôts</div>
-        <div class="elite-item"><strong>OKALA Lazare</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller municipal</div>
-        <div class="elite-item"><strong>Mme BINELI Rosalie</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller municipal</div>
-        <div class="elite-item"><strong>AZZAH ESSO Edmond</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Opérateur économique</div>
-        <div class="elite-item"><strong>MVOGO NDZANA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>—</div>
-        <div class="elite-item"><strong>Anne Féconde BILOA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Vice-présidente Pcrn</div>
-        <div class="elite-item"><strong>OLOMO Dieudonné</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre Elecam/Lékié</div>
-        <div class="elite-item"><strong>SM NGAH MESSOBO Francis</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>CPP. ATEBA Pierre</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>AWONO EBANGA Edgard</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Magistrat</div>
-        <div class="elite-item"><strong>COM-DIV ONANA ATANGANA Théophile</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>COM-DIV NYEBE SIMON</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>COM-DIV OSSONG Rémy</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>Dr NDEMBA GISELE</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>BELA MANGA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>MVONDO ELOUNDOU</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-        <div class="elite-item"><strong>MANGA François</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Sous-préfet à la retraite</div>
-        <div class="elite-item"><strong>MIFOUMOU Emmanuel</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Infirmier/HGY</div>
-        <div class="elite-item"><strong>NGABE ATANGANA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>DDES à la retraite</div>
-        <div class="elite-item"><strong>SM MVOGO ETOTOGO</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Chef 2è degré</div>
-        <div class="elite-item"><strong>MINALA Barthelemy</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Expert-comptable</div>
-        <div class="elite-item"><strong>TSANGA Achille</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadastre</div>
-        <div class="elite-item"><strong>BILIGUI TSANGA Christophe</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller municipal</div>
-        <div class="elite-item"><strong>BESSALA Jacques</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-      </div>
-    </div>
-
-    <!-- GROUPEMENT EYEN MEYONG -->
-    <div class="card" style="margin-bottom:1.5rem;">
-      <h3>Groupement EYEN MEYONG</h3>
-      <div class="grid-3-elites">
-        <div class="elite-item"><strong>Hon. TASSI Evelyne</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Député à l'Assemblée Nationale</div>
-        <div class="elite-item"><strong>Mgr AMBASSA NDJODO</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Archevêque de Garoua</div>
-        <div class="elite-item"><strong>SM Célestin Bedzigui</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : Elig Bikoun (Monatélé)</span><br>Chef du village Elig Bikoun · A1/Commune de Monatélé · Président Fondateur PAL</div>
-        <div class="elite-item"><strong>Pr François-Marc MODZOM</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : ELIG BIKOUN</span><br>Directeur ESSTIC</div>
-        <div class="elite-item"><strong>Colonel AFANA Jean Paul</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Retraité</div>
-        <div class="elite-item"><strong>NDZANA Armand Kisito</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Magistrat/CA Littoral</div>
-        <div class="elite-item"><strong>AMBOMO Rachel</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Colonel armée Douala</div>
-        <div class="elite-item"><strong>Dr NGONO Valérie</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Médecin chef CMA AHALA</div>
-        <div class="elite-item"><strong>MBILONGO Daniel Boris</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>DG LABEL COMMUNICATION</div>
-        <div class="elite-item"><strong>Me AFANA Galbert</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller municipal</div>
-        <div class="elite-item"><strong>BODO Tobie</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Sous-préfet à la retraite</div>
-        <div class="elite-item"><strong>ETOUNDI MEVO René</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cabinet Civil/PRC</div>
-        <div class="elite-item"><strong>AYISSI Nicaise</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Ingénieur</div>
-        <div class="elite-item"><strong>NDZANA Armand</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Premier vice-Président à la Cour d'Appel du Littoral</div>
-        <div class="elite-item"><strong>BIFOUNA NDONGO</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Magistrat PT/CA/SU</div>
-        <div class="elite-item"><strong>Abbé Akpa Jean Louis Mélanie</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Prêtre</div>
-        <div class="elite-item"><strong>NGONO BIKOUN Bienvenu</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre aux Impôts</div>
-        <div class="elite-item"><strong>ESSOMBA EWODO Alexis</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>DAG Neptune</div>
-        <div class="elite-item"><strong>TSIMI NDZOMO</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Conseiller municipal</div>
-        <div class="elite-item"><strong>ELOUNDOU Martin</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>—</div>
-        <div class="elite-item"><strong>ELOBO Patrick</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>—</div>
-        <div class="elite-item"><strong>NDJODO Bikoung</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Cadre/Hôpital Général Yaoundé</div>
-        <div class="elite-item"><strong>AMBASSA Bikoun</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Sopecam</div>
-        <div class="elite-item"><strong>MBILONGO Junior Daniel Boris</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Opérateur économique</div>
-        <div class="elite-item"><strong>BIKOUN ENAMA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Avocat</div>
-        <div class="elite-item"><strong>SM ETOGO ETOGO</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Chef 2è degré</div>
-        <div class="elite-item"><strong>SM MEVO EDENE Thomas</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Chef traditionnel</div>
-        <div class="elite-item"><strong>Me NOMO BEYALA</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite/Avocat</div>
-        <div class="elite-item"><strong>Mme AFANA Nicole</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>CONSUPE</div>
-        <div class="elite-item"><strong>Me NDJODO BIKOUN</strong><br><span style="font-size:0.75rem;color:#94a3b8;">Village : À renseigner</span><br>Elite</div>
-      </div>
-    </div>
-    <div style="font-size:0.7rem; color:#94a3b8; margin-top:0.5rem;">
-      📌 Source : Contribution citoyenne — Compilation en cours. Voir aussi <a href="mon-village.html" style="color:#1b3a2d; font-weight:600;">Mon village</a> pour les personnalités par groupement.
-    </div>
-  </div>
-
-</section>
-  <!-- ============================================================ -->
-  <!-- ÉDUCATION -->
-  <!-- ============================================================ -->
-  <section id="education" role="region" aria-labelledby="titre-education">
-    <h2 class="section-title" id="titre-education">La Lékié et l'éducation</h2>
-    <p class="section-note">
-      Vue d'ensemble. Pour le détail par commune, village et établissement, consultez <a href="mon-ecole.html" style="color:#1b3a2d; font-weight:600;">Mon école →</a>
-    </p>
-
-    <div class="card" style="margin-bottom:1.5rem;">
-      <h3>📊 Établissements publics dans la Lékié</h3>
-      <div class="grid-3" style="margin-top:0.5rem;">
-        <div><strong>Écoles maternelles</strong><br><span style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">[À COMPLÉTER]</span></div>
-        <div><strong>Écoles primaires</strong><br><span style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">[À COMPLÉTER]</span></div>
-        <div><strong>Lycées & collèges</strong><br><span style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">[À COMPLÉTER]</span></div>
-      </div>
-      <p style="font-size:0.8rem; color:#8a8a80; margin-top:0.5rem;">Données en cours de collecte auprès des délégations départementales. <a href="mon-ecole.html" style="color:#1b3a2d; font-weight:600;">Voir le détail par commune →</a></p>
-      <span class="badge-statut badge-encours">En cours</span>
-    </div>
-
-    <div class="card" style="margin-bottom:1.5rem;">
-      <h3>📊 Autres statistiques éducatives</h3>
-      <p><strong>Taux de scolarisation</strong> : [À COMPLÉTER]</p>
-      <p><strong>Nombre d'enseignants</strong> : [À COMPLÉTER]</p>
-      <p><strong>Établissements privés</strong> : [À COMPLÉTER]</p>
-      <p style="font-size:0.8rem; color:#8a8a80; margin-top:0.5rem;">Source : Annuaire sectoriel SIGE 2023/2024 — <a href="mon-ecole.html" style="color:#1b3a2d; font-weight:600;">en cours d'intégration</a>.</p>
-      <span class="badge-statut badge-encours">En cours</span>
-    </div>
-
-    <div class="card" style="margin-bottom:1.5rem;">
-      <h3>🌍 Groupes scolaires de la diaspora</h3>
-      <p><strong>Groupe La Trinité (Douala)</strong> — Fondé par un enfant du terroir</p>
-      <p><strong>Groupe La PERLE (Douala)</strong> — Initiative diaspora</p>
-      <span class="badge-statut badge-contributif">Diaspora</span>
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Gendarmerie et Police</h3>
+      <p><strong>Brigade territoriale de Monatélé</strong> — <span class="badge-recherche">Effectif et coordonnées à documenter</span></p>
+      <p><strong>Poste de Gendarmerie de Nkolve</strong> — <span class="badge-recherche">À documenter</span></p>
+      <p><strong>Commissariat de Sécurité Publique de Monatélé</strong> — <span class="badge-recherche">À documenter</span></p>
     </div>
 
     <div class="card">
-      <h3>🏫 Initiatives privées dans la Lékié</h3>
-      <p>[À COMPLÉTER — Écoles privées, centres de formation, initiatives locales]</p>
-      <span class="badge-statut badge-contributif">Contributif</span>
+      <h3>Santé — District de Monatélé</h3>
+      <p><strong>Aires de santé :</strong> 26 <span class="badge-statut badge-valide">INS 2025</span></p>
+      <p><strong>CSI :</strong> 11 (dont 8 fonctionnels) <span class="badge-statut badge-valide">PNDP</span></p>
+      <p><strong>Structures nommément identifiées :</strong> CSI de Ngomo, CSI de Nkog Bong <span class="badge-verifier">MINMAP 2025</span></p>
+      <p><strong>Hôpital de district :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-top: 1rem;">
+      <h3>Délégations d'arrondissement</h3>
+      <p>Agriculture, Élevage, Éducation de base, Enseignements secondaires, Santé, Développement, etc. — <span class="badge-recherche">Recherché</span></p>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- CHEFFERIES -->
+  <!-- ARRONDISSEMENT 2 : OBALA -->
   <!-- ============================================================ -->
-  <section id="chefferies" role="region" aria-labelledby="titre-chefferies">
-    <h2 class="section-title" id="titre-chefferies">Chefferies de la Lékié</h2>
-    <p class="section-note">⚠️ Compilation en cours — données issues des arrêtés de 1981-1982, actualisées avec les nouvelles créations (Elig-Mfomo). Voir aussi <a href="mon-village.html" style="color:#1b3a2d; font-weight:600;">Mon village →</a></p>
+  <section>
+    <h2 class="section-title">🏛️ Obala</h2>
 
-    <div class="chefferies-grid">
-      <div class="chef-card">
-        <h4>👑 Chefferies 1er degré</h4>
-        <p><strong>Endinding</strong> (Obala) — S.M. Guy Tsala Ndzomo</p>
-        <p><strong>Mvog-Nama I</strong> (Lobo) — S.M. Jean-Marie Mama</p>
-        <span class="badge-statut badge-valide">Validé</span>
-      </div>
-      <div class="chef-card">
-        <h4>🏛️ Chefferies 2e degré (31)</h4>
-        <p><strong>Monatélé</strong> (5) · <strong>Obala</strong> (8) · <strong>Sa'a</strong> (7+)</p>
-        <p><strong>Okola</strong> (4+) · <strong>Evodoula</strong> (2) · <strong>Batchenga</strong> (1)</p>
-        <p><strong>Elig-Mfomo</strong> (3 : ESSELE 1, ESSELE 2, MVOGKANI) · <strong>Ebebda</strong> (1+) · <strong>Lobo</strong> (0)</p>
-        <span class="badge-statut badge-encours">En cours</span>
-      </div>
-      <div class="chef-card">
-        <h4>🏘️ Chefferies 3e degré</h4>
-        <p><strong>453</strong> chefferies de 3e degré recensées dans le département.</p>
-        <p style="font-size:0.85rem; color:#64748b;">Retrouvez la liste complète des villages et quartiers dans :</p>
-        <a href="mon-village.html" style="color:#1b3a2d; font-weight:600; text-decoration:underline;">📋 Voir tous les villages →</a>
-        <span class="badge-statut badge-encours" style="margin-top:0.5rem; display:inline-block;">En cours</span>
-      </div>
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Sous-préfecture d'Obala</h3>
+      <p><strong>Sous-préfet :</strong> KANGA Félix <span class="badge-statut badge-valide">ISGI</span></p>
+      <p><strong>Adresse / coordonnées :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Chronique des sous-préfets d'Obala</h3>
+      <p style="font-size: 0.85rem; color: var(--gris2);">Historique non documenté dans le corpus. <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Gendarmerie et Police</h3>
+      <p><strong>Brigade territoriale d'Obala</strong> — <span class="badge-recherche">À documenter</span></p>
+      <p><strong>Commissariat Spécial d'Obala</strong> — Commissaire Spécial MBO Moïse Deschanel <span class="badge-statut badge-valide">ISGI</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Santé — District d'Obala</h3>
+      <p><strong>Aires de santé :</strong> 71 <span class="badge-statut badge-valide">INS 2025</span></p>
+      <p><strong>Hôpitaux de district :</strong> 2 <span class="badge-verifier">SRADDT 2018</span></p>
+      <p><strong>CMA :</strong> 4 <span class="badge-verifier">SRADDT 2018</span></p>
+      <p><strong>CSI privé-confessionnel :</strong> 4 <span class="badge-verifier">SRADDT 2018</span></p>
+      <p><strong>CSI publics :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-top: 1rem;">
+      <h3>Délégations d'arrondissement</h3>
+      <p>Agriculture, Élevage, Éducation de base, Enseignements secondaires, Santé, Développement, etc. — <span class="badge-recherche">Recherché</span></p>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- DÉMOGRAPHIE -->
+  <!-- ARRONDISSEMENT 3 : SA'A -->
   <!-- ============================================================ -->
-  <section id="demographie" role="region" aria-labelledby="titre-demographie">
-    <h2 class="section-title" id="titre-demographie">Démographie de la Lékié</h2>
-    <p class="section-note">Données issues du <strong>3ème Recensement Général de la Population et de l'Habitat (RGPH) de 2005</strong> — BUCREP. Estimations ISGI-Lékié 2025.</p>
-    <div style="background:#fff8e1; border-left:4px solid #c4922a; padding:0.8rem 1rem; margin-bottom:1.5rem; border-radius:8px;">
-      <strong>⚠️ Population résidente uniquement</strong><br>
-      Ne tient pas compte de la diaspora ni des migrations. Les chiffres 2025 sont des estimations ISGI-Lékié basées sur un taux de croissance de 2,6% par an (taux national moyen, en l'absence de données locales).
-    </div>
-    <div class="table-scroll">
-      <table style="width:100%; border-collapse:collapse;">
-        <caption style="caption-side:top; text-align:left; font-size:0.85rem; color:#5a5a50; margin-bottom:0.5rem; font-style:italic;">Évolution de la population par commune (RGPH 2005 — estimation 2025)</caption>
-        <thead>
-          <tr style="background:#1b3a2d; color:white;">
-            <th scope="col">Commune</th>
-            <th scope="col">Population 2005</th>
-            <th scope="col">Estimation 2025</th>
-            <th scope="col">Évolution (%)</th>
-            <th scope="col">Évolution (pers.)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Monatélé</td><td>36 933</td><td>≈ 61 700</td><td>+67 %</td><td>+24 767</td></tr>
-          <tr><td>Obala</td><td>78 932</td><td>≈ 131 800</td><td>+67 %</td><td>+52 868</td></tr>
-          <tr><td>Sa'a</td><td>63 967</td><td>≈ 106 800</td><td>+67 %</td><td>+42 833</td></tr>
-          <tr><td>Evodoula</td><td>18 899</td><td>≈ 31 600</td><td>+67 %</td><td>+12 701</td></tr>
-          <tr><td>Ebebda</td><td>21 368</td><td>≈ 35 700</td><td>+67 %</td><td>+14 332</td></tr>
-          <tr><td>Okola</td><td>41 087</td><td>≈ 68 600</td><td>+67 %</td><td>+27 513</td></tr>
-          <tr><td>Batchenga</td><td>9 303</td><td>≈ 15 500</td><td>+67 %</td><td>+6 197</td></tr>
-          <tr><td>Elig-Mfomo</td><td>16 161</td><td>≈ 27 000</td><td>+67 %</td><td>+10 839</td></tr>
-          <tr><td>Lobo</td><td>10 157</td><td>≈ 17 000</td><td>+67 %</td><td>+6 843</td></tr>
-          <tr style="background:#f4efe6; font-weight:700;"><td>TOTAL LÉKIÉ</td><td>296 807</td><td>≈ 495 700</td><td>+67 %</td><td>+198 893</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+  <section>
+    <h2 class="section-title">🏛️ Sa'a</h2>
 
-  <!-- ============================================================ -->
-  <!-- CHRONIQUE PRÉFECTORALE -->
-  <!-- ============================================================ -->
-  <section id="histoire" role="region" aria-labelledby="titre-histoire">
-    <h2 class="section-title" id="titre-histoire">Chronique préfectorale — Lékié (1964–2026)</h2>
-    <p class="section-note">23 préfets depuis la création du département. <span class="badge-statut badge-encours">En cours de vérification</span></p>
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Sous-préfecture de Sa'a</h3>
+      <p><strong>Sous-préfet :</strong> DJIBRILA YAYA Amadou <span class="badge-statut badge-valide">ISGI</span></p>
+      <p><strong>Adresse / coordonnées :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
 
-    <div class="chronique-full">
-      <p class="auteur"><strong>Par Dominique AWONO ESSONO</strong> — Projet Initiative Stratégique Lékié – <em>Forum Mémorandum</em></p>
-      <p>Le département de la Lékié a 62 ans et a connu 23 préfets qui ont eu à Obala, jadis ville administrative, une résidence (août 1964 – janvier 1968) jusqu'à l'installation à Monatélé, Chef lieu du département, après la construction des infrastructures (janvier 1968).</p>
-      <h4>📌 Deux grandes périodes historiques</h4>
-      <ul><li><strong>Régime AHIDJO (1964–1982)</strong> : consolidation post-indépendance, mandats souvent courts, rotations fréquentes.</li><li><strong>Régime BIYA (1982 – aujourd'hui)</strong> : diversité des durées, mandats courts et exceptionnellement longs, équilibre entre rotation et continuité stratégique.</li></ul>
-      <h4>📊 Répartition globale par durée de mandat</h4>
-      <ul><li><strong>Moins de 1 an</strong> : NJOH SAMUEL, ENOGUENE JUSTIN, MENGUE MEKA JEAN ROBERT (3 préfets, 13%)</li><li><strong>1 à 2 ans</strong> : KOUNGOU EDIMA FERDINAND, ENAM MBA'A SAMUEL, BASSILEKIN LOUIS PAUL, NKENDJUO LUC, MOUT EMGBANG PIERRE JILL, ABATE ABATE LAZARE, BEKONO MAMA CLAUDE, MVONDO JUSTIN, MVONGO GRÉGOIRE (9 préfets, 39%)</li><li><strong>2 à 5 ans</strong> : ABENA HUBERT CLAUDE, SIMO NJONOU Jacques, MOTA RICHARD, MENYE Samuel, NOUBISSI AUGUSTIN, MINTYA SAMUEL, OLAMA OMGBWA FRANÇOIS, HAMAN KAIGAMA Gilbert, MBA BERNARD MARIE (9 préfets, 39%)</li><li><strong>Plus de 5 ans</strong> : ALHADJI Mamat, SIMOU KAMSU PATRICK (2 préfets, 9%)</li></ul>
-      <p><strong>Durée moyenne :</strong> ~3 ans 3 mois · <strong>Durée médiane :</strong> ~2 ans 6 mois · <strong>Écart maximal :</strong> 14 ans</p>
-      <h4>📜 Liste complète des 23 préfets</h4>
-      <div class="liste-prefets">
-        <div>1. NJOH SAMUEL (3 mois)</div>
-        <div>2. ENOGUENE JUSTIN (5 mois 18 j)</div>
-        <div>3. MENGUE MEKA JEAN ROBERT (9 mois 27 j)</div>
-        <div>4. KOUNGOU EDIMA FERDINAND (1 an 10 mois)</div>
-        <div>5. BASSILEKIN LOUIS PAUL (1 an 1 mois)</div>
-        <div>6. ENAM MBA'A SAMUEL (1 an 4 mois 17 j)</div>
-        <div>7. ABATE ABATE LAZARE (1 an 8 mois 6 j)</div>
-        <div>8. MVONDO JUSTIN (1 an 5 mois)</div>
-        <div>9. MVONGO GRÉGOIRE (1 an 11 mois 20 j)</div>
-        <div>10. MOUT EMGBANG PIERRE JILL (1 an 4 mois 4 j)</div>
-        <div>11. MENYE Samuel (2 ans 4 mois 22 j)</div>
-        <div>12. MOTA RICHARD (2 ans 1 mois)</div>
-        <div>13. ABENA HUBERT CLAUDE (2 ans 3 mois 6 j)</div>
-        <div>14. SIMO NJONOU Jacques (3 ans 3 mois 29 j)</div>
-        <div>15. NKENDJUO LUC (1 an 3 mois 6 j)</div>
-        <div>16. NOUBISSI AUGUSTIN (3 ans 3 mois 6 j)</div>
-        <div>17. MINTYA SAMUEL (4 ans 6 mois 1 j)</div>
-        <div>18. OLAMA OMGBWA FRANÇOIS (3 ans 5 mois 22 j)</div>
-        <div>19. HAMAN KAIGAMA Gilbert (2 ans 3 mois 12 j)</div>
-        <div>20. BEKONO MAMA CLAUDE (1 an 4 mois)</div>
-        <div>21. MBA BERNARD MARIE (2 ans 4 mois 7 j)</div>
-        <div>22. ALHADJI Mamat (8 ans 9 mois 2 j)</div>
-        <div><strong>23. SIMOU KAMSU PATRICK (14 ans — 2012–2026, en poste)</strong></div>
-      </div>
-      <h4>📌 En guise de synthèse stratégique</h4>
-      <p>La majorité des préfets (78%) ont exercé entre 1 et 5 ans.</p>
-      <ul><li><strong>Sous AHIDJO :</strong> rotation rapide, mandats courts, consolidation administrative et alignement centralisé.</li><li><strong>Sous BIYA :</strong> variabilité des mandats, équilibre entre affectations stratégiques et continuité institutionnelle.</li></ul>
-      <div class="contact">📌 <strong>Ce document est en cours d'élaboration. Vous pouvez participer à son amélioration.</strong><br>📞 697.24.71.46 / 675.77.84.52</div>
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Chronique des sous-préfets de Sa'a</h3>
+      <p style="font-size: 0.85rem; color: var(--gris2);">Historique non documenté dans le corpus. <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Gendarmerie et Police</h3>
+      <p><strong>Brigade territoriale de Sa'a</strong> — <span class="badge-recherche">À documenter</span></p>
+      <p><strong>Poste de Gendarmerie de Ngoksa</strong> — <span class="badge-recherche">À documenter</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Santé — District de Sa'a</h3>
+      <p><strong>Hôpital de district :</strong> 1 <span class="badge-statut badge-valide">CDNSS/MINSANTE</span></p>
+      <p><strong>Aires de santé identifiées :</strong> Sa'a, Nlong-Onambele, Nkolmgbana <span class="badge-statut badge-valide">Étude NIH</span></p>
+      <p><strong>Aires de santé (nombre total) :</strong> au moins 10 <span class="badge-verifier">SRADDT 2018</span></p>
+      <p><strong>CSI privé-confessionnel :</strong> 5 <span class="badge-verifier">SRADDT 2018</span></p>
+      <p><strong>CSI privé-laïc :</strong> 2 <span class="badge-verifier">SRADDT 2018</span></p>
+      <p><strong>CSI publics (nombre total) :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-top: 1rem;">
+      <h3>Délégations d'arrondissement</h3>
+      <p>Agriculture, Élevage, Éducation de base, Enseignements secondaires, Santé, Développement, etc. — <span class="badge-recherche">Recherché</span></p>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- ALERTES -->
+  <!-- ARRONDISSEMENT 4 : OKOLA -->
   <!-- ============================================================ -->
-  <section id="alertes" role="region" aria-labelledby="titre-alertes">
-    <h2 class="section-title" id="titre-alertes">Alertes citoyennes</h2>
-    <div class="alertes-list">
-      <div class="alerte-item"><div class="alerte-titre">🚨 Coupe de route signalée</div><div class="alerte-lieu">Axe Batchenga — Obala</div><span class="badge-alerte badge-nonverifie">⚠️ Non vérifié</span></div>
-      <div class="alerte-item"><div class="alerte-titre">🏚️ Pont en ruine — Nkolbisson</div><div class="alerte-lieu">Monatélé</div><span class="badge-alerte badge-nonverifie">⚠️ Non vérifié</span></div>
-      <div class="alerte-item verifie"><div class="alerte-titre">🏫 École publique d'Evodoula : toiture effondrée</div><div class="alerte-lieu">Evodoula</div><span class="badge-alerte badge-verifie">✅ Vérifié ISGI-Lékié</span></div>
+  <section>
+    <h2 class="section-title">🏛️ Okola</h2>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Sous-préfecture d'Okola</h3>
+      <p><strong>Sous-préfet :</strong> ABOUBAKAR MOUSSA <span class="badge-statut badge-valide">ISGI</span></p>
+      <p><strong>Adresse / coordonnées :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Chronique des sous-préfets d'Okola</h3>
+      <p style="font-size: 0.85rem; color: var(--gris2);">Historique non documenté dans le corpus. <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Gendarmerie et Police</h3>
+      <p><strong>Brigade territoriale d'Okola</strong> — <span class="badge-recherche">À documenter</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Santé — District d'Okola</h3>
+      <p><strong>Aires de santé :</strong> 11 (3 périurbaines + 8 rurales) <span class="badge-statut badge-valide">Étude universitaire</span></p>
+      <p><strong>Structures (public + privé) :</strong> ~40 <span class="badge-verifier">Étude universitaire</span></p>
+      <p><strong>Hôpital de district :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-top: 1rem;">
+      <h3>Délégations d'arrondissement</h3>
+      <p>Agriculture, Élevage, Éducation de base, Enseignements secondaires, Santé, Développement, etc. — <span class="badge-recherche">Recherché</span></p>
     </div>
   </section>
 
   <!-- ============================================================ -->
-  <!-- GOOGLE FORMS -->
+  <!-- ARRONDISSEMENT 5 : EBEBDA -->
   <!-- ============================================================ -->
-  <section id="contribuer" role="region" aria-labelledby="titre-contribuer">
-    <h2 class="section-title" id="titre-contribuer">Contribuer à la plateforme</h2>
-    <div class="form-contrib">
-      <div class="form-grid">
-        <div class="form-col">
-          <h4>📝 Construire</h4>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScaCGKHAOUDOWqXFKcTf2WSBkhme6mTCgkrHm7a-TPv85ETYA/viewform" target="_blank" rel="noopener noreferrer" class="form-btn">📝 Contribuer</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdmB9F306JTUAsAp57Y6-fE5RjLINTBJ11OoL5B318qPGSBdg/viewform" target="_blank" rel="noopener noreferrer" class="form-btn">👔 Annuaire professionnel</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRC96ViA9I0QHSnGAbA4iTa_QMs0SonWxxqhi0TBzo4UnX9Q/viewform" target="_blank" rel="noopener noreferrer" class="form-btn">🏅 Demande de certification</a>
-        </div>
-        <div class="form-col">
-          <h4>⚡ Agir</h4>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSd_Tt1z9QbVRZtlnRr3V3PTTV4Onk1ppz5DViiYO73Izt-x4g/viewform" target="_blank" rel="noopener noreferrer" class="form-btn agir">📢 Signaler une alerte</a>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScuv_rVQXVOjv6mxNFU0yA0BqTYrHLYNzzxqBY7DM4u2xEQnA/viewform" target="_blank" rel="noopener noreferrer" class="form-btn agir">📩 Contact / Partenariat</a>
-        </div>
-      </div>
+  <section>
+    <h2 class="section-title">🏛️ Ebebda</h2>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Sous-préfecture d'Ebebda</h3>
+      <p><strong>Sous-préfète :</strong> NGO MBEY Mireille Sandrine <span class="badge-statut badge-valide">ISGI</span></p>
+      <p><strong>Adresse / coordonnées :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Chronique des sous-préfets d'Ebebda</h3>
+      <p style="font-size: 0.85rem; color: var(--gris2);">Historique non documenté dans le corpus. <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Gendarmerie et Police</h3>
+      <p><strong>Brigade territoriale d'Ebebda</strong> — <span class="badge-recherche">À documenter</span></p>
+      <p><strong>Poste de Gendarmerie d'Ekabita-Medum</strong> — <span class="badge-recherche">À documenter</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Santé — District d'Ebebda</h3>
+      <p><strong>Aires de santé :</strong> 11 <span class="badge-statut badge-valide">INS 2025</span></p>
+      <p><strong>CSI privé-laïc :</strong> 4 <span class="badge-verifier">SRADDT 2018</span></p>
+      <p><strong>Hôpital de district :</strong> 1 (Djounyat) <span class="badge-verifier">Ancien plateforme</span></p>
+      <p><strong>CSI publics :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-top: 1rem;">
+      <h3>Délégations d'arrondissement</h3>
+      <p>Agriculture, Élevage, Éducation de base, Enseignements secondaires, Santé, Développement, etc. — <span class="badge-recherche">Recherché</span></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARRONDISSEMENT 6 : EVODOULA -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🏛️ Evodoula</h2>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Sous-préfecture d'Evodoula</h3>
+      <p><strong>Sous-préfet :</strong> IBAMIÉ Madam <span class="badge-statut badge-valide">ISGI</span></p>
+      <p><strong>Adresse / coordonnées :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Chronique des sous-préfets d'Evodoula</h3>
+      <p style="font-size: 0.85rem; color: var(--gris2);">Historique non documenté dans le corpus. <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Gendarmerie et Police</h3>
+      <p><strong>Brigade territoriale d'Evodoula</strong> — <span class="badge-recherche">À documenter</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Santé — District d'Evodoula</h3>
+      <p><strong>Aires de santé :</strong> 11 <span class="badge-statut badge-valide">INS 2025</span></p>
+      <p><strong>Hôpitaux de district :</strong> 2 <span class="badge-verifier">SRADDT 2018</span></p>
+      <p><strong>CSI privé-confessionnel :</strong> 2 <span class="badge-verifier">SRADDT 2018</span></p>
+      <p><strong>CSI publics :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-top: 1rem;">
+      <h3>Délégations d'arrondissement</h3>
+      <p>Agriculture, Élevage, Éducation de base, Enseignements secondaires, Santé, Développement, etc. — <span class="badge-recherche">Recherché</span></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARRONDISSEMENT 7 : ELIG-MFOMO -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🏛️ Elig-Mfomo</h2>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Sous-préfecture d'Elig-Mfomo</h3>
+      <p><strong>Sous-préfet :</strong> NGUIMÉ Joseph <span class="badge-statut badge-valide">ISGI</span></p>
+      <p><strong>Adresse / coordonnées :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Chronique des sous-préfets d'Elig-Mfomo</h3>
+      <p style="font-size: 0.85rem; color: var(--gris2);">Historique non documenté dans le corpus. <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Gendarmerie et Police</h3>
+      <p><strong>Brigade territoriale d'Elig-Mfomo</strong> — <span class="badge-recherche">À documenter</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Santé — District d'Elig-Mfomo</h3>
+      <p><strong>Aires de santé :</strong> 9 <span class="badge-statut badge-valide">INS 2025</span></p>
+      <p><strong>Hôpital de district :</strong> 1 <span class="badge-statut badge-valide">MINSANTE / PCD</span></p>
+      <p><strong>CMA :</strong> 1 (espace urbain) <span class="badge-statut badge-valide">PCD Elig-Mfomo</span></p>
+      <p><strong>Dispensaire :</strong> 1 (espace urbain) <span class="badge-statut badge-valide">PCD Elig-Mfomo</span></p>
+      <p><strong>CSI villages :</strong> 6 <span class="badge-statut badge-valide">PCD Elig-Mfomo</span></p>
+      <p><strong>CSI nommément identifiés :</strong> Niga, Kokodo II, Mbanedouma, Nkengue, Endama, Komo-Essele <span class="badge-statut badge-valide">PCD + ARMP</span></p>
+      <p><strong>Personnel public :</strong> 14 agents (2 généralistes, 5 infirmiers, 4 AS, 3 autres) <span class="badge-verifier">SRADDT 2018</span></p>
+    </div>
+
+    <div class="card" style="margin-top: 1rem;">
+      <h3>Délégations d'arrondissement</h3>
+      <p>Agriculture, Élevage, Éducation de base, Enseignements secondaires, Santé, Développement, etc. — <span class="badge-recherche">Recherché</span></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARRONDISSEMENT 8 : BATCHENGA -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🏛️ Batchenga</h2>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Sous-préfecture de Batchenga</h3>
+      <p><strong>Sous-préfet :</strong> PEPTSOPI Emmanuel <span class="badge-statut badge-valide">ISGI</span></p>
+      <p><strong>Adresse / coordonnées :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Chronique des sous-préfets de Batchenga</h3>
+      <p style="font-size: 0.85rem; color: var(--gris2);">Historique non documenté dans le corpus. <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Gendarmerie et Police</h3>
+      <p><strong>Brigade territoriale de Batchenga</strong> — <span class="badge-recherche">À documenter</span></p>
+      <p><strong>Commissariat Spécial de Batchenga</strong> — Commissaire Spécial ATEBA ENGUENO Philippe <span class="badge-statut badge-valide">ISGI</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Santé — District de Batchenga</h3>
+      <p><strong>CMA de Balong</strong> (médecin + 4 infirmiers) <span class="badge-verifier">Banque mondiale</span></p>
+      <p><strong>CSI d'Otibili</strong> <span class="badge-verifier">PCD Batchenga</span></p>
+      <p><strong>CSI de Nkolmekok</strong> <span class="badge-verifier">PCD Batchenga</span></p>
+      <p><strong>Centre de santé privé de Balong 1</strong> <span class="badge-verifier">Banque mondiale</span></p>
+      <p><strong>Poste de santé avancé de Ndji</strong> (en projet) <span class="badge-verifier">Banque mondiale</span></p>
+      <p><strong>Nombre total de structures :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-top: 1rem;">
+      <h3>Délégations d'arrondissement</h3>
+      <p>Agriculture, Élevage, Éducation de base, Enseignements secondaires, Santé, Développement, etc. — <span class="badge-recherche">Recherché</span></p>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- ARRONDISSEMENT 9 : LOBO -->
+  <!-- ============================================================ -->
+  <section>
+    <h2 class="section-title">🏛️ Lobo</h2>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Sous-préfecture de Lobo</h3>
+      <p><strong>Sous-préfète :</strong> KEJA COLLE FEATUM <span class="badge-statut badge-valide">ISGI</span></p>
+      <p><strong>Adresse / coordonnées :</strong> <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Chronique des sous-préfets de Lobo</h3>
+      <p style="font-size: 0.85rem; color: var(--gris2);">Historique non documenté dans le corpus. <span class="badge-recherche">Recherché</span></p>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Gendarmerie et Police</h3>
+      <p><strong>Brigade territoriale de Lobo</strong> — <span class="badge-recherche">À documenter</span></p>
+    </div>
+
+    <div class="card">
+      <h3>Santé — District de Lobo</h3>
+      <p><strong>Total formations sanitaires :</strong> 9 <span class="badge-statut badge-valide">PCD Lobo 2019</span></p>
+      <p><strong>CMA :</strong> 1 <span class="badge-statut badge-valide">NADA / PCD Lobo</span></p>
+      <p><strong>CSI publics :</strong> 5 <span class="badge-statut badge-valide">PCD Lobo 2019</span></p>
+      <p><strong>Centre de santé catholique :</strong> 1 <span class="badge-statut badge-valide">PCD Lobo 2019</span></p>
+      <p><strong>Centres de santé privés :</strong> 2 <span class="badge-statut badge-valide">PCD Lobo 2019</span></p>
+    </div>
+
+    <div class="card" style="margin-top: 1rem;">
+      <h3>Délégations d'arrondissement</h3>
+      <p>Agriculture, Élevage, Éducation de base, Enseignements secondaires, Santé, Développement, etc. — <span class="badge-recherche">Recherché</span></p>
+    </div>
+  </section>
+
+  <section id="contribuer">
+    <h2 class="section-title">📢 Contribuer à Plateforme</h2>
+    <div class="note-recherche">
+      <p><strong>Vous disposez de sources officielles sur les services déconcentrés de la Lékié (sous-préfectures, délégations d'arrondissement, gendarmerie, police, santé) ?</strong> Votre contribution est précieuse.</p>
+    </div>
+    <div style="text-align: center; margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center;">
+      <a href="#contribuer" class="btn">📢 Proposer une contribution</a>
+      <a href="#top" class="btn btn-outline">⬆ Retour en haut</a>
     </div>
   </section>
 
 </div>
-</main>
-
-<!-- BOUTON STICKY CONTRIBUER -->
-<a href="#contribuer" class="sticky-contrib-btn">📢 Contribuer</a>
 
 <footer>
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
-  <p style="margin-top: 0.3rem;">Dernière mise à jour : <time datetime="2026-10-11">11 Octobre 2026</time></p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 24 Octobre 2026</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
 
 <a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
 
 <script>
-  (function() {
-    'use strict';
-
-    // ============================================================
-    // MENU BURGER
-    // ============================================================
-    var burger = document.getElementById('burgerBtn');
-    var navLinks = document.getElementById('navLinks');
-    if (burger && navLinks) {
-      burger.addEventListener('click', function() {
-        var isOpen = navLinks.classList.toggle('show');
-        burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        burger.setAttribute('aria-label', isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
-        burger.textContent = isOpen ? '✕' : '☰';
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
       });
-      navLinks.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
-          navLinks.classList.remove('show');
-          burger.setAttribute('aria-expanded', 'false');
-          burger.setAttribute('aria-label', 'Ouvrir le menu de navigation');
-          burger.textContent = '☰';
-        });
-      });
-      document.addEventListener('click', function(e) {
-        if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
-          navLinks.classList.remove('show');
-          burger.setAttribute('aria-expanded', 'false');
-          burger.setAttribute('aria-label', 'Ouvrir le menu de navigation');
-          burger.textContent = '☰';
-        }
-      });
-    }
-
-    // ============================================================
-    // RETOUR EN HAUT
-    // ============================================================
-    var backToTop = document.getElementById('backToTop');
-    if (backToTop) {
-      window.addEventListener('scroll', function() {
-        backToTop.classList.toggle('show', window.scrollY > 300);
-      }, { passive: true });
-      backToTop.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    // ============================================================
-    // BASE DE DONNÉES DES COMMUNES (source unique de vérité)
-    // ============================================================
-    var communesDetail = [
-      {
-        nom: "Monatélé", id: "monatele", chefLieu: true, lat: 4.1875, lng: 11.2525,
-        creation: "1964 (source à confirmer)",
-        maire: "Prosper Parfait Mbassi Bessala", superficie: "375 km²", population: 61700,
-        groupements: ["Ekot", "Eyen-Meyong", "Kougouda", "Mvog-Onan-menye", "Nkolkosse"],
-        ecoles: { publiques: 31, privees: 4, maternelles: 24, total: 59 },
-        sante: { csi: 11, hopital: 1, prive: 12, total: 24 },
-        projets: [
-          { nom: "Adduction d'eau Monatélé phase 2", annee: 2023, montant: "180000000", porteur: "MINEE" }
-        ],
-        color: "#e41a1c",
-        statut: "valide"
-      },
-      {
-        nom: "Obala", id: "obala", chefLieu: false, lat: 4.1589, lng: 11.5339,
-        creation: "1955 (source à confirmer)",
-        maire: "Francis Gaël Touna", superficie: "475 km²", population: 133014,
-        groupements: ["Endinding", "Obala", "Nkolfep", "Efok", "Loua", "Mendum", "Nkol Edouma"],
-        ecoles: { publiques: 19, privees: 12, maternelles: 5, total: 36 },
-        sante: { csi: 13, hopital: 2, prive: 4, total: 19 },
-        projets: [
-          { nom: "Réhabilitation piste rurale Obala – Sa'a", annee: 2025, montant: "175000000", porteur: "FEICOM" },
-          { nom: "Construction école publique", annee: 2024, montant: "195000000", porteur: "MINEDUB" }
-        ],
-        color: "#377eb8",
-        statut: "valide"
-      },
-      {
-        nom: "Sa'a", id: "saa", chefLieu: false, lat: 4.117, lng: 11.417,
-        creation: "17 août 1952 (Arrêté n°537)",
-        maire: "M. Jean Blaise Messina Noah", superficie: "583,9 km²", population: 93113,
-        groupements: ["Engab", "Kouna-Odzolo", "Lebamzip", "Nkolbogo", "Nkolmvack", "Ebombo", "Sa'a"],
-        ecoles: { publiques: 47, privees: 12, maternelles: 32, total: 91 },
-        sante: { csi: 19, hopital: 1, prive: 10, total: 30 },
-        projets: [
-          { nom: "Construction bloc pédagogique", annee: 2022, montant: "155000000", porteur: "MINEDUB" }
-        ],
-        color: "#4daf4a",
-        statut: "valide"
-      },
-      {
-        nom: "Okola", id: "okola", chefLieu: false, lat: 4.0167, lng: 11.3833,
-        creation: "21 août 1952 (Arrêté n°537)",
-        maire: "M. Vincent De Paul Noa", superficie: "605 km²", population: 91736,
-        groupements: ["Mvog-Namnye III", "Eton-Beti", "Mvog-Nama II"],
-        ecoles: { publiques: 62, privees: 2, maternelles: 43, total: 107 },
-        sante: { csi: 21, hopital: 1, prive: 4, total: 26 },
-        projets: [
-          { nom: "Cité municipale d'Okola", annee: 2024, montant: "285000000", porteur: "FEICOM" }
-        ],
-        color: "#ffff33",
-        statut: "valide"
-      },
-      {
-        nom: "Evodoula", id: "evodoula", chefLieu: false, lat: 4.083, lng: 11.2,
-        creation: "À vérifier (avant 1951)",
-        maire: "M. Armand Joachim Ongolo Eloundou", superficie: "250 km²", population: 31600,
-        groupements: ["Ntsas Endo", "Mvog-Namnye II"],
-        ecoles: { publiques: 21, privees: 0, maternelles: 9, total: 30 },
-        sante: { csi: 12, hopital: 1, prive: 0, total: 13 },
-        projets: [
-          { nom: "Hôtel de Ville d'Evodoula", annee: 2025, montant: "282000000", porteur: "FEICOM" }
-        ],
-        color: "#984ea3",
-        statut: "valide"
-      },
-      {
-        nom: "Ebebda", id: "ebebda", chefLieu: false, lat: 4.35, lng: 11.2,
-        creation: "25 novembre 1993",
-        maire: "M. Manga Bessala", superficie: "250 km²", population: 50000,
-        groupements: ["Abam-Ngoe", "Nkolkosse", "Abam", "Benyabega", "Sa'a"],
-        ecoles: { publiques: 28, privees: 2, maternelles: 19, total: 49 },
-        sante: { csi: 11, hopital: 1, prive: 6, total: 18 },
-        projets: [
-          { nom: "Hôtel de Ville d'Ebebda (clôture)", annee: 2025, montant: "230000000", porteur: "FEICOM" }
-        ],
-        color: "#ff7f00",
-        statut: "valide"
-      },
-      {
-        nom: "Elig-Mfomo", id: "elig-mfomo", chefLieu: false, lat: 4.1, lng: 11.1,
-        creation: "1993 (date exacte à confirmer)",
-        maire: "M. Stanislas Ayissi", superficie: "144 km²", population: 30785,
-        groupements: ["Essele 1", "Essele 2", "Mvog-Kani"],
-        ecoles: { publiques: 19, privees: 0, maternelles: 9, total: 28 },
-        sante: { csi: 6, hopital: 0, prive: 1, total: 7 },
-        projets: [
-          { nom: "Électrification rurale", annee: 2023, montant: "162000000", porteur: "MINEE" }
-        ],
-        color: "#f781bf",
-        statut: "encours"
-      },
-      {
-        nom: "Batchenga", id: "batchenga", chefLieu: false, lat: 4.2333, lng: 11.6833,
-        creation: "24 avril 1995 (district rattaché à Monatélé)",
-        maire: "M. Anatole Souga", superficie: "216 km²", population: 14989,
-        groupements: ["Benyagda", "Batchenga", "Mvog Namnyé"],
-        ecoles: { publiques: 7, privees: 3, maternelles: 1, total: 11 },
-        sante: { csi: 2, hopital: 0, prive: 0, total: 2 },
-        projets: [
-          { nom: "Construction école publique", annee: 2024, montant: "195000000", porteur: "MINEDUB" }
-        ],
-        color: "#a65628",
-        statut: "encours"
-      },
-      {
-        nom: "Lobo", id: "lobo", chefLieu: false, lat: 3.9833, lng: 11.4,
-        creation: "24 avril 1995 (district rattaché à Okola)",
-        maire: "M. Serge Bertin Obono Onguene", superficie: "260 km²", population: 30121,
-        groupements: ["Eton (chef supérieur)"],
-        ecoles: { publiques: 19, privees: 0, maternelles: 3, total: 22 },
-        sante: { csi: 8, hopital: 0, prive: 2, total: 10 },
-        projets: [
-          { nom: "Reconstruction pont définitif Ngoko", annee: 2026, montant: "300000000", porteur: "MINTP" }
-        ],
-        color: "#999999",
-        statut: "valide"
-      }
-    ];
-
-    // ============================================================
-    // CALCUL DES TOTAUX
-    // ============================================================
-    var totalEcoles = 0;
-    var totalSante = 0;
-    var totalPopulation = 0;
-    var totalInvestissement = 0;
-
-    communesDetail.forEach(function(c) {
-      totalEcoles += c.ecoles.total || 0;
-      totalSante += c.sante.total || 0;
-      totalPopulation += c.population || 0;
-      if (c.projets) {
-        c.projets.forEach(function(p) {
-          totalInvestissement += parseInt(p.montant) || 0;
-        });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
       }
     });
-
-    var dashEcoles = document.getElementById('dashEcoles');
-    var dashSante = document.getElementById('dashSante');
-    var dashPopulation = document.getElementById('dashPopulation');
-    var dashInvestissement = document.getElementById('dashInvestissement');
-    var dashCommunes = document.getElementById('dashCommunes');
-
-    if (dashEcoles) dashEcoles.textContent = totalEcoles;
-    if (dashSante) dashSante.textContent = totalSante;
-    if (dashPopulation) dashPopulation.textContent = totalPopulation.toLocaleString();
-    if (dashInvestissement) dashInvestissement.textContent = (totalInvestissement / 1000000).toFixed(0) + ' M FCFA';
-    if (dashCommunes) dashCommunes.textContent = communesDetail.length;
-
-    // ============================================================
-    // MOYENNES DÉPARTEMENTALES
-    // ============================================================
-    var moyenneEcoles = (totalEcoles / totalPopulation * 1000).toFixed(1);
-    var moyenneSante = (totalSante / totalPopulation * 1000).toFixed(1);
-
-    // ============================================================
-    // FORMATAGE DES MONTANTS
-    // ============================================================
-    function formatMontant(montant) {
-      var m = parseInt(montant);
-      if (m >= 1000000) return (m / 1000000).toFixed(0) + ' M FCFA';
-      return m.toLocaleString() + ' FCFA';
-    }
-
-    // ============================================================
-    // CARTE LEAFLET (chargement différé)
-    // ============================================================
-    function initMap() {
-      if (typeof L === 'undefined') {
-        var mapEl = document.getElementById('map');
-        var fallbackEl = document.getElementById('mapFallback');
-        if (mapEl) mapEl.style.display = 'none';
-        if (fallbackEl) fallbackEl.style.display = 'flex';
-        return;
-      }
-      try {
-        var map = L.map('map').setView([4.15, 11.4], 9.2);
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { subdomains: 'abcd' }).addTo(map);
-
-        communesDetail.forEach(function(c) {
-          var ratioEcoles = ((c.ecoles.total / c.population) * 1000).toFixed(1);
-          var ratioSante = ((c.sante.total / c.population) * 1000).toFixed(1);
-
-          var color = "#377eb8";
-          if (ratioSante >= moyenneSante) {
-            color = "#2e7d32";
-          } else if (ratioSante >= moyenneSante * 0.5) {
-            color = "#f57c00";
-          } else {
-            color = "#c62828";
-          }
-
-          var projetsHtml = '';
-          if (c.projets && c.projets.length > 0) {
-            projetsHtml = '<div style="margin-top:0.3rem; padding-top:0.3rem; border-top:1px solid #ede5d8;"><div style="font-weight:600; font-size:0.75rem;">📌 Projets :</div>';
-            c.projets.forEach(function(p) {
-              projetsHtml += '<div style="font-size:0.7rem; color:#3a3a35;">• ' + p.nom + ' — ' + p.porteur + ' (' + p.annee + ') — ' + formatMontant(p.montant) + '</div>';
-            });
-            projetsHtml += '</div>';
-          }
-
-          var popupContent =
-            '<div style="font-family: \'Inter\', sans-serif; max-width: 340px;">' +
-            '<strong style="font-size:1.1rem; color:#1b3a2d;">' + c.nom + '</strong>' +
-            (c.chefLieu ? '<span style="background:#c4922a;color:#fff;padding:0.1rem 0.5rem;border-radius:12px;font-size:0.6rem;font-weight:600;">Chef-lieu</span>' : '') +
-            '<span style="background:#e8f5e9;color:#2e7d32;padding:0.1rem 0.5rem;border-radius:12px;font-size:0.6rem;font-weight:600;margin-left:0.3rem;">✅ Validé</span>' +
-            '<hr style="border:0.5px solid #ede5d8; margin:0.3rem 0;">' +
-            '<div style="font-size:0.8rem; color:#3a3a35;">' +
-            '<div><strong>Maire :</strong> ' + c.maire + '</div>' +
-            '<div><strong>Population :</strong> ' + c.population.toLocaleString() + '</div>' +
-            '<div style="margin-top:0.3rem; padding-top:0.3rem; border-top:1px solid #ede5d8;">' +
-            '<div><strong>📚 Écoles :</strong> ' + c.ecoles.total + ' total</div>' +
-            '<div><strong>🏥 Santé :</strong> ' + c.sante.total + ' total</div>' +
-            '</div>' +
-            '<div style="margin-top:0.3rem; padding-top:0.3rem; border-top:1px solid #ede5d8; background:#f9f7f2; padding:0.5rem; border-radius:8px;">' +
-            '<div style="font-weight:600; margin-bottom:0.2rem;">📊 Indicateurs / 1000 habitants</div>' +
-            '<div>📚 ' + ratioEcoles + ' écoles ' + (ratioEcoles >= moyenneEcoles ? '✅' : '⚠️') + ' <span style="color:#64748b;">Moy. dép: ' + moyenneEcoles + '</span></div>' +
-            '<div>🏥 ' + ratioSante + ' structures ' + (ratioSante >= moyenneSante ? '✅' : '⚠️') + ' <span style="color:#64748b;">Moy. dép: ' + moyenneSante + '</span></div>' +
-            '</div>' +
-            projetsHtml +
-            '</div>' +
-            '<a href="#' + c.id + '" class="popup-link" style="display:inline-block; margin-top:0.5rem; background:#1b3a2d; color:#e0a83e; padding:0.3rem 0.8rem; border-radius:20px; text-decoration:none; font-size:0.7rem; font-weight:600;">📌 Voir la fiche complète</a>' +
-            '</div>';
-
-          L.circleMarker([c.lat, c.lng], {
-            radius: 10,
-            fillColor: color,
-            color: '#fff',
-            weight: 2,
-            fillOpacity: 0.8
-          }).addTo(map).bindPopup(popupContent);
-        });
-
-        map.on('popupopen', function(e) {
-          var link = e.popup._contentNode ? e.popup._contentNode.querySelector('.popup-link') : null;
-          if (link) {
-            link.onclick = function(ev) {
-              ev.preventDefault();
-              var targetId = this.getAttribute('href');
-              var target = document.querySelector(targetId);
-              if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              }
-            };
-          }
-        });
-
-        var legend = L.control({ position: 'bottomright' });
-        legend.onAdd = function() {
-          var div = L.DomUtil.create('div', 'legend');
-          div.style.background = 'white';
-          div.style.padding = '8px';
-          div.style.borderRadius = '12px';
-          div.style.fontSize = '0.7rem';
-          div.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
-          div.innerHTML =
-            '<strong style="font-size:0.75rem;">🏥 Accès Santé / 1000 hab</strong><br>' +
-            '<span style="color:#2e7d32;">●</span> ≥ Moyenne dép (' + moyenneSante + ')<br>' +
-            '<span style="color:#f57c00;">●</span> 50% à 100% de la moyenne<br>' +
-            '<span style="color:#c62828;">●</span> < 50% de la moyenne<br>' +
-            '<hr style="border:0.5px solid #ede5d8; margin:0.3rem 0;">' +
-            '<span style="background:#e8f5e9;color:#2e7d32;padding:0.1rem 0.3rem;border-radius:8px;font-size:0.6rem;">✅ Validé</span> ' +
-            '<span style="background:#fff8e1;color:#856404;padding:0.1rem 0.3rem;border-radius:8px;font-size:0.6rem;">⏳ En cours</span> ' +
-            '<span style="background:#ffebee;color:#c62828;padding:0.1rem 0.3rem;border-radius:8px;font-size:0.6rem;">🔴 Donnée recherchée</span>';
-          return div;
-        };
-        legend.addTo(map);
-
-      } catch(e) {
-        var mapEl = document.getElementById('map');
-        var fallbackEl = document.getElementById('mapFallback');
-        if (mapEl) mapEl.style.display = 'none';
-        if (fallbackEl) fallbackEl.style.display = 'flex';
-      }
-    }
-
-    if (document.readyState === 'complete') {
-      initMap();
-    } else {
-      window.addEventListener('load', initMap);
-    }
-
-    // ============================================================
-    // FILTRES
-    // ============================================================
-    function renderCommunes(filter, alertFilter) {
-      filter = filter || "";
-      alertFilter = alertFilter || "all";
-      var grid = document.getElementById("communesGrid");
-      if (!grid) return;
-      var filtered = communesDetail.filter(function(c) {
-        return c.nom.toLowerCase().includes(filter.toLowerCase());
-      });
-      if (alertFilter === "alert") {
-        filtered = filtered.filter(function(c) {
-          var ratioSante = ((c.sante.total / c.population) * 1000);
-          return ratioSante < moyenneSante * 0.5;
-        });
-      }
-      var compteur = document.getElementById("compteur");
-      if (compteur) compteur.innerText = filtered.length + " / 9 communes";
-      grid.innerHTML = "";
-      filtered.forEach(function(c) {
-        var card = document.createElement("div");
-        card.className = "fiche-commune";
-        card.id = c.id;
-        var statutLabels = { valide: "Validé", encours: "En cours", contributif: "Contributif" };
-        var creationDisplay = c.creation || "À vérifier";
-
-        var projetsHtml = '';
-        if (c.projets && c.projets.length > 0) {
-          projetsHtml = '<div style="margin-top:0.5rem; padding-top:0.3rem; border-top:1px solid #ede5d8;"><strong>📌 Projets</strong><br>';
-          c.projets.forEach(function(p) {
-            projetsHtml += '<div class="projet-item"><span class="projet-nom">' + p.nom + '</span><br><span class="projet-detail">' + p.porteur + ' — ' + formatMontant(p.montant) + ' (' + p.annee + ')</span></div>';
-          });
-          projetsHtml += '</div>';
-        }
-
-        card.innerHTML =
-          '<div class="fiche-entete"><h3>' + c.nom + (c.chefLieu ? ' <span class="badge-cheflieu">Chef-lieu</span>' : '') + '<span class="badge-statut badge-' + c.statut + '">' + statutLabels[c.statut] + '</span></h3></div>' +
-          '<div class="fiche-body">' +
-          '<div class="stat-row"><span class="label">Création</span><span class="value">' + creationDisplay + ' <span class="badge-statut badge-encours">À vérifier</span></span></div>' +
-          '<div class="stat-row"><span class="label">Superficie</span><span class="value">' + c.superficie + '</span></div>' +
-          '<div class="stat-row"><span class="label">Population (est.)</span><span class="value">' + c.population.toLocaleString() + ' <span class="badge-statut badge-encours">ISGI-Lékié</span></span></div>' +
-          '<div style="margin-bottom:0.4rem;"><strong>Groupements</strong><br>' + c.groupements.map(function(g) { return '<span class="village-tag">' + g + '</span>'; }).join('') + '</div>' +
-          '<div><strong>Maire</strong><br>' + c.maire + '</div>' +
-          projetsHtml +
-          '</div>' +
-          '<button class="btn-fiche" onclick="alert(\'Fiche détaillée bientôt disponible.\')" type="button">📌 Voir fiche détaillée</button>';
-        grid.appendChild(card);
-      });
-    }
-
-    // ============================================================
-    // RECHERCHE ET FILTRES
-    // ============================================================
-    var currentFilter = "all";
-    var searchCommune = document.getElementById("searchCommune");
-    var filterAll = document.getElementById("filterAll");
-    var filterAlert = document.getElementById("filterAlert");
-
-    if (searchCommune) {
-      searchCommune.addEventListener("input", function(e) {
-        renderCommunes(e.target.value, currentFilter);
-      });
-    }
-    if (filterAll) {
-      filterAll.addEventListener("click", function() {
-        currentFilter = "all";
-        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
-        this.classList.add('active');
-        this.setAttribute('aria-pressed','true');
-        renderCommunes(searchCommune ? searchCommune.value : "", "all");
-      });
-    }
-    if (filterAlert) {
-      filterAlert.addEventListener("click", function() {
-        currentFilter = "alert";
-        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
-        this.classList.add('active');
-        this.setAttribute('aria-pressed','true');
-        renderCommunes(searchCommune ? searchCommune.value : "", "alert");
-      });
-    }
-
-    // ============================================================
-    // EXPORT PDF
-    // ============================================================
-    window.exportPDF = function() {
-      var element = document.getElementById('dashboardSection');
-      if (!element) return;
-      if (typeof html2pdf === 'undefined') {
-        alert('Export PDF en cours de chargement. Réessayez dans un instant.');
-        return;
-      }
-
-      var tableRows = '';
-      communesDetail.forEach(function(c) {
-        var ratioSante = ((c.sante.total / c.population) * 1000).toFixed(1);
-        var badgeColor = '';
-        if (ratioSante >= moyenneSante) badgeColor = 'pdf-badge-vert';
-        else if (ratioSante >= moyenneSante * 0.5) badgeColor = 'pdf-badge-orange';
-        else badgeColor = 'pdf-badge-rouge';
-
-        var projetsPdf = '';
-        if (c.projets && c.projets.length > 0) {
-          c.projets.forEach(function(p) {
-            projetsPdf += '<div class="projet-pdf">• ' + p.nom + ' — ' + p.porteur + ' (' + p.annee + ') — ' + formatMontant(p.montant) + '</div>';
-          });
-        } else {
-          projetsPdf = '<div class="projet-pdf" style="color:#94a3b8;">Aucun projet documenté</div>';
-        }
-
-        tableRows +=
-          '<tr>' +
-          '<td><strong>' + c.nom + '</strong></td>' +
-          '<td>' + c.population.toLocaleString() + '</td>' +
-          '<td>' + c.ecoles.total + '</td>' +
-          '<td>' + c.sante.total + '</td>' +
-          '<td>' + ratioSante + '</td>' +
-          '<td><span class="pdf-badge ' + badgeColor + '">' + (ratioSante >= moyenneSante ? '✅ Bon' : ratioSante >= moyenneSante * 0.5 ? '⚠️ Moyen' : '🔴 Alerte') + '</span></td>' +
-          '<td>' + projetsPdf + '</td>' +
-          '</tr>';
-      });
-
-      var today = new Date().toLocaleDateString('fr-CM', { day: 'numeric', month: 'long', year: 'numeric' });
-
-      var pdfContent =
-        '<div id="pdfContent" style="background:#fff; padding:2rem; font-family:\'Inter\',sans-serif;">' +
-        '<h1 style="font-family:\'Cormorant Garamond\',serif; color:#1b3a2d; font-size:2rem; border-left:4px solid #c4922a; padding-left:1rem;">ISGI-Lékié</h1>' +
-        '<p style="color:#64748b; margin-bottom:0.5rem;">Diagnostic territorial — Département de la Lékié</p>' +
-        '<hr style="border:0.5px solid #e8dfd0; margin:1rem 0;">' +
-
-        '<h2 style="font-family:\'Cormorant Garamond\',serif; color:#1b3a2d; border-left:4px solid #c4922a; padding-left:1rem; font-size:1.5rem;">📊 Tableau de bord</h2>' +
-        '<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin:1rem 0;">' +
-        '<div style="background:#f4efe6; padding:1rem; border-radius:12px; text-align:center;"><div style="font-size:0.75rem; color:#5a5a50;">Population totale</div><div style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">' + totalPopulation.toLocaleString() + '</div></div>' +
-        '<div style="background:#f4efe6; padding:1rem; border-radius:12px; text-align:center;"><div style="font-size:0.75rem; color:#5a5a50;">📚 Écoles</div><div style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">' + totalEcoles + '</div></div>' +
-        '<div style="background:#f4efe6; padding:1rem; border-radius:12px; text-align:center;"><div style="font-size:0.75rem; color:#5a5a50;">🏥 Santé</div><div style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">' + totalSante + '</div></div>' +
-        '<div style="background:#f4efe6; padding:1rem; border-radius:12px; text-align:center;"><div style="font-size:0.75rem; color:#5a5a50;">💰 Investissements</div><div style="font-size:1.5rem; font-weight:700; color:#1b3a2d;">' + formatMontant(totalInvestissement) + '</div></div>' +
-        '</div>' +
-
-        '<h2 style="font-family:\'Cormorant Garamond\',serif; color:#1b3a2d; border-left:4px solid #c4922a; padding-left:1rem; font-size:1.5rem;">📋 Détail par commune</h2>' +
-        '<table style="width:100%; border-collapse:collapse; font-size:0.75rem; margin-top:0.5rem;">' +
-        '<thead><tr style="background:#1b3a2d; color:#fff;"><th style="padding:0.3rem; text-align:left;">Commune</th><th style="padding:0.3rem; text-align:right;">Population</th><th style="padding:0.3rem; text-align:right;">Écoles</th><th style="padding:0.3rem; text-align:right;">Santé</th><th style="padding:0.3rem; text-align:right;">Ratio santé / 1000 hab</th><th style="padding:0.3rem; text-align:center;">Statut</th><th style="padding:0.3rem; text-align:left;">Projets</th></tr></thead>' +
-        '<tbody>' + tableRows + '</tbody>' +
-        '</table>' +
-
-        '<div style="margin-top:1rem; font-size:0.7rem; color:#94a3b8; border-top:1px solid #e8dfd0; padding-top:0.5rem;">' +
-        '📌 Source : Collecte terrain ISGI-Lékié + INS + MINEDUB + MINSANTE.<br>' +
-        '⚠️ Données estimées 2025 — En cours d\'actualisation.<br>' +
-        '📌 Réf. OMS : 2,3 médecins / 1000 hab. (ici: nb de structures)' +
-        '</div>' +
-        '<div style="margin-top:0.5rem; font-size:0.6rem; color:#94a3b8; text-align:center;">' +
-        'Document généré le ' + today + ' par ISGI-Lékié — <span style="font-weight:600;">isgi-lekie.cm</span>' +
-        '</div>' +
-        '</div>';
-
-      var opt = {
-        margin: 0.5,
-        filename: 'Diagnostic_ISGI_Lekie_2025.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, allowTaint: true },
-        jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' }
-      };
-
-      var tempDiv = document.createElement('div');
-      tempDiv.innerHTML = pdfContent;
-      document.body.appendChild(tempDiv);
-      var content = tempDiv.querySelector('#pdfContent') || tempDiv;
-
-      html2pdf()
-        .set(opt)
-        .from(content)
-        .save()
-        .then(function() {
-          document.body.removeChild(tempDiv);
-        })
-        .catch(function() {
-          document.body.removeChild(tempDiv);
-          alert('Erreur lors de la génération du PDF. Veuillez réessayer.');
-        });
-    };
-
-    // ============================================================
-    // INITIALISATION
-    // ============================================================
-    renderCommunes();
-
-  })();
+  }
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 </script>
 </body>
 </html>
