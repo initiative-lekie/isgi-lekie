@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1b3a2d" />
+  <title>Ma Région – Région du Centre – ISGI-Lékié</title>
+  <meta name="description" content="La Région du Centre du Cameroun — gouverneur, préfets, Conseil régional, 10 départements, 70 arrondissements, maires, données démographiques INS, marchés publics, institutions et statistiques.">
+  <meta name="author" content="ISGI-Lékié">
+  <link rel="canonical" href="https://isgi-lekie.cm/ma-region">
+  <meta property="og:title" content="Ma Région – Région du Centre – ISGI-Lékié">
+  <meta property="og:description" content="Gouverneur, préfets, Conseil régional, 10 départements, maires, institutions et statistiques de la Région du Centre.">
+  <meta property="og:url" content="https://isgi-lekie.cm/ma-region">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="ISGI-Lékié">
+  <meta property="og:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ma Région – Région du Centre – ISGI-Lékié">
+  <meta name="twitter:description" content="Région du Centre : 10 départements, 70 arrondissements, maires, institutions et statistiques.">
+  <meta name="twitter:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/lekie.css">
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebPage","name":"Ma Région – Région du Centre","url":"https://isgi-lekie.cm/ma-region","inLanguage":"fr-FR","isPartOf":{"@type":"WebSite","name":"ISGI-Lékié","url":"https://isgi-lekie.cm/"},"about":{"@type":"AdministrativeArea","name":"Région du Centre, Cameroun"}}
+  </script>
+  <style>
+    .page-header .maj { font-size: 0.7rem; color: var(--or2); margin-top: 0.5rem; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+    .card { background: #fff; border: 1px solid var(--creme2); border-radius: 16px; padding: 1.5rem; margin-bottom: 0; }
+    .card h3 { font-family: 'Cormorant Garamond', serif; color: var(--vert); font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .card p { color: var(--gris); font-size: 0.9rem; margin-top: 0.3rem; }
+    .table-data { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.8rem; }
+    .table-data th { background: var(--vert); color: #fff; padding: 0.5rem; text-align: left; font-size: 0.75rem; font-weight: 600; }
+    .table-data td { padding: 0.5rem; border-bottom: 1px solid var(--creme2); vertical-align: top; }
+    .table-data tr:nth-child(even) td { background: #f9f7f2; }
+    .table-data tr.lekie td { background: #e8f5e9; font-weight: 600; }
+    .table-data td.num { text-align: right; white-space: nowrap; }
+    .liste-representants { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.4rem 1rem; font-size: 0.88rem; color: var(--gris); margin-top: 0.5rem; }
+    .liste-representants li { padding: 0.4rem 0; border-bottom: 1px dashed var(--creme2); }
+    .note-recherche { background: #fff8e1; border-left: 4px solid var(--or); padding: 1rem 1.2rem; border-radius: 8px; margin: 1rem 0; font-size: 0.88rem; color: var(--gris); }
+    .note-recherche strong { color: var(--vert); }
+    .badge-verifier { display: inline-block; font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; background: #fce4ec; color: #c2185b; }
+    .badge-recherche { display: inline-block; font-size: 0.6rem; padding: 0.15rem 0.5rem; border-radius: 20px; font-weight: 600; background: #ffebee; color: #c62828; }
+    .detail-dep { background: #fff; border: 1px solid var(--creme2); border-radius: 12px; padding: 1rem; margin-bottom: 0.8rem; }
+    .detail-dep summary { cursor: pointer; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--vert); font-weight: 700; }
+    footer { color: rgba(255,255,255,0.5); }
+    @media (max-width: 700px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .table-data { font-size: 0.75rem; }
+      .table-data th, .table-data td { padding: 0.35rem; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#contenu" class="skip-link">Aller au contenu principal</a>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="/">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="/">Accueil</a>
+    <a href="ma-lekie">Ma Lékié</a>
+    <a href="ma-region" class="active">Ma Région</a>
+    <a href="mon-village">Mon village</a>
+    <a href="mon-ecole">Mon école</a>
+    <a href="observatoire">Observatoire</a>
+    <a href="valeurs-et-competences">Valeurs et compétences</a>
+    <a href="nos-ministres">Nos ministres</a>
+    <a href="sport">Sport</a>
+    <a href="certification">Certification</a>
+    <a href="agriculture">🌾 Agriculture</a>
+    <a href="elevage">🐄 Élevage</a>
+    <a href="tourisme">Tourisme</a>
+    <a href="hommage-andre-marie-mbida">Hommage</a>
+    <a href="presse">Presse</a>
+    <a href="blog">Blog</a>
+  </div>
+</nav>
+
+<div class="page-header" id="top">
+  <h1>🌍 Ma <em>Région</em></h1>
+  <p>Région du Centre — 10 départements · 70 arrondissements · 5 204 170 habitants (INS 2023)</p>
+  <p class="maj">📅 Version du 24 Octobre 2026</p>
+</div>
+
+<div class="container" id="contenu">
+
+  <section>
+    <div class="note-recherche">
+      <strong>📌 Note de lecture.</strong> Sources : INS (Annuaire Statistique du Centre 2025), BUCREP (RGPH 2005), MINAT (décret 2025/355 préfets, décret 2025/357 sous-préfets), décret n° 2020/526 (sièges Conseil régional), décret n° 2007/118 (sièges municipaux), JPM Centre 2024-2026, CVUC, ELECAM, presse officielle. Données manquantes marquées <span class="badge-recherche">Recherché</span> ou <span class="badge-verifier">À vérifier</span>.
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🏛️ Gouverneur de la Région du Centre</h2>
+    <div class="card">
+      <p><strong>Naseri Paul Bea</strong> — Gouverneur en poste depuis le 13 mars 2017 <span class="badge-statut badge-valide">Validé</span></p>
+      <p style="font-size: 0.85rem; color: var(--gris2);">Nommé par décret présidentiel, en remplacement de Joseph Otto Wilson, décédé.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">👔 Préfets des 10 départements</h2>
+    <div style="overflow-x: auto;">
+      <table class="table-data">
+        <thead><tr><th>Département</th><th>Préfet</th><th>Statut</th></tr></thead>
+        <tbody>
+          <tr><td>Haute-Sanaga</td><td>Nanga Dang Albert</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Jean Lazare NDONGO NDONGO</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Mbam-et-Kim</td><td>Valéri Norbert KUELA</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Thierry Kinou Nana</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Méfou-et-Akono</td><td>Adeline Claude SOP MOTE épouse TCHOMGOUO NZALLI</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Mfoundi</td><td>Emmanuel Mariel Djickdent</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Emmanuel Ledoux ENGAMBA</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Samuel MONEBO</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Gilles Christian SADI</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td><strong>Patrick SIMOU Kamsu</strong></td><td><span class="badge-verifier">Forme « Simon » dans liste officielle — correction locale appliquée</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">👮 Sous-préfets — 35 identifiés sur 70</h2>
+    <div style="overflow-x: auto;">
+      <table class="table-data">
+        <thead><tr><th>Département</th><th>Arrondissement</th><th>Sous-préfet</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Haute-Sanaga</td><td>Mbandjock</td><td>MPANDE Emile Achille</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Haute-Sanaga</td><td>Nanga-Eboko</td><td>DIMBELE BOUI Eugène</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Haute-Sanaga</td><td>Nkoteng</td><td>NGUELE Jean Marie</td><td><span class="badge-verifier">Monographie</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Monatélé</td><td>POUFON née BOMBA NKOLO Odile</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Obala</td><td>KANGA Félix</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Sa'a</td><td>DJIBRILA YAYA Amadou</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Evodoula</td><td>IBAMIÉ Madam</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Ebebda</td><td>NGO MBEY Mireille Sandrine</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Okola</td><td>ABOUBAKAR MOUSSA</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Batchenga</td><td>PEPTSOPI Emmanuel</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Elig-Mfomo</td><td>NGUIMÉ Joseph</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Lobo</td><td>KEJA COLLE FEATUM</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Makénéné</td><td>MARIGOH NDERGOUILLOT Elvis Landry</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Mbam-et-Kim</td><td>Ngambe-Tikar</td><td>MOMO SOFFACK Guy Bertrand</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Mbam-et-Kim</td><td>Ngoro</td><td>MEKE OLINGA Brice Charly</td><td><span class="badge-verifier">Arrêté avril 2026</span></td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Assamba</td><td>ANABA BEKONO Armand</td><td><span class="badge-verifier">Presse</span></td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Esse</td><td>DJIBRILLA YAYA HAMADOU</td><td><span class="badge-verifier">Depuis 2019</span></td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Mfou</td><td>ONDOA AKOA Loïc Cédric</td><td><span class="badge-verifier">Décret 2021</span></td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Soa</td><td>NGANOAH ESSONO Patrick</td><td><span class="badge-verifier">Février 2026</span></td></tr>
+          <tr><td>Méfou-et-Akono</td><td>Akono</td><td>NDZONO ATANGANA Valérie</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Méfou-et-Akono</td><td>Ngoumou</td><td>EWANE Roland EKEH</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé I</td><td>TEMGBET Issah (intérim)</td><td><span class="badge-verifier">2025</span></td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé II</td><td>ABOUBAKAR GARBA</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé V</td><td>MABAYA ESSOMBA François</td><td><span class="badge-verifier">2026</span></td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé VI</td><td>ETOUNDI Alain Joseph</td><td><span class="badge-verifier">Juillet 2025</span></td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Dibang</td><td>MOLOKA Alain EKWE</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Messondo</td><td>LOVET MOUNOM Gaël</td><td><span class="badge-verifier">Depuis 2021</span></td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Ayos</td><td>MOLO Polycarpe</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Endom</td><td>MBIDA MVOUNDI née BIYELE LESSOUGA Céline</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Mengang</td><td>NYASO MOHAMADOU NFOR</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Nyakokombo</td><td>LIMA BADJANG David</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Akoeman</td><td>MOUSSANGO Stéphane</td><td><span class="badge-verifier">Presse</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Dzeng</td><td>DJAKOMO NKO'O Maela Erika</td><td><span class="badge-statut badge-valide">Décret 2025/357</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Mbalmayo</td><td>BANGA Jean Richard Tarcice</td><td><span class="badge-verifier">Depuis 2019</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Mengueme</td><td>EVOUNG Daniel</td><td><span class="badge-verifier">Presse</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Nkolmetet</td><td>MVOMO Josiane épse NKO'O ELA</td><td><span class="badge-verifier">2026</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.8rem; color: var(--gris2); margin-top: 0.6rem;">35 sur 70 = 50 %. Les 35 autres arrondissements sont à documenter. Aucune liste publique exhaustive et à jour n'est disponible. <span class="badge-recherche">Recherché</span></p>
+  </section>
+
+  <section>
+    <h2 class="section-title">⚖️ Tribunal Administratif du Centre</h2>
+    <div class="card">
+      <p><strong>Siège :</strong> Yaoundé <span class="badge-statut badge-valide">Validé</span></p>
+      <p><strong>Ressort :</strong> Région du Centre (dont la Lékié) <span class="badge-statut badge-valide">Validé</span></p>
+      <p><strong>Président :</strong> <span class="badge-recherche">Recherché</span></p>
+      <p><strong>Greffe / coordonnées :</strong> <span class="badge-recherche">Recherché</span></p>
+      <p style="font-size:0.8rem; color:var(--gris2); margin-top:0.5rem;">📌 Le Tribunal Administratif du Centre est la juridiction administrative de premier ressort pour la Région du Centre. Il n'existe pas de tribunal administratif au niveau départemental.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🗳️ ELECAM — Elections Cameroon (Région du Centre)</h2>
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Données électorales officielles</h3>
+      <table class="table-data" style="margin-top: 0.5rem;">
+        <thead><tr><th>Donnée</th><th style="text-align:right;">Valeur</th><th>Statut</th></tr></thead>
+        <tbody>
+          <tr><td>Électeurs inscrits</td><td class="num">1 432 194</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>— dont hommes</td><td class="num">807 373</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>— dont femmes</td><td class="num">624 821</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>— dont jeunes</td><td class="num">476 762</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>— dont handicapés</td><td class="num">5 233</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Bureaux de vote</td><td class="num">6 002</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Nouveaux inscrits 2026</td><td class="num">37 595</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+          <tr><td>Part du national (nouveaux inscrits)</td><td class="num">14,86 %</td><td><span class="badge-statut badge-valide">Validé</span></td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem; color:var(--gris2); margin-top:0.5rem;">📌 Source : ELECAM, statistiques officielles 2025-2026.</p>
+    </div>
+
+    <div class="card">
+      <h3>Commissions électorales</h3>
+      <p><strong>Commissions de révision :</strong> 70</p>
+      <p><strong>Commissions de contrôle :</strong> 70</p>
+      <p><strong>Commissions locales de vote :</strong> 4 449</p>
+      <p><strong>Commissions départementales de supervision :</strong> 10</p>
+      <span class="badge-statut badge-valide">Validé</span>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🏛️ Conseil régional du Centre (mandature 2025-2030)</h2>
+
+    <div class="card" style="margin-bottom: 1.5rem;">
+      <h3>Bureau exécutif</h3>
+      <table class="table-data" style="margin-top: 0.5rem;">
+        <thead><tr><th>Fonction</th><th>Nom</th><th>Département</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Président</strong></td><td>Gilbert Tsimi Evouna — réélu le 16 déc. 2025, installé le 16 janv. 2026 (87 voix sur 90)</td><td>Mfoundi</td></tr>
+          <tr><td>1er Vice-Président</td><td>Jean Claude Sanama Nkono</td><td>Mbam-et-Inoubou</td></tr>
+          <tr><td>Vice-Président</td><td>S.M. Joseph Assogo (chef traditionnel)</td><td>—</td></tr>
+          <tr><td>Questeur</td><td>Édouard Oum</td><td>Nyong-et-Kellé</td></tr>
+          <tr><td>Secrétaire</td><td>Mme Lisette Elomo Ntonga</td><td>Mefou-et-Afamba</td></tr>
+          <tr><td>Secrétaire</td><td>S.M. Henri Bessala Bessala (chef traditionnel)</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>Répartition des 90 sièges (décret n° 2020/526)</h3>
+      <table class="table-data" style="margin-top: 0.5rem;">
+        <thead><tr><th>Département</th><th style="text-align:right;">Délégués</th><th style="text-align:right;">Traditionnels</th><th style="text-align:right;">Total</th></tr></thead>
+        <tbody>
+          <tr><td>Haute-Sanaga</td><td class="num">7</td><td class="num">2</td><td class="num">9</td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td class="num">9</td><td class="num">2</td><td class="num">11</td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td class="num">9</td><td class="num">2</td><td class="num">11</td></tr>
+          <tr><td>Mbam-et-Kim</td><td class="num">5</td><td class="num">2</td><td class="num">7</td></tr>
+          <tr><td>Méfou-et-Afamba</td><td class="num">8</td><td class="num">2</td><td class="num">10</td></tr>
+          <tr><td>Méfou-et-Akono</td><td class="num">4</td><td class="num">2</td><td class="num">6</td></tr>
+          <tr><td>Mfoundi</td><td class="num">7</td><td class="num">2</td><td class="num">9</td></tr>
+          <tr><td>Nyong-et-Kellé</td><td class="num">10</td><td class="num">2</td><td class="num">12</td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td class="num">5</td><td class="num">2</td><td class="num">7</td></tr>
+          <tr><td>Nyong-et-So'o</td><td class="num">6</td><td class="num">2</td><td class="num">8</td></tr>
+          <tr style="background: var(--vert); color: #fff; font-weight: 700;"><td><strong>TOTAL</strong></td><td class="num">70</td><td class="num">20</td><td class="num">90</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="margin-top: 1.5rem;">
+      <h3>Les 11 conseillers de la Lékié</h3>
+      <p style="font-size: 0.85rem; color: var(--gris2); margin-bottom: 0.5rem;">9 délégués de département identifiés + 2 représentants traditionnels à identifier.</p>
+      <ul class="liste-representants">
+        <li><strong>ALIMA NGA</strong> — Monatélé</li>
+        <li><strong>ESSOA Eloi Gabriel</strong> — Batchenga</li>
+        <li><strong>NDOUMBA ELOUNDOU</strong> — Ebebda</li>
+        <li><strong>BESSALA FOE Alexandre</strong> — Elig-Mfomo</li>
+        <li><strong>MBALLA MBARGA Yves Bertrand</strong> — Obala</li>
+        <li><strong>Bénédict BELIBI</strong> — Okola</li>
+        <li><strong>Pr. NTUDA EBODE Joseph Vincent</strong> — Lobo</li>
+        <li><strong>Mme ONGOLO Ndzana Régine</strong> — Sa'a</li>
+        <li><strong>Mme MIKOULOU Rachelle</strong> — Evodoula</li>
+      </ul>
+      <p style="font-size: 0.85rem; color: var(--gris2); margin-top: 0.5rem;"><span class="badge-recherche">Recherché</span> Les 2 représentants traditionnels de la Lékié au Conseil régional.</p>
+    </div>
+
+    <div class="card" style="margin-top: 1.5rem;">
+      <h3>Commissions thématiques (4)</h3>
+      <table class="table-data" style="margin-top: 0.5rem;">
+        <thead><tr><th>Commission</th><th>Président</th><th>Département</th></tr></thead>
+        <tbody>
+          <tr><td>Affaires administratives, juridiques et règlement intérieur (20 membres)</td><td>NDONGO NDONGO</td><td>Méfou-et-Akono</td></tr>
+          <tr><td>Éducation, Santé, Affaires sociales (23 membres)</td><td>Mme Germaine ESSONO</td><td>Mbam-et-Kim</td></tr>
+          <tr><td>Finances, Infrastructures, Plan (25 membres)</td><td>NKOUMOU TSAGA</td><td>Haute-Sanaga</td></tr>
+          <tr><td>Environnement, Aménagement du territoire (22 membres)</td><td>Jacquinot VOUNDI</td><td>Nyong-et-Mfoumou</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size: 0.78rem; color: var(--gris2); margin-top: 0.5rem;">📌 Source : site du Conseil régional du Centre. Mandature 2020-2025 reconduite (à confirmer pour 2025-2030). <span class="badge-verifier">À vérifier</span></p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🏛️ Parlementaires de la Région du Centre</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Députés (28 sièges)</h3>
+        <p><strong>Législature 2020-2025 :</strong> 28 sièges</p>
+        <p><strong>Répartition H/F (INS 2013-2017) :</strong> 23 hommes / 5 femmes</p>
+        <p><strong>Parti majoritaire :</strong> RDPC (25 sièges sur 28 selon INS 2013-2017)</p>
+        <span class="badge-statut badge-valide">Validé</span>
+        <p style="font-size:0.78rem; color:var(--gris2); margin-top:0.5rem;">📌 Les données de répartition H/F et partis datent de la législature 2013-2017 (INS). Le nombre total de 28 sièges est confirmé pour 2020-2025.</p>
+      </div>
+      <div class="card">
+        <h3>Sénateurs (10 sièges)</h3>
+        <p><strong>Répartition H/F :</strong> 8 hommes / 2 femmes</p>
+        <span class="badge-statut badge-valide">Validé</span>
+        <p style="font-size:0.78rem; color:var(--gris2); margin-top:0.5rem;">📌 Source : INS Annuaire Statistique du Centre 2025.</p>
+      </div>
+    </div>
+    <p style="color:var(--gris); margin-top:1rem;"><strong>Total parlementaires :</strong> 38 (28 députés + 10 sénateurs).</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">👔 Membres du gouvernement — Région du Centre</h2>
+    <div class="note-recherche">
+      <strong>📌 Liste en cours de vérification.</strong> Le gouvernement camerounais ne publie pas de ventilation officielle par région d'origine. Cette liste recense les membres dont l'origine Centre est documentée publiquement. Chaque entrée porte un badge de statut.
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Ministres d'État / Présidence</h3>
+      <ul class="liste-representants">
+        <li><strong>Ferdinand Ngoh Ngoh</strong> (Haute-Sanaga) — Ministre d'État, SGPR <span class="badge-statut badge-valide">Validé</span></li>
+        <li><strong>Joseph Beti Assomo</strong> (Nyong-et-Mfoumou) — Ministre délégué à la Présidence, Défense <span class="badge-statut badge-valide">Validé</span></li>
+        <li><strong>Philippe Mbarga Mboa</strong> (Mfoundi) — Ministre chargé de mission à la Présidence <span class="badge-statut badge-valide">Validé</span></li>
+        <li><strong>Benoît Ndong Soumhet</strong> (Lékié) — Ministre chargé de mission à la Présidence <span class="badge-statut badge-valide">Validé</span></li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Ministres</h3>
+      <ul class="liste-representants">
+        <li><strong>Pierre Ismaël Bidoung Kpwatt</strong> (Haute-Sanaga) — Arts et Culture <span class="badge-statut badge-valide">Validé</span></li>
+        <li><strong>Luc Magloire Mbarga Atangana</strong> (Méfou-et-Afamba) — Commerce <span class="badge-statut badge-valide">Validé</span></li>
+        <li><strong>Henri Eyebe Ayissi</strong> (Lékié) — Domaines, Cadastre, Affaires foncières <span class="badge-statut badge-valide">Validé</span></li>
+        <li><strong>Laurent Serge Etoundi Ngoa</strong> (Mfoundi) — Éducation de base <span class="badge-statut badge-valide">Validé</span></li>
+        <li><strong>Gaston Eloundou Essomba</strong> (Méfou-et-Akono) — Eau et Énergie <span class="badge-statut badge-valide">Validé</span></li>
+        <li><strong>René Emmanuel Sadi</strong> (Mfoundi) — Communication <span class="badge-verifier">Né à Maroua</span></li>
+      </ul>
+    </div>
+
+    <div class="card" style="margin-bottom: 1rem;">
+      <h3>Secrétaires d'État</h3>
+      <ul class="liste-representants">
+        <li><strong>Marie Rose Dibong</strong> (Nyong-et-Kellé) — Logement <span class="badge-statut badge-valide">Validé</span></li>
+        <li><strong>Galax Yves Landry Etoga</strong> (Lékié) — Gendarmerie nationale <span class="badge-statut badge-valide">Validé</span></li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Cas particuliers</h3>
+      <ul class="liste-representants">
+        <li><strong>Séraphin Magloire Fouda</strong> — SG des services du Premier Ministre <span class="badge-verifier">Lieu de naissance non documenté</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🏘️ Maires des 70 communes (45 identifiés)</h2>
+    <p style="color: var(--gris); margin-bottom: 0.5rem;">Mandature 2020-2025 reconduite. Sources : INS, CVUC, presse officielle, élections partielles 2025-2026.</p>
+    <div style="overflow-x: auto;">
+      <table class="table-data">
+        <thead><tr><th>Département</th><th>Commune</th><th>Maire</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Monatélé</td><td>Prosper Parfait Mbassi Bessala</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Obala</td><td>Francis Gaël Touna (élu déc. 2025)</td><td><span class="badge-statut badge-valide">Élection partielle</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Sa'a</td><td>Jean Blaise Messina Noah</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Okola</td><td>Vincent De Paul Noa</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Ebebda</td><td>Manga Bessala</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Evodoula</td><td>Armand Joachim Ongolo Eloundou</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Elig-Mfomo</td><td>Stanislas Ayissi</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Batchenga</td><td>Anatole Souga</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td>Lobo</td><td>Serge Bertin Obono Onguene</td><td><span class="badge-statut badge-valide">ISGI</span></td></tr>
+          <tr><td>Haute-Sanaga</td><td>Bibey</td><td>Dagobert Avom Abega (intérim, avril 2024)</td><td><span class="badge-verifier">Remplacement</span></td></tr>
+          <tr><td>Haute-Sanaga</td><td>Lembe-Yezoum</td><td>Zeh Isabelle Coldine</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Haute-Sanaga</td><td>Mbandjock</td><td>Nyango'o Angèle</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Haute-Sanaga</td><td>Minta</td><td>Jean Lambert Nang (élu déc. 2025)</td><td><span class="badge-statut badge-valide">Élection partielle</span></td></tr>
+          <tr><td>Haute-Sanaga</td><td>Nanga-Eboko</td><td>Eto Eboko Romain Roland</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Haute-Sanaga</td><td>Nkoteng</td><td>Kanga Esaie Hubert</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Haute-Sanaga</td><td>Nsem</td><td>Dona Benjamin</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Bafia</td><td>Zintchem a Bodio Marthe</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Bokito</td><td>Amatakana Zacharie</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Deuk</td><td>Zintche Tamoun Michel</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Kiiki</td><td>Nyam a Mamba Achille</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Kon-Yambetta</td><td>Eteme épse Aroye</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Makénéné</td><td>Emmanuel Ndali (élu juin 2026)</td><td><span class="badge-statut badge-valide">Élection partielle</span></td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Ndikiniméki</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Nitoukou</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Ombessa</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Mbam-et-Kim</td><td>Mbangassina</td><td>Mboene Bernard</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Mbam-et-Kim</td><td>Ngambe-Tikar</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Mbam-et-Kim</td><td>Ngoro</td><td>Anne Marcelline Nango</td><td><span class="badge-verifier">Presse 2026</span></td></tr>
+          <tr><td>Mbam-et-Kim</td><td>Ntui</td><td>S.M. Georges Marcel Mandoh</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Mbam-et-Kim</td><td>Yoko</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Afanloum</td><td>Nkaba Willy</td><td><span class="badge-verifier">RDPC</span></td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Assamba</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Awaé</td><td>Edimo Ngock André</td><td><span class="badge-verifier">RDPC</span></td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Edzendouan</td><td>Mbarga Bihina Valentin</td><td><span class="badge-verifier">RDPC</span></td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Esse</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Mfou</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Nkolafamba</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Soa</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Méfou-et-Akono</td><td>Akono</td><td>Akono Jean Daniel</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Méfou-et-Akono</td><td>Bikok</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Méfou-et-Akono</td><td>Mbankomo</td><td>Pierre Junior Fouda Fouda</td><td><span class="badge-verifier">CVUC</span></td></tr>
+          <tr><td>Méfou-et-Akono</td><td>Ngoumou</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé I</td><td>Jean Marie Abouna</td><td><span class="badge-verifier">Presse</span></td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé II</td><td>Yannick Martial Ayissi</td><td><span class="badge-verifier">Presse</span></td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé III</td><td>Owona Lucas</td><td><span class="badge-verifier">Presse</span></td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé IV</td><td>S.M. Bihina Efila Gabriel</td><td><span class="badge-verifier">Presse</span></td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé V</td><td>Bala Augustin Fidel Noel</td><td><span class="badge-verifier">Presse</span></td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé VI</td><td>Yoki Onana</td><td><span class="badge-verifier">Presse</span></td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé VII</td><td>Tamba Augustin</td><td><span class="badge-verifier">CVUC</span></td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Biyouha</td><td>Paul Henri Ngue</td><td><span class="badge-verifier">Wikipédia</span></td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Bondjock</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Bot-Makak</td><td>Biboum Jean Pierre</td><td><span class="badge-verifier">Banque mondiale</span></td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Dibang</td><td>Véronique Eliane Bikay épse Kome</td><td><span class="badge-verifier">Cameroon Tribune 2020</span></td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Eséka</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Makak</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Matomb</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Messondo</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Ngog-Mapubi</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Nguibassal</td><td><span class="badge-recherche">Recherché</span></td><td>—</td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Akonolinga</td><td>Akamba Assembe Pierre Georges</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Ayos</td><td>Ndongo Boko'o Paul</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Endom</td><td>Bekolo Essama René</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Kobdombo</td><td>Ze Biwole Calvin</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Mengang</td><td>Ayia Gabriel Bienvenu</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Akoeman</td><td>Mbarga Mbida</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Dzeng</td><td>Ayi Monique épse Nkamgna</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Mbalmayo</td><td>Zang Mba</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Mengueme</td><td>Onana Mba</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Ngomedzap</td><td>Tsoungui Bleue Régine</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Nkolmetet</td><td>Anaba Mbarga Joséphine Solange</td><td><span class="badge-verifier">INS 2020</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.8rem; color: var(--gris2); margin-top: 0.6rem;">45 sur 70 = 64 %. Les 25 autres communes sont à documenter. <span class="badge-recherche">Recherché</span></p>
+  </section>
+
+  <section>
+    <h2 class="section-title">🗺️ Les 10 départements — synthèse démographique</h2>
+    <p style="color: var(--gris); margin-bottom: 0.5rem;">La Lékié en surbrillance. Total région : 5 204 170 habitants (INS 2023). 70 arrondissements/communes.</p>
+    <div style="overflow-x: auto;">
+      <table class="table-data">
+        <thead><tr><th>Département</th><th>Chef-lieu</th><th style="text-align:right;">Arr.</th><th style="text-align:right;">Pop. 2005</th><th style="text-align:right;">Pop. 2023</th><th style="text-align:right;">Croissance</th></tr></thead>
+        <tbody>
+          <tr><td>Haute-Sanaga</td><td>Nanga-Eboko</td><td class="num">7</td><td class="num">100 352</td><td class="num">137 728</td><td class="num">+37,2 %</td></tr>
+          <tr class="lekie"><td><strong>Lékié</strong></td><td><strong>Monatélé</strong></td><td class="num">9</td><td class="num">286 050</td><td class="num">509 457</td><td class="num">+78,1 %</td></tr>
+          <tr><td>Mbam-et-Inoubou</td><td>Bafia</td><td class="num">9</td><td class="num">189 927</td><td class="num">283 482</td><td class="num">+49,3 %</td></tr>
+          <tr><td>Mbam-et-Kim</td><td>Ntui</td><td class="num">5</td><td class="num">105 511</td><td class="num">252 215</td><td class="num">+139,0 %</td></tr>
+          <tr><td>Méfou-et-Afamba</td><td>Mfou</td><td class="num">8</td><td class="num">126 027</td><td class="num">704 072</td><td class="num">+458,7 %</td></tr>
+          <tr><td>Méfou-et-Akono</td><td>Ngoumou</td><td class="num">4</td><td class="num">55 410</td><td class="num">232 897</td><td class="num">+320,3 %</td></tr>
+          <tr><td>Mfoundi</td><td>Yaoundé</td><td class="num">7</td><td class="num">1 817 524</td><td class="num">2 461 729</td><td class="num">+35,4 %</td></tr>
+          <tr><td>Nyong-et-Kellé</td><td>Eséka</td><td class="num">10</td><td class="num">26 628 <span class="badge-recherche">partiel</span></td><td class="num">245 868</td><td class="num">—</td></tr>
+          <tr><td>Nyong-et-Mfoumou</td><td>Akonolinga</td><td class="num">5</td><td class="num">47 561 <span class="badge-recherche">partiel</span></td><td class="num">160 115</td><td class="num">—</td></tr>
+          <tr><td>Nyong-et-So'o</td><td>Mbalmayo</td><td class="num">6</td><td class="num">9 412 <span class="badge-recherche">partiel</span></td><td class="num">216 607</td><td class="num">—</td></tr>
+          <tr style="background: var(--vert); color: #fff; font-weight: 700;"><td><strong>TOTAL</strong></td><td>—</td><td class="num">70</td><td class="num">2 753 400</td><td class="num">5 204 170</td><td class="num">+89,0 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.8rem; color: var(--gris2); margin-top: 0.5rem;">📌 « partiel » = certains arrondissements sans donnée 2005 (N.D.) dans les sources consultées. La croissance n'est pas calculée pour ces 3 départements. Sources : BUCREP (RGPH 2005), INS 2025 (projections 2023).</p>
+    <div class="note-recherche" style="margin-top: 1rem;">
+      <strong>📌 Divergence signalée — Sa'a (2005) :</strong> la somme des arrondissements donne 286 050, mais <a href="observatoire" style="color:var(--vert);font-weight:600;">l'Observatoire</a> affiche 296 807 avec Sa'a à 63 967. Écart à recouper avec l'Annuaire Statistique du Centre 2025. <span class="badge-verifier">À vérifier</span>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">📊 Détail par département — 70 arrondissements (démographie)</h2>
+    <p style="color: var(--gris); margin-bottom: 1rem; font-size: 0.88rem;">Population RGPH 2005 vs INS 2023 par arrondissement/commune. N.D. = donnée non disponible dans les sources consultées.</p>
+
+    <details class="detail-dep">
+      <summary>Haute-Sanaga — 7 arrondissements</summary>
+      <table class="table-data" style="margin-top: 0.8rem;">
+        <thead><tr><th>Arrondissement/Commune</th><th style="text-align:right;">2005</th><th style="text-align:right;">2023</th></tr></thead>
+        <tbody>
+          <tr><td>Bibey</td><td class="num">4 875</td><td class="num">7 546</td></tr>
+          <tr><td>Lembe-Yezoum</td><td class="num">7 207</td><td class="num">6 875</td></tr>
+          <tr><td>Mbandjock</td><td class="num">21 076</td><td class="num">34 189</td></tr>
+          <tr><td>Minta</td><td class="num">11 406</td><td class="num">17 903</td></tr>
+          <tr><td>Nanga-Eboko</td><td class="num">29 814</td><td class="num">26 925</td></tr>
+          <tr><td>Nkoteng</td><td class="num">19 797</td><td class="num">33 728</td></tr>
+          <tr><td>Nsem</td><td class="num">6 177</td><td class="num">10 562</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="detail-dep">
+      <summary>Lékié — 9 arrondissements/communes</summary>
+      <table class="table-data" style="margin-top: 0.8rem;">
+        <thead><tr><th>Arrondissement/Commune</th><th style="text-align:right;">2005</th><th style="text-align:right;">2023</th></tr></thead>
+        <tbody>
+          <tr><td>Batchenga</td><td class="num">9 303</td><td class="num">13 529</td></tr>
+          <tr><td>Ebebda</td><td class="num">21 368</td><td class="num">34 154</td></tr>
+          <tr><td>Elig-Mfomo</td><td class="num">16 161</td><td class="num">25 555</td></tr>
+          <tr><td>Evodoula</td><td class="num">18 899</td><td class="num">26 327</td></tr>
+          <tr><td>Lobo</td><td class="num">10 157</td><td class="num">26 524</td></tr>
+          <tr><td>Monatélé</td><td class="num">36 933</td><td class="num">54 912</td></tr>
+          <tr><td>Obala</td><td class="num">78 929</td><td class="num">142 320</td></tr>
+          <tr><td>Okola</td><td class="num">41 081</td><td class="num">103 561</td></tr>
+          <tr><td>Sa'a</td><td class="num">53 219</td><td class="num">82 575</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem;color:var(--gris2);margin-top:0.4rem;">📌 Sa'a 2005 : divergence signalée avec l'Observatoire (63 967). <span class="badge-verifier">À vérifier</span></p>
+    </details>
+
+    <details class="detail-dep">
+      <summary>Mbam-et-Inoubou — 9 arrondissements</summary>
+      <table class="table-data" style="margin-top: 0.8rem;">
+        <thead><tr><th>Arrondissement/Commune</th><th style="text-align:right;">2005</th><th style="text-align:right;">2023</th></tr></thead>
+        <tbody>
+          <tr><td>Bafia</td><td class="num">55 506</td><td class="num">77 207</td></tr>
+          <tr><td>Bokito</td><td class="num">40 228</td><td class="num">67 041</td></tr>
+          <tr><td>Deuk</td><td class="num">11 485</td><td class="num">17 514</td></tr>
+          <tr><td>Kiiki</td><td class="num">8 519</td><td class="num">15 167</td></tr>
+          <tr><td>Kon-Yambetta</td><td class="num">8 692</td><td class="num">11 916</td></tr>
+          <tr><td>Makénéné</td><td class="num">16 564</td><td class="num">28 934</td></tr>
+          <tr><td>Ndikiniméki</td><td class="num">17 462</td><td class="num">25 019</td></tr>
+          <tr><td>Nitoukou</td><td class="num">4 831</td><td class="num">7 745</td></tr>
+          <tr><td>Ombessa</td><td class="num">25 640</td><td class="num">32 939</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="detail-dep">
+      <summary>Mbam-et-Kim — 5 arrondissements</summary>
+      <table class="table-data" style="margin-top: 0.8rem;">
+        <thead><tr><th>Arrondissement/Commune</th><th style="text-align:right;">2005</th><th style="text-align:right;">2023</th></tr></thead>
+        <tbody>
+          <tr><td>Mbangassina</td><td class="num">41 180</td><td class="num">85 988</td></tr>
+          <tr><td>Ngambe-Tikar</td><td class="num">12 489</td><td class="num">54 091</td></tr>
+          <tr><td>Ngoro</td><td class="num">13 892</td><td class="num">29 210</td></tr>
+          <tr><td>Ntui</td><td class="num">25 618</td><td class="num">57 425</td></tr>
+          <tr><td>Yoko</td><td class="num">12 332</td><td class="num">25 501</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="detail-dep">
+      <summary>Méfou-et-Afamba — 8 arrondissements</summary>
+      <table class="table-data" style="margin-top: 0.8rem;">
+        <thead><tr><th>Arrondissement/Commune</th><th style="text-align:right;">2005</th><th style="text-align:right;">2023</th></tr></thead>
+        <tbody>
+          <tr><td>Afanloum</td><td class="num">1 787</td><td class="num">3 488</td></tr>
+          <tr><td>Assamba <span style="font-size:0.7rem;color:var(--gris2);">(variante : Olanguina)</span></td><td class="num">4 801</td><td class="num">8 571</td></tr>
+          <tr><td>Awaé</td><td class="num">15 888</td><td class="num">37 388</td></tr>
+          <tr><td>Edzendouan</td><td class="num">4 436</td><td class="num">10 393</td></tr>
+          <tr><td>Esse</td><td class="num">16 822</td><td class="num">25 862</td></tr>
+          <tr><td>Mfou</td><td class="num">37 209</td><td class="num">148 615</td></tr>
+          <tr><td>Nkolafamba</td><td class="num">14 494</td><td class="num">268 655</td></tr>
+          <tr><td>Soa</td><td class="num">30 588</td><td class="num">201 100</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="detail-dep">
+      <summary>Méfou-et-Akono — 4 arrondissements</summary>
+      <table class="table-data" style="margin-top: 0.8rem;">
+        <thead><tr><th>Arrondissement/Commune</th><th style="text-align:right;">2005</th><th style="text-align:right;">2023</th></tr></thead>
+        <tbody>
+          <tr><td>Akono</td><td class="num">8 511</td><td class="num">17 430</td></tr>
+          <tr><td>Bikok</td><td class="num">12 671</td><td class="num">38 569</td></tr>
+          <tr><td>Mbankomo</td><td class="num">20 305</td><td class="num">143 944</td></tr>
+          <tr><td>Ngoumou</td><td class="num">13 923</td><td class="num">32 954</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="detail-dep">
+      <summary>Mfoundi — 7 arrondissements (Yaoundé)</summary>
+      <table class="table-data" style="margin-top: 0.8rem;">
+        <thead><tr><th>Arrondissement/Commune</th><th style="text-align:right;">2005</th><th style="text-align:right;">2023</th></tr></thead>
+        <tbody>
+          <tr><td>Yaoundé I</td><td class="num">266 771</td><td class="num">459 950</td></tr>
+          <tr><td>Yaoundé II</td><td class="num">330 524</td><td class="num">190 664 <span class="badge-verifier">À vérifier</span></td></tr>
+          <tr><td>Yaoundé III</td><td class="num">245 314</td><td class="num">314 525</td></tr>
+          <tr><td>Yaoundé IV</td><td class="num">453 107</td><td class="num">607 906</td></tr>
+          <tr><td>Yaoundé V</td><td class="num">259 922</td><td class="num">410 643</td></tr>
+          <tr><td>Yaoundé VI</td><td class="num">261 886</td><td class="num">299 233</td></tr>
+          <tr><td>Yaoundé VII</td><td class="num">N.D.</td><td class="num">178 808</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.78rem;color:var(--gris2);margin-top:0.4rem;">📌 Yaoundé II : baisse 2005→2023 atypique, à recouper (possible redécoupage administratif).</p>
+    </details>
+
+    <details class="detail-dep">
+      <summary>Nyong-et-Kellé — 10 arrondissements</summary>
+      <table class="table-data" style="margin-top: 0.8rem;">
+        <thead><tr><th>Arrondissement/Commune</th><th style="text-align:right;">2005</th><th style="text-align:right;">2023</th></tr></thead>
+        <tbody>
+          <tr><td>Biyouha</td><td class="num">3 386</td><td class="num">4 379</td></tr>
+          <tr><td>Bondjock</td><td class="num">N.D.</td><td class="num">9 387</td></tr>
+          <tr><td>Bot-Makak</td><td class="num">N.D.</td><td class="num">33 284</td></tr>
+          <tr><td>Dibang</td><td class="num">N.D.</td><td class="num">17 712</td></tr>
+          <tr><td>Eséka</td><td class="num">23 242</td><td class="num">43 656</td></tr>
+          <tr><td>Makak</td><td class="num">N.D.</td><td class="num">53 333</td></tr>
+          <tr><td>Matomb</td><td class="num">N.D.</td><td class="num">32 347</td></tr>
+          <tr><td>Messondo</td><td class="num">N.D.</td><td class="num">23 493</td></tr>
+          <tr><td>Ngog-Mapubi</td><td class="num">N.D.</td><td class="num">19 682</td></tr>
+          <tr><td>Nguibassal</td><td class="num">N.D.</td><td class="num">8 595</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="detail-dep">
+      <summary>Nyong-et-Mfoumou — 5 arrondissements</summary>
+      <table class="table-data" style="margin-top: 0.8rem;">
+        <thead><tr><th>Arrondissement/Commune</th><th style="text-align:right;">2005</th><th style="text-align:right;">2023</th></tr></thead>
+        <tbody>
+          <tr><td>Akonolinga</td><td class="num">47 561</td><td class="num">65 802</td></tr>
+          <tr><td>Ayos</td><td class="num">N.D.</td><td class="num">33 792</td></tr>
+          <tr><td>Endom</td><td class="num">N.D.</td><td class="num">27 930</td></tr>
+          <tr><td>Mengang</td><td class="num">N.D.</td><td class="num">15 813</td></tr>
+          <tr><td>Kobdombo (Nyakokombo)</td><td class="num">N.D.</td><td class="num">16 778</td></tr>
+        </tbody>
+      </table>
+    </details>
+
+    <details class="detail-dep">
+      <summary>Nyong-et-So'o — 6 arrondissements</summary>
+      <table class="table-data" style="margin-top: 0.8rem;">
+        <thead><tr><th>Arrondissement/Commune</th><th style="text-align:right;">2005</th><th style="text-align:right;">2023</th></tr></thead>
+        <tbody>
+          <tr><td>Akoeman</td><td class="num">N.D.</td><td class="num">10 896</td></tr>
+          <tr><td>Dzeng</td><td class="num">9 412</td><td class="num">21 942</td></tr>
+          <tr><td>Mbalmayo</td><td class="num">N.D.</td><td class="num">101 092</td></tr>
+          <tr><td>Mengueme</td><td class="num">N.D.</td><td class="num">16 547</td></tr>
+          <tr><td>Ngomedzap</td><td class="num">N.D.</td><td class="num">37 450</td></tr>
+          <tr><td>Nkolmetet</td><td class="num">N.D.</td><td class="num">28 680</td></tr>
+        </tbody>
+      </table>
+    </details>
+  </section>
+
+  <section>
+    <h2 class="section-title">🏘️ Communes de la Lékié — synthèse détaillée</h2>
+    <p style="color: var(--gris); margin-bottom: 0.5rem;">9 communes. Sièges de conseillers fixés par décret n° 2007/118. Pour le détail, voir <a href="ma-commune/" style="color: var(--vert); font-weight: 600;">Ma Commune</a>.</p>
+    <div style="overflow-x: auto;">
+      <table class="table-data">
+        <thead><tr><th>Commune</th><th style="text-align:right;">Pop. 2023</th><th style="text-align:right;">Sièges</th><th>Maire</th></tr></thead>
+        <tbody>
+          <tr><td>Monatélé</td><td class="num">54 912</td><td class="num">25</td><td>Prosper Parfait Mbassi Bessala</td></tr>
+          <tr><td>Obala</td><td class="num">142 320</td><td class="num">41</td><td>Francis Gaël Touna</td></tr>
+          <tr><td>Sa'a</td><td class="num">82 575</td><td class="num">41</td><td>Jean Blaise Messina Noah</td></tr>
+          <tr><td>Okola</td><td class="num">103 561</td><td class="num">34</td><td>Vincent De Paul Noa</td></tr>
+          <tr><td>Ebebda</td><td class="num">34 154</td><td class="num">25</td><td>Manga Bessala</td></tr>
+          <tr><td>Evodoula</td><td class="num">26 327</td><td class="num">25</td><td>Armand Joachim Ongolo Eloundou</td></tr>
+          <tr><td>Elig-Mfomo</td><td class="num">25 555</td><td class="num">25</td><td>Stanislas Ayissi</td></tr>
+          <tr><td>Batchenga</td><td class="num">13 529</td><td class="num">25</td><td>Anatole Souga</td></tr>
+          <tr><td>Lobo</td><td class="num">26 524</td><td class="num">25</td><td>Serge Bertin Obono Onguene</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size: 0.78rem; color: var(--gris2); margin-top: 0.5rem;">📌 Sources : INS 2023 (population), décret n° 2007/118 (sièges), fichiers communaux ISGI-Lékié (maires).</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">💰 Marchés publics — Région du Centre (2024-2026)</h2>
+    <p style="color: var(--gris); margin-bottom: 0.8rem;">Les trois exercices sont comparables à condition de lire le périmètre de chaque document.</p>
+    <div style="overflow-x: auto;">
+      <table class="table-data">
+        <thead><tr><th>Exercice</th><th>Périmètre</th><th style="text-align:right;">Marchés</th><th style="text-align:right;">Montant</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td><strong>2024</strong></td><td>Tous maîtres d'ouvrage (ministères + établissements publics + collectivités)</td><td class="num">2 657</td><td class="num">Non isolé</td><td><span class="badge-statut badge-valide">Validé</span> IMS / JPM national</td></tr>
+          <tr><td><strong>2025</strong></td><td>Services déconcentrés + collectivités territoriales décentralisées</td><td class="num">N.D.</td><td class="num">N.D.</td><td><span class="badge-recherche">Recherché</span> JPM Centre 2025 (106 p., non extrait)</td></tr>
+          <tr><td><strong>2026</strong></td><td>Services déconcentrés + collectivités territoriales décentralisées</td><td class="num">965</td><td class="num">56,7 Mds FCFA</td><td><span class="badge-statut badge-valide">Validé</span> JPM Centre 2026, p. 4</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note-recherche" style="margin-top: 1rem;">
+      <strong>📌 Lecture.</strong> 2024 totalise 2 657 projets (tous maîtres d'ouvrage confondus), soit 35,6 % des 7 469 appels d'offres nationaux pour 1 472 milliards FCFA de budget prévisionnel. 2026 concentre 965 marchés (56,7 Mds FCFA) sur le périmètre services déconcentrés + collectivités. La ventilation des 2 657 projets 2024 par périmètre n'est pas disponible dans les sources consultées — une comparaison à périmètre identique reste à établir.
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">📊 Politiques publiques — synthèse régionale</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h3>🏥 Santé</h3>
+        <p><strong>29 districts de santé</strong>, 296 aires de santé, 365 formations sanitaires (16,77 % du national).</p>
+        <p style="font-size: 0.8rem; color: var(--gris2);">2 hôpitaux généraux, 25 hôpitaux de district, 36 CMA, 297 CSI. <span class="badge-verifier">Données 2010, à recouper avec carte sanitaire 2022</span></p>
+      </div>
+      <div class="card">
+        <h3>🎓 Éducation</h3>
+        <p>Secondaire général 2024/2025 : <strong>424 618 élèves</strong>. Secondaire technique : <strong>107 719 élèves</strong>. Universités (Yaoundé I + II) : <strong>77 049 étudiants</strong> (17,2 % du national).</p>
+        <p style="font-size: 0.8rem; color: var(--gris2);">304 établissements (SIGE), 6 024 salles de classe (5 451 en dur), 13 178 enseignants. Source : INS 2025.</p>
+      </div>
+      <div class="card">
+        <h3>🌾 Agriculture</h3>
+        <p>Projets documentés : tracteurs livrés à <strong>Ntui</strong> (80 CV) et <strong>Nkolmetet</strong> (100 et 80 CV). Objectifs : maïs Ntui 274 t → 1 650 t/an ; manioc Nkolmetet 600 → 800 t/an.</p>
+        <p style="font-size: 0.8rem; color: var(--gris2);">Projet Mbean Bidi (Nyong-et-So'o, 5 communes, 36 mois, coopération italienne).</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Énergie et infrastructures</h3>
+        <p>Couverture ENEO, projets routiers régionaux <span class="badge-recherche">Recherché</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🔗 Renvois</h2>
+    <div class="grid-2">
+      <div class="card"><h3>🌍 Ma Lékié</h3><p>Données départementales, autorités, BIP, chronique préfectorale, délégations départementales.</p><a href="ma-lekie" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir Ma Lékié →</a></div>
+      <div class="card"><h3>📊 Observatoire de la Lékié</h3><p>Indicateurs consolidés, comparaison régionale, séries temporelles.</p><a href="observatoire" class="btn" style="margin-top: 0.8rem; display: inline-block;">Voir l'Observatoire →</a></div>
+    </div>
+  </section>
+
+  <section id="contribuer">
+    <h2 class="section-title">📢 Contribuer à Ma Région</h2>
+    <div class="note-recherche">
+      <p><strong>Vous disposez de sources officielles sur la Région du Centre (INS, MINAT, MINEPAT, Conseil régional, JPM Centre 2025, CVUC) ?</strong> Votre contribution est précieuse.</p>
+    </div>
+    <div style="text-align: center; margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center;">
+      <a href="plateforme#contribuer" class="btn">📢 Proposer une contribution</a>
+      <a href="#top" class="btn btn-outline">⬆ Retour en haut</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 24 Octobre 2026</p>
+  <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
+</footer>
+
+<a href="#" id="backToTop" class="back-to-top" title="Retour en haut" aria-label="Retour en haut de la page">↑</a>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+  const backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    window.addEventListener('scroll', function() {
+      backToTop.classList.toggle('show', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+</script>
+</body>
+</html>

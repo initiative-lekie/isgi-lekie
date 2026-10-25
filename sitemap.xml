@@ -1,21 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Page d'accueil -->
+  <!-- Accueil -->
   <url>
     <loc>https://isgi-lekie.cm/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Pages principales -->
+  <!-- Niveau territorial -->
   <url>
-    <loc>https://isgi-lekie.cm/plateforme</loc>
-    <lastmod>2026-10-11</lastmod>
+    <loc>https://isgi-lekie.cm/ma-lekie</loc>
+    <lastmod>2026-10-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://isgi-lekie.cm/ma-region</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://isgi-lekie.cm/plateforme</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Pages principales -->
   <url>
     <loc>https://isgi-lekie.cm/mon-village</loc>
     <lastmod>2026-10-11</lastmod>
@@ -24,79 +38,113 @@
   </url>
   <url>
     <loc>https://isgi-lekie.cm/mon-ecole</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://isgi-lekie.cm/valeurs-et-competences</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://isgi-lekie.cm/nos-ministres</loc>
+    <lastmod>2026-10-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Pages thématiques -->
   <url>
     <loc>https://isgi-lekie.cm/observatoire</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://isgi-lekie.cm/sport</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-09-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://isgi-lekie.cm/certification</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://isgi-lekie.cm/agriculture</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://isgi-lekie.cm/elevage</loc>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://isgi-lekie.cm/tourisme</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+
+  <!-- Pages éditoriales -->
   <url>
     <loc>https://isgi-lekie.cm/presse</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://isgi-lekie.cm/hommage-andre-marie-mbida</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-07-28</lastmod>
     <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://isgi-lekie.cm/blog</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- Documents CISFOOTVAC -->
   <url>
     <loc>https://isgi-lekie.cm/charte-cisfootvac</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://isgi-lekie.cm/reglement-cisfootvac</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://isgi-lekie.cm/referentiel-cisfootvac</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
+  </url>
+
+  <!-- Ma Commune -->
+  <url>
+    <loc>https://isgi-lekie.cm/ma-commune/</loc>
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://isgi-lekie.cm/ma-commune/monatele</loc>
+    <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- Fiche village prototype -->
@@ -104,15 +152,7 @@
     <loc>https://isgi-lekie.cm/villages/endama-1</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Fiche chefferie prototype -->
-  <url>
-    <loc>https://isgi-lekie.cm/chefferies/endama-1</loc>
-    <lastmod>2026-10-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.6</priority>
   </url>
 
 </urlset>

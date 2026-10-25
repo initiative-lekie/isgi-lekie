@@ -1,68 +1,122 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#1b3a2d" />
   <title>Blog — ISGI-Lékié</title>
+  <meta name="description" content="Blog de la Lékié — Analyses, tribunes, actualités et réflexions sur le territoire.">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://isgi-lekie.cm/blog">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Blog — ISGI-Lékié">
+  <meta property="og:description" content="Analyses, tribunes, actualités et réflexions sur le territoire de la Lékié.">
+  <meta property="og:url" content="https://isgi-lekie.cm/blog">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="ISGI-Lékié">
+  <meta property="og:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Blog de la Lékié — ISGI-Lékié">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog — ISGI-Lékié">
+  <meta name="twitter:description" content="Analyses, tribunes, actualités et réflexions sur le territoire de la Lékié.">
+  <meta name="twitter:image" content="https://isgi-lekie.cm/og-lekie.jpg">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+
+  <!-- Feuille de style commune -->
+  <link rel="stylesheet" href="assets/lekie.css">
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Blog de la Lékié",
+      "description": "Analyses, tribunes, actualités et réflexions sur le territoire de la Lékié.",
+      "url": "https://isgi-lekie.cm/blog",
+      "inLanguage": "fr-FR",
+      "publisher": {
+        "@type": "Organization",
+        "name": "ISGI-Lékié",
+        "url": "https://isgi-lekie.cm",
+        "logo": "https://isgi-lekie.cm/og-lekie.jpg",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Association Réfléchir Agir Soutenir (RAS)"
+        }
+      }
+    }
+  </script>
+
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #fefcf8; color: #2c2c28; line-height: 1.5; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    /* Styles spécifiques à cette page — les règles communes viennent de lekie.css */
 
-    .navbar { background: #1b3a2d; padding: 0.8rem 1.5rem; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #c4922a; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-    .logo a { color: #e0a83e; text-decoration: none; font-size: 1.5rem; font-weight: 700; }
-    .logo span { font-size: 0.7rem; display: block; color: rgba(255,255,255,0.7); }
-    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.85rem; font-weight: 500; }
-    .nav-links a:hover { color: #e0a83e; }
-
-    .hero-blog { background: linear-gradient(105deg, #1b3a2d 0%, #2a5a44 100%); padding: 3rem 1.5rem; text-align: center; color: white; }
+    .hero-blog { background: linear-gradient(105deg, var(--vert) 0%, var(--vert2) 100%); padding: 3rem 1.5rem; text-align: center; color: white; }
     .hero-blog h1 { font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; }
     .hero-blog p { margin-top: 0.5rem; opacity: 0.8; }
 
     .blog-content { display: flex; flex-wrap: wrap; gap: 2rem; padding: 3rem 0; }
-    .articles { flex: 2; }
-    .sidebar { flex: 1; }
+    .articles { flex: 2; min-width: 280px; }
+    .sidebar { flex: 1; min-width: 260px; }
+
     .article-card { background: white; border-radius: 20px; padding: 1.5rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #e8dfd0; }
-    .article-card h2 { font-size: 1.5rem; color: #1b3a2d; margin-bottom: 0.5rem; }
+    .article-card h2 { font-size: 1.5rem; color: var(--vert); margin-bottom: 0.5rem; font-family: 'Cormorant Garamond', serif; }
     .article-meta { font-size: 0.75rem; color: #8a8a80; margin-bottom: 0.8rem; }
-    .article-category { display: inline-block; background: #c4922a; color: #1b3a2d; padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; margin-right: 0.5rem; }
-    .btn-lire { background: #1b3a2d; color: #e0a83e; padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; font-size: 0.8rem; display: inline-block; border: none; cursor: pointer; }
+    .article-category { display: inline-block; background: var(--or); color: var(--vert); padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; margin-right: 0.5rem; }
+    .btn-lire { background: var(--vert); color: var(--or2); padding: 0.5rem 1rem; border-radius: 40px; text-decoration: none; font-size: 0.8rem; display: inline-block; border: none; cursor: pointer; }
+    .btn-lire:hover { background: var(--or); color: var(--vert); }
+
     .search-box { width: 100%; padding: 0.7rem; border: 1px solid #e8dfd0; border-radius: 40px; margin-bottom: 1.5rem; font-family: 'Inter', sans-serif; }
-    .sidebar h3 { font-size: 1.2rem; color: #1b3a2d; margin-bottom: 1rem; border-left: 3px solid #c4922a; padding-left: 0.8rem; }
+    .search-box:focus { outline: 2px solid var(--or); border-color: var(--or); }
+
+    .sidebar h3 { font-size: 1.2rem; color: var(--vert); margin-bottom: 1rem; border-left: 3px solid var(--or); padding-left: 0.8rem; font-family: 'Cormorant Garamond', serif; }
     .category-list { list-style: none; }
     .category-list li { margin-bottom: 0.5rem; }
-    .category-list a { text-decoration: none; color: #5a5a50; }
-    .category-list a:hover { color: #c4922a; }
-    footer { background: #0f2c21; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.8rem; margin-top: 2rem; }
-    footer .boussole { font-style: italic; color: rgba(255,255,255,0.3); margin-top: 0.4rem; }
-    @media (max-width: 700px) { .navbar { flex-direction: column; text-align: center; } .blog-content { flex-direction: column; } }
+    .category-list a { text-decoration: none; color: var(--gris); }
+    .category-list a:hover { color: var(--or); }
+
+    /* Surcharge locale de lekie.css — à valider */
+    footer { color: rgba(255,255,255,0.5); }
+
+    @media (max-width: 700px) { .blog-content { flex-direction: column; } .hero-blog h1 { font-size: 2rem; } }
   </style>
 </head>
 <body>
 
-<div class="navbar">
-  <div class="logo"><a href="index.html">ISGI</a><span>Lékié — Cameroun</span></div>
-  <div class="nav-links">
-    <a href="index.html">Accueil</a>
-    <a href="plateforme.html">Plateforme</a>
-    <a href="blog.html">Blog</a>
-    <a href="hommage-andre-marie-mbida.html">Hommage</a>
-    <a href="presse.html">Presse</a>
-    <a href="mon-village.html">Mon village</a>
-    <a href="mon-ecole.html">Mon école</a>
-    <a href="tourisme.html">Tourisme</a>
+<a href="#contenu" class="skip-link">Aller au contenu principal</a>
+
+<nav aria-label="Navigation principale">
+  <div class="logo"><a href="/">ISGI</a><span>Lékié — Cameroun</span></div>
+  <button class="burger" id="burgerBtn" aria-label="Menu de navigation" aria-expanded="false">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="/">Accueil</a>
+    <a href="plateforme">Plateforme</a>
+    <a href="mon-village">Mon village</a>
+    <a href="mon-ecole">Mon école</a>
+    <a href="observatoire">Observatoire</a>
+    <a href="sport">Sport</a>
+    <a href="certification">Certification</a>
+    <a href="tourisme">Tourisme</a>
+    <a href="hommage-andre-marie-mbida">Hommage</a>
+    <a href="presse">Presse</a>
+    <a href="blog" class="active">Blog</a>
   </div>
-</div>
+</nav>
 
 <div class="hero-blog">
   <h1>Blog de la Lékié</h1>
   <p>Analyses, tribunes, actualités et réflexions sur le territoire</p>
 </div>
 
-<div class="container">
+<div class="container" id="contenu">
   <div class="blog-content">
 
     <div class="articles">
@@ -85,6 +139,7 @@
         <button class="btn-lire" onclick="afficherArticle('article2')">Lire la suite →</button>
         <div id="full-article2" style="display: none; margin-top: 1rem;">
           <p>Selon le RGPH 2005, la Lékié comptait 296 807 habitants résidents. Avec un taux de croissance naturelle de 2,6% par an, la population résidente atteindrait environ 500 000 en 2025. La diaspora représenterait entre 1 et 1,5 million de personnes supplémentaires.</p>
+          <p style="margin-top: 0.5rem; font-size: 0.85rem;">📊 Pour les chiffres sourcés (INS 2025, estimation ISGI, diaspora), consulter <a href="observatoire" style="color: var(--vert); font-weight: 600;">l'Observatoire de la Lékié</a>.</p>
           <button class="btn-lire" onclick="masquerArticle('article2')" style="margin-top: 0.5rem;">⬆️ Réduire</button>
         </div>
       </div>
@@ -102,7 +157,7 @@
     </div>
 
     <div class="sidebar">
-      <input type="text" id="searchInput" class="search-box" placeholder="🔍 Rechercher un article...">
+      <input type="text" id="searchInput" class="search-box" placeholder="🔍 Rechercher un article..." aria-label="Rechercher un article">
       <h3>📂 Catégories</h3>
       <ul class="category-list">
         <li><a href="#" onclick="filtrerParCategorie('tout'); return false;">📌 Tous les articles</a></li>
@@ -117,17 +172,47 @@
 
 <footer>
   <p>ISGI-Lékié — Initiative Stratégique Globale et Inclusive · Portage : Association RAS</p>
+  <p style="margin-top: 0.3rem; color: rgba(255,255,255,0.35);">Dernière mise à jour : 11 Octobre 2026</p>
   <p class="boussole">« Est-ce que ma Lékié est là ? »</p>
 </footer>
 
 <script>
+  // ---- BURGER MENU ----
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function() {
+      const isOpen = navLinks.classList.toggle('show');
+      burger.setAttribute('aria-expanded', isOpen);
+      burger.textContent = isOpen ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', function(e) {
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) {
+        navLinks.classList.remove('show');
+        burger.setAttribute('aria-expanded', 'false');
+        burger.textContent = '☰';
+      }
+    });
+  }
+
+  // ---- ARTICLES ----
   function afficherArticle(id) { document.getElementById('full-' + id).style.display = 'block'; }
   function masquerArticle(id) { document.getElementById('full-' + id).style.display = 'none'; }
+
+  // ---- FILTRES ----
   function filtrerParCategorie(categorie) {
     const articles = document.querySelectorAll('.article-card');
     if (categorie === 'tout') { articles.forEach(a => a.style.display = 'block'); return; }
     articles.forEach(article => { const cat = article.querySelector('.article-category').innerText; article.style.display = cat === categorie ? 'block' : 'none'; });
   }
+
   document.getElementById('searchInput').addEventListener('input', function(e) {
     const terme = e.target.value.toLowerCase();
     document.querySelectorAll('.article-card').forEach(article => {
